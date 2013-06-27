@@ -5,7 +5,7 @@
 _lein(){
     if [ $COMP_CWORD == 1 ]; then
         curw=${COMP_WORDS[COMP_CWORD]}
-        COMPREPLY=($(compgen -W "check classpath clean compile deploy deps do help install jar javac midje new plugin pom repl retest run search show test trampoline uberjar update upgrade version with-profile" -- $curw))
+        COMPREPLY=($(compgen -W "check classpath clean compile deploy deps do help install jar javac midje new plugin pom repl retest run search show test trampoline uberjar update upgrade version with-profile lobos" -- $curw))
     fi
     return 0
 }
