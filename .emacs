@@ -27,7 +27,8 @@
                       smart-tab
                       smex
                       switch-window
-                      undo-tree))
+                      undo-tree
+                      zenburn-theme))
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
@@ -35,6 +36,8 @@
 
 
 ;;; UI
+(load-theme 'zenburn t) ; load zenburn theme
+(setq ansi-term-color-vector [unspecified "#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"]) ; workaround for ansi-term
 (setq transient-mark-mode t) ; hilight selection
 (show-paren-mode) ; Automatically show opened/closed parentheses
 (eval-after-load 'paren '(setq show-paren-delay 0)) ; immediately show matching parentheses
@@ -46,7 +49,6 @@
 (when (and (fboundp 'menu-bar-mode) menu-bar-mode) (menu-bar-mode -1)) ; disable menu bar
 (when (and (fboundp 'tool-bar-mode) tool-bar-mode) (tool-bar-mode -1)) ; disable tool bar
 (when (and (fboundp 'scroll-bar-mode) scroll-bar-mode) (scroll-bar-mode -1)) ; disable scroll bar
-(custom-set-variables '(custom-enabled-themes (quote (wombat)))) ; use wombat theme by default
 (column-number-mode t) ; show col number in bar
 (line-number-mode t) ; show line number in bar
 
