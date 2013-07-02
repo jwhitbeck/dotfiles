@@ -41,6 +41,7 @@
 (setq transient-mark-mode t) ; hilight selection
 (show-paren-mode) ; Automatically show opened/closed parentheses
 (eval-after-load 'paren '(setq show-paren-delay 0)) ; immediately show matching parentheses
+(eval-after-load 'paren '(setq show-paren-style 'expression)) ; highlight full expression contained between parentheses
 (setq inhibit-startup-message t) ; disable startup message
 (setq inhibit-startup-echo-area-message t)
 (setq initial-scratch-message nil) ; disable scratch message
