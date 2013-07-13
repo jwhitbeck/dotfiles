@@ -13,6 +13,7 @@
                       clojure-mode
                       clojure-test-mode
                       fiplr
+                      fill-column-indicator
                       flycheck
                       ido
                       ido-ubiquitous
@@ -108,13 +109,14 @@
 (global-undo-tree-mode t) ; always activate undo tree
 (setq-default tab-width 2) ; distance between tab stops
 (global-rainbow-delimiters-mode t) ; activate rainbow delimeters everywhere
+(custom-set-variables '(fill-column 110)) ; line wrap at 110 characters
+(add-hook 'prog-mode-hook #'fci-mode) ; show a bar beyond the fill-column
 
 ;; Highlight and auto-correct whitespace problems
 (global-whitespace-mode t)
 (eval-after-load 'whitespace
   '(progn
-     (setq whitespace-line-column 110)
-     (setq whitespace-style '(face empty trailing tabs tab-mark lines-tail))))
+     (setq whitespace-style '(face empty trailing tabs tab-mark))))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; No tabs by default. Modes that really need tabs should enable indent-tabs-mode explicitly.
