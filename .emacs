@@ -216,7 +216,6 @@
 (require 'clojure-mode)
 (require 'nrepl)
 (add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'clojure-mode-hook (lambda () (modify-syntax-entry ?- "w"))) ; Count hyphens, etc. as word chars
 (add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
 (setq nrepl-hide-special-buffers t)
 (add-hook 'nrepl-mode-hook 'subword-mode)
