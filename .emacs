@@ -39,7 +39,7 @@
 
 ;;; UI
 (load-theme 'zenburn t) ; load zenburn theme
-(setq ansi-term-color-vector [unspecified "#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"]) ; workaround for ansi-term
+(eval-after-load 'zenburn '(setq ansi-term-color-vector [unspecified "#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"])) ; workaround for ansi-term
 (setq transient-mark-mode t) ; hilight selection
 (show-paren-mode) ; Automatically show opened/closed parentheses
 (eval-after-load 'paren '(setq show-paren-delay 0)) ; immediately show matching parentheses
@@ -152,7 +152,6 @@
 
 ;;; IDO MODE
 (require 'ido)
-(require 'ido-ubiquitous)
 (require 'ido-vertical-mode)
 (require 'smex)
 (ido-mode t)
