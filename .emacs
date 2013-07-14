@@ -8,7 +8,6 @@
 
 
 (defvar my-packages '(ac-nrepl
-                      ag
                       auto-complete
                       clojure-mode
                       clojure-test-mode
