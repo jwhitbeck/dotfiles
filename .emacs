@@ -92,6 +92,12 @@
 (require 'switch-window)
 (windmove-default-keybindings)
 
+;; Simplify window management for french keyboards
+(global-set-key (kbd "C-x à") (global-key-binding (kbd "C-x 0")))
+(global-set-key (kbd "C-x &") (global-key-binding (kbd "C-x 1")))
+(global-set-key (kbd "C-x é") (global-key-binding (kbd "C-x 2")))
+(global-set-key (kbd "C-x \"") (global-key-binding (kbd "C-x 3")))
+
 
 ;;; FONTS
 (set-face-attribute 'default nil :family "Monospace" :height 100)
