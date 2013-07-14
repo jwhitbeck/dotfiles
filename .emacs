@@ -202,10 +202,6 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 
-;;; EasyPG
-(require 'epa)
-(epa-file-enable)
-
 
 ;;; GIT
 (require 'git-commit-mode)
