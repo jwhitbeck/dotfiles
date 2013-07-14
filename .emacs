@@ -14,6 +14,7 @@
                       fiplr
                       fill-column-indicator
                       flycheck
+                      hide-lines
                       ido
                       ido-ubiquitous
                       ido-vertical-mode
