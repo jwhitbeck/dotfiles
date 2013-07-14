@@ -110,7 +110,8 @@
 (setq-default tab-width 2) ; distance between tab stops
 (global-rainbow-delimiters-mode t) ; activate rainbow delimeters everywhere
 (custom-set-variables '(fill-column 110)) ; line wrap at 110 characters
-(add-hook 'prog-mode-hook #'fci-mode) ; show a bar beyond the fill-column
+(add-hook 'prog-mode-hook 'fci-mode) ; show a bar beyond the fill-column
+(add-hook 'text-mode-hook 'fci-mode) ; show a bar beyond the fill-column
 (add-hook 'text-mode-hook 'turn-on-flyspell) ; activate flyspell for all text modes
 
 ;; Highlight and auto-correct whitespace problems
