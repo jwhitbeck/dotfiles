@@ -168,7 +168,8 @@
      (setq ido-enable-flex-matching t)
      (setq ido-use-virtual-buffers t)
      (setq ido-everywhere t)
-     (setq ido-max-directory-size 100000)))
+     (setq ido-max-directory-size 100000)
+     (setq recentf-max-saved-items 1000)))
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
