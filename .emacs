@@ -234,6 +234,8 @@
 
 ;;; GREP MODE
 (add-hook 'grep-mode-hook (lambda () (setq truncate-lines t)))
+(require 'magit)
+(global-set-key (kbd "C-x g") 'magit-grep)
 
 ;;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode) ; enable paredit
