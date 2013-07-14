@@ -231,6 +231,8 @@
 (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 (eval-after-load 'auto-complete '(add-to-list 'ac-modes 'nrepl-mode))
 
+;;; GREP MODE
+(add-hook 'grep-mode-hook (lambda () (setq truncate-lines t)))
 
 ;;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode) ; enable paredit
