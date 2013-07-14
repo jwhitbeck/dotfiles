@@ -239,8 +239,6 @@
 
 ;;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode) ; enable paredit
-(add-hook 'emacs-lisp-mode-hook (lambda () (modify-syntax-entry ?- "w"))) ; Count hyphens, etc. as word chars
-
 
 ;;; FILE EXTENSIONS
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
