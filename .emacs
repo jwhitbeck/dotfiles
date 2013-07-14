@@ -171,9 +171,12 @@
 
 ;; Fuzzy project file finding
 (require 'fiplr)
-(eval-after-load 'fiplr
-  '(setq fiplr-ignored-globs '((directories (".git" ".svn" "target" "log"))
-                               (files (".#*" "*.so" ".DS_Store")))))
+(setq fiplr-ignored-globs
+      '((directories
+         (".git" ".svn" ".hg" ".bzr"))
+        (files
+         (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" ".DS_Store"))))
+(global-set-key (kbd "C-x p") 'fiplr-find-file)
 
 ;;; BUFFER LISTS
 (require 'uniquify)
