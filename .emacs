@@ -202,14 +202,6 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 
-
-;;; GIT
-(require 'git-commit-mode)
-(require 'magit)
-(add-hook 'git-commit-mode-hook 'turn-on-flyspell)
-(add-hook 'git-commit-mode-hook (lambda () (toggle-save-place 0)))
-
-
 ;;; CLOJURE
 (require 'clojure-mode)
 (require 'nrepl)
