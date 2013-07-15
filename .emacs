@@ -64,8 +64,8 @@
 
 ;;; WINDOWS
 ;; Splitting
-(setq split-height-threshold 40)
-(setq split-width-threshold 150)
+(setq split-height-threshold 80)
+(setq split-width-threshold 220)
 (setq split-window-preferred-function 'split-window-sensibly-reverse)
 (defun split-window-sensibly-reverse (&optional window)
   "Identical to the built-in function split-window-sensibly, but prefers horizontal splits over vertical splits."
