@@ -41,6 +41,7 @@
 (load-theme 'zenburn t) ; load zenburn theme
 (eval-after-load 'zenburn '(setq ansi-term-color-vector [unspecified "#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"])) ; workaround for ansi-term
 (setq transient-mark-mode t) ; hilight selection
+(global-hl-line-mode t) ; activate line highlighting everywhere
 (show-paren-mode) ; Automatically show opened/closed parentheses
 (eval-after-load 'paren '(setq show-paren-delay 0)) ; immediately show matching parentheses
 (eval-after-load 'paren '(setq show-paren-style 'expression)) ; highlight full expression contained between parentheses
@@ -187,7 +188,6 @@
 ;;; BUFFER LISTS
 (require 'uniquify)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(add-hook 'ibuffer-mode-hook 'hl-line-mode) ; activate line highlighting
 (setq uniquify-buffer-name-style 'forward) ; Include path information in duplicate buffer names (e.g. a/foo.txt b/foo.txt)
 
 
@@ -199,7 +199,6 @@
   "Like \\[dired-jump] (dired-jump) but in other window." t)
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
-(add-hook 'dired-mode-hook 'hl-line-mode) ; activate line highlighting
 
 
 ;;; ORG MODE
