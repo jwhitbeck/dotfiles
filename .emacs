@@ -9,6 +9,7 @@
 
 (defvar my-packages '(ac-nrepl
                       auto-complete
+                      coffee-mode
                       clojure-mode
                       clojure-test-mode
                       fiplr
