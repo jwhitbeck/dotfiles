@@ -9,6 +9,7 @@
 
 (defvar my-packages '(ac-nrepl
                       auto-complete
+                      auto-indent-mode
                       coffee-mode
                       clojure-mode
                       clojure-test-mode
@@ -219,6 +220,7 @@
 (setq nrepl-hide-special-buffers t)
 (add-hook 'nrepl-mode-hook 'subword-mode)
 (add-hook 'nrepl-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'auto-indent-mode)
 ;; Clojure indentation rules
 (define-clojure-indent
   (send-off 1)                                  ; Core
@@ -240,6 +242,7 @@
 
 ;;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode) ; enable paredit
+(add-hook 'emacs-lisp-mode-hook 'auto-indent-mode)
 
 ;;; FILE EXTENSIONS
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
