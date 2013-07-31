@@ -228,6 +228,7 @@
   (select 1) (insert 1) (update 1) (delete 1)   ; Korma
   (clone-for 1)                                 ; Enlive
   (up 1) (down 1)                               ; Lobos
+  (fact 2) (facts 2)                            ; Midje
   )
 ;; Autocompletion in nrepl
 (require 'ac-nrepl)
