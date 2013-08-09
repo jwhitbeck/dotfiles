@@ -258,3 +258,8 @@
 ;; sudo on remote servers
 (set-default 'tramp-default-proxies-alist (quote (("\\`\\(127\\.0\\.0\\.1\\|::1\\|localhost6?\\|xps\\)\\'" "\\`root\\'" nil)
                                                   (".*" "\\`root\\'" "/ssh:%h:"))))
+
+;;; SQL
+;; Add option to chose port in sql-postgres
+(require 'sql)
+(add-to-list 'sql-postgres-login-params '(port :default 5432) t)
