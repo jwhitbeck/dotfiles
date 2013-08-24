@@ -107,7 +107,7 @@
 (global-font-lock-mode t)
 
 
-;; EDITING
+;;; EDITING
 (require 'undo-tree)
 (require 'rainbow-delimiters)
 (setq auto-save-default nil) ; disable autosave
@@ -122,6 +122,7 @@
 (add-hook 'prog-mode-hook 'fci-mode) ; show a bar beyond the fill-column
 (add-hook 'text-mode-hook 'fci-mode) ; show a bar beyond the fill-column
 (add-hook 'text-mode-hook 'turn-on-flyspell) ; activate flyspell for all text modes
+(savehist-mode t) ; Save your minibuffer history across Emacs sessions. UX win!
 
 ;; Highlight and auto-correct whitespace problems
 (global-whitespace-mode t)
