@@ -201,6 +201,8 @@
   "Like \\[dired-jump] (dired-jump) but in other window." t)
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
+;; Auto-revert
+(eval-after-load 'dired '(setq dired-auto-revert-buffer t))
 
 
 ;;; ORG MODE
