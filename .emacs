@@ -71,6 +71,9 @@
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
 
+;;; PERFORMANCE
+(setq gc-cons-threshold 20000000) ;; Reduce occurence of garbage collection
+
 
 ;;; WINDOWS
 ;; Splitting
