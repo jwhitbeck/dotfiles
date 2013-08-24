@@ -63,6 +63,13 @@
 (setq x-select-enable-primary nil)  ; stops killing/yanking interacting with primary X11 selection
 (setq x-select-enable-clipboard t)  ; makes killing/yanking interact with clipboard X11 selection
 
+;; Start scrolling the window when the cursor reaches its edge.
+;; http://stackoverflow.com/questions/3631220/fix-to-get-smooth-scrolling-in-emacs
+(setq redisplay-dont-pause t
+      scroll-margin 5
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
 
 
 ;;; WINDOWS
