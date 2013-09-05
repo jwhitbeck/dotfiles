@@ -59,6 +59,11 @@
 (column-number-mode t) ; show col number in bar
 (line-number-mode t) ; show line number in bar
 
+;; Set M-- and M-+ to decrease/increase the font size
+(global-set-key (kbd "M--") 'text-scale-decrease)
+(global-set-key (kbd "M-+") 'text-scale-increase)
+(global-set-key (kbd "M-0") (lambda () (interactive) (text-scale-set 0)))
+
 ;; X clipboard <-> emacs kill ring compatibility
 (setq mouse-drag-copy-region nil)  ; stops selection with a mouse being immediately injected to the kill ring
 (setq x-select-enable-primary nil)  ; stops killing/yanking interacting with primary X11 selection
