@@ -204,7 +204,7 @@
       '((directories
          (".git" ".svn" ".hg" ".bzr"))
         (files
-         (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" ".DS_Store"))))
+         (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" ".DS_Store" "*.class"))))
 (global-set-key (kbd "C-x p") 'fiplr-find-file)
 
 ;;; BUFFER LISTS
