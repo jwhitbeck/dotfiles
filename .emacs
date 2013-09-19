@@ -109,6 +109,7 @@
 
 ;; Window navigation
 (require 'switch-window)
+(global-set-key (kbd "C-x o") 'switch-window)
 (windmove-default-keybindings)
 
 ;; Simplify window management for french keyboards
