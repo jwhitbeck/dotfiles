@@ -311,3 +311,7 @@
 ;; Add option to chose port in sql-postgres
 (require 'sql)
 (add-to-list 'sql-postgres-login-params '(port :default 5432) t)
+
+
+;;; CSS
+(set-variable 'css-indent-offset 2)
