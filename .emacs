@@ -33,6 +33,7 @@
                       smex
                       switch-window
                       undo-tree
+                      yaml-mode
                       zenburn-theme))
 
 (dolist (p my-packages)
