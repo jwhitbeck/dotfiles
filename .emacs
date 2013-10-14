@@ -264,6 +264,11 @@
   (up 1) (down 1)                               ; Lobos
   (fact 2) (facts 2)                            ; Midje
   )
+;; Prevent the auto-display of the REPL buffer in a separate window after connection is established.
+(setq nrepl-pop-to-repl-buffer-on-connect nil)
+;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy
+;; to type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
+(setq nrepl-auto-select-error-buffer t)
 ;; Autocompletion in nrepl
 (require 'ac-nrepl)
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
