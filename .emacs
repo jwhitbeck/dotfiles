@@ -257,13 +257,15 @@
 (add-hook 'clojure-mode-hook 'auto-indent-mode)
 ;; Clojure indentation rules
 (define-clojure-indent
-  (send-off 1)                                  ; Core
-  (GET 2) (POST 2) (PUT 2) (PATCH 2) (DELETE 2) ; Compojure
-  (select 1) (insert 1) (update 1) (delete 1)   ; Korma
-  (clone-for 1)                                 ; Enlive
-  (up 1) (down 1)                               ; Lobos
-  (fact 2) (facts 2)                            ; Midje
+  (send-off 1)                                   ; Core
+  (GET 2) (POST 2) (PUT 2) (PATCH 2) (DELETE 2)  ; Compojure
+  (select 1) (insert 1) (update 1) (delete 1)    ; Korma
+  (where 1) (set-fields 1) (values 1) (upsert 1) ; Korma (continued)
+  (clone-for 1)                                  ; Enlive
+  (up 1) (down 1) (alter 1) (table 1) (create 1) ; Lobos
+  (fact 2) (facts 2)                             ; Midje
   )
+
 ;; Prevent the auto-display of the REPL buffer in a separate window after connection is established.
 (setq nrepl-pop-to-repl-buffer-on-connect nil)
 ;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy
