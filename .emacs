@@ -183,6 +183,9 @@
   '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
 
 
+;;; MAGIT MODE
+(require 'magit)
+
 
 ;;; IDO MODE
 (require 'ido)
@@ -214,6 +217,7 @@
         (files
          (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" ".DS_Store" "*.class"))))
 (global-set-key (kbd "C-x p") 'fiplr-find-file)
+(add-hook 'magit-checkout-command-hook (lambda (_) (fiplr-clear-cache) nil)) ; Invalidate fiplr cache
 
 ;;; BUFFER LISTS
 (require 'uniquify)
@@ -294,7 +298,6 @@
 
 ;;; GREP MODE
 (add-hook 'grep-mode-hook (lambda () (setq truncate-lines t)))
-(require 'magit)
 (global-set-key (kbd "C-x g") 'magit-grep)
 
 ;;; EMACS LISP
