@@ -114,11 +114,16 @@
 (setq switch-window-shortcut-style 'qwerty)
 (windmove-default-keybindings)
 
+;; Winner mode
+;; Winner mode saves the history of window splits
+(winner-mode t)
+
 ;; Simplify window management for french keyboards
-(global-set-key (kbd "C-x à") (global-key-binding (kbd "C-x 0")))
-(global-set-key (kbd "C-x &") (global-key-binding (kbd "C-x 1")))
-(global-set-key (kbd "C-x é") (global-key-binding (kbd "C-x 2")))
-(global-set-key (kbd "C-x \"") (global-key-binding (kbd "C-x 3")))
+(global-set-key (kbd "C-x à") 'delete-window) ; C-x 0
+(global-set-key (kbd "C-x &") 'delete-other-windows) ; C-x 1
+(global-set-key (kbd "C-x é") (lambda () (interactive) (split-window-below) (other-window 1))) ; C-x 2
+(global-set-key (kbd "C-x \"") (lambda () (interactive) (split-window-right) (other-window 1))) ; C-x 3
+(global-set-key (kbd "C-x œ") 'winner-undo)
 
 
 ;;; FONTS
