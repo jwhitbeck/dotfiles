@@ -10,6 +10,7 @@
 (defvar my-packages '(ac-nrepl
                       auto-complete
                       auto-indent-mode
+                      cider
                       coffee-mode
                       clojure-mode
                       clojure-test-mode
@@ -25,7 +26,6 @@
                       magit
                       markdown-mode
                       midje-mode
-                      nrepl
                       paredit
                       paredit-menu
                       rainbow-delimiters
@@ -248,13 +248,17 @@
 
 ;;; CLOJURE
 (require 'clojure-mode)
-(require 'nrepl)
+(require 'cider)
 (add-hook 'clojure-mode-hook 'paredit-mode)
-(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-(setq nrepl-hide-special-buffers t)
-(add-hook 'nrepl-mode-hook 'subword-mode)
-(add-hook 'nrepl-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'subword-mode)
+(add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'auto-indent-mode)
+(add-hook 'clojure-mode-hook 'midje-mode)
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(setq nrepl-hide-special-buffers t)
+(add-hook 'cider-repl-mode-hook 'subword-mode)
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
+
 ;; Clojure indentation rules
 (define-clojure-indent
   (send-off 1)                                   ; Core
@@ -267,15 +271,15 @@
   )
 
 ;; Prevent the auto-display of the REPL buffer in a separate window after connection is established.
-(setq nrepl-pop-to-repl-buffer-on-connect nil)
+(setq cider-repl-pop-to-buffer-on-connect nil)
 ;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy
 ;; to type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
-(setq nrepl-auto-select-error-buffer t)
-;; Autocompletion in nrepl
+(setq cider-auto-select-error-buffer t)
+;; Autocompletion in cider
 (require 'ac-nrepl)
-(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
-(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
-(eval-after-load 'auto-complete '(add-to-list 'ac-modes 'nrepl-mode))
+(add-hook 'cider-mode-hook 'ac-nrepl-setup)
+(add-hook 'cider-interaction-mode-hook 'ac-nrepl-setup)
+(eval-after-load 'auto-complete '(add-to-list 'ac-modes 'cider-mode))
 ;; Fix indentation for single semicolon comments
 (defun lisp-indent-line-single-semicolon-fix (&optional whole-exp)
   "Identical to the built-in function lisp-indent-line,
