@@ -11,6 +11,7 @@
                       auto-complete
                       auto-indent-mode
                       cider
+                      cider-tracing
                       coffee-mode
                       clojure-mode
                       clojure-test-mode
