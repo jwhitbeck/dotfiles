@@ -330,10 +330,12 @@
                                                   (".*" "\\`root\\'" "/ssh:%h:"))))
 
 ;;; SQL
-;; Add option to chose port in sql-postgres
+;; Add option to chose port in sql-postgres and use localhost as default server.
 (require 'sql)
-(add-to-list 'sql-postgres-login-params '(port :default 5432) t)
-
+(setq sql-postgres-login-params `((user :default ,(user-login-name))
+                                  (database :default ,(user-login-name))
+                                  (server :default "localhost")
+                                  (port :default 5432)))
 
 ;;; CSS
 (set-variable 'css-indent-offset 2)
