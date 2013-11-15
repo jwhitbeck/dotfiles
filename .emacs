@@ -236,6 +236,8 @@
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 ;; Auto-revert
 (eval-after-load 'dired '(setq dired-auto-revert-buffer t))
+;; Human-readable file sizes
+(setq dired-listing-switches "-alh")
 
 
 ;;; ORG MODE
