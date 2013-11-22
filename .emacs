@@ -185,6 +185,7 @@
 
 
 ;;; MAGIT MODE
+(require 'vc-git) ; This needs to be required or else magit falls back to lgrep instead of git-grep
 (require 'magit)
 
 
