@@ -241,11 +241,14 @@
 ;; Add binding to tail files in custom buffer
 (defun tail-filename (filename &optional output-buffer-name)
   (interactive
-   (let* ((filename (dired-get-filename))
+   (let* ((filename (dired-get-filename t))
           (output-buffer-name (read-string (format "Output %s to buffer: " filename) nil
                                            nil (format "*Tail %s*" filename))))
      (list filename output-buffer-name)))
-  (shell-command (concat "tail -n1000 -f " filename " &") output-buffer-name)
+  (let ((command (concat "tail -n1000 -f " filename " &"))
+        (handler (find-file-name-handler (directory-file-name default-directory) 'shell-command)))
+    (if handler (apply handler 'shell-command (list command output-buffer-name))
+      (shell-command command output-buffer-name)))
   (with-current-buffer output-buffer-name
     (setq truncate-lines t)))
 (define-key dired-mode-map (kbd "C-c t") 'tail-filename)
