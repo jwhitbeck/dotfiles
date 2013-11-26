@@ -228,6 +228,7 @@
 
 
 ;;; DIRED
+(require 'dired)
 ;; Enable disabled dired commands
 (autoload 'dired-jump "dired-x"
   "Jump to Dired buffer corresponding to current buffer." t)
@@ -236,10 +237,20 @@
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 ;; Auto-revert
-(eval-after-load 'dired '(setq dired-auto-revert-buffer t))
+(setq dired-auto-revert-buffer t)
 ;; Human-readable file sizes
 (setq dired-listing-switches "-alh")
-
+;; Add binding to tail files in custom buffer
+(defun tail-filename (filename &optional output-buffer-name)
+  (interactive
+   (let* ((filename (dired-get-filename))
+          (output-buffer-name (read-string (format "Output %s to buffer: " filename) nil
+                                           nil (format "*Tail %s*" filename))))
+     (list filename output-buffer-name)))
+  (shell-command (concat "tail -n1000 -f " filename " &") output-buffer-name)
+  (with-current-buffer output-buffer-name
+    (setq truncate-lines t)))
+(define-key dired-mode-map (kbd "C-c t") 'tail-filename)
 
 ;;; ORG MODE
 (require 'org-install)
