@@ -211,7 +211,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 
-;; Fuzzy project file finding
+;;; FIPLR: Fuzzy project file finding
 (require 'fiplr)
 (setq fiplr-ignored-globs
       '((directories
