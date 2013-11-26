@@ -196,16 +196,14 @@
 (ido-mode t)
 (ido-ubiquitous-mode t)
 (ido-vertical-mode t)
-(eval-after-load 'ido
-  '(progn
-     (setq ido-enable-flex-matching t)
-     (setq ido-use-virtual-buffers t)
-     (setq ido-everywhere t)
-     (setq ido-max-directory-size 100000)
-     (setq recentf-max-saved-items 1000)
-     (setq flx-ido-mode t)
-     ;; disable ido faces to see flx highlights.
-     (setq ido-use-faces nil)))
+(setq ido-enable-flex-matching t)
+(setq ido-use-virtual-buffers t)
+(setq ido-max-directory-size 100000)
+(setq recentf-max-saved-items 1000)
+(setq flx-ido-mode t)
+;; disable ido faces to see flx highlights.
+(setq ido-use-faces nil)
+(ido-everywhere t)
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
