@@ -61,6 +61,7 @@
 (when (and (fboundp 'scroll-bar-mode) scroll-bar-mode) (scroll-bar-mode -1)) ; disable scroll bar
 (column-number-mode t) ; show col number in bar
 (line-number-mode t) ; show line number in bar
+(fset 'yes-or-no-p 'y-or-n-p) ; saner prompts
 
 ;; Set M-- and M-+ to decrease/increase the font size
 (global-set-key (kbd "M--") 'text-scale-decrease)
@@ -77,6 +78,7 @@
 (setq redisplay-dont-pause t
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
+
 
 ;;; PERFORMANCE
 (setq gc-cons-threshold 20000000) ;; Reduce occurence of garbage collection
