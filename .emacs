@@ -43,13 +43,14 @@
 
 
 ;;; UI
+(require 'paren)
 (load-theme 'zenburn t) ; load zenburn theme
 (eval-after-load 'zenburn '(setq ansi-term-color-vector [unspecified "#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"])) ; workaround for ansi-term
 (setq transient-mark-mode t) ; hilight selection
 (global-hl-line-mode t) ; activate line highlighting everywhere
 (show-paren-mode) ; Automatically show opened/closed parentheses
-(eval-after-load 'paren '(setq show-paren-delay 0)) ; immediately show matching parentheses
-(eval-after-load 'paren '(setq show-paren-style 'expression)) ; highlight full expression contained between parentheses
+(setq show-paren-delay 0) ; immediately show matching parentheses
+(setq show-paren-style 'expression) ; highlight full expression contained between parentheses
 (setq inhibit-startup-message t) ; disable startup message
 (setq inhibit-startup-echo-area-message t)
 (setq initial-scratch-message nil) ; disable scratch message
@@ -150,10 +151,9 @@
 (savehist-mode t) ; Save your minibuffer history across Emacs sessions. UX win!
 
 ;; Highlight and auto-correct whitespace problems
+(require 'whitespace)
 (global-whitespace-mode t)
-(eval-after-load 'whitespace
-  '(progn
-     (setq whitespace-style '(face empty trailing tabs tab-mark))))
+(setq whitespace-style '(face empty trailing tabs tab-mark))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; No tabs by default. Modes that really need tabs should enable indent-tabs-mode explicitly.
@@ -180,8 +180,7 @@
 ;; Automatic syntax checking
 (require 'flycheck)
 (global-flycheck-mode t)
-(eval-after-load 'flycheck
-  '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
+(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
 
 
 ;;; MAGIT MODE
@@ -292,10 +291,11 @@
 ;; to type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
 (setq cider-auto-select-error-buffer t)
 ;; Autocompletion in cider
+(require 'auto-complete)
 (require 'ac-nrepl)
 (add-hook 'cider-mode-hook 'ac-nrepl-setup)
 (add-hook 'cider-interaction-mode-hook 'ac-nrepl-setup)
-(eval-after-load 'auto-complete '(add-to-list 'ac-modes 'cider-mode))
+(add-to-list 'ac-modes 'cider-mode)
 ;; Fix indentation for single semicolon comments
 (defun lisp-indent-line-single-semicolon-fix (&optional whole-exp)
   "Identical to the built-in function lisp-indent-line,
