@@ -342,6 +342,9 @@
 ;; sudo on remote servers
 (set-default 'tramp-default-proxies-alist (quote (("\\`\\(127\\.0\\.0\\.1\\|::1\\|localhost6?\\|xps\\)\\'" "\\`root\\'" nil)
                                                   (".*" "\\`root\\'" "/ssh:%h:"))))
+;; use ssh as default method (use this to share ControlMaster between tramp and shells)
+(setq tramp-default-method "ssh")
+
 
 ;;; SQL
 ;; Add option to chose port in sql-postgres and use localhost as default server.
