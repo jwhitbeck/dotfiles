@@ -350,6 +350,7 @@
 
 ;;; TERM
 ;; Bind smex in the character mode
+(require 'term)
 (define-key term-raw-map (kbd "C-c M-x") 'smex)
 (define-key term-raw-map (kbd "C-c M-X") 'smex-major-mode-commands)
 ;; Not all remote servers can handle the default 'eterm-color'
