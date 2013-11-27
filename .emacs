@@ -75,8 +75,6 @@
 ;; Start scrolling the window when the cursor reaches its edge.
 ;; http://stackoverflow.com/questions/3631220/fix-to-get-smooth-scrolling-in-emacs
 (setq redisplay-dont-pause t
-      scroll-margin 5
-      scroll-step 1
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
 
