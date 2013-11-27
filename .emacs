@@ -352,7 +352,8 @@
 ;; Bind smex in the character mode
 (define-key term-raw-map (kbd "C-c M-x") 'smex)
 (define-key term-raw-map (kbd "C-c M-X") 'smex-major-mode-commands)
-
+;; Not all remote servers can handle the default 'eterm-color'
+(setq term-term-name "ansi")
 
 ;;; SQL
 ;; Add option to chose port in sql-postgres and use localhost as default server.
