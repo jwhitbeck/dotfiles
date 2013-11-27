@@ -346,6 +346,12 @@
 (setq tramp-default-method "ssh")
 
 
+;;; TERM
+;; Bind smex in the character mode
+(define-key term-raw-map (kbd "C-c M-x") 'smex)
+(define-key term-raw-map (kbd "C-c M-X") 'smex-major-mode-commands)
+
+
 ;;; SQL
 ;; Add option to chose port in sql-postgres and use localhost as default server.
 (require 'sql)
