@@ -367,3 +367,8 @@
 
 ;;; CSS
 (set-variable 'css-indent-offset 2)
+
+;;; YAML
+;; Add a few extra minor-modes since yaml-mode does not dervice from either prog-mode or text-mode
+(add-hook 'yaml-mode-hook 'fci-mode) ; show bar beyond the fill column
+(add-hook 'yaml-mode-hook 'flyspell-mode) ; turn on automatic spell-checking
