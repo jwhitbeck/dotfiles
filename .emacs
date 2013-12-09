@@ -330,6 +330,7 @@
 ;;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode) ; enable paredit
 (add-hook 'emacs-lisp-mode-hook 'auto-indent-mode)
+(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
 ;;; FILE EXTENSIONS
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
