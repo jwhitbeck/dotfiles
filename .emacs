@@ -357,6 +357,21 @@
 ;; Not all remote servers can handle the default 'eterm-color'
 (setq term-term-name "ansi")
 
+
+;;; SHELL
+(setq comint-scroll-to-bottom-on-input t) ; always insert at the bottom
+(setq comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
+(setq comint-scroll-show-maximum-output t) ; scroll to show max possible output
+(setq comint-completion-autolist t) ; show completion list when ambiguous
+(setq comint-input-ignoredups t) ; no duplicates in command history
+(setq comint-completion-addsuffix t) ; insert space/slash after file completion
+(setq comint-get-old-input (lambda () "")) ; what gets sent to prompt when pressing enter in the buffer
+(setq comint-buffer-maximum-size 20000) ; max length of buffer in lines
+(setq comint-input-ring-size 5000) ; max shell history size
+(setenv "PAGER" "cat") ; Do not use `less` as the default pager
+(add-hook 'comint-output-filter-functions 'comint-truncate-buffer) ; truncate buffers continuously
+
+
 ;;; SQL
 ;; Add option to chose port in sql-postgres and use localhost as default server.
 (require 'sql)
