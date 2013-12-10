@@ -168,7 +168,7 @@
 
 ;; Smart tabs
 (require 'smart-tab)
-(global-smart-tab-mode t)
+(add-hook 'prog-mode-hook 'smart-tab-mode)
 
 ;; enable auto-complete
 (require 'auto-complete)
