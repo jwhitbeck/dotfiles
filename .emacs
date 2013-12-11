@@ -169,6 +169,7 @@
 ;; Smart tabs
 (require 'smart-tab)
 (add-hook 'prog-mode-hook 'smart-tab-mode)
+(add-hook 'sql-interactive-mode-hook 'smart-tab-mode)
 
 ;; enable auto-complete
 (require 'auto-complete)
