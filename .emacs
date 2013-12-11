@@ -114,7 +114,7 @@
 (require 'switch-window)
 (global-set-key (kbd "C-x o") 'switch-window)
 (setq switch-window-shortcut-style 'qwerty)
-(windmove-default-keybindings)
+(windmove-default-keybindings 'super)
 
 ;; Winner mode
 ;; Winner mode saves the history of window splits
