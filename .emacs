@@ -130,7 +130,7 @@
 
 
 ;;; FONTS
-(set-face-attribute 'default nil :family "Monospace" :height 100)
+(set-face-attribute 'default nil :family "Monospace" :height 120)
 (global-font-lock-mode t)
 
 
