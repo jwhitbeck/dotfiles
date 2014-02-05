@@ -31,6 +31,7 @@
                       paredit
                       paredit-menu
                       rainbow-delimiters
+                      slamhound
                       smart-tab
                       smex
                       switch-window
