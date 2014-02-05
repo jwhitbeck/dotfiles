@@ -31,8 +31,6 @@
                      (require 'io.aviso.repl
                               'clojure.repl
                               'clojure.main)
-                     (alter-var-root #'clojure.main/repl-caught
-                                     (constantly @#'io.aviso.repl/pretty-pst))
                      (alter-var-root #'clojure.repl/pst
                                      (constantly @#'io.aviso.repl/pretty-pst))]
         :aliases {"slamhound" ["run" "-m" "slam.hound"]}}}
