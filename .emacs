@@ -27,7 +27,6 @@
                       git-commit-mode
                       magit
                       markdown-mode
-                      midje-mode
                       paredit
                       paredit-menu
                       rainbow-delimiters
@@ -260,7 +259,6 @@
 (add-hook 'clojure-mode-hook 'subword-mode)
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'auto-indent-mode)
-(add-hook 'clojure-mode-hook 'midje-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (setq nrepl-hide-special-buffers t)
 (add-hook 'cider-repl-mode-hook 'subword-mode)
