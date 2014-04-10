@@ -9,6 +9,7 @@
   (package-refresh-contents))
 
 (defvar my-packages '(ac-nrepl
+                      ace-jump-mode
                       auto-complete
                       auto-indent-mode
                       cider
@@ -81,6 +82,9 @@
       scroll-margin 7
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
+
+;;; Ace-jump bindings
+(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
 
 ;;; PERFORMANCE
