@@ -2,7 +2,7 @@
 ;;;  - https://github.com/zcaudate/vinyasa
 ;;;  - http://z.caudate.me/give-your-clojure-workflow-more-flow/
 
-{:user {:plugins [[cider/cider-nrepl "0.6.0"]
+{:user {:plugins [[cider/cider-nrepl "0.7.0-SNAPSHOT"]
                   [lein-ancient "0.5.4"]
                   [lein-midje "3.1.3"]
                   [lein-clojars "0.9.1"]
