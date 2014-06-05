@@ -3,7 +3,7 @@
 ;;;  - http://z.caudate.me/give-your-clojure-workflow-more-flow/
 
 {:user {:plugins [[cider/cider-nrepl "0.7.0-SNAPSHOT"]
-                  [lein-ancient "0.5.4"]
+                  [lein-ancient "0.5.5"]
                   [lein-clojars "0.9.1"]
                   [lein-exec "0.3.1"]
                   [lein-kibit "0.0.8"]
