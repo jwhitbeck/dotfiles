@@ -12,8 +12,7 @@
         :dependencies [[criterium "0.4.3"]
                        [org.clojure/tools.trace "0.7.6"]
                        [org.clojure/tools.namespace "0.2.4"]
-                       [leiningen "2.3.4"]
-                       [im.chit/vinyasa "0.1.8"]
+                       [im.chit/vinyasa "0.2.0"]
                        [spyscope "0.1.4"]
                        [slamhound "1.5.1"]
                        [io.aviso/pretty "0.1.8"]]
@@ -21,8 +20,6 @@
                      (inj/inject 'clojure.core
                                  '[[vinyasa.inject inject]
                                    [vinyasa.pull pull]
-                                   [vinyasa.lein lein]
-                                   [vinyasa.reimport reimport]
                                    [clojure.stacktrace e print-stack-trace]
                                    [clojure.tools.trace trace-ns trace-vars untrace-ns untrace-vars]
                                    [clojure.tools.namespace.repl refresh]
