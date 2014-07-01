@@ -16,7 +16,6 @@
                       cider-tracing
                       coffee-mode
                       clojure-mode
-                      clojure-test-mode
                       fiplr
                       fill-column-indicator
                       flycheck
