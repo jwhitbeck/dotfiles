@@ -212,7 +212,7 @@
       '((directories
          (".git" ".svn" ".hg" ".bzr" ".deps"))
         (files
-         (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" ".DS_Store" "*.class"))))
+         (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" ".DS_Store" "*.class" "*.pyc"))))
 (global-set-key (kbd "C-x p") 'fiplr-find-file)
 (add-hook 'magit-checkout-command-hook
           (lambda (_) (fiplr-clear-cache) nil)) ; Invalidate fiplr cache upon git checkout
