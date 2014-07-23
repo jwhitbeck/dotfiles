@@ -8,7 +8,7 @@
                   [lein-exec "0.3.1"]
                   [lein-kibit "0.0.8"]
                   [lein-try "0.4.1"]
-                  [jonase/eastwood "0.1.0"]]
+                  [jonase/eastwood "0.1.4"]]
         :dependencies [[criterium "0.4.3"]
                        [org.clojure/tools.trace "0.7.6"]
                        [org.clojure/tools.namespace "0.2.4"]
