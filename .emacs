@@ -10,6 +10,7 @@
 
 (defvar my-packages '(ac-cider-compliment
                       ace-jump-mode
+                      ace-window
                       auto-complete
                       auto-indent-mode
                       cider
@@ -34,7 +35,6 @@
                       slamhound
                       smart-tab
                       smex
-                      switch-window
                       undo-tree
                       yaml-mode
                       zenburn-theme))
@@ -119,9 +119,8 @@
 (setq split-window-preferred-function 'split-window-sensibly-reverse)
 
 ;;; Window navigation
-(global-set-key (kbd "C-x o") 'switch-window)
-(set-variable 'switch-window-shortcut-style 'qwerty)
-(windmove-default-keybindings 'super)   ; Use windows key to navigate between windows
+(global-set-key (kbd "C-x o") 'ace-window)
+(setq aw-keys '(?q ?s ?d ?f ?h ?j ?k ?l))
 
 ;;; Winner mode saves the history of window splits
 (winner-mode t)
