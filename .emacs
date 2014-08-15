@@ -178,6 +178,7 @@
 (set-variable 'ac-auto-start nil)
 (ac-set-trigger-key "TAB")
 (ac-linum-workaround)
+(set-variable 'ac-use-menu-map t)
 
 ;; Automatic syntax checking
 (require 'flycheck)
