@@ -29,6 +29,7 @@
                       markdown-mode
                       paredit
                       paredit-menu
+                      popup
                       rainbow-delimiters
                       slamhound
                       smart-tab
