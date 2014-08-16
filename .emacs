@@ -120,7 +120,8 @@
 
 ;;; Window navigation
 (global-set-key (kbd "C-x o") 'ace-window)
-(setq aw-keys '(?q ?s ?d ?f ?h ?j ?k ?l))
+(global-set-key (kbd "C-x C-o") 'ace-window) ; Convenience binding for typing C-x o too quickly
+(setq aw-keys '(?q ?s ?d ?f ?h ?j ?ke ?l))
 
 ;;; Winner mode saves the history of window splits
 (winner-mode t)
