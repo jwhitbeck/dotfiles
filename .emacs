@@ -8,8 +8,7 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(ac-cider-compliment
-                      ace-jump-mode
+(defvar my-packages '(ace-jump-mode
                       ace-window
                       auto-complete
                       auto-indent-mode
