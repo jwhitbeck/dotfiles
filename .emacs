@@ -259,7 +259,6 @@
 
 ;;; CLOJURE
 (require 'cider)
-(require 'ac-cider-compliment)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'subword-mode)
 (add-hook 'clojure-mode-hook 'cider-mode)
