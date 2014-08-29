@@ -8,7 +8,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(ace-jump-mode
+(defvar my-packages '(ac-cider
+                      ace-jump-mode
                       ace-window
                       auto-complete
                       auto-indent-mode
@@ -269,6 +270,8 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 ;;; Autocompletion in cider
+(add-hook 'cider-mode-hook 'ac-cider-setup)
+(add-hook 'cider-interaction-mode-hook 'ac-cider-setup)
 (add-to-list 'ac-modes 'cider-mode)
 
 ;;; Clojure indentation rules
