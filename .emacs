@@ -259,9 +259,9 @@
 
 ;;; CLOJURE
 (require 'cider)
+(add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'subword-mode)
-(add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'auto-indent-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (setq nrepl-hide-special-buffers t)
