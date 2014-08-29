@@ -269,8 +269,6 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
 ;;; Autocompletion in cider
-(add-hook 'cider-mode-hook 'ac-cider-compliment-setup)
-(add-hook 'cider-interaction-mode-hook 'ac-cider-compliment-setup)
 (add-to-list 'ac-modes 'cider-mode)
 
 ;;; Clojure indentation rules
