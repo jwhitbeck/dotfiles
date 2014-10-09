@@ -139,19 +139,20 @@
 
 
 ;;; EDITING
-(setq auto-save-default nil                  ; disable autosave
-      make-backup-files nil)                 ; disable auto backups
-(setq vc-follow-symlinks t)                  ; follow symlinks for files under version control
-(set-keyboard-coding-system 'mule-utf-8)     ; default to utf-8
-(global-auto-revert-mode t)                  ; automatically revert a buffer when a file is changed on disk
-(global-undo-tree-mode t)                    ; always activate undo tree
-(setq-default tab-width 2)                   ; distance between tab stops
-(global-rainbow-delimiters-mode t)           ; activate rainbow delimeters everywhere
-(custom-set-variables '(fill-column 110))    ; line wrap at 110 characters
-(add-hook 'prog-mode-hook 'fci-mode)         ; show a bar beyond the fill-column
-(add-hook 'text-mode-hook 'fci-mode)         ; show a bar beyond the fill-column
-(add-hook 'text-mode-hook 'turn-on-flyspell) ; activate flyspell for all text modes
-(savehist-mode t)                            ; Save your minibuffer history across Emacs sessions. UX win!
+(setq auto-save-default nil              ; disable autosave
+      make-backup-files nil)             ; disable auto backups
+(setq vc-follow-symlinks t)              ; follow symlinks for files under version control
+(set-keyboard-coding-system 'mule-utf-8) ; default to utf-8
+(global-auto-revert-mode t)              ; automatically revert a buffer when a file is changed on disk
+(global-undo-tree-mode t)                ; always activate undo tree
+(setq-default tab-width 2)               ; distance between tab stops
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in prog mode
+(add-hook 'text-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in text mode
+(custom-set-variables '(fill-column 110))           ; line wrap at 110 characters
+(add-hook 'prog-mode-hook 'fci-mode)                ; show a bar beyond the fill-column
+(add-hook 'text-mode-hook 'fci-mode)                ; show a bar beyond the fill-column
+(add-hook 'text-mode-hook 'turn-on-flyspell)        ; activate flyspell for all text modes
+(savehist-mode t)                       ; Save your minibuffer history across Emacs sessions. UX win!
 
 ;;; Highlight and auto-correct whitespace problems
 (global-whitespace-mode t)
