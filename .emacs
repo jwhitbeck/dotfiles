@@ -14,7 +14,6 @@
                       auto-complete
                       auto-indent-mode
                       cider
-                      cider-tracing
                       coffee-mode
                       clojure-mode
                       fiplr
