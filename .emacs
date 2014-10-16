@@ -320,7 +320,7 @@
 
 ;;; GREP MODE
 (add-hook 'grep-mode-hook (lambda () (setq truncate-lines t))) ; don't wrap lines in grep mode
-(global-set-key (kbd "C-x g") 'magit-grep)
+(global-set-key (kbd "C-x g") 'vc-git-grep)
 
 ;;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode) ; enable paredit
