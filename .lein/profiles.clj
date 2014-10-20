@@ -5,6 +5,7 @@
 {:user {:plugins [[cider/cider-nrepl "0.8.0-SNAPSHOT"]
                   [lein-ancient "0.5.5"]
                   [lein-clojars "0.9.1"]
+                  [lein-cloverage "1.0.2"]
                   [lein-exec "0.3.1"]
                   [lein-kibit "0.0.8"]
                   [lein-try "0.4.1"]
