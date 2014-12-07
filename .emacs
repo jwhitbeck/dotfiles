@@ -343,7 +343,15 @@
                                        (".*" "root" "/ssh:%h:"))))
 ;;; use ssh as default method (use this to share ControlMaster between tramp and shells)
 (setq tramp-default-method "ssh")
-
+;;; command for quickly opening shells on remote hosts.
+(defun remote-shell-at-point ()
+  "Opens a remote shell on the host-name under point."
+  (interactive)
+  (let ((hostname (thing-at-point 'filename)))
+    (let ((buffer-name (format "*%s*" hostname))
+          (default-directory (format "/ssh:%s:" hostname))
+          (current-prefix-arg '-))      ; C-u
+      (shell buffer-name))))
 
 ;;; TERM
 (require 'term)
