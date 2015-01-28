@@ -24,6 +24,7 @@
                       ido
                       ido-ubiquitous
                       ido-vertical-mode
+                      go-mode
                       git-commit-mode
                       magit
                       markdown-mode
