@@ -28,7 +28,8 @@
                      (inj/in clojure.core
                              [vinyasa.inject :refer [inject]]
                              [vinyasa.pull :all]
-                             [vinyasa.reimport :all]
+                             ; Disabled because it causes compilation errors in hyperloglog
+                             ;[vinyasa.reimport :all]
                              [clojure.stacktrace :refer [e print-stack-trace]]
                              [clojure.tools.trace :refer [trace-ns trace-vars untrace-ns untrace-vars]]
                              [clojure.tools.namespace.repl :refer [refresh]]
