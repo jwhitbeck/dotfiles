@@ -213,7 +213,7 @@
 ;;; FIPLR: Fuzzy project file finding
 (setq fiplr-ignored-globs
       '((directories
-         (".git" ".svn" ".hg" ".bzr" ".deps"))
+         (".git" ".svn" ".hg" ".bzr" ".deps" "target"))
         (files
          (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" ".DS_Store" "*.class" "*.pyc"
           "*.den"))))
