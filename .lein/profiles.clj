@@ -9,6 +9,7 @@
                   [lein-cloverage "1.0.2"]
                   [lein-exec "0.3.1"]
                   [lein-kibit "0.0.8"]
+                  [lein-nodisassemble "0.1.3"]
                   [lein-try "0.4.1"]
                   [jonase/eastwood "0.1.4"]
                   [org.bodil/lein-noderepl "0.1.10"]]
@@ -33,7 +34,8 @@
                              [clojure.stacktrace :refer [e print-stack-trace]]
                              [clojure.tools.trace :refer [trace-ns trace-vars untrace-ns untrace-vars]]
                              [clojure.tools.namespace.repl :refer [refresh]]
-                             [criterium.core :refer [bench quick-bench]])
+                             [criterium.core :refer [bench quick-bench]]
+                             [no.disassemble :refer [disassemble]])
                      ;; Pretty printing of stackstraces
                      (alter-var-root #'clojure.repl/pst
                                      (constantly @#'io.aviso.repl/pretty-pst))]
