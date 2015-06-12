@@ -15,19 +15,20 @@
                       ace-window
                       auto-complete
                       auto-indent-mode
+                      browse-at-remote
                       cider
-                      coffee-mode
                       clojure-mode
-                      fiplr
+                      coffee-mode
                       fill-column-indicator
-                      flycheck
+                      fiplr
                       flx-ido
+                      flycheck
+                      git-commit-mode
+                      go-mode
                       hide-lines
                       ido
                       ido-ubiquitous
                       ido-vertical-mode
-                      go-mode
-                      git-commit-mode
                       magit
                       markdown-mode
                       paredit
