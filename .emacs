@@ -156,6 +156,7 @@
 
 ;;; Highlight and auto-correct whitespace problems
 (global-whitespace-mode t)
+(setq whitespace-global-modes '(not go-mode))
 (custom-set-variables '(whitespace-style '(face empty trailing tabs tab-mark)))
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
