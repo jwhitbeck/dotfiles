@@ -256,6 +256,7 @@
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'subword-mode)
+(add-hook 'clojure-mode-hook 'auto-indent-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'subword-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
@@ -312,6 +313,7 @@
 
 ;;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode) ; enable paredit
+(add-hook 'emacs-lisp-mode-hook 'auto-indent-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
 ;;; FILE EXTENSIONS
