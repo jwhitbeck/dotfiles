@@ -273,6 +273,8 @@
 
 ;;; Prevent the auto-display of the REPL buffer in a separate window after connection is established.
 (setq cider-repl-pop-to-buffer-on-connect nil)
+;;; Hide the cider process bufferzs
+(setq nrepl-hide-special-buffers t)
 ;;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy
 ;;; to type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
 (setq cider-auto-select-error-buffer t)
