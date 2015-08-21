@@ -10,15 +10,13 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(ac-cider
-                      ace-jump-mode
+(defvar my-packages '(ace-jump-mode
                       ace-window
-                      auto-complete
-                      auto-indent-mode
                       browse-at-remote
                       cider
                       clojure-mode
                       coffee-mode
+                      company
                       fill-column-indicator
                       fiplr
                       flx-ido
@@ -35,7 +33,6 @@
                       popup
                       rainbow-delimiters
                       slamhound
-                      smart-tab
                       smex
                       undo-tree
                       yaml-mode
@@ -171,17 +168,9 @@
             (if (not indent-tabs-mode) (untabify (point-min) (point-max)))
             nil))
 
-;;; Smart tabs
-(add-hook 'prog-mode-hook 'smart-tab-mode)
-(add-hook 'sql-interactive-mode-hook 'smart-tab-mode)
-
 ;;; enable auto-complete
-(require 'auto-complete)
-(global-auto-complete-mode t)
-(set-variable 'ac-auto-start nil)
-(ac-set-trigger-key "TAB")
-(ac-linum-workaround)
-(set-variable 'ac-use-menu-map t)
+(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Automatic syntax checking
 (require 'flycheck)
@@ -267,15 +256,9 @@
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'subword-mode)
-(add-hook 'clojure-mode-hook 'auto-indent-mode)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'subword-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
-
-;;; Autocompletion in cider
-(add-hook 'cider-mode-hook 'ac-cider-setup)
-(add-hook 'cider-interaction-mode-hook 'ac-cider-setup)
-(add-to-list 'ac-modes 'cider-mode)
 
 ;;; Clojure indentation rules
 (define-clojure-indent
@@ -327,7 +310,6 @@
 
 ;;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode) ; enable paredit
-(add-hook 'emacs-lisp-mode-hook 'auto-indent-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
 ;;; FILE EXTENSIONS
