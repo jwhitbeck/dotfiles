@@ -191,7 +191,7 @@
 
 ;;; MAGIT MODE
 (require 'vc-git)            ; This needs to be required or else magit falls back to lgrep instead of git-grep
-
+(setq magit-push-always-verify nil)
 
 ;;; IDO MODE
 (ido-mode t)
