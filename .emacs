@@ -12,6 +12,7 @@
 
 (defvar my-packages '(ace-jump-mode
                       ace-window
+                      auto-indent-mode
                       browse-at-remote
                       cider
                       clojure-mode
