@@ -18,6 +18,7 @@
                       clojure-mode
                       coffee-mode
                       company
+                      emacs-eclim
                       fill-column-indicator
                       fiplr
                       flx-ido
@@ -387,3 +388,12 @@
 ;; Add a few extra minor-modes since yaml-mode does not dervice from either prog-mode or text-mode
 (add-hook 'yaml-mode-hook 'fci-mode) ; show bar beyond the fill column
 (add-hook 'yaml-mode-hook 'flyspell-mode) ; turn on automatic spell-checking
+
+;;; Eclispe integration
+(require 'cl)
+(require 'eclim)
+(require 'eclimd)
+
+(global-eclim-mode)
+(require 'company-emacs-eclim)
+(company-emacs-eclim-setup)
