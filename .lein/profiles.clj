@@ -11,7 +11,7 @@
                   [lein-kibit "0.0.8"]
                   [lein-nodisassemble "0.1.3"]
                   [lein-try "0.4.1"]
-                  [jonase/eastwood "0.2.1"]]
+                  [jonase/eastwood "0.2.2"]]
         :dependencies [[criterium "0.4.3"]
                        [org.clojure/tools.trace "0.7.6"]
                        [org.clojure/tools.namespace "0.2.4"]
