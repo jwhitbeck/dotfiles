@@ -8,7 +8,7 @@
                   [lein-clojars "0.9.1"]
                   [lein-cloverage "1.0.2"]
                   [lein-exec "0.3.1"]
-                  [lein-kibit "0.0.8"]
+                  [lein-kibit "0.1.2"]
                   [lein-nodisassemble "0.1.3"]
                   [lein-try "0.4.1"]
                   [jonase/eastwood "0.2.2"]]
