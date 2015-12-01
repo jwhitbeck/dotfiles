@@ -319,6 +319,13 @@
 (add-hook 'emacs-lisp-mode-hook 'auto-indent-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
+;;; ELISP MINIBUFFER
+(add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
+(defun conditionally-enable-paredit-mode ()
+  "enable paredit-mode during eval-expression"
+  (when (eq this-command 'eval-expression)
+    (paredit-mode 1)))
+
 ;;; FILE EXTENSIONS
 (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
