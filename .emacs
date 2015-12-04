@@ -24,6 +24,7 @@
                       flx-ido
                       flycheck
                       go-mode
+                      gh-md
                       hide-lines
                       ido
                       ido-ubiquitous
