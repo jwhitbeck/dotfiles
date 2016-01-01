@@ -121,6 +121,7 @@
 (setq split-window-preferred-function 'split-window-sensibly-reverse)
 
 ;;; Window navigation
+(require 'ace-window)
 (global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "C-x C-o") 'ace-window) ; Convenience binding for typing C-x o too quickly
 (setq aw-keys '(?q ?s ?d ?f ?h ?j ?k ?l))
@@ -158,6 +159,7 @@
 (savehist-mode t)                       ; Save your minibuffer history across Emacs sessions. UX win!
 
 ;;; Highlight and auto-correct whitespace problems
+(require 'whitespace)
 (global-whitespace-mode t)
 (setq whitespace-global-modes '(not go-mode))
 (custom-set-variables '(whitespace-style '(face empty trailing tabs tab-mark)))
@@ -173,6 +175,7 @@
             nil))
 
 ;;; enable auto-complete
+(require 'company)
 (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 (add-hook 'after-init-hook 'global-company-mode)
 ;; workaround for fill-column indicator
@@ -200,9 +203,12 @@
 
 ;;; MAGIT MODE
 (require 'vc-git)            ; This needs to be required or else magit falls back to lgrep instead of git-grep
+(defvar magit-push-always-verify)
 (setq magit-push-always-verify nil)
 
 ;;; IDO MODE
+(require 'ido)
+(require 'recentf)
 (ido-mode t)
 (ido-ubiquitous-mode t)
 (ido-vertical-mode t)
@@ -222,6 +228,7 @@
 
 
 ;;; FIPLR: Fuzzy project file finding
+(require 'fiplr)
 (setq fiplr-ignored-globs
       '((directories
          (".git" ".svn" ".hg" ".bzr" ".deps" "target"))
@@ -406,6 +413,7 @@
                                   (port :default 5432)))
 
 ;;; CSS
+(require 'css-mode)
 (setq css-indent-offset 2)
 
 ;;; YAML
@@ -414,7 +422,6 @@
 (add-hook 'yaml-mode-hook 'flyspell-mode) ; turn on automatic spell-checking
 
 ;;; Eclispe integration
-(require 'cl)
 (require 'eclim)
 (require 'eclimd)
 
