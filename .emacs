@@ -426,5 +426,7 @@
 (require 'eclimd)
 
 (global-eclim-mode)
+; company-emacs-eclim requires 'cl to be required for the remove-if function
+(require 'cl)
 (require 'company-emacs-eclim)
 (company-emacs-eclim-setup)
