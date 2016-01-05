@@ -334,7 +334,7 @@
 (add-hook 'clojure-mode-hook '(lambda () (setq indent-line-function 'lisp-indent-line-single-semicolon-fix)))
 
 ;;; Prevent C-c SPC binding in clojure mode as it overrides the ace-window-mode key binding
-(add-hook 'clojure-mode-hook '(lambda () (local-unset-key "C-c SPC")))
+(add-hook 'clojure-mode-hook '(lambda () (local-unset-key (kbd "C-c SPC"))))
 
 
 ;;; GREP MODE
