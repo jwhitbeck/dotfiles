@@ -333,6 +333,9 @@
         (goto-char (- (point-max) pos)))))
 (add-hook 'clojure-mode-hook '(lambda () (setq indent-line-function 'lisp-indent-line-single-semicolon-fix)))
 
+;;; Prevent C-c SPC binding in clojure mode as it overrides the ace-window-mode key binding
+(add-hook 'clojure-mode-hook '(lambda () (local-unset-key "C-c SPC")))
+
 
 ;;; GREP MODE
 (add-hook 'grep-mode-hook (lambda () (setq truncate-lines t))) ; don't wrap lines in grep mode
