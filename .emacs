@@ -19,6 +19,8 @@
                       coffee-mode
                       company
                       emacs-eclim
+                      ess
+                      ess-smart-underscore
                       fill-column-indicator
                       fiplr
                       flx-ido
@@ -433,3 +435,8 @@
 (require 'cl)
 (require 'company-emacs-eclim)
 (company-emacs-eclim-setup)
+
+;;; Emacs Speaks Statistis
+(require 'ess)
+(require 'ess-smart-underscore)
+(add-hook 'ess-mode-hook '(lambda () (local-key-binding (kbd "_") 'ess-smarter-underscore)))
