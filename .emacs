@@ -350,10 +350,10 @@
     ;; position after the indentation.  Else stay at same point in text.
     (if (> (- (point-max) pos) (point))
         (goto-char (- (point-max) pos)))))
-(add-hook 'clojure-mode-hook '(lambda () (setq indent-line-function 'lisp-indent-line-single-semicolon-fix)))
+(add-hook 'clojure-mode-hook (lambda () (setq indent-line-function 'lisp-indent-line-single-semicolon-fix)))
 
 ;;; Prevent C-c SPC binding in clojure mode as it overrides the ace-window-mode key binding
-(add-hook 'clojure-mode-hook '(lambda () (local-unset-key (kbd "C-c SPC"))))
+(add-hook 'clojure-mode-hook (lambda () (local-unset-key (kbd "C-c SPC"))))
 
 
 ;;; GREP MODE
@@ -424,6 +424,7 @@
       explicit-shell-file-name "/bin/bash") ; Always use bash on remote hosts
 (setenv "PAGER" "cat")                                             ; Do not use `less` as the default pager
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer) ; truncate buffers continuously
+(add-hook 'shell-mode-hook (lambda () (setq truncate-lines 't))) ; Don't wrap lines in shell mode
 
 
 ;;; SQL
@@ -456,4 +457,4 @@
 ;;; Emacs Speaks Statistis
 (require 'ess)
 (require 'ess-smart-underscore)
-(add-hook 'ess-mode-hook '(lambda () (local-key-binding (kbd "_") 'ess-smarter-underscore)))
+(add-hook 'ess-mode-hook (lambda () (local-key-binding (kbd "_") 'ess-smarter-underscore)))
