@@ -275,13 +275,27 @@
 ;;; ORG MODE
 ;;; The following lines are always needed.  Choose your own keys.
 (require 'org)
+(require 'org-table)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c c") 'org-capture)
 (setq org-catch-invisible-edits 'error)
+;;; Export tables to github flavored markdown
+(defun orgtbl-to-gfm (table params)
+  "Convert the Orgtbl mode TABLE to GitHub Flavored Markdown."
+  (let* ((alignment (mapconcat (lambda (x) (if x "|--:" "|---"))
+                               org-table-last-alignment ""))
+         (params2
+          (list
+           :splice t
+           :hline (concat alignment "|")
+           :lstart "| " :lend " |" :sep " | ")))
+    (orgtbl-to-generic table (org-combine-plists params2 params))))
 
+;;; MARKDOWN
+(add-hook 'markdown-mode-hook 'orgtbl-mode)
 
 ;;; CLOJURE
 (require 'cider)
