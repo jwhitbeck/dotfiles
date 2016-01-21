@@ -318,13 +318,16 @@
   (fact 2) (facts 2)                             ; Midje
   )
 
-;;; Prevent the auto-display of the REPL buffer in a separate window after connection is established.
-(setq cider-repl-pop-to-buffer-on-connect nil)
-;;; Hide the cider process bufferzs
-(setq nrepl-hide-special-buffers t)
-;;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy
-;;; to type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
-(setq cider-auto-select-error-buffer t)
+(setq
+ ;; Prevent the auto-display of the REPL buffer in a separate window after connection is established.
+ cider-repl-pop-to-buffer-on-connect nil
+ ;; Hide the cider process buffers
+ nrepl-hide-special-buffers t
+ ;; Don't log all nrepl protocol messages-buffer
+ nrepl-log-messages nil
+ ;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy to
+ ;; type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
+ cider-auto-select-error-buffer t)
 
 ;;; Fix indentation for single semicolon comments
 (defun lisp-indent-line-single-semicolon-fix (&optional whole-exp)
