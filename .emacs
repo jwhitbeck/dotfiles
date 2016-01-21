@@ -424,7 +424,6 @@
       explicit-shell-file-name "/bin/bash") ; Always use bash on remote hosts
 (setenv "PAGER" "cat")                                             ; Do not use `less` as the default pager
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer) ; truncate buffers continuously
-(add-hook 'shell-mode-hook (lambda () (setq truncate-lines 't))) ; Don't wrap lines in shell mode
 
 
 ;;; SQL
