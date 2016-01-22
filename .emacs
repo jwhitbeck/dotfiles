@@ -75,24 +75,25 @@
 (global-set-key (kbd "M-0") (lambda () (interactive) (text-scale-set 0)))
 
 ;;; X clipboard <-> emacs kill ring compatibility
-(setq mouse-drag-copy-region nil      ; stops selection with a mouse from being immediately injected to the
-                                      ; kill ring
-      x-select-enable-primary nil     ; stops killing/yanking interacting with primary X11 selection
-      x-select-enable-clipboard t)    ; makes killing/yanking interact with clipboard X11 selection
+(custom-set-variables
+ '(mouse-drag-copy-region nil)          ; stops selection with a mouse from being immediately injected to the
+                                        ; kill ring
+ '(x-select-enable-primary nil)         ; stops killing/yanking interacting with primary X11 selection
+ '(x-select-enable-clipboard t))        ; makes killing/yanking interact with clipboard X11 selection
 
 ;;; Start scrolling the window when the cursor reaches its edge.
 ;;; http://stackoverflow.com/questions/3631220/fix-to-get-smooth-scrolling-in-emacs
-(setq redisplay-dont-pause t
-      scroll-margin 7
-      scroll-conservatively 10000
-      scroll-preserve-screen-position 1)
+(custom-set-variables
+ '(scroll-margin 7)
+ '(scroll-conservatively 10000)
+ '(scroll-preserve-screen-position 1))
 
 ;;; Ace-jump bindings
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
 
 ;;; PERFORMANCE
-(setq gc-cons-threshold 20000000)       ; Reduce occurence of garbage collection
+(custom-set-default 'gc-cons-threshold 20000000)       ; Reduce occurence of garbage collection
 
 
 ;;; WINDOWS
