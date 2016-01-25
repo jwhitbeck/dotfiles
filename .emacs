@@ -3,7 +3,7 @@
 ;;; PACKAGES
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+                                        ;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 ;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 
@@ -93,13 +93,14 @@
 
 
 ;;; PERFORMANCE
-(custom-set-default 'gc-cons-threshold 20000000)       ; Reduce occurence of garbage collection
+(customize-set-variable 'gc-cons-threshold 20000000) ; Reduce occurence of garbage collection
 
 
 ;;; WINDOWS
 ;;; Splitting
-(setq split-height-threshold 80
-      split-width-threshold 220)
+(custom-set-variables
+ '(split-height-threshold 80)
+ '(split-width-threshold 220))
 (defun split-window-sensibly-reverse (&optional window)
   "Identical to the built-in function split-window-sensibly, but prefers horizontal splits over
    vertical splits."
@@ -121,13 +122,13 @@
                (when (window-splittable-p window)
                  (with-selected-window window
                    (split-window-below))))))))
-(setq split-window-preferred-function 'split-window-sensibly-reverse)
+(customize-set-variable 'split-window-preferred-function 'split-window-sensibly-reverse)
 
 ;;; Window navigation
 (require 'ace-window)
 (global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "C-x C-o") 'ace-window) ; Convenience binding for typing C-x o too quickly
-(setq aw-keys '(?q ?s ?d ?f ?h ?j ?k ?l))
+(custom-set-variables '(aw-keys '(?q ?s ?d ?f ?h ?j ?k ?l)))
 
 ;;; Winner mode saves the history of window splits
 (winner-mode t)
@@ -146,16 +147,17 @@
 
 
 ;;; EDITING
-(setq auto-save-default nil              ; disable autosave
-      make-backup-files nil)             ; disable auto backups
-(setq vc-follow-symlinks t)              ; follow symlinks for files under version control
+(custom-set-variables
+ '(auto-save-default nil)               ; disable autosave
+ '(make-backup-files nil)               ; disable auto backups
+ '(vc-follow-symlinks t)                ; follow symlinks for files under version control
+ '(fill-column 110)                     ; line wrap at 110 characters
+ '(tab-width 2))                        ; distance between tab stops
 (set-keyboard-coding-system 'mule-utf-8) ; default to utf-8
 (global-auto-revert-mode t)              ; automatically revert a buffer when a file is changed on disk
 (global-undo-tree-mode t)                ; always activate undo tree
-(setq-default tab-width 2)               ; distance between tab stops
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in prog mode
 (add-hook 'text-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in text mode
-(custom-set-variables '(fill-column 110))           ; line wrap at 110 characters
 (add-hook 'prog-mode-hook 'fci-mode)                ; show a bar beyond the fill-column
 (add-hook 'text-mode-hook 'fci-mode)                ; show a bar beyond the fill-column
 (add-hook 'text-mode-hook 'turn-on-flyspell)        ; activate flyspell for all text modes
@@ -164,14 +166,14 @@
 ;;; Highlight and auto-correct whitespace problems
 (require 'whitespace)
 (global-whitespace-mode t)
-(setq whitespace-global-modes '(not go-mode))
-(custom-set-variables '(whitespace-style '(face empty trailing tabs tab-mark)))
+(custom-set-variables '(whitespace-style '(face empty trailing tabs tab-mark))
+                      '(whitespace-global-modes '(not go-mode))) ; Disable for golang
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;; No tabs by default. Modes that really need tabs should enable indent-tabs-mode explicitly.
 ;;; Makefile-mode already does that, for example.
 ;;; If indent-tabs-mode is off, untabify before saving.
-(setq-default indent-tabs-mode nil)
+(customize-set-variable 'indent-tabs-mode nil)
 (add-hook 'write-file-hooks
           (lambda ()
             (if (not indent-tabs-mode) (untabify (point-min) (point-max)))
@@ -201,13 +203,11 @@
 ;; Automatic syntax checking
 (require 'flycheck)
 (global-flycheck-mode t)
-(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
+(customize-set-variable 'flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
 
 
 ;;; MAGIT MODE
 (require 'vc-git)            ; This needs to be required or else magit falls back to lgrep instead of git-grep
-(defvar magit-push-always-verify)
-(setq magit-push-always-verify nil)
 
 ;;; IDO MODE
 (require 'ido)
@@ -216,14 +216,13 @@
 (ido-ubiquitous-mode t)
 (ido-vertical-mode t)
 (ido-everywhere t)
-(setq ido-enable-flex-matching t
-      ido-use-virtual-buffers t
-      ido-max-directory-size 100000
-      recentf-max-saved-items 1000)
-
-;;; Use FLX matching engine
-(setq flx-ido-mode t)
-(setq ido-use-faces nil)                ; disable ido faces to see flx highlights.
+(custom-set-variables
+ '(ido-enable-flex-matching t)
+ '(flx-ido-mode t)                      ; Use FLX matching engine
+ '(ido-use-faces nil)                   ; disable ido faces to see flx highlights.
+ '(ido-use-virtual-buffers t)
+ '(ido-max-directory-size 100000)
+ '(recentf-max-saved-items 1000))
 
 ;;; Ido for M-x
 (global-set-key (kbd "M-x") 'smex)
@@ -232,12 +231,13 @@
 
 ;;; FIPLR: Fuzzy project file finding
 (require 'fiplr)
-(setq fiplr-ignored-globs
-      '((directories
-         (".git" ".svn" ".hg" ".bzr" ".deps" "target"))
-        (files
-         (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" ".DS_Store" "*.class" "*.pyc"
-          "*.den"))))
+(customize-set-variable
+ 'fiplr-ignored-globs
+ '((directories
+    (".git" ".svn" ".hg" ".bzr" ".deps" "target"))
+   (files
+    (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" ".DS_Store" "*.class" "*.pyc"
+     "*.den"))))
 (global-set-key (kbd "C-x p") 'fiplr-find-file)
 (add-hook 'magit-checkout-command-hook
           (lambda (_) (fiplr-clear-cache) nil)) ; Invalidate fiplr cache upon git checkout
@@ -246,7 +246,8 @@
 ;;; BUFFER LISTS
 (require 'uniquify)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(setq uniquify-buffer-name-style 'forward) ; Include path information in duplicate buffer names (e.g. a/foo.txt b/foo.txt)
+;;; Include path information in duplicate buffer names (e.g. a/foo.txt b/foo.txt)
+(customize-set-variable 'uniquify-buffer-name-style 'forward)
 
 
 ;;; DIRED
@@ -256,8 +257,8 @@
 (autoload 'dired-jump-other-window "dired-x" "Like \\[dired-jump] (dired-jump) but in other window." t)
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
-(setq dired-auto-revert-buffer t        ; Auto-revert
-      dired-listing-switches "-alh")    ; Human-readable file sizes
+(custom-set-variables '(dired-auto-revert-buffer t)     ; Auto-revert
+                      '(dired-listing-switches "-alh")) ; Human-readable file sizes
 ;;; Add binding to tail files in custom buffer
 (defun tail-filename (filename &optional output-buffer-name)
   (interactive
@@ -282,7 +283,7 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c c") 'org-capture)
-(setq org-catch-invisible-edits 'error)
+(customize-set-variable 'org-catch-invisible-edits 'error)
 ;;; Export tables to github flavored markdown
 (defun orgtbl-to-gfm (table params)
   "Convert the Orgtbl mode TABLE to GitHub Flavored Markdown."
@@ -319,16 +320,16 @@
   (fact 2) (facts 2)                             ; Midje
   )
 
-(setq
+(custom-set-variables
  ;; Prevent the auto-display of the REPL buffer in a separate window after connection is established.
- cider-repl-pop-to-buffer-on-connect nil
+ '(cider-repl-pop-to-buffer-on-connect nil)
  ;; Hide the cider process buffers
- nrepl-hide-special-buffers t
+ '(nrepl-hide-special-buffers t)
  ;; Don't log all nrepl protocol messages-buffer
- nrepl-log-messages nil
+ '(nrepl-log-messages nil)
  ;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy to
  ;; type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
- cider-auto-select-error-buffer t)
+ '(cider-auto-select-error-buffer t))
 
 ;;; Fix indentation for single semicolon comments
 (defun lisp-indent-line-single-semicolon-fix (&optional whole-exp)
@@ -361,7 +362,8 @@
 
 
 ;;; GREP MODE
-(add-hook 'grep-mode-hook (lambda () (setq truncate-lines t))) ; don't wrap lines in grep mode
+;;; don't wrap lines in grep mode
+(add-hook 'grep-mode-hook (lambda () (customize-set-variable 'truncate-lines t)))
 (global-set-key (kbd "C-x g") 'vc-git-grep)
 
 ;;; EMACS LISP
@@ -388,10 +390,10 @@
 ;;; TRAMP
 ;;; sudo on remote servers
 (let ((local-host-regex (concat "\\(127\\.0\\.0\\.1\\|::1\\|localhost6?\\|" system-name "\\)")))
-  (setq tramp-default-proxies-alist  `((,local-host-regex "root" nil)
-                                       (".*" "root" "/ssh:%h:"))))
+  (customize-set-variable 'tramp-default-proxies-alist
+                          `((,local-host-regex "root" nil) (".*" "root" "/ssh:%h:"))))
 ;;; use ssh as default method (use this to share ControlMaster between tramp and shells)
-(setq tramp-default-method "ssh")
+(customize-set-variable 'tramp-default-method "ssh")
 ;;; command for quickly opening shells on remote hosts.
 (defun remote-shell-at-point ()
   "Opens a remote shell on the host-name under point."
@@ -416,16 +418,17 @@
 
 
 ;;; SHELL
-(setq comint-scroll-to-bottom-on-input t    ; always insert at the bottom
-      comint-scroll-to-bottom-on-output nil ; always add output at the bottom
-      comint-scroll-show-maximum-output t   ; scroll to show max possible output
-      comint-completion-autolist t          ; show completion list when ambiguous
-      comint-input-ignoredups t             ; no duplicates in command history
-      comint-completion-addsuffix t         ; insert space/slash after file completion
-      comint-get-old-input (lambda () "")   ; what gets sent to prompt when pressing enter in the buffer
-      comint-buffer-maximum-size 20000      ; max length of buffer in lines
-      comint-input-ring-size 5000           ; max shell history size
-      explicit-shell-file-name "/bin/bash") ; Always use bash on remote hosts
+(custom-set-variables
+ '(comint-scroll-to-bottom-on-input t)    ; always insert at the bottom
+ '(comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
+ '(comint-scroll-show-maximum-output t)   ; scroll to show max possible output
+ '(comint-completion-autolist t)          ; show completion list when ambiguous
+ '(comint-input-ignoredups t)             ; no duplicates in command history
+ '(comint-completion-addsuffix t)         ; insert space/slash after file completion
+ '(comint-get-old-input (lambda () ""))   ; what gets sent to prompt when pressing enter in the buffer
+ '(comint-buffer-maximum-size 20000)      ; max length of buffer in lines
+ '(comint-input-ring-size 5000)           ; max shell history size
+ '(explicit-shell-file-name "/bin/bash")) ; Always use bash on remote hosts
 (setenv "PAGER" "cat")                                             ; Do not use `less` as the default pager
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer) ; truncate buffers continuously
 
@@ -433,14 +436,16 @@
 ;;; SQL
 ;;; Add option to chose port in sql-postgres and use localhost as default server.
 (require 'sql)
-(setq sql-postgres-login-params `((user :default ,(user-login-name))
-                                  (database :default ,(user-login-name))
-                                  (server :default "localhost")
-                                  (port :default 5432)))
+(customize-set-variable
+ 'sql-postgres-login-params
+ `((user :default ,(user-login-name))
+   (database :default ,(user-login-name))
+   (server :default "localhost")
+   (port :default 5432)))
 
 ;;; CSS
 (require 'css-mode)
-(setq css-indent-offset 2)
+(customize-set-variable 'css-indent-offset 2)
 
 ;;; YAML
 ;; Add a few extra minor-modes since yaml-mode does not dervice from either prog-mode or text-mode
@@ -452,8 +457,7 @@
 (require 'eclimd)
 
 (global-eclim-mode)
-; company-emacs-eclim requires 'cl to be required for the remove-if function
-(require 'cl)
+(require 'cl) ; company-emacs-eclim requires 'cl to be required for the remove-if function
 (require 'company-emacs-eclim)
 (company-emacs-eclim-setup)
 
