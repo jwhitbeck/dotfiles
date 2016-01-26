@@ -468,4 +468,6 @@
 (add-hook 'ess-mode-hook (lambda () (local-key-binding (kbd "_") 'ess-smarter-underscore)))
 
 ;;; Load machine-specific config
-(load-file "~/.emacs.d/config.el")
+(let ((file "~/.emacs.d/config.el"))
+  (when (file-exists-p file)
+    (load-file file)))
