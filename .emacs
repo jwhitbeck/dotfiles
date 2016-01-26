@@ -283,7 +283,8 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 (global-set-key (kbd "C-c c") 'org-capture)
-(customize-set-variable 'org-catch-invisible-edits 'error)
+(custom-set-variables '(org-catch-invisible-edits 'error)
+                      '(org-read-date-force-compatible-dates nil))
 ;;; Export tables to github flavored markdown
 (defun orgtbl-to-gfm (table params)
   "Convert the Orgtbl mode TABLE to GitHub Flavored Markdown."
