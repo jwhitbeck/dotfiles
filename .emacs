@@ -299,6 +299,31 @@
            :lstart "| " :lend " |" :sep " | ")))
     (orgtbl-to-generic table (org-combine-plists params2 params))))
 
+(defun org-table-export-to-gfm-buffer ()
+  "Exports the org table at point to a GitHub Flavored Markdown table in a read-only buffer."
+  (interactive)
+  ;; The table cleaning logic is adapted from `org-table-export`.
+  (org-table-align)
+  (let* ((txt (buffer-substring-no-properties (org-table-begin) (org-table-end)))
+         (lines (org-table-clean-before-export (org-split-string txt "[ \t]*\n[ \t]*")))
+         (table (mapcar
+                 (lambda (x)
+                   (if (string-match org-table-hline-regexp x)
+                       'hline
+                     (org-split-string (org-trim x) "\\s-*|\\s-*")))
+                 lines))
+         (buf (get-buffer-create "*gfm table export*")))
+    (with-current-buffer buf
+      (view-mode -1)
+      (erase-buffer)
+      (insert (orgtbl-to-gfm table nil))
+      (view-mode)
+      (save-excursion
+        (mark-whole-buffer)
+        (copy-region-as-kill (mark) (point) t))
+      (message "table copied to clipboard"))
+    (set-window-buffer nil buf)))
+
 ;;; MARKDOWN
 (add-hook 'markdown-mode-hook 'orgtbl-mode)
 
