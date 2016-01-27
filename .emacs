@@ -460,6 +460,36 @@
 (setenv "PAGER" "cat")                                             ; Do not use `less` as the default pager
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer) ; truncate buffers continuously
 
+;;; Run commands in the background and output to a specific buffer
+(defvar-local refreshable-shell-command--command nil)
+
+(defun refreshable-shell-command--refresh ()
+  (interactive)
+  (when-let ((cmd refreshable-shell-command--command))
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      (if-let ((handler (find-file-name-handler (directory-file-name default-directory) 'shell-command)))
+          (funcall handler 'shell-command cmd t nil)
+        (call-process shell-file-name nil t nil shell-command-switch cmd)))))
+
+(defun refreshable-shell-command (command buffer-or-name)
+  "Run command synchronously and send output to the provided
+buffer. The buffer will be marked read-only. Press 'g' to refresh
+the output of the command. Press 'q' to dismiss the buffer."
+  (interactive
+   (let ((cmd (read-shell-command "Shell command: " nil nil))
+         (buffer-name (read-string "Output to buffer: ")))
+     (list cmd buffer-name)))
+  (let ((buf (get-buffer-create buffer-or-name))
+        (directory default-directory))
+    (with-current-buffer buf
+      (read-only-mode)
+      (setq default-directory directory)
+      (local-set-key (kbd "g") 'refreshable-shell-command--refresh)
+      (local-set-key (kbd "q") 'kill-this-buffer)
+      (setq refreshable-shell-command--command command)
+      (refreshable-shell-command--refresh))
+    (set-window-buffer nil buf)))
 
 ;;; SQL
 ;;; Add option to chose port in sql-postgres and use localhost as default server.
