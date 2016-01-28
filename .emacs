@@ -279,7 +279,6 @@
 (define-key dired-mode-map (kbd "C-c t") 'tail-filename)
 
 ;;; ORG MODE
-;;; The following lines are always needed.  Choose your own keys.
 (require 'org)
 (require 'org-table)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
@@ -289,7 +288,8 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (custom-set-variables '(org-catch-invisible-edits 'error)
                       '(org-read-date-force-compatible-dates nil)
-                      '(org-completion-use-ido t))
+                      '(org-completion-use-ido t)
+                      '(org-agenda-todo-list-sublevels nil))
 
 ;;; Export tables to github flavored markdown
 (defun orgtbl-to-gfm (table params)
