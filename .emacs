@@ -160,7 +160,8 @@
 (add-hook 'text-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in text mode
 (add-hook 'prog-mode-hook 'fci-mode)                ; show a bar beyond the fill-column
 (add-hook 'text-mode-hook 'fci-mode)                ; show a bar beyond the fill-column
-(add-hook 'text-mode-hook 'turn-on-flyspell)        ; activate flyspell for all text modes
+(add-hook 'text-mode-hook 'flyspell-mode)           ; activate flyspell for all text modes
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)      ; activate flyspell for comments
 (savehist-mode t)                       ; Save your minibuffer history across Emacs sessions. UX win!
 
 ;;; Highlight and auto-correct whitespace problems
@@ -202,8 +203,11 @@
 
 ;; Automatic syntax checking
 (require 'flycheck)
+(require 'flyspell)
 (global-flycheck-mode t)
 (customize-set-variable 'flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
+;;; Prevent C-c $ binding in flyspell-mode as it overrides the org-mode binding
+(define-key flyspell-mode-map (kbd "C-c $") nil)
 
 
 ;;; MAGIT MODE
@@ -386,7 +390,7 @@
 (add-hook 'clojure-mode-hook (lambda () (setq indent-line-function 'lisp-indent-line-single-semicolon-fix)))
 
 ;;; Prevent C-c SPC binding in clojure mode as it overrides the ace-window-mode key binding
-(add-hook 'clojure-mode-hook (lambda () (local-unset-key (kbd "C-c SPC"))))
+(define-key clojure-mode-map (kbd "C-c SPC") nil)
 
 
 ;;; GREP MODE
@@ -506,7 +510,7 @@ the output of the command. Press 'q' to dismiss the buffer."
 (customize-set-variable 'css-indent-offset 2)
 
 ;;; YAML
-;; Add a few extra minor-modes since yaml-mode does not dervice from either prog-mode or text-mode
+;; Add a few extra minor-modes since yaml-mode does not derive from either prog-mode or text-mode
 (add-hook 'yaml-mode-hook 'fci-mode) ; show bar beyond the fill column
 (add-hook 'yaml-mode-hook 'flyspell-mode) ; turn on automatic spell-checking
 
