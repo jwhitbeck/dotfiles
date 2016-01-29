@@ -277,6 +277,22 @@
   (with-current-buffer output-buffer-name
     (setq truncate-lines t)))
 (define-key dired-mode-map (kbd "C-c t") 'tail-filename)
+;;; Better default programs for opening files
+(custom-set-variables '(dired-guess-shell-alist-user
+                        '(("\\.e?ps\\'" "evince")
+                          ("\\.mpe?g\\'\\|\\.avi\\'" "vlc")
+                          ("\\.ogg\\'" "vlc")
+                          ("\\.mp3\\'" "vlc")
+                          ("\\.m4a\\'" "vlc")
+                          ("\\.wav\\'" "vlc")
+                          ("\\.p[bgpn]m\\'" "eog")
+                          ("\\.gif\\'" "eog")
+                          ("\\.tif\\'" "eog")
+                          ("\\.png\\'" "eog")
+                          ("\\.jpe?g\\'" "eog")
+                          ("\\.pdf\\'" "evince")
+                          ("\\.doc\\'" "libreoffice")
+                          ("\\.odt\\'" "libreoffice"))))
 
 ;;; ORG MODE
 (require 'org)
