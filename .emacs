@@ -297,6 +297,10 @@
 ;;; ORG MODE
 (require 'org)
 (require 'org-table)
+(require 'ob-clojure)
+(require 'ob-R)
+(require 'ob-sh)
+(require 'ob-sql)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -305,7 +309,23 @@
 (custom-set-variables '(org-catch-invisible-edits 'error)
                       '(org-read-date-force-compatible-dates nil)
                       '(org-completion-use-ido t)
-                      '(org-agenda-todo-list-sublevels nil))
+                      '(org-agenda-todo-list-sublevels nil)
+                      '(org-src-fontify-natively t)
+                      '(org-confirm-babel-evaluate nil)
+                      '(org-babel-do-load-languages '((clojure . t)
+                                                      (emacs-lisp . t)
+                                                      (R . t)
+                                                      (sql . t)
+                                                      (sh . t))))
+
+;;; Override org-babel-execute:clojure. The default assumes we are using SLIME, but we want cider
+(defun org-babel-execute:clojure (body params)
+  "Execute a block of Clojure code with Babel and nREPL."
+  (if (cider-current-connection)
+      (let ((result (cider-nrepl-sync-request:eval (org-babel-expand-body:clojure body params))))
+        (message "%s" result)
+        (car (read-from-string (nrepl-dict-get result "value"))))
+    (error "nREPL not connected!")))
 
 ;;; Export tables to github flavored markdown
 (defun orgtbl-to-gfm (table params)
