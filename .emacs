@@ -318,15 +318,6 @@
                                                       (sql . t)
                                                       (sh . t))))
 
-;;; Override org-babel-execute:clojure. The default assumes we are using SLIME, but we want cider
-(defun org-babel-execute:clojure (body params)
-  "Execute a block of Clojure code with Babel and nREPL."
-  (if (cider-current-connection)
-      (let ((result (cider-nrepl-sync-request:eval (org-babel-expand-body:clojure body params))))
-        (message "%s" result)
-        (car (read-from-string (nrepl-dict-get result "value"))))
-    (error "nREPL not connected!")))
-
 ;;; Export tables to github flavored markdown
 (defun orgtbl-to-gfm (table params)
   "Convert the Orgtbl mode TABLE to GitHub Flavored Markdown."
@@ -398,6 +389,15 @@
  ;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy to
  ;; type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
  '(cider-auto-select-error-buffer t))
+
+;;; Override org-babel-execute:clojure. The default assumes we are using SLIME, but we want cider
+(defun org-babel-execute:clojure (body params)
+  "Execute a block of Clojure code with Babel and nREPL."
+  (if (cider-current-connection)
+      (let ((result (cider-nrepl-sync-request:eval (org-babel-expand-body:clojure body params))))
+        (message "%s" result)
+        (car (read-from-string (nrepl-dict-get result "value"))))
+    (error "nREPL not connected!")))
 
 ;;; Fix indentation for single semicolon comments
 (defun lisp-indent-line-single-semicolon-fix (&optional whole-exp)
