@@ -564,6 +564,19 @@ the output of the command. Press 'q' to dismiss the buffer."
 (require 'ess-smart-underscore)
 (add-hook 'ess-mode-hook (lambda () (local-key-binding (kbd "_") 'ess-smarter-underscore)))
 
+;;; MISC
+(defun current-utc-time ()
+  "Returns an ISO 8061 UTC timestamp"
+  (interactive)
+  (set-time-zone-rule t)
+  (let ((timestamp (prog1 (format-time-string "%Y-%m-%d-T%TZ")
+                     (set-time-zone-rule nil))))
+    (if (called-interactively-p 'interactive)
+        (message "%s" timestamp)
+      timestamp)))
+
+(global-set-key (kbd "C-c u") 'current-utc-time)
+
 ;;; Load machine-specific config
 (let ((file "~/.emacs.d/config.el"))
   (when (file-exists-p file)
