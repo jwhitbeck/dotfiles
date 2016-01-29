@@ -312,11 +312,11 @@
                       '(org-agenda-todo-list-sublevels nil)
                       '(org-src-fontify-natively t)
                       '(org-confirm-babel-evaluate nil)
-                      '(org-babel-do-load-languages '((clojure . t)
-                                                      (emacs-lisp . t)
-                                                      (R . t)
-                                                      (sql . t)
-                                                      (sh . t))))
+                      '(org-babel-load-languages '((clojure . t)
+                                                   (emacs-lisp . t)
+                                                   (R . t)
+                                                   (sql . t)
+                                                   (sh . t))))
 
 ;;; Export tables to github flavored markdown
 (defun orgtbl-to-gfm (table params)
