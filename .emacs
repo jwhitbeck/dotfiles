@@ -336,6 +336,10 @@
   ;; The table cleaning logic is adapted from `org-table-export`.
   (org-table-align)
   (let* ((txt (buffer-substring-no-properties (org-table-begin) (org-table-end)))
+         ;; Convert links to markdown
+         (txt (replace-regexp-in-string "\\[\\[\\(.*\\)\\]\\[\\(.*\\)\\]\\]"
+                                        "[\\2](\\1)"
+                                        txt))
          (lines (org-table-clean-before-export (org-split-string txt "[ \t]*\n[ \t]*")))
          (table (mapcar
                  (lambda (x)
