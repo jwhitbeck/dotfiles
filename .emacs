@@ -321,14 +321,23 @@
 ;;; Export tables to github flavored markdown
 (defun orgtbl-to-gfm (table params)
   "Convert the Orgtbl mode TABLE to GitHub Flavored Markdown."
-  (let* ((alignment (mapconcat (lambda (x) (if x "|--:" "|---"))
-                               org-table-last-alignment ""))
-         (params2
-          (list
-           :splice t
-           :hline (concat alignment "|")
-           :lstart "| " :lend " |" :sep " | ")))
-    (orgtbl-to-generic table (org-combine-plists params2 params))))
+  (cl-flet ((field-to-html (field)
+                           (let ((paragraph (org-export-string-as field 'html t)))
+                             ;; Remove the enclosing <p>...</p>
+                             (substring paragraph 4 (- (length paragraph) 5)))))
+    (let* ((alignment (mapconcat (lambda (x) (if x "|--:" "|---"))
+                                 org-table-last-alignment ""))
+           (params2
+            (list
+             :splice t
+             :hline (concat alignment "|")
+             :lstart "| " :lend " |" :sep " | "))
+           (table (mapcar (lambda (line)
+                            (if (eq line 'hline)
+                                line
+                              (mapcar (lambda (field) (field-to-html field)) line)))
+                          table)))
+      (orgtbl-to-generic table (org-combine-plists params2 params)))))
 
 (defun org-table-export-to-gfm-buffer ()
   "Exports the org table at point to a GitHub Flavored Markdown table in a read-only buffer."
@@ -336,10 +345,6 @@
   ;; The table cleaning logic is adapted from `org-table-export`.
   (org-table-align)
   (let* ((txt (buffer-substring-no-properties (org-table-begin) (org-table-end)))
-         ;; Convert links to markdown
-         (txt (replace-regexp-in-string "\\[\\[\\(.*\\)\\]\\[\\(.*\\)\\]\\]"
-                                        "[\\2](\\1)"
-                                        txt))
          (lines (org-table-clean-before-export (org-split-string txt "[ \t]*\n[ \t]*")))
          (table (mapcar
                  (lambda (x)
