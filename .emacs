@@ -573,6 +573,10 @@ the output of the command. Press 'q' to dismiss the buffer."
 (require 'ess-smart-underscore)
 (add-hook 'ess-mode-hook (lambda () (local-key-binding (kbd "_") 'ess-smarter-underscore)))
 
+;;; Easy PG
+(require 'epg)
+(custom-set-variables '(epg-gpg-program "gpg2")) ; Default to GnuPG >2.0 on ubuntu
+
 ;;; MISC
 (defun current-utc-time ()
   "Returns an ISO 8061 UTC timestamp"
