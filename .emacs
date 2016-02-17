@@ -309,7 +309,6 @@
 (custom-set-variables '(org-catch-invisible-edits 'error)
                       '(org-read-date-force-compatible-dates nil)
                       '(org-completion-use-ido t)
-                      '(org-agenda-todo-list-sublevels nil)
                       '(org-src-fontify-natively t)
                       '(org-confirm-babel-evaluate nil)
                       '(org-babel-load-languages '((clojure . t)
