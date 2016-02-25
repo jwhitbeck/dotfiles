@@ -292,7 +292,9 @@
                           ("\\.jpe?g\\'" "eog")
                           ("\\.pdf\\'" "evince")
                           ("\\.doc\\'" "libreoffice")
-                          ("\\.odt\\'" "libreoffice"))))
+                          ("\\.odt\\'" "libreoffice")
+                          ("\\.mobi\\'" "ebook-viewer")
+                          ("\\.epub\\'" "ebook-viewer"))))
 
 ;;; ORG MODE
 (require 'org)
