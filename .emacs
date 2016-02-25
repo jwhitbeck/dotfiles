@@ -332,7 +332,8 @@
                                                #("----------------" 0 16
                                                  (org-heading t))
                                                (800 1000 1200 1400 1600 1800 2000)))
-                      '(org-agenda-tags-column -100)  ; Display tags further to right
+                      '(org-agenda-tags-column -100)  ; Display tags further to right in agenda buffers
+                      '(org-tags-column -100) ; Display tags further to right in org buffers
                       '(org-agenda-sticky t) ; Cache agenda views
                       '(org-agenda-todo-ignore-scheduled 'all)
                       '(org-stuck-projects '("+LEVEL=2+CATEGORY=\"Project\"" ("TODO") nil ""))
