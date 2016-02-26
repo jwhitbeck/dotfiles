@@ -294,7 +294,8 @@
                           ("\\.doc\\'" "libreoffice")
                           ("\\.odt\\'" "libreoffice")
                           ("\\.mobi\\'" "ebook-viewer")
-                          ("\\.epub\\'" "ebook-viewer"))))
+                          ("\\.epub\\'" "ebook-viewer")
+                          ("\\.html\\'" "firefox"))))
 
 ;;; ORG MODE
 (require 'org)
