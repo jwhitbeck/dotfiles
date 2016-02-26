@@ -523,8 +523,16 @@
 (let ((local-host-regex (concat "\\(127\\.0\\.0\\.1\\|::1\\|localhost6?\\|" system-name "\\)")))
   (customize-set-variable 'tramp-default-proxies-alist
                           `((,local-host-regex "root" nil) (".*" "root" "/ssh:%h:"))))
-;;; use ssh as default method (use this to share ControlMaster between tramp and shells)
-(customize-set-variable 'tramp-default-method "ssh")
+(custom-set-variables
+ '(tramp-default-method "ssh") ; use ssh as default method to share ControlMaster between tramp and shells
+ '(remote-file-name-inhibit-cache nil) ; always use the remote file-name cache for read access
+ '(tramp-completion-reread-directory-timeout nil)  ; always use the cache for remote completion
+ '(vc-ignore-dir-regexp (format "\\(%s\\)\\|\\(%s\\)" ; Disable version control checks on remote files
+                                vc-ignore-dir-regexp
+                                tramp-file-name-regexp))
+ )
+;;; Always add $HOME/bin to the remote path
+(add-to-list 'tramp-remote-path "~/bin")
 ;;; command for quickly opening shells on remote hosts.
 (defun remote-shell-at-point ()
   "Opens a remote shell on the host-name under point."
