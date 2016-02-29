@@ -256,6 +256,7 @@
 
 ;;; DIRED
 (require 'dired)
+(require 'dired-x)
 ;;; Enable disabled dired commands
 (autoload 'dired-jump "dired-x" "Jump to Dired buffer corresponding to current buffer." t)
 (autoload 'dired-jump-other-window "dired-x" "Like \\[dired-jump] (dired-jump) but in other window." t)
