@@ -329,7 +329,7 @@
                     (org-agenda-todo-ignore-scheduled 'future))))
      nil)))
 
-(custom-set-variables '(calendar-set-date-style 'european) ; Use day-month-year instead of month-day-year
+(custom-set-variables '(calendar-date-style 'european) ; Use day-month-year instead of month-day-year
                       '(org-agenda-time-grid '((daily today require-timed remove-match)
                                                #("----------------" 0 16
                                                  (org-heading t))
@@ -337,7 +337,7 @@
                       '(org-agenda-tags-column -100)  ; Display tags further to right in agenda buffers
                       '(org-tags-column -100) ; Display tags further to right in org buffers
                       '(org-agenda-sticky t) ; Cache agenda views
-                      '(org-agenda-todo-ignore-scheduled 'all)
+                      '(org-agenda-todo-ignore-scheduled 'future)
                       '(org-stuck-projects '("+LEVEL=2+CATEGORY=\"Project\"" ("TODO") nil ""))
                       '(org-agenda-custom-commands my-agenda-commands))
 
