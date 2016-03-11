@@ -257,6 +257,7 @@
 ;;; DIRED
 (require 'dired)
 (require 'dired-x)
+(require 'dired-aux)
 ;;; Enable disabled dired commands
 (autoload 'dired-jump "dired-x" "Jump to Dired buffer corresponding to current buffer." t)
 (autoload 'dired-jump-other-window "dired-x" "Like \\[dired-jump] (dired-jump) but in other window." t)
@@ -297,6 +298,54 @@
                           ("\\.mobi\\'" "ebook-viewer")
                           ("\\.epub\\'" "ebook-viewer")
                           ("\\.html\\'" "firefox"))))
+;;; Detached command-on-file execution
+(defun dired-run-detached-shell-command (command)
+  (let ((handler
+         (find-file-name-handler (directory-file-name default-directory)
+                                 'shell-command)))
+    (if handler (apply handler 'detached-shell-command (list command))
+      (detached-shell-command command)))
+  ;; Return nil for sake of nconc in dired-bunch-files.
+  nil)
+
+(defun dired-do-detached-shell-command (command &optional arg file-list)
+  "Like dired-do-shell-command, but detaches the processes."
+  ;;Functions dired-run-shell-command and dired-shell-stuff-it do the
+  ;;actual work and can be redefined for customization.
+  (interactive
+   (let ((files (dired-get-marked-files t current-prefix-arg)))
+     (list
+      ;; Want to give feedback whether this file or marked files are used:
+      (dired-read-shell-command "§ on %s: " current-prefix-arg files)
+      current-prefix-arg
+      files)))
+  (let* ((on-each (not (string-match-p dired-star-subst-regexp command)))
+         (no-subst (not (string-match-p dired-quark-subst-regexp command)))
+         (star (string-match-p "\\*" command))
+         (qmark (string-match-p "\\?" command)))
+    ;; Get confirmation for wildcards that may have been meant
+    ;; to control substitution of a file name or the file name list.
+    (if (cond ((not (or on-each no-subst))
+               (error "You can not combine `*' and `?' substitution marks"))
+              ((and star on-each)
+               (y-or-n-p "Confirm--do you mean to use `*' as a wildcard? "))
+              ((and qmark no-subst)
+               (y-or-n-p "Confirm--do you mean to use `?' as a wildcard? "))
+              (t))
+        (if on-each
+            (dired-bunch-files
+             (- 10000 (length command))
+             (function (lambda (&rest files)
+                         (dired-run-detached-shell-command
+                          (dired-shell-stuff-it command files t arg))))
+             nil
+             file-list)
+          ;; execute the shell command
+          (dired-run-detached-shell-command
+           (dired-shell-stuff-it command file-list nil arg))))))
+
+(define-key dired-mode-map (kbd "§") 'dired-do-detached-shell-command)
+
 
 ;;; ORG MODE
 (require 'org)
@@ -603,6 +652,27 @@ the output of the command. Press 'q' to dismiss the buffer."
       (setq refreshable-shell-command--command command)
       (refreshable-shell-command--refresh))
     (set-window-buffer nil buf)))
+
+;;; Run commands in a detached process
+(defun detached-shell-command (command)
+  "Like shell-command but runs the shell command in a process detached from emacs."
+  (interactive
+   (list (read-shell-command "Detached shell command: " nil nil
+                             (let ((filename
+                                    (cond
+                                     (buffer-file-name)
+                                     ((eq major-mode 'dired-mode)
+                                      (dired-get-filename nil t)))))
+                               (and filename (file-relative-name filename))))))
+  (let ((handler
+         (find-file-name-handler (directory-file-name default-directory)
+                                 'shell-command)))
+    (if handler
+        (funcall handler 'detached-shell-command command)
+      (call-process shell-file-name nil 0 nil shell-command-switch command))))
+
+(global-set-key (kbd "M-§") 'detached-shell-command)
+
 
 ;;; SQL
 ;;; Add option to chose port in sql-postgres and use localhost as default server.
