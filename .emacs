@@ -575,7 +575,6 @@
   (customize-set-variable 'tramp-default-proxies-alist
                           `((,local-host-regex "root" nil) (".*" "root" "/ssh:%h:"))))
 (custom-set-variables
- '(tramp-default-method "ssh") ; use ssh as default method to share ControlMaster between tramp and shells
  '(remote-file-name-inhibit-cache nil) ; always use the remote file-name cache for read access
  '(tramp-completion-reread-directory-timeout nil)  ; always use the cache for remote completion
  '(vc-ignore-dir-regexp (format "\\(%s\\)\\|\\(%s\\)" ; Disable version control checks on remote files
