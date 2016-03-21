@@ -346,6 +346,23 @@
 
 (define-key dired-mode-map (kbd "§") 'dired-do-detached-shell-command)
 
+;;; NOTIFICATIONS
+
+;;; Adapted from http://emacs-fu.blogspot.com/2009/11/showing-pop-ups.html
+;;; Assumes that emacs is running on ubuntu
+(defun my-popup (title msg &optional icon sound)
+  "Show a popup if we're on X, or echo it otherwise; TITLE is the
+title of the message, MSG is the context. Optionally, you can
+provide an ICON and SOUND."
+  (interactive)
+  (when sound
+    (call-process "pacmd" nil 0 nil "play-file" sound "0"))
+  (if (eq window-system 'x)
+      (let ((args (if icon (list "-i" icon title msg) (list title msg))))
+        (apply 'call-process "notify-send" nil 0 nil args))
+    ;; text only version
+    (message (format "%s: %s" title msg))))
+
 
 ;;; ORG MODE
 (require 'org)
@@ -389,6 +406,25 @@
                       '(org-agenda-todo-ignore-scheduled 'future)
                       '(org-stuck-projects '("+LEVEL=2+CATEGORY=\"Project\"" ("TODO") nil ""))
                       '(org-agenda-custom-commands my-agenda-commands))
+
+;;; appointments integration
+(require 'appt)
+(appt-activate 't)
+
+(defun my-update-appointments-on-agenda-save ()
+  (when (member (buffer-file-name) org-agenda-files)
+    (org-agenda-to-appt 't)))
+(add-hook 'after-save-hook 'my-update-appointments-on-agenda-save)
+
+(defun my-appt-notify (time-to-appt time msg)
+  (my-popup (format "Appointment in %s minutes" time-to-appt)
+            msg
+            "/usr/share/icons/gnome/256x256/status/appointment-soon.png"
+            "/usr/share/sounds/ubuntu/stereo/message.ogg"))
+
+(custom-set-variables '(appt-display-interval (+ 1 appt-message-warning-time)) ; no duplicate reminders
+                      '(app-display-mode-line nil) ; disable mode-line reminders
+                      '(appt-disp-window-function 'my-appt-notify))
 
 ;;; Holidays
 (defvar holiday-french-holidays nil
