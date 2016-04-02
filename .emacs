@@ -264,7 +264,11 @@
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 (custom-set-variables '(dired-auto-revert-buffer t)     ; Auto-revert
-                      '(dired-listing-switches "-alh")) ; Human-readable file sizes
+                      '(dired-listing-switches "-alh")  ; Human-readable file sizes
+                      '(dired-omit-files "^\\...+$")    ; Hide all dotfiles in dired-omit-mode
+                      )
+;;; Activate dired-omit-mode by default
+(add-hook 'dired-mode-hook (lambda () (dired-omit-mode t)))
 ;;; Add binding to tail files in custom buffer
 (defun tail-filename (filename &optional output-buffer-name)
   (interactive
