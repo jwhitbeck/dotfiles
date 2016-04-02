@@ -345,7 +345,15 @@
           (dired-run-detached-shell-command
            (dired-shell-stuff-it command file-list nil arg))))))
 
+(defun dired-do-xdg-open (&optional arg file-list)
+  "Wrapper around dired-do-detached-shell-command that always uses the xdg-open command."
+  (interactive
+   (list current-prefix-arg
+         (dired-get-marked-files t current-prefix-arg)))
+  (dired-do-detached-shell-command "xdg-open" current-prefix-arg file-list))
+
 (define-key dired-mode-map (kbd "§") 'dired-do-detached-shell-command)
+(define-key dired-mode-map (kbd "œ") 'dired-do-xdg-open)
 
 ;;; NOTIFICATIONS
 
