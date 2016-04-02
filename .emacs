@@ -399,6 +399,13 @@ provide an ICON and SOUND."
                                                    (R . t)
                                                    (sql . t)
                                                    (sh . t))))
+;;; Ace-jump-mode integration
+(defun org-table-blank-field-or-jump ()
+  (interactive)
+  (if (org-table-check-inside-data-field t)
+      (call-interactively 'org-table-blank-field)
+    (call-interactively 'ace-jump-mode)))
+(define-key org-mode-map (kbd "C-c SPC") 'org-table-blank-field-or-jump)
 
 ;;; Agenda views
 (defvar my-agenda-commands
