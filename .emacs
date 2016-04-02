@@ -645,7 +645,7 @@ provide an ICON and SOUND."
   (interactive)
   (let ((hostname (thing-at-point 'filename)))
     (let ((buffer-name (format "*%s*" hostname))
-          (default-directory (format "/ssh:%s:" hostname))
+          (default-directory (format "/%s:" hostname))
           (current-prefix-arg '-))      ; C-u
       (shell buffer-name))))
 
