@@ -336,8 +336,9 @@
             (dired-bunch-files
              (- 10000 (length command))
              (function (lambda (&rest files)
-                         (dired-run-detached-shell-command
-                          (dired-shell-stuff-it command files t arg))))
+                         (dolist (file files)
+                           (dired-run-detached-shell-command
+                            (concat command dired-mark-separator (shell-quote-argument file))))))
              nil
              file-list)
           ;; execute the shell command
