@@ -63,7 +63,9 @@
  '(inhibit-startup-echo-area-message t)
  '(initial-scratch-message nil)         ; disable scratch message
  '(lazy-highlight-initial-delay 0)      ; immediately highlight all matches
- '(ring-bell-function 'ignore))         ; disable bell
+ '(ring-bell-function 'ignore)          ; disable bell
+ '(current-language-environment "UTF-8") ; Use UTF-8 as language environment
+ )
 
 (when (and (fboundp 'menu-bar-mode) menu-bar-mode) (menu-bar-mode -1))       ; disable menu bar
 (when (and (fboundp 'tool-bar-mode) tool-bar-mode) (tool-bar-mode -1))       ; disable tool bar
