@@ -210,6 +210,19 @@
 (customize-set-variable 'flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
 ;;; Prevent C-c $ binding in flyspell-mode as it overrides the org-mode binding
 (define-key flyspell-mode-map (kbd "C-c $") nil)
+;;; proselint integration, see http://unconj.ca/blog/linting-prose-in-emacs.html
+(when (executable-find "proselint")
+  (flycheck-define-checker proselint
+    "A linter for prose."
+    :command ("proselint" source-inplace)
+    :error-patterns
+    ((warning line-start (file-name) ":" line ":" column ": "
+              (id (one-or-more (not (any " "))))
+              (message (one-or-more not-newline)
+                       (zero-or-more "\n" (any " ") (one-or-more not-newline)))
+              line-end))
+    :modes (text-mode markdown-mode gfm-mode))
+  (add-to-list 'flycheck-checkers 'proselint))
 
 
 ;;; MAGIT MODE
