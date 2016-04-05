@@ -273,6 +273,7 @@
 (require 'dired)
 (require 'dired-x)
 (require 'dired-aux)
+(require 'dired-async)
 ;;; Enable disabled dired commands
 (autoload 'dired-jump "dired-x" "Jump to Dired buffer corresponding to current buffer." t)
 (autoload 'dired-jump-other-window "dired-x" "Like \\[dired-jump] (dired-jump) but in other window." t)
@@ -282,6 +283,8 @@
                       '(dired-listing-switches "-alh")  ; Human-readable file sizes
                       '(dired-omit-files "^\\...+$")    ; Hide all dotfiles in dired-omit-mode
                       )
+;;; Use async file operations
+(dired-async-mode t)
 ;;; Activate dired-omit-mode by default
 (add-hook 'dired-mode-hook (lambda () (dired-omit-mode t)))
 ;;; Add binding to tail files in custom buffer
