@@ -441,7 +441,9 @@ provide an ICON and SOUND."
                       '(org-agenda-sticky t) ; Cache agenda views
                       '(org-agenda-todo-ignore-scheduled 'future)
                       '(org-stuck-projects '("+LEVEL=2+CATEGORY=\"Project\"" ("TODO") nil ""))
-                      '(org-agenda-custom-commands my-agenda-commands))
+                      '(org-agenda-custom-commands my-agenda-commands)
+                      '(org-agenda-dim-blocked-tasks 'invisible)
+                      '(org-enforce-todo-dependencies t))
 
 ;;; appointments integration
 (require 'appt)
