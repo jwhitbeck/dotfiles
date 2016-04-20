@@ -617,6 +617,14 @@ provide an ICON and SOUND."
 (define-key clojure-mode-map (kbd "C-c SPC") nil)
 
 
+;;; JAVA
+;;; For compatibility with Google style guide
+(c-add-style "java-google" '("user" (c-offsets-alist . ((case-label . +)))))
+(add-hook 'java-mode-hook (lambda ()
+                            (set-fill-column 100)
+                            (c-set-style "java-google")))
+
+
 ;;; GREP MODE
 ;;; don't wrap lines in grep mode
 (add-hook 'grep-mode-hook (lambda () (customize-set-variable 'truncate-lines t)))
