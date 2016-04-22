@@ -1,9 +1,16 @@
 ;;;; DOT EMACS
 
+;;; TLS Ensure that certificates are verified. See https://glyph.twistedmatrix.com/2015/11/editor-malware.html
+;;; for full explanation.
+(custom-set-variables '(gnutls-verify-error t))
+
 ;;; PACKAGES
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-                                        ;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(custom-set-variables '(package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+                                           ("melpa" . "https://melpa.org/packages/")
+                                           ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
+                                           )))
+
 (package-initialize)
 ;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 
