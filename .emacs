@@ -626,7 +626,9 @@ provide an ICON and SOUND."
 
 ;;; JAVA
 ;;; For compatibility with Google style guide
-(c-add-style "java-google" '("user" (c-offsets-alist . ((case-label . +)))))
+(c-add-style "java-google" '("user" (c-offsets-alist . ((case-label . +)
+                                                        (arglist-intro . ++)
+                                                        (statement-cont . ++)))))
 (add-hook 'java-mode-hook (lambda ()
                             (set-fill-column 100)
                             (c-set-style "java-google")))
