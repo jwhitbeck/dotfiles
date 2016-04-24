@@ -435,8 +435,7 @@ provide an ICON and SOUND."
   '(("n" "Agenda"
      ((agenda "" ((org-agenda-span 'day)))
       (todo "TODO" ((org-agenda-overriding-header "Tasks")
-                    (org-agenda-todo-ignore-scheduled 'future))))
-     nil)))
+                    (org-agenda-todo-ignore-scheduled 'future)))))))
 
 (custom-set-variables '(calendar-date-style 'european) ; Use day-month-year instead of month-day-year
                       '(org-agenda-time-grid '((daily today require-timed remove-match)
