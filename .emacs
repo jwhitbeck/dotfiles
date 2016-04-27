@@ -421,23 +421,8 @@ provide an ICON and SOUND."
                                                    (emacs-lisp . t)
                                                    (R . t)
                                                    (sql . t)
-                                                   (sh . t))))
-;;; Ace-jump-mode integration
-(defun org-table-blank-field-or-jump ()
-  (interactive)
-  (if (org-table-check-inside-data-field t)
-      (call-interactively 'org-table-blank-field)
-    (call-interactively 'ace-jump-mode)))
-(define-key org-mode-map (kbd "C-c SPC") 'org-table-blank-field-or-jump)
-
-;;; Agenda views
-(defvar my-agenda-commands
-  '(("n" "Agenda"
-     ((agenda "" ((org-agenda-span 'day)))
-      (todo "TODO" ((org-agenda-overriding-header "Tasks")
-                    (org-agenda-todo-ignore-scheduled 'future)))))))
-
-(custom-set-variables '(calendar-date-style 'european) ; Use day-month-year instead of month-day-year
+                                                   (sh . t)))
+                      '(calendar-date-style 'european) ; Use day-month-year instead of month-day-year
                       '(org-agenda-time-grid '((daily today require-timed remove-match)
                                                #("----------------" 0 16
                                                  (org-heading t))
@@ -446,10 +431,20 @@ provide an ICON and SOUND."
                       '(org-tags-column -100) ; Display tags further to right in org buffers
                       '(org-agenda-sticky t) ; Cache agenda views
                       '(org-agenda-todo-ignore-scheduled 'future)
-                      '(org-stuck-projects '("+LEVEL=2+CATEGORY=\"Project\"" ("TODO") nil ""))
-                      '(org-agenda-custom-commands my-agenda-commands)
+                      '(org-stuck-projects '("+LEVEL=2+CATEGORY=\"Project\"" ("TODO" "WAITING") nil ""))
+                      '(org-agenda-follow-indirect t) ; Show the full project tree in follow-mode
+                      '(org-agenda-custom-commands nil)
                       '(org-agenda-dim-blocked-tasks 'invisible)
                       '(org-enforce-todo-dependencies t))
+
+;;; Ace-jump-mode integration
+(defun org-table-blank-field-or-jump ()
+  (interactive)
+  (if (org-table-check-inside-data-field t)
+      (call-interactively 'org-table-blank-field)
+    (call-interactively 'ace-jump-mode)))
+(define-key org-mode-map (kbd "C-c SPC") 'org-table-blank-field-or-jump)
+
 
 ;;; appointments integration
 (require 'appt)
