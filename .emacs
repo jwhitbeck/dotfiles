@@ -210,28 +210,6 @@
 (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
 ;; end of workaround
 
-;; Automatic syntax checking
-(require 'flycheck)
-(require 'flyspell)
-(global-flycheck-mode t)
-(customize-set-variable 'flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
-;;; Prevent C-c $ binding in flyspell-mode as it overrides the org-mode binding
-(define-key flyspell-mode-map (kbd "C-c $") nil)
-;;; proselint integration, see http://unconj.ca/blog/linting-prose-in-emacs.html
-(when (executable-find "proselint")
-  (flycheck-define-checker proselint
-    "A linter for prose."
-    :command ("proselint" source)
-    :error-patterns
-    ((warning line-start (file-name) ":" line ":" column ": "
-              (id (one-or-more (not (any " "))))
-              (message (one-or-more not-newline)
-                       (zero-or-more "\n" (any " ") (one-or-more not-newline)))
-              line-end))
-    :modes (text-mode markdown-mode gfm-mode mu4e-compose-mode))
-  (add-to-list 'flycheck-checkers 'proselint))
-
-
 ;;; MAGIT MODE
 (require 'vc-git)            ; This needs to be required or else magit falls back to lgrep instead of git-grep
 
@@ -543,6 +521,34 @@ provide an ICON and SOUND."
         (copy-region-as-kill (mark) (point) t))
       (message "table copied to clipboard"))
     (set-window-buffer nil buf)))
+
+;; FLYCHECK
+(require 'flycheck)
+(require 'flyspell)
+(global-flycheck-mode t)
+(customize-set-variable 'flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
+;;; Prevent C-c $ binding in flyspell-mode as it overrides the org-mode binding
+(define-key flyspell-mode-map (kbd "C-c $") nil)
+
+;;; proselint integration, see http://unconj.ca/blog/linting-prose-in-emacs.html
+;;; Only turn on proselint in org-mode buffers if #+STARTUP: proselint is set.
+(defvar my-org-use-proselint nil "If t, will turn on proselint in the org-mode buffer.")
+(add-to-list 'org-startup-options '("proselint" my-org-use-proselint t) t)
+
+(when (executable-find "proselint")
+  (flycheck-define-checker proselint
+    "A linter for prose."
+    :command ("proselint" source)
+    :error-patterns
+    ((warning line-start (file-name) ":" line ":" column ": "
+              (id (one-or-more (not (any " "))))
+              (message (one-or-more not-newline)
+                       (zero-or-more "\n" (any " ") (one-or-more not-newline)))
+              line-end))
+    :predicate (lambda ()
+                 (or my-org-use-proselint
+                     (member major-mode '(text-mode markdown-mode gfm-mode mu4e-compose-mode)))))
+  (add-to-list 'flycheck-checkers 'proselint))
 
 ;;; MARKDOWN
 (add-hook 'markdown-mode-hook 'orgtbl-mode)
