@@ -104,7 +104,7 @@
 
 ;;; PERFORMANCE
 (customize-set-variable 'gc-cons-threshold 20000000) ; Reduce occurence of garbage collection
-
+(custom-set-variables '(max-specpdl-size 2500)) ; increase limit of lisp variable bindings
 
 ;;; WINDOWS
 ;;; Splitting
