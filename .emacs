@@ -7,7 +7,8 @@
 
 ;;; PACKAGES
 (require 'package)
-(custom-set-variables '(package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+(custom-set-variables '(package-archives '(("org" . "http://orgmode.org/elpa/")
+                                           ("gnu" . "https://elpa.gnu.org/packages/")
                                            ("melpa" . "https://melpa.org/packages/")
                                            ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
                                            )))
@@ -18,7 +19,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(ace-jump-mode
+(defvar my-packages '(org-plus-contrib  ; This needs to come first
+                      ace-jump-mode
                       ace-window
                       auto-indent-mode
                       browse-at-remote
@@ -564,6 +566,9 @@ provide an ICON and SOUND."
 (add-hook 'cider-repl-mode-hook 'subword-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
+;;; Org-babel
+(custom-set-variables '(org-babel-clojure-backend 'cider))
+
 ;;; Clojure indentation rules
 (define-clojure-indent
   (send-off 1)                                   ; Core
@@ -585,15 +590,6 @@ provide an ICON and SOUND."
  ;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy to
  ;; type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
  '(cider-auto-select-error-buffer t))
-
-;;; Override org-babel-execute:clojure. The default assumes we are using SLIME, but we want cider
-(defun org-babel-execute:clojure (body params)
-  "Execute a block of Clojure code with Babel and nREPL."
-  (if (cider-current-connection)
-      (let ((result (cider-nrepl-sync-request:eval (org-babel-expand-body:clojure body params))))
-        (message "%s" result)
-        (car (read-from-string (nrepl-dict-get result "value"))))
-    (error "nREPL not connected!")))
 
 ;;; Fix indentation for single semicolon comments
 (defun lisp-indent-line-single-semicolon-fix (&optional whole-exp)
