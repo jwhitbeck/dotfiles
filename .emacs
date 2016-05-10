@@ -551,8 +551,11 @@ provide an ICON and SOUND."
                        (zero-or-more "\n" (any " ") (one-or-more not-newline)))
               line-end))
     :predicate (lambda ()
-                 (or my-org-use-proselint
-                     (member major-mode '(text-mode markdown-mode gfm-mode mu4e-compose-mode)))))
+                 (and (or (not ispell-current-dictionary)
+                          ;; only use when typing in english
+                          (string-prefix-p "en" ispell-current-dictionary))
+                      (or my-org-use-proselint
+                          (member major-mode '(text-mode markdown-mode gfm-mode mu4e-compose-mode))))))
   (add-to-list 'flycheck-checkers 'proselint))
 
 ;;; MARKDOWN
