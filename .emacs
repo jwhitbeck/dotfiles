@@ -74,8 +74,12 @@
  '(initial-scratch-message nil)         ; disable scratch message
  '(lazy-highlight-initial-delay 0)      ; immediately highlight all matches
  '(ring-bell-function 'ignore)          ; disable bell
- '(current-language-environment "UTF-8") ; Use UTF-8 as language environment
  )
+
+;;; Use UTF-8 as language environment
+(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
 
 (when (and (fboundp 'menu-bar-mode) menu-bar-mode) (menu-bar-mode -1))       ; disable menu bar
 (when (and (fboundp 'tool-bar-mode) tool-bar-mode) (tool-bar-mode -1))       ; disable tool bar
@@ -165,7 +169,6 @@
  '(vc-follow-symlinks t)                ; follow symlinks for files under version control
  '(fill-column 110)                     ; line wrap at 110 characters
  '(tab-width 2))                        ; distance between tab stops
-(set-keyboard-coding-system 'mule-utf-8) ; default to utf-8
 (global-auto-revert-mode t)              ; automatically revert a buffer when a file is changed on disk
 (global-undo-tree-mode t)                ; always activate undo tree
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in prog mode
