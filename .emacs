@@ -308,7 +308,8 @@
                           ("\\.odt\\'" "libreoffice")
                           ("\\.mobi\\'" "ebook-viewer")
                           ("\\.epub\\'" "ebook-viewer")
-                          ("\\.html\\'" "firefox"))))
+                          ("\\.html\\'" "firefox")
+                          ("\\.maff\\'" "firefox"))))
 ;;; Detached command-on-file execution
 (defun dired-run-detached-shell-command (command)
   (let ((handler
@@ -420,6 +421,9 @@ provide an ICON and SOUND."
                       '(org-agenda-custom-commands nil)
                       '(org-agenda-dim-blocked-tasks 'invisible)
                       '(org-enforce-todo-dependencies t))
+
+;;; Improve org-open-file types
+(add-to-list 'org-file-apps '("\\.maff\\'" . "firefox %s"))
 
 ;;; Ace-jump-mode integration
 (defun org-table-blank-field-or-jump ()
