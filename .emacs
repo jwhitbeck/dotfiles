@@ -10,11 +10,12 @@
 (custom-set-variables '(package-archives '(("org" . "http://orgmode.org/elpa/")
                                            ("gnu" . "https://elpa.gnu.org/packages/")
                                            ("melpa" . "https://melpa.org/packages/")
-                                           ;; ("melpa-stable" . "https://stable.melpa.org/packages/")
+                                           ("melpa-stable" . "https://stable.melpa.org/packages/")
                                            )))
 
+(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+
 (package-initialize)
-;(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -524,7 +525,7 @@ provide an ICON and SOUND."
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'subword-mode)
 (add-hook 'clojure-mode-hook 'auto-indent-mode)
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook 'eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'subword-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
