@@ -423,6 +423,66 @@ provide an ICON and SOUND."
                       '(org-agenda-dim-blocked-tasks 'invisible)
                       '(org-enforce-todo-dependencies t))
 
+;;; Org HTML export
+
+;;; Online resources
+;;; - https://emacs.stackexchange.com/questions/7629/the-syntax-highlight-and-indentation-of-source-code-block-in-exported-html-file
+;;; - https://vxlabs.com/2015/01/28/sending-emails-with-math-and-source-code/
+(defconst my-css-dir (concat user-emacs-directory "me/css/"))
+(defconst my-js-dir (concat user-emacs-directory "me/js/"))
+
+(defun my-build-html-head ()
+  "Returns a string of inline css to use in org-mode's html export."
+  (let ((css-files (mapcar (lambda (file) (concat my-css-dir file))
+                           '("bootstrap.min.css"
+                             "bootstrap.diff.css"
+                             "code.css"
+                             "org-html-export.css"))))
+    (with-temp-buffer
+      (insert "<style type=\"text/css\">\n")
+      (dolist (file css-files)
+        (insert-file-contents file)
+        (goto-char (point-max))
+        (insert "\n"))
+      (insert "</style>\n")
+      (buffer-string))))
+
+(defun my-build-html-scripts ()
+  "Returns a string of line javascript for use in org-modes's html export."
+  (with-temp-buffer
+    (insert "<script type=\"text/javascript\">\n")
+    (insert-file-contents (concat my-js-dir "org.js"))
+    (goto-char (point-max))
+    (insert "</script>\n")
+    (buffer-string)))
+
+(defconst my-org-html-postamble
+  (concat "<dl class=\"dl-horizontal\">\n"
+          "  <dt>Author</dt><dd>%a</dd>\n"
+          "  <dt>Updated</dt><dd>%C</dd>\n"
+          "</dl>\n"))
+
+(custom-set-variables
+ '(org-html-doctype "html5")
+ '(org-html-html5-fancy t)
+ '(org-html-head-include-default-style nil)
+ '(org-html-postamble t)
+ '(org-html-postamble-format `(("en" ,my-org-html-postamble)))
+ '(org-html-scripts (my-build-html-scripts))
+ '(org-html-head (my-build-html-head))
+ '(org-html-htmlize-output-type 'css)
+ '(org-html-htmlize-font-prefix "org-"))
+
+;;; Fix issue where fill-column-indicator outputs unprintable characters at the end of code blocks
+;;; https://github.com/alpaker/Fill-Column-Indicator/issues/45
+(defun fci-mode-override-advice (&rest args))
+(advice-add 'org-html-fontify-code :around
+            (lambda (fun &rest args)
+              (advice-add 'fci-mode :override #'fci-mode-override-advice)
+              (let ((result  (apply fun args)))
+                (advice-remove 'fci-mode #'fci-mode-override-advice)
+                result)))
+
 ;;; Improve org-open-file types
 (add-to-list 'org-file-apps '("\\.maff\\'" . "firefox %s"))
 
