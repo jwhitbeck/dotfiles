@@ -465,6 +465,7 @@ provide an ICON and SOUND."
           "</dl>\n"))
 
 (custom-set-variables
+ '(org-export-babel-evaluate 'inline-only)
  '(org-html-doctype "html5")
  '(org-html-html5-fancy t)
  '(org-html-head-include-default-style nil)
@@ -473,7 +474,8 @@ provide an ICON and SOUND."
  '(org-html-scripts (my-build-html-scripts))
  '(org-html-head (my-build-html-head))
  '(org-html-htmlize-output-type 'css)
- '(org-html-htmlize-font-prefix "org-"))
+ '(org-html-htmlize-font-prefix "org-")
+ '(org-export-with-toc nil))
 
 ;;; Fix issue where fill-column-indicator outputs unprintable characters at the end of code blocks
 ;;; https://github.com/alpaker/Fill-Column-Indicator/issues/45
