@@ -220,6 +220,8 @@
 ;;; MAGIT MODE
 (require 'vc-git)            ; This needs to be required or else magit falls back to lgrep instead of git-grep
 
+(custom-set-variables '(magit-delete-by-moving-to-trash nil))
+
 ;;; IDO MODE
 (require 'ido)
 (require 'recentf)
