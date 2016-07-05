@@ -668,6 +668,21 @@ provide an ICON and SOUND."
 (add-hook 'emacs-lisp-mode-hook 'auto-indent-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
+(defun my-generate-elisp-tags ()
+  "Rebuilds the ~/.emacs.d/me/elisp_tags file from all elisp files on the load path."
+  (let ((tags-file (expand-file-name "me/elisp_tags" user-emacs-directory)))
+    (when (file-exists-p tags-file)
+      (delete-file tags-file))
+    (dolist (dir load-path)
+      (dolist (file (directory-files dir))
+        (when (and (or (string-suffix-p ".el" file)
+                       (string-suffix-p ".el.gz" file))
+                   (not (string-prefix-p "." file)))
+          (let ((elisp-file (concat (file-name-as-directory dir) file)))
+            (call-process "etags" nil t t "--append" "--output" tags-file elisp-file)))))))
+
+;;; TODO add hook to auto-visit these tags when reading an elisp file on load-path
+
 ;;; ELISP MINIBUFFER
 (add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
 (defun conditionally-enable-paredit-mode ()
