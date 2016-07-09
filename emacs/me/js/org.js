@@ -8,4 +8,9 @@ window.onload = function () {
     for (var i=0; i<tables.length; ++i) {
         tables[i].className = "table";
     }
+    // Add dl-horizontal to all org-mode definition lists
+    var deflists = document.getElementById("content").getElementsByClassName("org-dl");
+    for (var i=0; i<deflists.length; ++i) {
+        deflists[i].className += " dl-horizontal";
+    }
 };
