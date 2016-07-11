@@ -5,6 +5,7 @@
 (require 'mu4e)
 (require 'mu4e-contrib)
 (require 'smtpmail)
+(require 'org-mu4e)
 
 (defcustom my-mu4e-inboxes nil
   "List of paths relative to the `mu4e-maildir' that are inboxes."
