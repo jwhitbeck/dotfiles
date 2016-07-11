@@ -5,6 +5,9 @@
 (eval-when-compile
   (require 'ox-html))
 
+(require 'my-package)
+(my-use-packages htmlize)
+
 ;;; Online resources
 ;;; - https://emacs.stackexchange.com/questions/7629/the-syntax-highlight-and-indentation-of-source-code-block-in-exported-html-file
 ;;; - https://vxlabs.com/2015/01/28/sending-emails-with-math-and-source-code/
@@ -13,7 +16,7 @@
 
 (defun my-build-html-head ()
   "Returns a string of inline css to use in org-mode's html export."
-  (let ((css-files (mapcar (lambda (file) (concat my-css-dir file))
+  (let ((css-files (mapcar (lambda (file) (expand-file-name file my-css-dir))
                            '("bootstrap.min.css"
                              "bootstrap.diff.css"
                              "code.css"
@@ -31,7 +34,7 @@
   "Returns a string of line javascript for use in org-modes's html export."
   (with-temp-buffer
     (insert "<script type=\"text/javascript\">\n")
-    (insert-file-contents (concat my-js-dir "org.js"))
+    (insert-file-contents (expand-file-name "org.js" my-js-dir))
     (goto-char (point-max))
     (insert "</script>\n")
     (buffer-string)))
@@ -49,8 +52,8 @@
  '(org-html-head-include-default-style nil)
  '(org-html-postamble t)
  '(org-html-postamble-format `(("en" ,my-org-html-postamble)))
- '(org-html-scripts (my-build-html-scripts))
- '(org-html-head (my-build-html-head))
+ '(org-html-scripts (my-build-html-scripts) t)
+ '(org-html-head (my-build-html-head) t)
  '(org-html-htmlize-output-type 'css)
  '(org-html-htmlize-font-prefix "org-")
  '(org-export-with-toc nil))
