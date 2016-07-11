@@ -21,6 +21,12 @@
  '(org-read-date-force-compatible-dates nil)
  '(org-completion-use-ido t))
 
+;;; Capture settings
+(custom-set-variables
+ '(org-refile-use-outline-path t)
+ '(org-outline-path-complete-in-steps nil)
+ '(org-capture-use-agenda-date t))
+
 ;;; Babel settings
 (custom-set-variables
  '(org-src-fontify-natively t)
