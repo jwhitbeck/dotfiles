@@ -24,10 +24,10 @@
   (set-default sym smtp-accounts)
   (custom-set-variables
    ;; Exclude my email addresses from reply-all and use for indexing.
-   '(mu4e-user-mail-address-list (my-email-addresses smtp-accounts) t)
+   `(mu4e-user-mail-address-list (list ,@(my-email-addresses smtp-accounts)))
    ;; Default sender is user-full-name <user-mail-address>
-   '(user-full-name (cadar my-smtp-accounts) t)
-   '(user-mail-address (caar my-smtp-accounts) t)))
+   `(user-full-name ,(cadar smtp-accounts))
+   `(user-mail-address ,(caar smtp-accounts))))
 
 (defcustom my-smtp-accounts nil
   "List of smtp accounts as (email username server port). The passwords are stored in ~/.authinfo."
