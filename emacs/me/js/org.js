@@ -6,11 +6,20 @@ window.onload = function () {
     // Add table class to all tables
     var tables = document.getElementById("content").getElementsByTagName("table");
     for (var i=0; i<tables.length; ++i) {
-        tables[i].className = "table";
+        if (tables[i].className == "") {
+            tables[i].className = "table";
+        } else {
+            tables[i].className += " table";
+        }
+
     }
     // Add dl-horizontal to all org-mode definition lists
     var deflists = document.getElementById("content").getElementsByClassName("org-dl");
     for (var i=0; i<deflists.length; ++i) {
-        deflists[i].className += " dl-horizontal";
+        if (deflists[i].className == "") {
+            deflists[i].className = "dl-horizontal";
+        } else {
+            deflists[i].className += " dl-horizontal";
+        }
     }
 };
