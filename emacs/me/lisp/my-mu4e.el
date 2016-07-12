@@ -166,11 +166,11 @@ messages in my inbox."
 (defun my-set-smtp (account)
   "Sets SMTP related variables for the provided smtp account info."
   (custom-set-variables
-   '(user-mail-address (nth 0 account) t)
-   '(user-full-name (nth 1 account) t)
-   '(smtpmail-smtp-user (nth 2 account) t)
-   '(smtpmail-smtp-server (nth 3 account) t)
-   '(smtpmail-smtp-service (nth 4 account) t))
+   `(user-mail-address ,(nth 0 account))
+   `(user-full-name ,(nth 1 account))
+   `(smtpmail-smtp-user ,(nth 2 account))
+   `(smtpmail-smtp-server ,(nth 3 account))
+   `(smtpmail-smtp-service ,(nth 4 account)))
   (message "Use SMTP settings for %s" (nth 0 account)))
 
 (defun my-set-stmp-for-email (email)
