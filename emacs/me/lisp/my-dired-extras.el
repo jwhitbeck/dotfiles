@@ -133,6 +133,13 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
 
 (define-key dired-mode-map (kbd "a") 'my-gnus-dired-attach)
 
+(defun my-gnus-dired-mail-buffers ()
+  "Return a list of active mail composition buffers. Drop-in replacement for gnus-dired-mail-buffers."
+  (require 'message)
+  (message-buffers))
+
+(advice-add 'gnus-dired-mail-buffers :override 'my-gnus-dired-mail-buffers)
+
 ;;; Miscellaneous settings
 (custom-set-variables
  '(dired-auto-revert-buffer t)          ; Auto-revert
