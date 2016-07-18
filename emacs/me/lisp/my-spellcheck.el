@@ -47,4 +47,8 @@
                           (member major-mode my-proselint-major-modes)))))
   (add-to-list 'flycheck-checkers 'proselint))
 
+;;; Prevent C-c $ from overriding org-mode's archive-subtree binding
+(with-eval-after-load 'flyspell
+  (define-key flyspell-mode-map (kbd "C-c $") nil))
+
 (provide 'my-spellcheck)
