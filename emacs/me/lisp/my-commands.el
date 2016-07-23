@@ -65,14 +65,41 @@ the output of the command. Press 'q' to dismiss the buffer."
 (global-set-key (kbd "M-§") 'my-detached-shell-command)
 
 ;;; Quickly open shells on remote hosts.
-(defun remote-shell-at-point ()
-  "Opens a remote shell on the host-name under point."
+(defun my-remote-shell-at-point ()
+  "Open a remote shell on the host-name under point."
   (interactive)
   (let ((hostname (thing-at-point 'filename)))
     (let ((buffer-name (format "*%s*" hostname))
           (default-directory (format "/%s:" hostname))
           (current-prefix-arg '-))      ; C-u
       (shell buffer-name))))
+
+(defun my-tramp-connection-history ()
+  "Return the list of all user@hostname pairs present in the tramp connection history."
+  (let ((tramp-conn-hist (with-temp-buffer
+                           (insert-file-contents-literally "/home/sean/.emacs.d/tramp")
+                           (read (current-buffer))))
+        (conns '()))
+    (dolist (conn-spec tramp-conn-hist)
+      (let* ((conn-head (car conn-spec))
+             (user (aref conn-head 1))
+             (host (aref conn-head 2)))
+        (when (and host (not (equal "root" user)))
+          (if user
+              (push (format "%s@%s" user host) conns)
+            (push host conns)))))
+    conns))
+
+(defun my-remote-shell (hostname)
+  "Open a tramp-enabled shell on HOSTNAME."
+  (interactive
+   (list (ido-completing-read "user@host: " (my-tramp-connection-history))))
+  (let ((buffer-name (format "*%s*" hostname))
+        (default-directory (format "/%s:" hostname))
+        (current-prefix-arg '-))        ; C-u
+    (shell buffer-name)))
+
+(global-set-key (kbd "C-c s") 'my-remote-shell)
 
 ;;; X11 Notifications
 ;;; Assumes that emacs is running on ubuntu
