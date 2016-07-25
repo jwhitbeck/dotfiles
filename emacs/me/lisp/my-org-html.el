@@ -51,7 +51,7 @@
  '(org-html-html5-fancy t)
  '(org-html-head-include-default-style nil)
  '(org-html-postamble t)
- `(org-html-postamble-format (("en" ,my-org-html-postamble)))
+ '(org-html-postamble-format (("en" my-org-html-postamble)))
  `(org-html-scripts ,(my-build-html-scripts))
  `(org-html-head ,(my-build-html-head))
  '(org-html-htmlize-output-type 'css)
