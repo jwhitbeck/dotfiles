@@ -77,7 +77,7 @@ the output of the command. Press 'q' to dismiss the buffer."
 (defun my-tramp-connection-history ()
   "Return the list of all user@hostname pairs present in the tramp connection history."
   (let ((tramp-conn-hist (with-temp-buffer
-                           (insert-file-contents-literally "/home/sean/.emacs.d/tramp")
+                           (insert-file-contents-literally "~/.emacs.d/tramp")
                            (read (current-buffer))))
         (conns '()))
     (dolist (conn-spec tramp-conn-hist)
