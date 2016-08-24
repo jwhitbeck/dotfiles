@@ -24,7 +24,7 @@
 (eval-when-compile
   (require 'clojure-mode)
   (require 'cider))
-(with-eval-after-load 'cider
+(with-eval-after-load 'clojure-mode
   (custom-set-variables
    ;; Prevent the auto-display of the REPL buffer in a separate window after connection is established.
    '(cider-repl-pop-to-buffer-on-connect nil)
