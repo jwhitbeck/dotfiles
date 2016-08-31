@@ -49,7 +49,7 @@
  '(mu4e-headers-time-format "%X")       ; TODO: change
  '(mu4e-compose-signature-auto-include nil) ; Don't include signature at end of message
  '(mu4e-compose-dont-reply-to-self t)
- '(mu4e-compose-complete-only-personal t)
+ ;'(mu4e-compose-complete-only-personal t)  ; This doesn't appear to work reliably
  '(mu4e-compose-complete-only-after (format-time-string "%Y-%m-%d" (my-years-ago 2)) t)
  '(message-send-mail-function 'smtpmail-send-it)
  '(mail-user-agent 'mu4e-user-agent)               ; mu4e as default emacs mail agent
