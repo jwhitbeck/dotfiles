@@ -18,4 +18,6 @@
 (setenv "PAGER" "cat")                                             ; Do not use `less` as the default pager
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer) ; truncate buffers continuously
 
+(global-set-key (kbd "C-x x") 'shell)
+
 (provide 'my-shell)
