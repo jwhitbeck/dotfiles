@@ -20,6 +20,15 @@
 
 ;;; Enable the proselint org startup option
 (require 'my-spellcheck)
-(add-to-list 'org-startup-options '("proselint" my-use-proselint t) t)
+
+(defvar my-org-use-proselint nil
+  "If t, enable proselint in org-mode buffer.")
+
+(defun my-org-enable-proselint ()
+  (setq my-use-proselint my-org-use-proselint))
+
+(flycheck-add-mode 'proselint 'org-mode)
+(add-hook 'org-mode-hook 'my-org-enable-proselint)
+(add-to-list 'org-startup-options '("proselint" my-org-use-proselint t) t)
 
 (provide 'my-org-extras)

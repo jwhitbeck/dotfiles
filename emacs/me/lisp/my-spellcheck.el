@@ -21,13 +21,8 @@
 (customize-set-variable 'flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
 
 ;;; Proselint integration, see http://unconj.ca/blog/linting-prose-in-emacs.html
-(defvar-local my-use-proselint nil
-  "If t, enables proselint in buffer.")
-
-(defcustom my-proselint-major-modes '(text-mode)
-  "List of major modes that have proselint enabled."
-  :type '(repeat symbol)
-  :group 'my-spellcheck)
+(defvar-local my-use-proselint t
+  "If t, enables proselint in buffer if the major-mode is supported by proselint.")
 
 (when (executable-find "proselint")
   (flycheck-define-checker proselint
@@ -39,12 +34,12 @@
               (message (one-or-more not-newline)
                        (zero-or-more "\n" (any " ") (one-or-more not-newline)))
               line-end))
+    :modes (text-mode)
     :predicate (lambda ()
                  (and (or (not ispell-current-dictionary)
                           ;; only use when typing in english
                           (string-prefix-p "en" ispell-current-dictionary))
-                      (or my-use-proselint
-                          (member major-mode my-proselint-major-modes)))))
+                      my-use-proselint)))
   (add-to-list 'flycheck-checkers 'proselint))
 
 ;;; Prevent C-c $ from overriding org-mode's archive-subtree binding
