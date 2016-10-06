@@ -41,7 +41,7 @@ the output of the command. Press 'q' to dismiss the buffer."
     (with-current-buffer buf
       (read-only-mode)
       (setq default-directory directory)
-      (local-set-key (kbd "g") 'refreshable-shell-command--refresh)
+      (local-set-key (kbd "g") 'my-refreshable-shell-command--refresh)
       (local-set-key (kbd "q") 'kill-this-buffer)
       (setq my-refreshable-shell-command--command command)
       (my-refreshable-shell-command--refresh))
