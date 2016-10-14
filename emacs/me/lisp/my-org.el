@@ -51,6 +51,8 @@
  '(org-tags-column -100)
  ;; Cache agenda views
  '(org-agenda-sticky t)
+ ;; Only show the next occurrence of repeated events
+ '(org-agenda-repeating-timestamp-show-all nil)
  '(org-agenda-todo-ignore-scheduled 'future)
  '(org-stuck-projects '("+LEVEL=2+CATEGORY=\"Project\"" ("TODO" "WAITING") nil ""))
  ;; Show the full project tree in follow-mode
@@ -58,7 +60,12 @@
  ;; Clear all default custom agenda views
  '(org-agenda-custom-commands nil)
  '(org-agenda-dim-blocked-tasks 'invisible)
- '(org-enforce-todo-dependencies t))
+ '(org-enforce-todo-dependencies t)
+ ;; Allow tags-todo to set ignore options
+ '(org-agenda-tags-todo-honor-ignore-options t)
+ ;; Hide scheduled and deadline items in agenda that are marked as done
+ '(org-agenda-skip-scheduled-if-done t)
+ '(org-agenda-skip-deadline-if-done t))
 
 ;;; Holidays
 (defconst holiday-french-holidays
