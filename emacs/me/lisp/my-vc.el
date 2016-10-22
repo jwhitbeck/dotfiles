@@ -8,11 +8,8 @@
 (custom-set-variables '(magit-delete-by-moving-to-trash nil))
 
 ;;; Bind git-grep
-(defun my-git-grep ()
-  (interactive)
-  (require 'vc-git)
-  (call-interactively 'vc-git-grep))
+(autoload 'vc-git-grep "vc-git")
 
-(global-set-key (kbd "C-x g") 'my-git-grep)
+(global-set-key (kbd "C-x g") 'vc-git-grep)
 
 (provide 'my-vc)
