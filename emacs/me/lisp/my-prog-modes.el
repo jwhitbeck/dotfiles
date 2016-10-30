@@ -5,7 +5,7 @@
 (require 'my-package)
 (require 'my-editing)
 (require 'my-spellcheck)
-(my-use-packages ess ess-smart-underscore markdown-mode go-mode yaml-mode)
+(my-use-packages ess ess-smart-underscore markdown-mode go-mode yaml-mode protobuf-mode)
 
 ;;; Emacs Speaks Statistis
 (eval-when-compile
