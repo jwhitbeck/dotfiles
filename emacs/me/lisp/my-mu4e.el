@@ -241,6 +241,9 @@ possible, the From header will be set to the default."
 ;;; Initialize default vars
 (my-mu4e-infer-default-vars)
 
+;;; org-mu4e workaround for org-9.0 (org-add-link-type is deprecated)
+(org-link-set-parameters "mu4e" :follow 'org-mu4e-open :store 'org-mu4e-store-link)
+
 (defun my-ensure-mu4e-is-running (&optional force-offline)
   (when (not (mu4e-running-p))
     (if (or force-offline (not (my-have-internet-p)))
