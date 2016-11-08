@@ -35,7 +35,7 @@
                               (emacs-lisp . t)
                               (R . t)
                               (sql . t)
-                              (sh . t))))
+                              (shell . t))))
 
 ;;; Agenda settings
 (custom-set-variables
