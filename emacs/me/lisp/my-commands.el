@@ -81,13 +81,14 @@ the output of the command. Press 'q' to dismiss the buffer."
                            (read (current-buffer))))
         (conns '()))
     (dolist (conn-spec tramp-conn-hist)
-      (let* ((conn-head (car conn-spec))
-             (user (aref conn-head 1))
-             (host (aref conn-head 2)))
-        (when (and host (not (equal "root" user)))
-          (if user
-              (push (format "%s@%s" user host) conns)
-            (push host conns)))))
+      (when conn-spec
+        (let* ((conn-head (car conn-spec))
+               (user (aref conn-head 1))
+               (host (aref conn-head 2)))
+          (when (and host (not (equal "root" user)))
+            (if user
+                (push (format "%s@%s" user host) conns)
+              (push host conns))))))
     conns))
 
 (defun my-remote-shell (hostname)
