@@ -6,10 +6,11 @@
 (require 'my-editing)
 (my-use-packages paredit)
 
+(my-disable-tab-highlighting 'emacs-lisp-mode)
+
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'auto-indent-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-(add-hook 'emacs-lisp-mode-hook 'my-disable-tab-highlighting)
 
 ;;; minibuffer
 (defun my-conditionally-enable-paredit-mode ()

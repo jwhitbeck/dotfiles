@@ -14,7 +14,7 @@
   (define-key ess-mode-map (kbd "_") 'ess-smarter-underscore))
 
 ;;; Golang
-(add-hook 'go-mode-hook 'my-disable-tab-highlighting)
+(my-disable-tab-highlighting 'go-mode)
 (add-hook 'go-mode-hook 'my-enable-indent-tabs)
 
 ;;; YAML

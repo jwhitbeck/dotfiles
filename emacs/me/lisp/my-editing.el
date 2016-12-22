@@ -13,17 +13,29 @@
 (global-undo-tree-mode t)               ; always activate undo tree
 
 ;;; Highlight and auto-correct whitespace problems
-(global-whitespace-mode t)
+(add-hook 'prog-mode-hook 'my-whitespace-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(custom-set-variables
- '(whitespace-style '(face empty trailing tabs tab-mark)))
 
-;;; Don't highlight tabs in whitespace mode
-(defun my-disable-tab-highlighting ()
-  "Disable tab highlighting in whitespace mode."
-  (make-local-variable 'whitespace-style)
-  (setq whitespace-style (delq 'tabs whitespace-style))
-  (setq whitespace-style (delq 'tab-mark whitespace-style)))
+(defcustom my-whitespace-styles nil
+  "List of (major-mode . whitespace-style) pairs. Used to define custom whitespace-mode styles by major mode."
+  :type '(alist :key-type symbol :value-type (list symbol))
+  :group 'my-editing)
+
+(defcustom my-default-whitespace-style '(face empty trailing tabs tab-mark)
+  "The default whitespace style to use."
+  :type '(list symbol)
+  :group 'my-editing)
+
+(defun my-disable-tab-highlighting (mm)
+  "Disable tab highlighting for major mode."
+  (add-to-list 'my-whitespace-styles
+               (cons mm (->> my-default-whitespace-style copy-sequence (delq 'tabs) (delq 'tab-mark)))))
+
+(defun my-whitespace-mode ()
+  "Configure whitespace-mode differently depending on the major mode."
+  (setq-local whitespace-style (or (cdr (assoc major-mode my-whitespace-styles))
+                                   my-default-whitespace-style))
+  (whitespace-mode))
 
 ;;; No tabs by default. Modes that really need tabs should enable indent-tabs-mode explicitly.
 ;;; Makefile-mode already does that, for example.
