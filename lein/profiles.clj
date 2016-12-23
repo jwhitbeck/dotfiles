@@ -9,10 +9,8 @@
         :dependencies [[criterium "0.4.3"]
                        [org.clojure/tools.trace "0.7.9"]
                        [org.clojure/tools.namespace "0.2.11"]
-                       [spyscope "0.1.5"]
-                       [slamhound "1.5.5"]]
+                       [spyscope "0.1.5"]]
         :injections [(require 'spyscope.core) ; for the reader macro #spy/d, available in all namespaces
                      (require '[criterium.core :refer [bench quick-bench]])
                      (require '[no.disassemble :refer [disassemble]])
-                     (require '[clojure.tools.namespace.repl :refer [refresh]])]
-        :aliases {"slamhound" ["run" "-m" "slam.hound"]}}}
+                     (require '[clojure.tools.namespace.repl :refer [refresh]])]}}
