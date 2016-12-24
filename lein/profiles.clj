@@ -4,7 +4,6 @@
                   [lein-clojars "0.9.1"]
                   [lein-kibit "0.1.2"]
                   [lein-nodisassemble "0.1.3"]
-                  [lein-try "0.4.3"]
                   [jonase/eastwood "0.2.3"]]
         :dependencies [[criterium "0.4.3"]
                        [org.clojure/tools.trace "0.7.9"]
