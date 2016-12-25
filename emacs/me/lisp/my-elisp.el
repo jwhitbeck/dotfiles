@@ -24,6 +24,12 @@
   "Return a function that always returns x."
   (lambda () x))
 
+(defmacro measure-time (&rest body)
+  "Measure the time it takes to evaluate BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (message "%.06f" (float-time (time-since time)))))
+
 ;;; Generate TAGS for all elisp files on load path
 (defvar my-elisp-tags-file (expand-file-name "me/TAGS.elisp" user-emacs-directory))
 
