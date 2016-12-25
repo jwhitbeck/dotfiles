@@ -6,6 +6,7 @@
 (my-use-packages ace-jump-mode
                  ace-window
                  company
+                 company-flx
                  fill-column-indicator
                  fiplr
                  flx-ido
@@ -187,6 +188,7 @@
 ;;; Auto-completion
 (global-company-mode)
 (global-set-key (kbd "TAB") 'company-indent-or-complete-common)
+(company-flx-mode)
 
 ;; workaround for fill-column indicator
 ;; See https://github.com/company-mode/company-mode/issues/180
