@@ -4,7 +4,7 @@
 
 (require 'my-package)
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
-(my-use-packages cider clojure-mode)
+(my-use-packages cider clojure-mode clj-refactor kibit-helper)
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
@@ -34,7 +34,9 @@
    '(nrepl-log-messages nil)
    ;; Auto-focus the error buffer when it's displayed after evaluating some clojure code. This makes it easy to
    ;; type "q" to dismiss the window, assuming you don't want this backtrace window hanging around.
-   '(cider-auto-select-error-buffer t))
+   '(cider-auto-select-error-buffer t)
+   ;; When using `cljr-clean-ns`, don't favor prefix notation in the ns form.
+   '(cljr-favor-prefix-notation nil))
 
   ;; Disable C-c SPC binding in clojure mode as it overrides the ace-window-mode key binding
   (define-key clojure-mode-map (kbd "C-c SPC") nil))
