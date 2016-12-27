@@ -17,6 +17,15 @@
 (my-disable-tab-highlighting 'go-mode)
 (add-hook 'go-mode-hook 'my-enable-indent-tabs)
 
+(custom-set-variables
+ '(gofmt-command "goimports"))
+
+(defun my-enable-gofmt-before-save ()
+  (when (not (memq 'gofmt-before-save before-save-hook))
+    (add-hook 'before-save-hook 'gofmt-before-save)))
+
+(add-hook 'go-mode-hook 'my-enable-gofmt-before-save)
+
 ;;; YAML
 ;; Add a few extra minor-modes since yaml-mode does not derive from either prog-mode or text-mode
 (add-hook 'yaml-mode-hook 'fci-mode) ; show bar beyond the fill column
