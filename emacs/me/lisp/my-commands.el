@@ -91,10 +91,15 @@ the output of the command. Press 'q' to dismiss the buffer."
               (push host conns))))))
     conns))
 
+(defcustom my-list-remote-hosts-function 'my-tramp-connection-history
+  "A function that returns the list of hosts to consider for `my-remote-shell'."
+  :type 'function
+  :group 'my-commands)
+
 (defun my-remote-shell (hostname)
   "Open a tramp-enabled shell on HOSTNAME."
   (interactive
-   (list (ido-completing-read "user@host: " (my-tramp-connection-history))))
+   (list (ido-completing-read "user@host: " (funcall my-list-remote-hosts-function))))
   (let ((buffer-name (format "*%s*" hostname))
         (default-directory (format "/%s:" hostname))
         (current-prefix-arg '-))        ; C-u
