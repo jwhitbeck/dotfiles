@@ -5,7 +5,7 @@
 (require 'my-package)
 (require 'my-editing)
 (require 'my-spellcheck)
-(my-use-packages ess ess-smart-underscore markdown-mode go-mode yaml-mode protobuf-mode)
+(my-use-packages ess ess-smart-underscore markdown-mode go-mode go-eldoc yaml-mode protobuf-mode)
 
 ;;; Emacs Speaks Statistis
 (eval-when-compile
@@ -16,6 +16,7 @@
 ;;; Golang
 (my-disable-tab-highlighting 'go-mode)
 (add-hook 'go-mode-hook 'my-enable-indent-tabs)
+(add-hook 'go-mode-hook 'go-eldoc-setup)
 
 (custom-set-variables
  '(gofmt-command "goimports"))
