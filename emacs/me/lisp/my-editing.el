@@ -4,7 +4,7 @@
 
 (require 'my-package)
 
-(my-use-packages auto-indent-mode undo-tree)
+(my-use-packages auto-indent-mode undo-tree yasnippet)
 
 (custom-set-variables
  '(auto-save-default nil)               ; disable autosave
@@ -54,5 +54,20 @@
   nil)
 
 (add-hook 'write-file-hooks 'my-untabify-buffer)
+
+;;; Yasnippet
+(require 'yasnippet)
+(add-to-list 'yas-snippet-dirs (expand-file-name "snippets" my-dir))
+
+;;; Lazy-load snippets
+(defvar my-are-snippets-loaded nil
+  "t if the snippets have been loaded.")
+
+(defun my-yas-minor-mode ()
+  "Like yas-minor-mode but loads snippets if that hasn't already been done."
+  (when (not my-are-snippets-loaded)
+    (yas-reload-all)
+    (setq my-are-snippets-loaded t))
+  (yas-minor-mode))
 
 (provide 'my-editing)

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Configure postgresql connection for subtree
+# key: <pg
+# --
+:PROPERTIES:
+:header-args:sql: :engine postgresql :cmdline -U $1 -h $2 -F '|' $3
+:END:
+$0

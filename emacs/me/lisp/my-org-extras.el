@@ -31,4 +31,8 @@
 (add-hook 'org-mode-hook 'my-org-enable-proselint)
 (add-to-list 'org-startup-options '("proselint" my-org-use-proselint t) t)
 
+;;; Enable yasnippet in org-mode
+(require 'my-editing)
+(add-hook 'org-mode-hook 'my-yas-minor-mode)
+
 (provide 'my-org-extras)
