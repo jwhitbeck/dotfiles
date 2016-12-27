@@ -21,7 +21,10 @@
 (custom-set-variables
  '(gofmt-command "goimports"))
 
-(define-key go-mode-map (kbd "M-.") 'godef-jump)
+(eval-when-compile
+  (require 'go-mode))
+(with-eval-after-load 'go-mode
+  (define-key go-mode-map (kbd "M-.") 'godef-jump))
 
 (defun my-enable-gofmt-before-save ()
   (when (not (memq 'gofmt-before-save before-save-hook))
