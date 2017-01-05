@@ -15,7 +15,9 @@
  ;; Always use the cache for remote completion
  '(tramp-completion-reread-directory-timeout nil)
  ;; Disable version control checks on remote files
- '(vc-ignore-dir-regexp (format "\\(%s\\)\\|\\(%s\\)" vc-ignore-dir-regexp tramp-file-name-regexp)))
+ '(vc-ignore-dir-regexp (format "\\(%s\\)\\|\\(%s\\)" vc-ignore-dir-regexp tramp-file-name-regexp))
+ ;; Use ssh control master config from ~/.ssh/config
+ '(tramp-ssh-controlmaster-options ""))
 
 (with-eval-after-load 'tramp
   ;; Always add $HOME/bin to the remote path
