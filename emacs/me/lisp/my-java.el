@@ -3,7 +3,7 @@
 ;;; Java mode settings
 
 (require 'my-package)
-(my-use-packages emacs-eclim company)
+(my-use-packages eclim company company-emacs-eclim)
 
 (eval-when-compile
   (require 'my-java-eclim))
