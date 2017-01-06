@@ -96,7 +96,7 @@ messages in a private offline view."
              t)
 
 ;;; Proselint integration
-(flycheck-add-mode 'proselint 'mu4e-compose-mode)
+(my-enable-proselint-for-mode 'mu4e-compose-mode)
 
 ;;; Remove text-properties that interfere with company mode
 (defun my-strip-message-mode-problematic-text-props ()

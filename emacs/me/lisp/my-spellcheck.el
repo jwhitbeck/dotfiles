@@ -24,6 +24,10 @@
 (defvar-local my-use-proselint t
   "If t, enables proselint in buffer if the major-mode is supported by proselint.")
 
+(defun my-enable-proselint-for-mode (mode)
+  (when (flycheck-valid-checker-p 'proselint)
+    (flycheck-add-mode 'proselint mode)))
+
 (when (executable-find "proselint")
   (flycheck-define-checker proselint
     "A linter for prose."

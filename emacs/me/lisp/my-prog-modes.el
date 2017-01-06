@@ -55,6 +55,6 @@
   (require 'org-table)
   (orgtbl-mode t))
 (add-hook 'markdown-mode-hook 'my-enable-orgtbl-mode)
-(flycheck-add-mode 'proselint 'markdown-mode)
+(my-enable-proselint-for-mode 'markdown-mode)
 
 (provide 'my-prog-modes)
