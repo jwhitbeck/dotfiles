@@ -26,6 +26,9 @@
   :type '(list symbol)
   :group 'my-editing)
 
+;;; For the ->> macro
+(require 'dash)
+
 (defun my-disable-tab-highlighting (mm)
   "Disable tab highlighting for major mode."
   (add-to-list 'my-whitespace-styles

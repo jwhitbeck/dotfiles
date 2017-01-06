@@ -6,6 +6,9 @@
 (require 'mu4e-contrib)
 (require 'smtpmail)
 (require 'org-mu4e)
+(require 'my-package)
+
+(my-use-packages dash)
 
 (defcustom my-mu4e-inboxes nil
   "List of paths relative to the `mu4e-maildir' that are inboxes."
@@ -124,6 +127,9 @@ messages in a private offline view."
   "Returns the number of messages in a maildir."
   (+ (length (directory-files (concat maildir "/cur") nil "...+" ))
      (length (directory-files (concat maildir "/new") nil "...+" ))))
+
+;;; For the ->> macro
+(require 'dash)
 
 (defun my-num-inbox-messages ()
   "Returns the number of messages in my inboxes."
