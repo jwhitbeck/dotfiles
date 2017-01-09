@@ -119,7 +119,7 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
   (my-dired-do-detached-shell-command "xdg-open" current-prefix-arg file-list))
 
 (define-key dired-mode-map (kbd "§") 'my-dired-do-detached-shell-command)
-(define-key dired-mode-map (kbd "œ") 'my-dired-do-xdg-open)
+(define-key dired-mode-map (kbd "²") 'my-dired-do-xdg-open)
 
 ;;; Mu4e integration
 (autoload 'my-ensure-mu4e-is-running "my-mu4e")
