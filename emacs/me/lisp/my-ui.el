@@ -163,7 +163,7 @@
 (global-set-key (kbd "C-x &") 'delete-other-windows) ; C-x 1
 (global-set-key (kbd "C-x é") 'my-split-window-below) ; C-x 2
 (global-set-key (kbd "C-x \"") 'my-split-window-right) ; C-x 3
-(global-set-key (kbd "C-x œ") 'winner-undo)
+(global-set-key (kbd "C-x ²") 'winner-undo)
 
 ;;; Use Ubuntu's default font
 (set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
