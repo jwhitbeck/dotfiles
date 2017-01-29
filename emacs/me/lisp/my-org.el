@@ -54,7 +54,7 @@
  ;; Only show the next occurrence of repeated events
  '(org-agenda-repeating-timestamp-show-all nil)
  '(org-agenda-todo-ignore-scheduled 'future)
- '(org-stuck-projects '("+LEVEL=2+CATEGORY=\"Project\"" ("TODO" "WAITING") ("appt") ""))
+ '(org-stuck-projects '("+LEVEL=2+CATEGORY=\"Project\"" ("TODO" "WAITING") nil nil))
  ;; Show the full project tree in follow-mode
  '(org-agenda-follow-indirect t)
  ;; Clear all default custom agenda views
