@@ -12,7 +12,4 @@
                   ;; libraries to inspect namespaces and report possible problems.
                   ;; https://github.com/jonase/eastwood
                   [jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]]
-        :dependencies [[criterium "0.4.3"]]
-        ;; Make these functions available in all namespaces
-        :injections [(require '[criterium.core :refer [bench quick-bench]])
-                     (require '[no.disassemble :refer [disassemble]])]}}
+        :dependencies [[criterium "0.4.3"]]}}
