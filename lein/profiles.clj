@@ -7,9 +7,10 @@
                   [lein-kibit "0.1.3" :exclusions [org.clojure/clojure]]
                   ;; A Clojure library designed to let you inspect bytecode of functions and things.
                   ;; https://github.com/gtrak/no.disassemble
-                  [lein-nodisassemble "0.1.3"]
+                  ;[lein-nodisassemble "0.1.3"]
                   ;; Eastwood is a Clojure lint tool that uses the tools.analyzer and tools.analyzer.jvm
                   ;; libraries to inspect namespaces and report possible problems.
                   ;; https://github.com/jonase/eastwood
-                  [jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]]
+                  ;[jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
+                  ]
         :dependencies [[criterium "0.4.3"]]}}
