@@ -280,4 +280,43 @@ running, start it in the background."
   (my-ensure-mu4e-is-running)
   (call-interactively 'compose-mail))
 
+;;; Fix to the `mu4e~draft-insert-mail-header-separator` function, to allow for sending empty messages.
+;;; https://github.com/djcb/mu/pull/1046
+(defun my-mu4e~draft-insert-mail-header-separator ()
+  "Insert `mail-header-separator' in the first empty line of the message.
+`message-mode' needs this line to know where the headers end and
+the body starts. Note, in `mu4e-compose-mode', we use
+`before-save-hook' and `after-save-hook' to ensure that this
+separator is never written to the message file. Also see
+`mu4e-remove-mail-header-separator'."
+  ;; we set this here explicitly, since (as it has happened) a wrong
+  ;; value for this (such as "") breaks address completion and other things
+  (set (make-local-variable 'mail-header-separator) "--text follows this line--")
+  (put 'mail-header-separator 'permanent-local t)
+  (save-excursion
+    ;; make sure there's not one already
+    (mu4e~draft-remove-mail-header-separator)
+    (let ((sepa (propertize mail-header-separator
+                            'intangible t
+                            ;; don't make this read-only, message-mode
+                            ;; seems to require it being writable in some cases
+                            ;;'read-only "Can't touch this"
+                            'rear-nonsticky t
+                            'font-lock-face 'mu4e-compose-separator-face)))
+      (widen)
+      ;; search for the first empty line
+      (goto-char (point-min))
+      (if (search-forward-regexp "^$" nil t)
+          (progn
+            (replace-match sepa)
+            ;; `message-narrow-to-headers` searches for a `mail-header-separator` followed by a new
+            ;; line. Therefore, we must insert a newline if on the last line of the buffer.
+            (when (= (point) (point-max))
+              (insert "\n")))
+        (progn ;; no empty line? then prepend one
+          (goto-char (point-max))
+          (insert "\n" sepa))))))
+
+(advice-add 'mu4e~draft-insert-mail-header-separator :override 'my-mu4e~draft-insert-mail-header-separator)
+
 (provide 'my-mu4e)
