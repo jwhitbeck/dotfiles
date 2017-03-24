@@ -5,7 +5,9 @@
 (require 'my-package)
 (my-use-packages browse-at-remote magit)
 
-(custom-set-variables '(magit-delete-by-moving-to-trash nil))
+(custom-set-variables
+ '(magit-delete-by-moving-to-trash nil)
+ '(git-commit-fill-column 70))
 
 ;;; Git grep
 (autoload 'vc-git-grep "vc-git")
