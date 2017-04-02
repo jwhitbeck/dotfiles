@@ -62,11 +62,19 @@
  '(mu4e-view-show-addresses t)          ; Always show email addresses
  '(message-kill-buffer-on-exit t)       ; Kill message buffer after email is sent
  '(message-auto-save-directory nil)     ; Don't autosave message buffers
+ '(mu4e-confirm-quit nil))              ; Don't ask for confirmation on quit
+
+;;; Email rendering
+(custom-set-variables
  '(mu4e-view-show-images t)             ; Show images inline
- '(mu4e-confirm-quit nil)               ; Don't ask for confirmation on quit
  '(mu4e-view-prefer-html t)
- '(mu4e-html2text-command 'mu4e-shr2text) ; Use eww to render html messages
- '(shr-color-visible-luminance-min 60))
+ '(mu4e-html2text-command 'mu4e-shr2text)) ; Use EWW for html rendering
+
+(defun my-shr-inhibit-decoration (f &rest args)
+  (let ((shr-inhibit-decoration t))
+    (apply f args)))
+
+(advice-add 'shr-colorize-region :around 'my-shr-inhibit-decoration)
 
 ;;; Use format=flowed in composition
 (defun my-mu4e-toggle-hard-newlines ()
