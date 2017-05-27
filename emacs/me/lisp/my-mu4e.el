@@ -68,7 +68,8 @@
 (custom-set-variables
  '(mu4e-view-show-images t)             ; Show images inline
  '(mu4e-view-prefer-html t)
- '(mu4e-html2text-command 'mu4e-shr2text)) ; Use EWW for html rendering
+ '(mu4e-html2text-command 'mu4e-shr2text) ; Use EWW for html rendering
+ '(shr-width 70))                         ; Wrap email body at 70 chars
 
 (defun my-shr-inhibit-decoration (f &rest args)
   (let ((shr-inhibit-decoration t))
