@@ -13,6 +13,8 @@
 (add-hook 'cider-mode-hook 'eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'subword-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook 'paredit-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook 'subword-mode)
 
 ;;; Use cider for org-babel Org-babel
 (eval-when-compile
