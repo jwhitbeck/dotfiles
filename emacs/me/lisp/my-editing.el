@@ -10,11 +10,14 @@
  '(auto-save-default nil)               ; disable autosave
  '(make-backup-files nil))              ; disable auto backups
 (global-auto-revert-mode t)             ; automatically revert a buffer when a file is changed on disk
-(global-undo-tree-mode t)               ; always activate undo tree
 
 ;;; Highlight and auto-correct whitespace problems
 (add-hook 'prog-mode-hook 'my-whitespace-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;;; Activate undo tree for text and program editing
+(add-hook 'prog-mode-hook 'undo-tree-mode)
+(add-hook 'text-mode-hook 'undo-tree-mode)
 
 (defcustom my-whitespace-styles nil
   "List of (major-mode . whitespace-style) pairs. Used to define custom whitespace-mode styles by major mode."
