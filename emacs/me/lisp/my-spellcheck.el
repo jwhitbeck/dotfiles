@@ -17,7 +17,7 @@
 ;;; Activate flyspell for comments
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
-;;; TODO(Sean): why do I need this?
+;;; Disable emacs-lisp-checkdoc flycheck because it creates at lot of noise in my personal emacs config files
 (customize-set-variable 'flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
 
 ;;; Proselint integration, see http://unconj.ca/blog/linting-prose-in-emacs.html
