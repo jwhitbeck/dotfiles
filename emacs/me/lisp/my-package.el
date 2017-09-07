@@ -9,9 +9,6 @@
                                            ("melpa" . "https://melpa.org/packages/")
                                            ("melpa-stable" . "https://stable.melpa.org/packages/"))))
 
-;;; Loads the autoloads for each installed package.
-(package-initialize)
-
 ;;; Refresh the package info if it has never been run before.
 (when (not package-archive-contents)
   (package-refresh-contents))

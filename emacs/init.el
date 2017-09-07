@@ -7,6 +7,9 @@
 
 (add-to-list 'load-path my-lisp-dir)
 
+;; This must come before configurations of installed packages. Emacs will insert this line if not present.
+(package-initialize)
+
 (require 'my-performance)
 (require 'my-locale)
 (require 'my-ui)

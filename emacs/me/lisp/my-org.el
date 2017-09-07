@@ -42,9 +42,8 @@
  ;; Use day-month-year instead of month-day-year
  '(calendar-date-style 'european)
  '(org-agenda-time-grid '((daily today require-timed remove-match)
-                          #("----------------" 0 16
-                            (org-heading t))
-                          (800 1000 1200 1400 1600 1800 2000)))
+                          (800 1000 1200 1400 1600 1800 2000)
+                          "......" "----------------"))
  ;; Display tags further to right in agenda buffers
  '(org-agenda-tags-column -100)
  ;; Display tags further to right in org buffers
