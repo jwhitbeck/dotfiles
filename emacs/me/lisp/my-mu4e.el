@@ -71,12 +71,6 @@
  '(mu4e-html2text-command 'mu4e-shr2text) ; Use EWW for html rendering
  '(shr-width 70))                         ; Wrap email body at 70 chars
 
-(defun my-shr-inhibit-decoration (f &rest args)
-  (let ((shr-inhibit-decoration t))
-    (apply f args)))
-
-(advice-add 'shr-colorize-region :around 'my-shr-inhibit-decoration)
-
 ;;; Use format=flowed in composition
 (defun my-mu4e-toggle-hard-newlines ()
   "Apply format=flowed to outgoing messages"
