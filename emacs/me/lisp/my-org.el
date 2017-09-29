@@ -27,6 +27,15 @@
  '(org-outline-path-complete-in-steps nil)
  '(org-capture-use-agenda-date t))
 
+(defun my-ensure-final-newline ()
+  "Ensures that a capture buffer always ends with a new line to avoid clobbering subsequent headers."
+  (save-excursion
+    (when (not (= ?\n (char-before (point-max))))
+      (goto-char (point-max))
+      (insert ?\n))))
+
+(add-hook 'org-capture-prepare-finalize-hook 'my-ensure-final-newline)
+
 ;;; Babel settings
 (custom-set-variables
  '(org-src-fontify-natively t)
