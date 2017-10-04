@@ -69,7 +69,9 @@
  '(mu4e-view-show-images t)             ; Show images inline
  '(mu4e-view-prefer-html t)
  '(mu4e-html2text-command 'mu4e-shr2text) ; Use EWW for html rendering
- '(shr-width 70))                         ; Wrap email body at 70 chars
+ '(shr-width 70)                          ; Wrap email body at 70 chars
+ '(shr-color-visible-luminance-min 60)    ; Increase contrast of rendered html emails
+ '(shr-color-visible-distance-min 5))
 
 ;;; Use format=flowed in composition
 (defun my-mu4e-toggle-hard-newlines ()
