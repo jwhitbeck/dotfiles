@@ -5,13 +5,20 @@
 (require 'my-package)
 (require 'my-editing)
 (require 'my-spellcheck)
-(my-use-packages ess ess-smart-underscore markdown-mode go-mode go-eldoc yaml-mode protobuf-mode toml-mode)
+(my-use-packages ess ess-smart-underscore markdown-mode geiser go-mode go-eldoc yaml-mode protobuf-mode
+                 toml-mode)
 
 ;;; Emacs Speaks Statistis
 (eval-when-compile
   (require 'ess))
 (with-eval-after-load 'ess
   (define-key ess-mode-map (kbd "_") 'ess-smarter-underscore))
+
+;;; Scheme
+(custom-set-variables
+ '(geiser-active-implementations '(chicken)))
+(add-hook 'scheme-mode-hook 'paredit-mode)
+(add-hook 'geiser-repl-mode-hook 'paredit-mode)
 
 ;;; Golang
 (my-disable-tab-highlighting 'go-mode)
