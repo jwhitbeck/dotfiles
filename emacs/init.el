@@ -30,6 +30,7 @@
 (require 'my-java)
 (require 'my-clojure)
 (require 'my-email)
+(require 'my-wiki)
 
 (when (file-symlink-p my-local-lisp-dir)
   (add-to-list 'load-path my-local-lisp-dir)
