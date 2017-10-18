@@ -10,6 +10,10 @@
 ;; This must come before configurations of installed packages. Emacs will insert this line if not present.
 (package-initialize)
 
+;;; Trick emacs into writing customizations to a dummy file so that they don't get written to this file.
+(custom-set-variables
+ '(custom-file (expand-file-name "custom.el" user-emacs-directory)))
+
 (require 'my-performance)
 (require 'my-locale)
 (require 'my-ui)
