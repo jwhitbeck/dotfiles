@@ -181,7 +181,6 @@
 (custom-set-variables
  '(fill-column 110))                    ; line wrap at 110 characters
 (add-hook 'prog-mode-hook 'fci-mode)    ; show a bar beyond the fill-column
-(add-hook 'text-mode-hook 'fci-mode)    ; show a bar beyond the fill-column
 
 ;;; Auto-completion
 (global-company-mode)
