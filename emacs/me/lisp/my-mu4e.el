@@ -74,11 +74,8 @@
  '(shr-color-visible-distance-min 5))
 
 ;;; Use format=flowed in composition
-(defun my-mu4e-toggle-hard-newlines ()
-  "Apply format=flowed to outgoing messages"
-  (use-hard-newlines t 'guess))
-
-(add-hook 'mu4e-compose-mode-hook 'my-mu4e-toggle-hard-newlines)
+(custom-set-variables
+ '(mu4e-compose-format-flowed t))
 
 ;;; Message actions
 
