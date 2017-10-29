@@ -14,6 +14,9 @@
 (with-eval-after-load 'ess
   (define-key ess-mode-map (kbd "_") 'ess-smarter-underscore))
 
+;;; Makefile
+(my-disable-tab-highlighting 'makefile-gmake-mode)
+
 ;;; Scheme
 (custom-set-variables
  '(geiser-active-implementations '(chicken)))
