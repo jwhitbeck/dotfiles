@@ -62,7 +62,7 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
                           ("\\.mobi\\'" "ebook-viewer")
                           ("\\.epub\\'" "ebook-viewer")
                           ("\\.html\\'" "firefox")
-                          ("\\.maff\\'" "firefox"))))
+                          ("\\.zhtml\\'" "zhtml-open"))))
 
 ;;; Detached command-on-file execution
 (defun my-dired-run-detached-shell-command (command)
@@ -111,12 +111,18 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
           (my-dired-run-detached-shell-command
            (dired-shell-stuff-it command file-list nil arg))))))
 
+(defconst my-dired-xdg-open-overrides
+  '(("zhtml" . "zhtml-open")))
+
 (defun my-dired-do-xdg-open (&optional arg file-list)
   "Wrapper around my-dired-do-detached-shell-command that always uses the xdg-open command."
   (interactive
    (list current-prefix-arg
          (dired-get-marked-files t current-prefix-arg)))
-  (my-dired-do-detached-shell-command "xdg-open" current-prefix-arg file-list))
+  (dolist (file file-list)
+    (let ((bin (or (cdr (assoc (file-name-extension file) my-dired-xdg-open-overrides))
+                   "xdg-open")))
+      (my-dired-do-detached-shell-command bin current-prefix-arg (list file)))))
 
 (define-key dired-mode-map (kbd "§") 'my-dired-do-detached-shell-command)
 (define-key dired-mode-map (kbd "²") 'my-dired-do-xdg-open)

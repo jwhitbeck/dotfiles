@@ -16,7 +16,7 @@
 (define-key org-mode-map (kbd "C-c SPC") 'my-org-table-blank-field-or-jump)
 
 ;;; Improve org-open-file types
-(add-to-list 'org-file-apps '("\\.maff\\'" . "firefox %s"))
+(add-to-list 'org-file-apps '("\\.zhtml\\'" . "zhtml-open %s"))
 
 ;;; Enable the proselint org startup option
 (require 'my-spellcheck)
