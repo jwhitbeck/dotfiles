@@ -3,7 +3,7 @@
 ;;; Dired customizations
 
 (require 'my-package)
-(my-use-packages async)
+(my-use-packages async peep-dired)
 
 ;;; Add some extra global key bindings
 (autoload 'dired-jump "dired-x" "Jump to Dired buffer corresponding to current buffer." t)
