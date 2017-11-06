@@ -18,7 +18,7 @@
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 ;;; Disable emacs-lisp-checkdoc flycheck because it creates at lot of noise in my personal emacs config files
-(customize-set-variable 'flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers))
+(custom-set-variables `(flycheck-checkers ,(delq 'emacs-lisp-checkdoc flycheck-checkers)))
 
 ;;; Proselint integration, see http://unconj.ca/blog/linting-prose-in-emacs.html
 (defvar-local my-use-proselint t
