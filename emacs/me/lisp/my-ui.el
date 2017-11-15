@@ -86,7 +86,7 @@
 
 ;;; Splitting
 (custom-set-variables
- '(split-height-threshold 80)
+ '(split-height-threshold 110)
  '(split-width-threshold 220))
 
 ;;; Window management
