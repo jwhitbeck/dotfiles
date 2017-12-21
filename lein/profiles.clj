@@ -1,4 +1,4 @@
-{:user {:plugins [[cider/cider-nrepl "0.15.0-SNAPSHOT"]
+{:user {:plugins [[cider/cider-nrepl "0.15.1-SNAPSHOT"]
                   ;; A Leiningen plugin to check your project for outdated dependencies and plugins.
                   ;; https://github.com/xsc/lein-ancient
                   [lein-ancient "0.6.10"]
