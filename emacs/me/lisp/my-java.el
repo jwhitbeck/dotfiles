@@ -9,9 +9,11 @@
   (require 'my-java-eclim))
 
 ;;; Fix indentation to be compatible with Google style guide
-(c-add-style "java-google" '("user" (c-offsets-alist . ((case-label . +)
-                                                        (arglist-intro . ++)
-                                                        (statement-cont . ++)))))
+(c-add-style "java-google" '("user"
+                             (c-basic-offset . 2)
+                             (c-offsets-alist . ((case-label . +)
+                                                 (arglist-intro . ++)
+                                                 (statement-cont . ++)))))
 
 (defun my-enable-java-google-style ()
   "Use Google Java coding style in buffer."
