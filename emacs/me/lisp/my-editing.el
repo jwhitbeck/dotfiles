@@ -4,7 +4,7 @@
 
 (require 'my-package)
 
-(my-use-packages auto-indent-mode undo-tree yasnippet dash)
+(my-use-packages undo-tree yasnippet dash)
 
 (custom-set-variables
  '(auto-save-default nil)               ; disable autosave
