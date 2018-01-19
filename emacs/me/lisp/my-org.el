@@ -19,7 +19,8 @@
 (custom-set-variables
  '(org-catch-invisible-edits 'error)
  '(org-read-date-force-compatible-dates nil)
- '(org-completion-use-ido t))
+ '(org-completion-use-ido t)
+ '(org-startup-indented t))
 
 ;;; Capture settings
 (custom-set-variables
