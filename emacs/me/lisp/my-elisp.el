@@ -9,6 +9,7 @@
 (my-disable-tab-highlighting 'emacs-lisp-mode)
 
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'auto-indent-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
 ;;; minibuffer
