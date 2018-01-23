@@ -11,6 +11,10 @@
  '(make-backup-files nil))              ; disable auto backups
 (global-auto-revert-mode t)             ; automatically revert a buffer when a file is changed on disk
 
+;;; Remove the auto-indent hook that disables electric-indent
+(require 'auto-indent-mode)
+(remove-hook 'after-change-major-mode-hook 'auto-indent-disable-electric)
+
 ;;; Highlight and auto-correct whitespace problems
 (add-hook 'prog-mode-hook 'my-whitespace-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

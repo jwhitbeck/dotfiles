@@ -4,7 +4,7 @@
 
 (require 'my-package)
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
-(my-use-packages cider clojure-mode clj-refactor kibit-helper)
+(my-use-packages auto-indent-mode cider clojure-mode clj-refactor kibit-helper)
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
@@ -13,6 +13,7 @@
 (add-hook 'cider-mode-hook 'eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'subword-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'auto-indent-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook 'paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook 'subword-mode)
 

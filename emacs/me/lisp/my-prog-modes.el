@@ -6,7 +6,7 @@
 (require 'my-editing)
 (require 'my-spellcheck)
 (my-use-packages ess ess-smart-underscore markdown-mode geiser go-mode go-eldoc yaml-mode protobuf-mode
-                 toml-mode)
+                 toml-mode auto-indent-mode)
 
 ;;; Emacs Speaks Statistis
 (eval-when-compile
@@ -21,7 +21,11 @@
 (custom-set-variables
  '(geiser-active-implementations '(chicken)))
 (add-hook 'scheme-mode-hook 'paredit-mode)
+(add-hook 'scheme-mode-hook 'auto-indent-mode)
+(add-hook 'scheme-mode-hook 'subword-mode)
 (add-hook 'geiser-repl-mode-hook 'paredit-mode)
+(add-hook 'geiser-repl-mode-hook 'subword-mode)
+(add-hook 'scheme-mode-hook 'auto-indent-mode)
 
 ;;; Golang
 (my-disable-tab-highlighting 'go-mode)

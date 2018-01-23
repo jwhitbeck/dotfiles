@@ -4,7 +4,7 @@
 
 (require 'my-package)
 (require 'my-editing)
-(my-use-packages paredit)
+(my-use-packages auto-indent-mode paredit)
 
 (my-disable-tab-highlighting 'emacs-lisp-mode)
 
