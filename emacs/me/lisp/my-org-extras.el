@@ -17,6 +17,7 @@
 
 ;;; Improve org-open-file types
 (add-to-list 'org-file-apps '("\\.zhtml\\'" . "zhtml-open %s"))
+(add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s"))
 
 ;;; Enable the proselint org startup option
 (require 'my-spellcheck)
