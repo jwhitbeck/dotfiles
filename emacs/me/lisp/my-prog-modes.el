@@ -5,8 +5,18 @@
 (require 'my-package)
 (require 'my-editing)
 (require 'my-spellcheck)
-(my-use-packages ess ess-smart-underscore markdown-mode geiser go-mode go-eldoc yaml-mode protobuf-mode
-                 toml-mode auto-indent-mode)
+(my-use-packages
+ auto-indent-mode
+ ess
+ ess-smart-underscore
+ geiser
+ go-eldoc
+ go-mode
+ ini-mode
+ markdown-mode
+ protobuf-mode
+ toml-mode
+ yaml-mode)
 
 ;;; Emacs Speaks Statistis
 (eval-when-compile
