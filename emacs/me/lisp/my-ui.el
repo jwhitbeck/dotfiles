@@ -232,7 +232,7 @@
   (require 'fiplr))
 (with-eval-after-load 'fiplr
   (custom-set-variables
-   '(fiplr-ignored-globs '((directories (".git" ".svn" ".hg" ".bzr" ".deps" "target" "node_modules"))
+   '(fiplr-ignored-globs '((directories (".git" ".svn" ".hg" ".bzr" ".deps" ".build" "target" "node_modules"))
                            (files (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf"
                                    "*.gz" "*.zip" ".DS_Store" "*.class" "*.pyc" "*.den"
                                    ".elc")))))
