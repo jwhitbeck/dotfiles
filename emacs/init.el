@@ -31,6 +31,9 @@
 (require 'my-email)
 (require 'my-wiki)
 
+;;; Start emacs server
+(server-start)
+
 (when (file-symlink-p my-local-lisp-dir)
   (add-to-list 'load-path my-local-lisp-dir)
   (load (expand-file-name "init.el" my-local-lisp-dir)))
