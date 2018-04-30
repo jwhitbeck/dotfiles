@@ -3,6 +3,7 @@
 ;;; Shell mode customization
 
 (require 'my-elisp)
+(require 'comint)
 
 (custom-set-variables
  '(comint-scroll-to-bottom-on-input t)    ; always insert at the bottom
