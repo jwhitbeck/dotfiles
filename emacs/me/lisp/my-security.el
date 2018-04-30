@@ -9,7 +9,4 @@
  '(gnutls-verify-error t)
  '(gnutls-algorithm-priority "PFS"))
 
-;;; Easy PG
-(custom-set-variables '(epg-gpg-program "gpg2")) ; Default to GnuPG >2.0 on ubuntu
-
 (provide 'my-security)
