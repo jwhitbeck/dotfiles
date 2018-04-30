@@ -11,7 +11,7 @@
                  flx-ido
                  hide-lines
                  ido
-                 ido-ubiquitous
+                 ido-completing-read+
                  ido-vertical-mode
                  rainbow-delimiters
                  smex
