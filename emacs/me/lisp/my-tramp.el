@@ -15,8 +15,4 @@
  ;; Use ssh control master config from ~/.ssh/config
  '(tramp-ssh-controlmaster-options ""))
 
-(with-eval-after-load 'tramp
-  ;; Always add $HOME/bin to the remote path
-  (add-to-list 'tramp-remote-path "~/bin"))
-
 (provide 'my-tramp)
