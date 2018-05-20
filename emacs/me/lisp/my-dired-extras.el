@@ -3,6 +3,7 @@
 ;;; Extra dired configuration loaded on-demand after dired itself is loaded
 
 (require 'my-commands)
+(require 'my-vars)
 (require 'dired-x)
 (require 'dired-aux)
 (require 'dired-async)
@@ -45,7 +46,7 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
 
 ;;; Better default programs for opening files
 (custom-set-variables '(dired-guess-shell-alist-user
-                        '(("\\.e?ps\\'" "evince")
+                        `(("\\.e?ps\\'" ,pdf-reader)
                           ("\\.mpe?g\\'\\|\\.avi\\'" "vlc")
                           ("\\.ogg\\'" "vlc")
                           ("\\.mp3\\'" "vlc")

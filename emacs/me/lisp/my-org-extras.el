@@ -6,6 +6,8 @@
   (require 'ace-jump-mode)
   (require 'org-table))
 
+(require 'my-vars)
+
 ;;; Ace-jump-mode integration
 (defun my-org-table-blank-field-or-jump ()
   "Like ace-jump but preserves C-c SPC behavior inside org-mode tables."
@@ -17,7 +19,7 @@
 
 ;;; Improve org-open-file types
 (add-to-list 'org-file-apps '("\\.zhtml\\'" . "zhtml-open %s"))
-(add-to-list 'org-file-apps '("\\.pdf\\'" . "evince %s"))
+(add-to-list 'org-file-apps `("\\.pdf\\'" . ,(concat pdf-reader " %s")))
 
 ;;; Enable the proselint org startup option
 (require 'my-spellcheck)
