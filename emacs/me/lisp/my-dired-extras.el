@@ -149,7 +149,10 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
 
 ;;; Miscellaneous settings
 (custom-set-variables
- '(dired-auto-revert-buffer t)          ; Auto-revert
- '(dired-listing-switches "-alh"))      ; Human-readable file sizes
+ ;; Auto-revert
+ '(dired-auto-revert-buffer t)
+ ;; Human-readable file sizes and literal quoting style
+ ;; https://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-wrapping-items-with-spaces-in-single-quotes
+ '(dired-listing-switches "-alhN"))
 
 (provide 'my-dired-extras)
