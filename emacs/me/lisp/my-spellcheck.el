@@ -11,6 +11,9 @@
 ;;; Enable Flycheck in all buffers
 (global-flycheck-mode t)
 
+;;; Enable files to opt-out of flycheck.
+(put 'flycheck-mode 'safe-local-variable 'booleanp)
+
 ;;; Activate flyspell for all text modes
 (add-hook 'text-mode-hook 'flyspell-mode)
 
