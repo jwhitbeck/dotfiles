@@ -37,6 +37,68 @@
 (add-hook 'geiser-repl-mode-hook 'subword-mode)
 (add-hook 'scheme-mode-hook 'auto-indent-mode)
 
+;;; Redefine the chicken scheme flycheck checker to handle more cases.
+;;; TODO: Remove once this is fixed upstream.
+(flycheck-define-checker scheme-chicken
+  "A CHICKEN Scheme syntax checker using the CHICKEN compiler `csc'.
+
+See URL `http://call-cc.org/'."
+  :command ("csc" "-analyze-only" "-local"
+            (eval flycheck-scheme-chicken-args)
+            source)
+  :error-patterns
+  ((info line-start
+         "Note: " (zero-or-more not-newline) ":\n"
+         (one-or-more (any space)) "(" (file-name) ":" line ") " (message)
+         line-end)
+   ;; NOTE: missing in flycheck.el
+   (warning line-start
+            "Warning: " (zero-or-more not-newline) ",\n"
+            (one-or-more (any space)) (zero-or-more not-newline) ":\n"
+            (one-or-more (any space)) "(" (file-name) ":" line ") " (message)
+            line-end)
+   (warning line-start
+            "Warning: " (zero-or-more not-newline) ":\n"
+            (one-or-more (any space)) "(" (file-name) ":" line ") " (message)
+            line-end)
+   (error line-start "Error: (line " line ") " (message) line-end)
+   (error line-start "Syntax error: (" (file-name) ":" line ")"
+          (zero-or-more not-newline) " - "
+          (message (one-or-more not-newline)
+                   (zero-or-more "\n"
+                                 (zero-or-more space)
+                                 (zero-or-more not-newline))
+                   (one-or-more space) "<--")
+          line-end)
+   (error line-start
+          "Error: " (zero-or-more not-newline) ":\n"
+          (one-or-more (any space)) "(" (file-name) ":" line ") " (message)
+          line-end)
+   ;; NOTE: Missing in flycheck.el
+   (error line-start
+          "Error: " (file-name) ":" line ": " (message)
+          line-end))
+  :predicate
+  (lambda ()
+    ;; In `scheme-mode' we must check the current Scheme implementation
+    ;; being used
+    (and (boundp 'geiser-impl--implementation)
+         (eq geiser-impl--implementation 'chicken)))
+  :verify
+  (lambda (_checker)
+    (let ((geiser-impl (bound-and-true-p geiser-impl--implementation)))
+      (list
+       (flycheck-verification-result-new
+        :label "Geiser Implementation"
+        :message (cond
+                  ((eq geiser-impl 'chicken) "Chicken Scheme")
+                  (geiser-impl (format "Other: %s" geiser-impl))
+                  (t "Geiser not active"))
+        :face (cond
+               ((eq geiser-impl 'chicken) 'success)
+               (t '(bold error)))))))
+  :modes scheme-mode)
+
 ;;; Golang
 (my-disable-tab-highlighting 'go-mode)
 (add-hook 'go-mode-hook 'my-enable-indent-tabs)
