@@ -62,8 +62,23 @@ See URL `http://call-cc.org/'."
             (one-or-more (any space)) "(" (file-name) ":" line ") " (message)
             line-end)
    (error line-start "Error: (line " line ") " (message) line-end)
+   ;; NOTE: missing in flycheck.el
+   (error line-start "Error: "
+          (message (one-or-more not-newline)
+                   (zero-or-more "\n"
+                                 (zero-or-more space)
+                                 (zero-or-more not-newline))
+                   (one-or-more space) "<--"))
    (error line-start "Syntax error: (" (file-name) ":" line ")"
           (zero-or-more not-newline) " - "
+          (message (one-or-more not-newline)
+                   (zero-or-more "\n"
+                                 (zero-or-more space)
+                                 (zero-or-more not-newline))
+                   (one-or-more space) "<--")
+          line-end)
+   ;; NOTE: missing in flycheck.el
+   (error line-start "Syntax error: "
           (message (one-or-more not-newline)
                    (zero-or-more "\n"
                                  (zero-or-more space)
@@ -73,11 +88,8 @@ See URL `http://call-cc.org/'."
    (error line-start
           "Error: " (zero-or-more not-newline) ":\n"
           (one-or-more (any space)) "(" (file-name) ":" line ") " (message)
-          line-end)
-   ;; NOTE: Missing in flycheck.el
-   (error line-start
-          "Error: " (file-name) ":" line ": " (message)
           line-end))
+  :error-filter flycheck-fill-empty-line-numbers
   :predicate
   (lambda ()
     ;; In `scheme-mode' we must check the current Scheme implementation
