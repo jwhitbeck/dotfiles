@@ -107,6 +107,8 @@
 (custom-set-variables '(holiday-bahai-holidays nil) ; Disable bahai holidays
                       '(holiday-other-holidays holiday-french-holidays))
 
+;;; Allow org-mode files to customize the org-archive-save-context-info variable.
+(put 'org-archive-save-context-info 'safe-local-variable 'listp)
 
 ;;; Load custom HTML export settings on demand
 (with-eval-after-load 'ox-html
