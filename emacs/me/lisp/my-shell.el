@@ -16,7 +16,7 @@
  '(comint-buffer-maximum-size 20000)      ; max length of buffer in lines
  '(comint-input-ring-size 5000)           ; max shell history size
  '(explicit-shell-file-name "/bin/bash")) ; Always use bash on remote hosts
-(setenv "PAGER" "cat")                                             ; Do not use `less` as the default pager
+(setenv "PAGER" "cat")                    ; Do not use `less` as the default pager
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer) ; truncate buffers continuously
 
 (global-set-key (kbd "C-x x") 'shell)
