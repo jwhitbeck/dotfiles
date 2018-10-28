@@ -76,37 +76,6 @@
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-skip-deadline-if-done t))
 
-;;; Holidays
-(defconst holiday-french-holidays
-  `((holiday-fixed 1 1 "Jour de l'an")
-    (holiday-fixed 1 6 "Épiphanie")
-    (holiday-fixed 2 2 "Chandeleur")
-    (holiday-fixed 2 14 "Saint Valentin")
-    (holiday-fixed 5 1 "Fête du travail")
-    (holiday-fixed 5 8 "Commémoration de la capitulation de l'Allemagne en 1945")
-    (holiday-fixed 6 21 "Fête de la musique")
-    (holiday-fixed 7 14 "Fête nationale - Prise de la Bastille")
-    (holiday-fixed 8 15 "Assomption (Religieux)")
-    (holiday-fixed 11 11 "Armistice de 1918")
-    (holiday-fixed 11 1 "Toussaint")
-    (holiday-fixed 11 2 "Commémoration des fidèles défunts")
-    (holiday-fixed 12 25 "Noël")
-    ;; fêtes à date variable
-    (holiday-easter-etc 0 "Pâques")
-    (holiday-easter-etc 1 "Lundi de Pâques")
-    (holiday-easter-etc 39 "Ascension")
-    (holiday-easter-etc 49 "Pentecôte")
-    (holiday-easter-etc -47 "Mardi gras")
-    ;; dernier dimanche de mai ou premier dimanche de juin si c'est le
-    ;; même jour que la pentecôte TODO
-    (holiday-float 5 0 -1 "Fête des mères")
-    ;; troisième dimanche de juin
-    (holiday-float 6 0 3 "Fête des pères"))
-  "French holidays")
-
-(custom-set-variables '(holiday-bahai-holidays nil) ; Disable bahai holidays
-                      '(holiday-other-holidays holiday-french-holidays))
-
 ;;; Allow org-mode files to customize the org-archive-save-context-info variable.
 (put 'org-archive-save-context-info 'safe-local-variable 'listp)
 
