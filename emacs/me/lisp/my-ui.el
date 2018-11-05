@@ -144,6 +144,9 @@
       (set-window-buffer (selected-window) other-buffer)
       (select-window (next-window)))))
 
+(with-eval-after-load 'server
+  ;; server.el sets this keybinding, so overrule it after it loads.
+  (global-set-key (kbd "C-x #") 'my-window-switch))
 (global-set-key (kbd "C-x #") 'my-window-switch)
 
 ;;; Simplify window management for french keyboards
