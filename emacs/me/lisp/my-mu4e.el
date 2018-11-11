@@ -282,5 +282,50 @@ running, start it in the background."
   (my-ensure-mu4e-is-running)
   (call-interactively 'compose-mail))
 
+;;; Fix to the `mu4e~compose-setup-fcc-maybe` function, so that when proper maildirs are created when a
+;;; directory is created when sending an email.
+;;; https://github.com/djcb/mu/pull/1190
+(defun my-mu4e~compose-setup-fcc-maybe ()
+  "Maybe setup Fcc, based on `mu4e-sent-messages-behavior'.
+If needed, set the Fcc header, and register the handler function."
+  (let* ((sent-behavior
+          ;; Note; we cannot simply use functionp here, since at least
+          ;; delete is a function, too...
+          (if (member mu4e-sent-messages-behavior '(delete trash sent))
+              mu4e-sent-messages-behavior
+            (if (functionp mu4e-sent-messages-behavior)
+                (funcall mu4e-sent-messages-behavior)
+              mu4e-sent-messages-behavior)))
+         (mdir
+          (case sent-behavior
+            (delete nil)
+            (trash (mu4e-get-trash-folder mu4e-compose-parent-message))
+            (sent (mu4e-get-sent-folder mu4e-compose-parent-message))
+            (otherwise
+             (mu4e-error "unsupported value '%S' `mu4e-sent-messages-behavior'."
+                         mu4e-sent-messages-behavior))))
+         (fccfile (and mdir
+                       (concat mu4e-maildir mdir "/cur/"
+                               (mu4e~draft-message-filename-construct "S")))))
+    ;; if there's an fcc header, add it to the file
+    (when fccfile
+      (message-add-header (concat "Fcc: " fccfile "\n"))
+      ;; sadly, we cannot define as 'buffer-local'...  this will screw up gnus
+      ;; etc. if you run it after mu4e so, (hack hack) we reset it to the old
+      ;; handler after we've done our thing.
+      (setq message-fcc-handler-function
+            (lexical-let ((maildir mdir) (old-handler message-fcc-handler-function))
+              (lambda (file)
+                (setq message-fcc-handler-function old-handler) ;; reset the fcc handler
+                (let ((mdir-path (concat mu4e-maildir maildir)))
+                  ;; Create the full maildir structure for the sent folder if it doesn't
+                  ;; exist. `mu4e~proc-mkdir` runs asynchronously but no matter whether it runs before or
+                  ;; after `write-file`, the sent maildir ends up in the correct state.
+                  (unless (file-exists-p mdir-path)
+                    (mu4e~proc-mkdir mdir-path)))
+                (write-file file)                      ;; writing maildirs files is easy
+                (mu4e~proc-add file (or maildir "/")))))))) ;; update the database
+
+(advice-add 'mu4e~compose-setup-fcc-maybe :override 'my-mu4e~compose-setup-fcc-maybe)
 
 (provide 'my-mu4e)
