@@ -167,6 +167,12 @@
 (global-set-key (kbd "C-x é") 'my-split-window-below) ; C-x 2
 (global-set-key (kbd "C-x \"") 'my-split-window-right) ; C-x 3
 
+;;; Helper function to lock buffers to windows
+(defun my-toggle-dedicated-window ()
+  "Toggle whether or not the window is dedicated to its buffer."
+  (interactive)
+  (set-window-dedicated-p (selected-window) (not (window-dedicated-p))))
+
 ;;; Use Ubuntu's default font
 (set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
 
