@@ -147,6 +147,21 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
 
 (advice-add 'gnus-dired-mail-buffers :override 'my-gnus-dired-mail-buffers)
 
+(defun my-midnight-commander (src dest)
+  "Creates two side-by-side dired buffers, in a
+midnight-commander style, where the one on the right is the
+default destination for dired operation on the left buffer."
+  (interactive
+   (list default-directory
+         (ido-read-file-name "Destination dir: ")))
+  (delete-other-windows)
+  (dired src)
+  (split-window-horizontally)
+  (windmove-right)
+  (dired dest)
+  (setq dired-dwim-target t)
+  (windmove-left))
+
 ;;; Miscellaneous settings
 (custom-set-variables
  ;; Auto-revert
