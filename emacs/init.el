@@ -30,6 +30,7 @@
 (require 'my-clojure)
 (require 'my-email)
 (require 'my-wiki)
+(require 'my-rest)
 
 ;;; Start emacs server
 (server-start)
