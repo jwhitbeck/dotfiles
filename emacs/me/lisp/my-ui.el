@@ -76,6 +76,9 @@
 ;;; Ace-jump bindings
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
+;;; IMenu
+(global-set-key (kbd "C-c .") 'imenu)
+
 ;;; Window navigation
 (global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "C-x C-o") 'ace-window) ; Convenience binding for typing C-x o too quickly
