@@ -77,7 +77,7 @@
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
 ;;; IMenu
-(global-set-key (kbd "C-c .") 'imenu)
+(global-set-key (kbd "C-²") 'imenu)
 
 ;;; Window navigation
 (global-set-key (kbd "C-x o") 'ace-window)
