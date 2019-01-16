@@ -199,7 +199,6 @@
  '(show-paren-delay 0)                              ; immediately show matching parentheses
  '(show-paren-style 'expression))                   ; highlight full expression contained between parentheses
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in prog mode
-(add-hook 'text-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in text mode
 
 ;;; Fill column indicator
 (custom-set-variables
