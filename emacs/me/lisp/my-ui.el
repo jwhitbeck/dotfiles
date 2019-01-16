@@ -84,6 +84,10 @@
 (global-set-key (kbd "C-x C-o") 'ace-window) ; Convenience binding for typing C-x o too quickly
 (custom-set-variables '(aw-keys '(?q ?s ?d ?f ?h ?j ?k ?l)))
 
+;;; TODO: Remove after I upgrade to emacs26. ace-window expects this function to be defined but it isn't in
+;;; emacs25.
+(defun frame-parent (_) nil)
+
 ;;; Winner mode saves the history of window splits
 (winner-mode t)
 
