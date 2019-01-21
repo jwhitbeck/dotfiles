@@ -21,7 +21,7 @@
 ;;; Emacs Speaks Statistis
 (eval-when-compile
   (require 'ess))
-(with-eval-after-load 'ess
+(with-eval-after-load 'ess-mode
   (define-key ess-mode-map (kbd "_") 'ess-smarter-underscore))
 
 ;;; Makefile
