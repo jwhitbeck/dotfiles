@@ -13,4 +13,6 @@
                   ;; https://github.com/jonase/eastwood
                   ;[jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
                   ]
+        ;; Leiningen now requires explicit middleware declarations.
+        :middleware [cider-nrepl.plugin/middleware]
         :dependencies [[criterium "0.4.3"]]}}
