@@ -7,9 +7,10 @@
 (my-use-packages auto-indent-mode undo-tree yasnippet dash string-inflection)
 
 (custom-set-variables
- '(auto-save-default nil)               ; disable autosave
- '(make-backup-files nil))              ; disable auto backups
-(global-auto-revert-mode t)             ; automatically revert a buffer when a file is changed on disk
+ '(auto-save-default nil)         ; disable autosave
+ '(make-backup-files nil))        ; disable auto backups
+(global-auto-revert-mode t)       ; automatically revert a buffer when a file is
+                                  ; changed on disk
 
 ;;; Remove the auto-indent hook that disables electric-indent
 (require 'auto-indent-mode)
@@ -24,7 +25,8 @@
 (add-hook 'text-mode-hook 'undo-tree-mode)
 
 (defcustom my-whitespace-styles nil
-  "List of (major-mode . whitespace-style) pairs. Used to define custom whitespace-mode styles by major mode."
+  "List of (major-mode . whitespace-style) pairs. Used to define
+custom whitespace-mode styles by major mode."
   :type '(alist :key-type symbol :value-type (list symbol))
   :group 'my-editing)
 
@@ -39,7 +41,10 @@
 (defun my-disable-tab-highlighting (mm)
   "Disable tab highlighting for major mode."
   (add-to-list 'my-whitespace-styles
-               (cons mm (->> my-default-whitespace-style copy-sequence (delq 'tabs) (delq 'tab-mark)))))
+               (cons mm (->> my-default-whitespace-style
+                             copy-sequence
+                             (delq 'tabs)
+                             (delq 'tab-mark)))))
 
 (defun my-whitespace-mode ()
   "Configure whitespace-mode differently depending on the major mode."
@@ -47,8 +52,8 @@
                                    my-default-whitespace-style))
   (whitespace-mode))
 
-;;; No tabs by default. Modes that really need tabs should enable indent-tabs-mode explicitly.
-;;; Makefile-mode already does that, for example.
+;;; No tabs by default. Modes that really need tabs should enable
+;;; indent-tabs-mode explicitly.  Makefile-mode already does that, for example.
 (custom-set-variables
  '(indent-tabs-mode nil))
 

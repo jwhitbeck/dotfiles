@@ -21,8 +21,8 @@
 
 (global-set-key (kbd "C-x x") 'shell)
 
-;; Disable C-c SPC binding in comint mode as it overrides the ace-window-mode key binding and provides
-;; functionality that is redundant with C-j.
+;; Disable C-c SPC binding in comint mode as it overrides the ace-window-mode
+;; key binding and provides functionality that is redundant with C-j.
 (define-key comint-mode-map  (kbd "C-c SPC") nil)
 
 (provide 'my-shell)

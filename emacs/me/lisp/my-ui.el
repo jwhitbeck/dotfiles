@@ -66,7 +66,8 @@
 
 ;;; X clipboard <-> emacs kill ring compatibility
 (custom-set-variables
- ;; stops selection with a mouse from being immediately injected to the kill ring
+ ;; stops selection with a mouse from being immediately injected to the kill
+ ;; ring
  '(mouse-drag-copy-region nil)
  ;; stops killing/yanking interacting with primary X11 selection
  '(x-select-enable-primary nil)
@@ -158,13 +159,15 @@
 
 ;;; Simplify window management for french keyboards
 (defun my-split-window-below ()
-  "Split the window vertically and move focus to the new window below the selected one."
+  "Split the window vertically and move focus to the new window
+below the selected one."
   (interactive)
   (split-window-below)
   (other-window 1))
 
 (defun my-split-window-right ()
-  "Split the window horizontal and move focus to the new window to the right of the selected one."
+  "Split the window horizontal and move focus to the new window
+to the right of the selected one."
   (interactive)
   (split-window-right)
   (other-window 1))
@@ -184,7 +187,9 @@
   "Toggle whether or not the window is dedicated to its buffer."
   (interactive)
   (set-window-dedicated-p (selected-window) (not (window-dedicated-p)))
-  (my-set-buffer-name-face (if (window-dedicated-p) 'warning 'mode-line-buffer-id)))
+  (my-set-buffer-name-face (if (window-dedicated-p)
+                               'warning
+                             'mode-line-buffer-id)))
 
 (global-set-key (kbd "C-x ²") 'my-toggle-dedicated-window)
 
@@ -255,12 +260,31 @@
   (require 'fiplr))
 (with-eval-after-load 'fiplr
   (custom-set-variables
-   '(fiplr-ignored-globs '((directories (".git" ".svn" ".hg" ".bzr" ".deps" ".build" "target" "node_modules"))
-                           (files (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf"
-                                   "*.gz" "*.zip" ".DS_Store" "*.class" "*.pyc" "*.den"
+   '(fiplr-ignored-globs '((directories (".git"
+                                         ".svn"
+                                         ".hg"
+                                         ".bzr"
+                                         ".deps"
+                                         ".build"
+                                         "target"
+                                         "node_modules"))
+                           (files (".#*"
+                                   "*~"
+                                   "*.so"
+                                   "*.jpg"
+                                   "*.png"
+                                   "*.gif"
+                                   "*.pdf"
+                                   "*.gz"
+                                   "*.zip"
+                                   ".DS_Store"
+                                   "*.class"
+                                   "*.pyc"
+                                   "*.den"
                                    ".elc")))))
 
-  ;; Drop an empty .fiplr_root file in a dir for fiplr to consider it a top-level dir
+  ;; Drop an empty .fiplr_root file in a dir for fiplr to consider it a
+  ;; top-level dir
   (add-to-list 'fiplr-root-markers ".fiplr_root" t))
 
 ;;; Buffer lists

@@ -28,7 +28,8 @@
 ;;; Tail files in custom buffer
 (defun my-tail-filename (filename &optional output-buffer)
   "Run tail -f on FILENAME and send output to OUTPUT-BUFFER. If
-not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FILENAME*'."
+not specified, OUTPUT-BUFFER defaults to a newly created buffer
+called '*Tail FILENAME*'."
   (interactive
    (let* ((filename (dired-get-filename t))
           (output-buffer (read-string (format "Output %s to buffer: " filename)
@@ -37,7 +38,8 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
                                       (format "*Tail %s*" filename))))
      (list filename output-buffer)))
   (let ((command (format "tail -n1000 -f %s &" (shell-quote-argument filename)))
-        (handler (find-file-name-handler (directory-file-name default-directory) 'shell-command)))
+        (handler (find-file-name-handler (directory-file-name default-directory)
+                                         'shell-command)))
     (if handler (apply handler 'shell-command (list command output-buffer))
       (shell-command command output-buffer)))
   (with-current-buffer output-buffer
@@ -105,7 +107,9 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
              (function (lambda (&rest files)
                          (dolist (file files)
                            (my-dired-run-detached-shell-command
-                            (concat command dired-mark-separator (shell-quote-argument file))))))
+                            (concat command
+                                    dired-mark-separator
+                                    (shell-quote-argument file))))))
              nil
              file-list)
           ;; execute the shell command
@@ -116,12 +120,14 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
   '(("zhtml" . "zhtml-open")))
 
 (defun my-dired-do-xdg-open (&optional arg file-list)
-  "Wrapper around my-dired-do-detached-shell-command that always uses the xdg-open command."
+  "Wrapper around my-dired-do-detached-shell-command that always
+uses the xdg-open command."
   (interactive
    (list current-prefix-arg
          (dired-get-marked-files t current-prefix-arg)))
   (dolist (file file-list)
-    (let ((bin (or (cdr (assoc (file-name-extension file) my-dired-xdg-open-overrides))
+    (let ((bin (or (cdr (assoc (file-name-extension file)
+                               my-dired-xdg-open-overrides))
                    "xdg-open")))
       (my-dired-do-detached-shell-command bin current-prefix-arg (list file)))))
 
@@ -132,7 +138,8 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
 (autoload 'my-ensure-mu4e-is-running "my-mu4e")
 
 (defun my-gnus-dired-attach ()
-  "Like gnus-dired-attach but starts mu4e in background if it isn't already running."
+  "Like gnus-dired-attach but starts mu4e in background if it
+isn't already running."
   (interactive)
   (my-ensure-mu4e-is-running)
   (turn-on-gnus-dired-mode)
@@ -141,7 +148,8 @@ not specified, OUTPUT-BUFFER defaults to a newly created buffer called '*Tail FI
 (define-key dired-mode-map (kbd "a") 'my-gnus-dired-attach)
 
 (defun my-gnus-dired-mail-buffers ()
-  "Return a list of active mail composition buffers. Drop-in replacement for gnus-dired-mail-buffers."
+  "Return a list of active mail composition buffers. Drop-in
+replacement for gnus-dired-mail-buffers."
   (require 'message)
   (message-buffers))
 

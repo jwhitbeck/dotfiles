@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; Settings for programming language major modes that don't justify their own file
+;;; Settings for programming language major modes that don't justify their own
+;;; file
 
 (require 'my-package)
 (require 'my-editing)
@@ -56,7 +57,8 @@
 (add-hook 'go-mode-hook 'my-enable-gofmt-before-save)
 
 ;;; YAML
-;; Add a few extra minor-modes since yaml-mode does not derive from either prog-mode or text-mode
+;; Add a few extra minor-modes since yaml-mode does not derive from either
+;; prog-mode or text-mode
 (add-hook 'yaml-mode-hook 'fci-mode) ; show bar beyond the fill column
 (add-hook 'yaml-mode-hook 'flyspell-mode) ; turn on automatic spell-checking
 

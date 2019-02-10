@@ -4,7 +4,8 @@
 
 (autoload 'my-start-mu4e "my-mu4e"
   "Starts mu4e with appropriate settings depending on whether or
-  not we have an internet connection. If called with a prefix arg, always use offline settings."
+  not we have an internet connection. If called with a prefix
+  arg, always use offline settings."
   t)
 
 (autoload 'my-go-to-inbox "my-mu4e"

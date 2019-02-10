@@ -1,6 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;; Some useful commands
+(eval-when-compile
+  (require 'dired))
 
 ;;; Print current UTC time in echo area
 (defun my-current-utc-time ()
@@ -24,7 +26,9 @@
     (let ((cmd my-refreshable-shell-command--command)
           (inhibit-read-only t))
       (erase-buffer)
-      (let ((handler (find-file-name-handler (directory-file-name default-directory) 'shell-command)))
+      (let ((handler (find-file-name-handler
+                      (directory-file-name default-directory)
+                      'shell-command)))
         (if handler (funcall handler 'shell-command cmd t nil)
           (call-process shell-file-name nil t nil shell-command-switch cmd))))))
 
@@ -49,16 +53,17 @@ the output of the command. Press 'q' to dismiss the buffer."
 
 ;;; Run commands in a detached process
 (defun my-detached-shell-command (command)
-  "Like shell-command but runs the shell command in a process detached from emacs."
+  "Like shell-command but runs the shell command in a process
+detached from emacs."
   (interactive
-   (list (read-shell-command "Detached shell command: "
-                             nil
-                             nil
-                             (let ((filename (cond
-                                              (buffer-file-name)
-                                              ((eq major-mode 'dired-mode) (dired-get-filename nil t)))))
-                               (and filename (file-relative-name filename))))))
-  (let ((handler (find-file-name-handler (directory-file-name default-directory) 'shell-command)))
+   (list (let ((args (let ((filename (cond
+                                       (buffer-file-name)
+                                       ((eq major-mode 'dired-mode)
+                                        (dired-get-filename nil t)))))
+                       (and filename (file-relative-name filename)))))
+           (read-shell-command "Detached shell command: " nil nil args))))
+  (let ((handler (find-file-name-handler (directory-file-name default-directory)
+                                         'shell-command)))
     (if handler (funcall handler 'my-detached-shell-command command)
       (call-process shell-file-name nil 0 nil shell-command-switch command))))
 
@@ -75,7 +80,8 @@ the output of the command. Press 'q' to dismiss the buffer."
       (shell buffer-name))))
 
 (defun my-tramp-connection-history ()
-  "Return the list of all user@hostname pairs present in the tramp connection history."
+  "Return the list of all user@hostname pairs present in the
+tramp connection history."
   (let ((tramp-conn-hist (with-temp-buffer
                            (insert-file-contents-literally "~/.emacs.d/tramp")
                            (read (current-buffer))))
@@ -99,7 +105,8 @@ the output of the command. Press 'q' to dismiss the buffer."
 (defun my-remote-shell (hostname)
   "Open a tramp-enabled shell on HOSTNAME."
   (interactive
-   (list (ido-completing-read "user@host: " (funcall my-list-remote-hosts-function))))
+   (list (ido-completing-read "user@host: "
+                              (funcall my-list-remote-hosts-function))))
   (let ((buffer-name (format "*%s*" hostname))
         (default-directory (format "/%s:" hostname))
         (current-prefix-arg '-))        ; C-u

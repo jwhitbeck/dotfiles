@@ -20,12 +20,15 @@
 ;;; Activate flyspell for comments
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
-;;; Disable emacs-lisp-checkdoc flycheck because it creates at lot of noise in my personal emacs config files
-(custom-set-variables `(flycheck-checkers ,(delq 'emacs-lisp-checkdoc flycheck-checkers)))
+;;; Disable emacs-lisp-checkdoc flycheck because it creates at lot of noise in
+;;; my personal emacs config files
+(custom-set-variables
+ `(flycheck-checkers ,(delq 'emacs-lisp-checkdoc flycheck-checkers)))
 
 ;;; Proselint integration, see http://unconj.ca/blog/linting-prose-in-emacs.html
 (defvar-local my-use-proselint t
-  "If t, enables proselint in buffer if the major-mode is supported by proselint.")
+  "If t, enables proselint in buffer if the major-mode is
+  supported by proselint.")
 
 (defun my-enable-proselint-for-mode (mode)
   (when (flycheck-valid-checker-p 'proselint)

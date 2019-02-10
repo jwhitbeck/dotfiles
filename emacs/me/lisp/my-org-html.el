@@ -58,7 +58,8 @@
  '(org-html-htmlize-font-prefix "org-")
  '(org-export-with-toc nil))
 
-;;; Fix issue where fill-column-indicator outputs unprintable characters at the end of code blocks
+;;; Fix issue where fill-column-indicator outputs unprintable characters at the
+;;; end of code blocks
 ;;; https://github.com/alpaker/Fill-Column-Indicator/issues/45
 (defun fci-mode-override-advice (&rest args))
 (advice-add 'org-html-fontify-code :around

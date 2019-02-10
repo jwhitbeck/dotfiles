@@ -17,7 +17,9 @@
 
 (defun my-mu4e-inbox-query ()
   "Return a mu4e headers search for the inboxes defined in `my-mu4e-inboxes'."
-  (string-join (mapcar (lambda (inbox) (format "maildir:%s" inbox)) my-mu4e-inboxes)
+  (string-join (mapcar (lambda (inbox)
+                         (format "maildir:%s" inbox))
+                       my-mu4e-inboxes)
                " OR "))
 
 (defun my-email-addresses (smtp-accounts)
@@ -34,7 +36,8 @@
    `(user-mail-address ,(caar smtp-accounts))))
 
 (defcustom my-smtp-accounts nil
-  "List of smtp accounts as (email username server port). The passwords are stored in ~/.authinfo."
+  "List of smtp accounts as (email username server port). The
+passwords are stored in ~/.authinfo."
   :type '(repeat (string string string string integer))
   :group 'my-mu4e
   :set 'my-set-smtp-accounts)
@@ -53,16 +56,18 @@
  '(mu4e-compose-signature-auto-include nil) ; Don't include signature at end of message
  '(mu4e-compose-dont-reply-to-self t)
  ;'(mu4e-compose-complete-only-personal t)  ; This doesn't appear to work reliably
- '(mu4e-compose-complete-only-after (format-time-string "%Y-%m-%d" (my-years-ago 2)) t)
+ '(mu4e-compose-complete-only-after (format-time-string "%Y-%m-%d"
+                                                        (my-years-ago 2))
+                                    t)
  '(message-send-mail-function 'smtpmail-send-it)
- '(mail-user-agent 'mu4e-user-agent)               ; mu4e as default emacs mail agent
+ '(mail-user-agent 'mu4e-user-agent)    ; mu4e as default emacs mail agent
  '(gnus-dired-mail-mode 'mu4e-user-agent)
- '(mu4e-headers-include-related nil)               ; include related messages in search results
- '(mu4e-headers-skip-duplicates t)      ; Don't show duplicates in header view
- '(mu4e-view-show-addresses t)          ; Always show email addresses
- '(message-kill-buffer-on-exit t)       ; Kill message buffer after email is sent
- '(message-auto-save-directory nil)     ; Don't autosave message buffers
- '(mu4e-confirm-quit nil))              ; Don't ask for confirmation on quit
+ '(mu4e-headers-include-related nil ) ; Include related messages in search results
+ '(mu4e-headers-skip-duplicates t)    ; Don't show duplicates in header view
+ '(mu4e-view-show-addresses t)        ; Always show email addresses
+ '(message-kill-buffer-on-exit t)     ; Kill message buffer after email is sent
+ '(message-auto-save-directory nil)   ; Don't autosave message buffers
+ '(mu4e-confirm-quit nil))            ; Don't ask for confirmation on quit
 
 ;;; Email rendering
 (custom-set-variables
@@ -108,7 +113,9 @@ messages in a private offline view."
   (save-excursion
     (goto-char (point-min))
     (when (search-forward-regexp (concat "^" mail-header-separator) nil t)
-      (remove-text-properties (match-beginning 0) (match-end 0) '(rear-nonsticky)))))
+      (remove-text-properties (match-beginning 0)
+                              (match-end 0)
+                              '(rear-nonsticky)))))
 
 (add-hook 'message-mode-hook 'my-strip-message-mode-problematic-text-props)
 (add-hook 'mu4e-compose-mode-hook 'my-strip-message-mode-problematic-text-props)
@@ -136,7 +143,8 @@ messages in a private offline view."
 (defun my-num-inbox-messages ()
   "Returns the number of messages in my inboxes."
   (->> my-mu4e-inboxes
-       (mapcar (lambda (inbox) (my-count-maildir-message (concat mu4e-maildir inbox))))
+       (mapcar (lambda (inbox)
+                 (my-count-maildir-message (concat mu4e-maildir inbox))))
        (cl-reduce '+)))
 
 (defvar my-inbox-messages "" "The message to display in the mode-line")
@@ -156,7 +164,8 @@ messages in my inbox."
 
 (add-hook 'mu4e-index-updated-hook 'my-notify-num-inbox-messages)
 
-;;; Needs to be appended to preserve the special empty string at the start of the global-mode-string list
+;;; Needs to be appended to preserve the special empty string at the start of
+;;; the global-mode-string list
 (if (not global-mode-string)
     (custom-set-variables '(global-mode-string '("" my-inbox-messages)))
   (add-to-list 'global-mode-string 'my-inbox-messages t))
@@ -207,7 +216,9 @@ possible, the From header will be set to the default."
                 (accounts my-smtp-accounts))
             (while (and accounts (not done))
               (let ((account (pop accounts)))
-                (when (mu4e-message-contact-field-matches msg field (car account))
+                (when (mu4e-message-contact-field-matches msg
+                                                          field
+                                                          (car account))
                   (my-set-smtp account)
                   (setq done t))))))))
     (when (not done)
@@ -250,7 +261,9 @@ possible, the From header will be set to the default."
 (my-mu4e-infer-default-vars)
 
 ;;; org-mu4e workaround for org-9.0 (org-add-link-type is deprecated)
-(org-link-set-parameters "mu4e" :follow 'org-mu4e-open :store 'org-mu4e-store-link)
+(org-link-set-parameters "mu4e"
+                         :follow 'org-mu4e-open
+                         :store 'org-mu4e-store-link)
 
 (defun my-ensure-mu4e-is-running (&optional force-offline)
   (when (not (mu4e-running-p))
@@ -282,8 +295,8 @@ running, start it in the background."
   (my-ensure-mu4e-is-running)
   (call-interactively 'compose-mail))
 
-;;; Fix to the `mu4e~compose-setup-fcc-maybe` function, so that when proper maildirs are created when a
-;;; directory is created when sending an email.
+;;; Fix to the `mu4e~compose-setup-fcc-maybe` function, so that when proper
+;;; maildirs are created when a directory is created when sending an email.
 ;;; https://github.com/djcb/mu/pull/1190
 (defun my-mu4e~compose-setup-fcc-maybe ()
   "Maybe setup Fcc, based on `mu4e-sent-messages-behavior'.
@@ -314,18 +327,22 @@ If needed, set the Fcc header, and register the handler function."
       ;; etc. if you run it after mu4e so, (hack hack) we reset it to the old
       ;; handler after we've done our thing.
       (setq message-fcc-handler-function
-            (lexical-let ((maildir mdir) (old-handler message-fcc-handler-function))
+            (lexical-let ((maildir mdir)
+                          (old-handler message-fcc-handler-function))
               (lambda (file)
-                (setq message-fcc-handler-function old-handler) ;; reset the fcc handler
+                ;; reset the fcc handler
+                (setq message-fcc-handler-function old-handler)
                 (let ((mdir-path (concat mu4e-maildir maildir)))
-                  ;; Create the full maildir structure for the sent folder if it doesn't
-                  ;; exist. `mu4e~proc-mkdir` runs asynchronously but no matter whether it runs before or
-                  ;; after `write-file`, the sent maildir ends up in the correct state.
+                  ;; Create the full maildir structure for the sent folder if it
+                  ;; doesn't exist. `mu4e~proc-mkdir` runs asynchronously but no
+                  ;; matter whether it runs before or after `write-file`, the
+                  ;; sent maildir ends up in the correct state.
                   (unless (file-exists-p mdir-path)
                     (mu4e~proc-mkdir mdir-path)))
-                (write-file file)                      ;; writing maildirs files is easy
+                (write-file file) ;; writing maildirs files is easy
                 (mu4e~proc-add file (or maildir "/")))))))) ;; update the database
 
-(advice-add 'mu4e~compose-setup-fcc-maybe :override 'my-mu4e~compose-setup-fcc-maybe)
+(advice-add 'mu4e~compose-setup-fcc-maybe
+            :override 'my-mu4e~compose-setup-fcc-maybe)
 
 (provide 'my-mu4e)

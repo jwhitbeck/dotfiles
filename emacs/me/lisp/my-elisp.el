@@ -31,12 +31,14 @@
      (message "%.06f" (float-time (time-since time)))))
 
 ;;; Generate TAGS for all elisp files on load path
-(defvar my-elisp-tags-file (expand-file-name "me/TAGS.elisp" user-emacs-directory))
+(defvar my-elisp-tags-file
+  (expand-file-name "me/TAGS.elisp" user-emacs-directory))
 
 (add-to-list 'tags-table-list my-elisp-tags-file)
 
 (defun my-generate-elisp-tags ()
-  "Rebuilds the ~/.emacs.d/me/elisp_tags file from all elisp files on the load path."
+  "Rebuilds the ~/.emacs.d/me/elisp_tags file from all elisp
+files on the load path."
   (interactive)
   (when (file-exists-p my-elisp-tags-file)
     (delete-file my-elisp-tags-file))
@@ -46,7 +48,8 @@
                      (string-suffix-p ".el.gz" file))
                  (not (string-prefix-p "." file)))
         (let ((elisp-file (concat (file-name-as-directory dir) file)))
-          (call-process "etags" nil t t "--append" "--output" my-elisp-tags-file elisp-file))))))
+          (call-process "etags" nil t t
+                        "--append" "--output" my-elisp-tags-file elisp-file))))))
 
 ;;; If no elisp-tags file exists, create it.
 (when (not (file-exists-p my-elisp-tags-file))

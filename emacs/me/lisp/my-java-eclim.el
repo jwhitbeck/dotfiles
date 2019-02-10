@@ -6,7 +6,8 @@
 (require 'eclimd)
 
 ;;; Company mode eclim integration
-(require 'cl) ; company-emacs-eclim requires 'cl to be required for the remove-if function
+(require 'cl) ; company-emacs-eclim requires 'cl to be required for the
+              ; remove-if function
 (require 'company-emacs-eclim)
 (company-emacs-eclim-setup)
 
