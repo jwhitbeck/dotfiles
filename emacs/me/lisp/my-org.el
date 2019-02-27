@@ -83,8 +83,6 @@
 
 (with-eval-after-load 'org-agenda
   ;;; Use org-habit
-  (require 'org-habit)
-  ;;; Load appointment integration
-  (require 'my-org-appt))
+  (require 'org-habit))
 
 (provide 'my-org)
