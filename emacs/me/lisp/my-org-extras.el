@@ -38,8 +38,4 @@
 (require 'my-editing)
 (add-hook 'org-mode-hook 'my-yas-minor-mode)
 
-;;; Enable org-tempo for the easy templates
-;;; https://orgmode.org/manual/Easy-templates.html
-(require 'org-tempo)
-
 (provide 'my-org-extras)
