@@ -1,5 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
+;;; TODO: Make this opt-in on a per file basis, rather than a global
+;;; default. For example, this interferes with other HTML exports such as
+;;; org-reveal.
+
 ;;; Org HTML export customizations
 
 (eval-when-compile
