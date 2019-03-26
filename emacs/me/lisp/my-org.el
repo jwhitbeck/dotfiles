@@ -74,8 +74,8 @@
 (put 'org-archive-save-context-info 'safe-local-variable 'listp)
 
 ;;; Load custom HTML export settings on demand
-(with-eval-after-load 'ox-html
-  (require 'my-org-html))
+;; (with-eval-after-load 'ox-html
+;;   (require 'my-org-html))
 
 ;;; Load org-mode extras
 (with-eval-after-load 'org
