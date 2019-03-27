@@ -2,7 +2,6 @@
 
 ;;; Shell mode customization
 
-(require 'my-elisp)
 (require 'comint)
 
 (custom-set-variables
