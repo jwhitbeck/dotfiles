@@ -108,7 +108,7 @@ tramp connection history."
    (list (ido-completing-read "user@host: "
                               (funcall my-list-remote-hosts-function))))
   (let ((buffer-name (format "*%s*" hostname))
-        (default-directory (format "/%s:" hostname))
+        (default-directory (format "/scp:%s:" hostname))
         (current-prefix-arg '-))        ; C-u
     (shell buffer-name)))
 
