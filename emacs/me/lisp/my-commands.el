@@ -89,8 +89,8 @@ tramp connection history."
     (dolist (conn-spec tramp-conn-hist)
       (when conn-spec
         (let* ((conn-head (car conn-spec))
-               (user (aref conn-head 1))
-               (host (aref conn-head 2)))
+               (user (nth 2 conn-head))
+               (host (nth 4 conn-head)))
           (when (and host (not (equal "root" user)))
             (if user
                 (push (format "%s@%s" user host) conns)
