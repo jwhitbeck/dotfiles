@@ -46,27 +46,6 @@ called '*Tail FILENAME*'."
     (setq truncate-lines t)))
 (define-key dired-mode-map (kbd "C-c t") 'my-tail-filename)
 
-;;; Better default programs for opening files
-(custom-set-variables '(dired-guess-shell-alist-user
-                        `(("\\.e?ps\\'" ,pdf-reader)
-                          ("\\.mpe?g\\'\\|\\.avi\\'" "vlc")
-                          ("\\.ogg\\'" "vlc")
-                          ("\\.mp3\\'" "vlc")
-                          ("\\.m4a\\'" "vlc")
-                          ("\\.wav\\'" "vlc")
-                          ("\\.p[bgpn]m\\'" "eog")
-                          ("\\.gif\\'" "eog")
-                          ("\\.tif\\'" "eog")
-                          ("\\.png\\'" "eog")
-                          ("\\.jpe?g\\'" "eog")
-                          ("\\.pdf\\'" "evince")
-                          ("\\.doc\\'" "libreoffice")
-                          ("\\.odt\\'" "libreoffice")
-                          ("\\.mobi\\'" "ebook-viewer")
-                          ("\\.epub\\'" "ebook-viewer")
-                          ("\\.html\\'" "firefox")
-                          ("\\.zhtml\\'" "zhtml-open"))))
-
 ;;; Detached command-on-file execution
 (defun my-dired-run-detached-shell-command (command)
   (let ((handler
@@ -116,8 +95,17 @@ called '*Tail FILENAME*'."
           (my-dired-run-detached-shell-command
            (dired-shell-stuff-it command file-list nil arg))))))
 
+(defconst my-pdf-reader
+  (cond
+   ;; Default Ubuntu uses evince.
+   ((file-executable-p "/usr/bin/evince") "evince")
+   ;; Ubuntu MATE uses atril.
+   ((file-executable-p "/usr/bin/atril") "atril")))
+
 (defconst my-dired-xdg-open-overrides
-  '(("zhtml" . "zhtml-open")))
+  `(("zhtml" . "zhtml-open")
+    ("epub" . ,my-pdf-reader)
+    ("mobi" . ,my-pdf-reader)))
 
 (defun my-dired-do-xdg-open (&optional arg file-list)
   "Wrapper around my-dired-do-detached-shell-command that always
