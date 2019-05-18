@@ -19,7 +19,7 @@
 
 ;;; Improve org-open-file types
 (add-to-list 'org-file-apps '("\\.zhtml\\'" . "zhtml-open %s"))
-(add-to-list 'org-file-apps `("\\.pdf\\'" . ,(concat pdf-reader " %s")))
+(add-to-list 'org-file-apps `("\\.pdf\\'" . ,(concat my-pdf-reader " %s")))
 
 ;;; Enable the proselint org startup option
 (require 'my-spellcheck)

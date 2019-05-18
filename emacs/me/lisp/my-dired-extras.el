@@ -95,13 +95,6 @@ called '*Tail FILENAME*'."
           (my-dired-run-detached-shell-command
            (dired-shell-stuff-it command file-list nil arg))))))
 
-(defconst my-pdf-reader
-  (cond
-   ;; Default Ubuntu uses evince.
-   ((file-executable-p "/usr/bin/evince") "evince")
-   ;; Ubuntu MATE uses atril.
-   ((file-executable-p "/usr/bin/atril") "atril")))
-
 (defconst my-dired-xdg-open-overrides
   `(("zhtml" . "zhtml-open")
     ("epub" . ,my-pdf-reader)
