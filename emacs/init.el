@@ -31,6 +31,7 @@
 (require 'my-email)
 (require 'my-wiki)
 (require 'my-rest)
+(require 'my-publish)
 
 ;;; Start emacs server
 (server-start)
