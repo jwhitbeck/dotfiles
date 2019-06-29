@@ -64,7 +64,7 @@ custom whitespace-mode styles by major mode."
 ;;; If indent-tabs-mode is off, untabify before saving.
 (defun my-untabify-buffer ()
   "Replace all tabs with spaces in buffer."
-  (when (not indent-tabs-mode)
+  (unless indent-tabs-mode
     (untabify (point-min) (point-max)))
   nil)
 
@@ -80,7 +80,7 @@ custom whitespace-mode styles by major mode."
 
 (defun my-yas-minor-mode ()
   "Like yas-minor-mode but loads snippets if that hasn't already been done."
-  (when (not my-are-snippets-loaded)
+  (unless my-are-snippets-loaded
     (yas-reload-all)
     (setq my-are-snippets-loaded t))
   (yas-minor-mode))
