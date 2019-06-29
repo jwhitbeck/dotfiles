@@ -16,6 +16,7 @@
  ini-mode
  markdown-mode
  protobuf-mode
+ scratch
  toml-mode
  yaml-mode)
 
