@@ -3,7 +3,7 @@
 ;;; Spellcheckers
 
 (require 'my-package)
-(my-use-packages flycheck)
+(my-use-packages flycheck synosaurus)
 
 (eval-when-compile
   (require 'flycheck))
