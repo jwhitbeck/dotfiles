@@ -12,6 +12,12 @@
 ;;; Git grep
 (autoload 'vc-git-grep "vc-git")
 
+;;; Quote default pattern to prevent shell expansion of wildcards
+(defun my-quote-grep-read-files (pattern)
+  (concat "\"" pattern "\""))
+
+(advice-add 'grep-read-files :filter-return 'my-quote-grep-read-files)
+
 ;;; Remap C-x g to vc-git-grep
 (with-eval-after-load 'magit
   (define-key magit-file-mode-map (kbd "C-x g") nil))
