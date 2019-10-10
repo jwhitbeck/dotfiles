@@ -4,7 +4,7 @@
 
 (require 'my-package)
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
-(my-use-packages auto-indent-mode cider clojure-mode kibit-helper)
+(my-use-packages auto-indent-mode cider clojure-mode)
 
 (add-hook 'clojure-mode-hook 'cider-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
