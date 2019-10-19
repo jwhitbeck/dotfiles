@@ -89,8 +89,13 @@
 ;;; emacs25.
 (defun frame-parent (_) nil)
 
-;;; Winner mode saves the history of window splits
+;;;; Winner mode saves the history of window
+;;; Don't bind winner-mode keys as we are going to define our own.
+(custom-set-variables
+ '(winner-dont-bind-my-keys t))
 (winner-mode t)
+(global-set-key (kbd "<f8>") 'winner-undo)
+(global-set-key (kbd "<f9>") 'winner-redo)
 
 ;;; Splitting
 (custom-set-variables
