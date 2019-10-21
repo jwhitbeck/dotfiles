@@ -259,38 +259,49 @@ to the right of the selected one."
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;;; FIPLR: Fuzzy project file finding
+;;;; FIPLR: Fuzzy project file finding
 (global-set-key (kbd "C-x p") 'fiplr-find-file)
+
 (eval-when-compile
   (require 'fiplr))
-(with-eval-after-load 'fiplr
-  (custom-set-variables
-   '(fiplr-ignored-globs '((directories (".git"
-                                         ".svn"
-                                         ".hg"
-                                         ".bzr"
-                                         ".deps"
-                                         ".build"
-                                         "target"
-                                         "node_modules"))
-                           (files (".#*"
-                                   "*~"
-                                   "*.so"
-                                   "*.jpg"
-                                   "*.png"
-                                   "*.gif"
-                                   "*.pdf"
-                                   "*.gz"
-                                   "*.zip"
-                                   ".DS_Store"
-                                   "*.class"
-                                   "*.pyc"
-                                   "*.den"
-                                   ".elc")))))
 
-  ;; Drop an empty .fiplr_root file in a dir for fiplr to consider it a
-  ;; top-level dir
-  (add-to-list 'fiplr-root-markers ".fiplr_root" t))
+(defun my-fiplr-list-files (type path ignored-globs)
+  "Like fiplr-list-files, but uses `git ls-files` instead of
+`find` for git repositories."
+  (if (not (and (eq 'files type)
+                (file-exists-p (expand-file-name ".git" path))))
+      (fiplr-list-files type path ignored-globs)
+    (let ((cmd (format "cd '%s' && git ls-files --other --cached" path)))
+      (split-string (shell-command-to-string cmd)))))
+
+(custom-set-variables
+ '(fiplr-ignored-globs '((directories (".git"
+                                       ".svn"
+                                       ".hg"
+                                       ".bzr"
+                                       ".deps"
+                                       ".build"
+                                       "target"
+                                       "node_modules"))
+                         (files (".#*"
+                                 "*~"
+                                 "*.so"
+                                 "*.jpg"
+                                 "*.png"
+                                 "*.gif"
+                                 "*.pdf"
+                                 "*.gz"
+                                 "*.zip"
+                                 ".DS_Store"
+                                 "*.class"
+                                 "*.pyc"
+                                 "*.den"
+                                 ".elc"))))
+ '(fiplr-list-files-function 'my-fiplr-list-files))
+
+;; Drop an empty .fiplr_root file in a dir for fiplr to consider it a
+;; top-level dir
+(add-to-list 'fiplr-root-markers ".fiplr_root" t)
 
 ;;; Buffer lists
 (global-set-key (kbd "C-x C-b") 'ibuffer)
