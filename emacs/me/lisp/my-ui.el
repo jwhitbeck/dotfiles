@@ -271,7 +271,7 @@ to the right of the selected one."
   (if (not (and (eq 'files type)
                 (file-exists-p (expand-file-name ".git" path))))
       (fiplr-list-files type path ignored-globs)
-    (let ((cmd (format "cd '%s' && git ls-files --other --cached" path)))
+    (let ((cmd (format "cd '%s' && git ls-files --exclude-standard --other --cached" path)))
       (split-string (shell-command-to-string cmd)))))
 
 (custom-set-variables
@@ -301,7 +301,8 @@ to the right of the selected one."
 
 ;; Drop an empty .fiplr_root file in a dir for fiplr to consider it a
 ;; top-level dir
-(add-to-list 'fiplr-root-markers ".fiplr_root" t)
+(with-eval-after-load 'fiplr
+  (add-to-list 'fiplr-root-markers ".fiplr_root" t))
 
 ;;; Buffer lists
 (global-set-key (kbd "C-x C-b") 'ibuffer)
