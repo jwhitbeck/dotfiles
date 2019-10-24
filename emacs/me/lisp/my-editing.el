@@ -4,6 +4,8 @@
 
 (require 'my-package)
 
+(add-to-list 'package-pinned-packages '(auto-indent-mode . "melpa-stable") t)
+
 (my-use-packages auto-indent-mode undo-tree yasnippet dash string-inflection)
 
 (custom-set-variables
