@@ -15,6 +15,7 @@
                  ido-vertical-mode
                  rainbow-delimiters
                  smex
+                 visual-fill-column
                  zenburn-theme)
 
 ;;; Load Zen burn them
