@@ -1,8 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;; Some useful commands
-(eval-when-compile
-  (require 'dired))
 
 ;;; Print current UTC time in echo area
 (defun my-current-utc-time ()
@@ -56,11 +54,12 @@ the output of the command. Press 'q' to dismiss the buffer."
   "Like shell-command but runs the shell command in a process
 detached from emacs."
   (interactive
-   (list (let ((args (let ((filename (cond
-                                       (buffer-file-name)
-                                       ((eq major-mode 'dired-mode)
-                                        (dired-get-filename nil t)))))
-                       (and filename (file-relative-name filename)))))
+   (list (let* ((filename (cond
+                           (buffer-file-name)
+                           ((eq major-mode 'dired-mode)
+                            (require 'dired)
+                            (dired-get-filename nil t))))
+                (args (and filename (file-relative-name filename))))
            (read-shell-command "Detached shell command: " nil nil args))))
   (let ((handler (find-file-name-handler (directory-file-name default-directory)
                                          'shell-command)))
