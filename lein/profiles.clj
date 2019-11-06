@@ -1,5 +1,4 @@
-{:user {:plugins [[cider/cider-nrepl "0.21.0"]
-                  ;; A Leiningen plugin to check your project for outdated dependencies and plugins.
+{:user {:plugins [;; A Leiningen plugin to check your project for outdated dependencies and plugins.
                   ;; https://github.com/xsc/lein-ancient
                   [lein-ancient "0.6.15"]
                   ;; kibit is a static code analyzer for Clojure. Use with kibit-helper emacs package.
