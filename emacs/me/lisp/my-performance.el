@@ -1,11 +1,11 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; Emacs performance tweaks
+;;;; Emacs performance tweaks
 
-;;; Reduce occurence of garbage collection
-(custom-set-variables '(gc-cons-threshold 20000000))
-
-;;; Increase limit of lisp variable bindings
-(custom-set-variables '(max-specpdl-size 2500))
+(setq
+ ;; Reduce occurence of garbage collection
+ gc-cons-threshold 20000000
+ ;; Increase limit of lisp variable bindings
+ max-specpdl-size 2500)
 
 (provide 'my-performance)
