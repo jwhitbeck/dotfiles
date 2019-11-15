@@ -1,25 +1,35 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; Security settings for emacs. Should be the first feature to load.
-
-;;; TLS Ensure that certificates are verified. See
-;;; https://glyph.twistedmatrix.com/2015/11/editor-malware.html for full
-;;; explanation.
-(require 'gnutls)
-(custom-set-variables
- '(gnutls-verify-error t)
- '(gnutls-min-prime-bits 2048)
- '(gnutls-algorithm-priority "PFS"))
-
-;;; Even with these settings, emacs isn't very good at TLS security.  See
-;;; https://news.ycombinator.com/item?id=17567347 for a more detailed
-;;; discussion.
+;;;; Security settings for emacs.
 ;;;
+;;; Even with these settings, emacs isn't very good at TLS security.
+;;;
+;;; References:
+;;;  - https://www.gnu.org/software/emacs/manual/html_node/emacs-gnutls/Help-For-Users.html
+;;;  - https://glyph.twistedmatrix.com/2015/11/editor-malware.html
+(require 'gnutls)
+
+(setq
+ ;; Ensure that certificates are verified.
+ gnutls-verify-error t
+ ;; Minimum number of prime bits accepted by GnuTLS for key exchange.
+ gnutls-min-prime-bits 2048
+ ;; Use cipher suites that enable perfect forward security.
+ ;; https://gnutls.org/manual/html_node/Priority-Strings.html
+ gnutls-algorithm-priority "PFS")
+
 ;;; I can test emacs TLS againt badssl urls using the following snippet.
-;; (mapcar (lambda (host)
-;;           (ignore-errors (url-retrieve-synchronously host)))
-;;         '("https://revoked.badssl.com/"
-;;           "https://pinning-test.badssl.com/"
-;;           "https://invalid-expected-sct.badssl.com/"))
+;; (let ((no-error-urls '()))
+;;   (dolist (url '("https://revoked.badssl.com/"  ; As of emacs 26.3, retrieved without error
+;;                  "https://pinning-test.badssl.com/" ; As of emacs 26.3, retrieved without error
+;;                  "https://expired.badssl.com/"
+;;                  "https://wrong.host.badssl.com/"
+;;                  "https://untrusted-root.badssl.com/"
+;;                  "https://self-signed.badssl.com/"
+;;                  "https://invalid-expected-sct.badssl.com/"
+;;                  "https://dh1024.badssl.com/"))
+;;     (when-let ((buf (ignore-errors (url-retrieve-synchronously url))))
+;;       (push url no-error-urls)))
+;;   no-error-urls)
 
 (provide 'my-security)

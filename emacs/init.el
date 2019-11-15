@@ -9,6 +9,8 @@
 
 ;; This must come before configurations of installed packages. Emacs will insert this line if not present.
 (package-initialize)
+;;; Harden security settings.
+(require 'my-security)
 
 ;;; Trick emacs into not saving the customization file as I already have these defined in my init files.
 (setq custom-file "/dev/null" )
