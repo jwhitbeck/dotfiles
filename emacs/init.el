@@ -13,6 +13,10 @@
 ;;; Trick emacs into not saving the customization file.
 (setq custom-file "/dev/null" )
 
+;;; Configure autoloads
+;;; Regenerate using M-x update-directory-autoloads
+(load (expand-file-name "autoloads.el" my-lisp-dir))
+
 ;;; This must come before configurations of installed packages. Emacs will
 ;;; insert this line if not present.
 (package-initialize)

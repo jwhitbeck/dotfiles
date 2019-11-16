@@ -14,9 +14,23 @@
   '(;; Ensure that we use the latest org-mode with contribs. This needs to be
     ;; installed before all other packages.
     org-plus-contrib
+    ace-jump-mode
+    ace-window
     auto-indent-mode
     cider
-    clojure-mode))
+    clojure-mode
+    company
+    fill-column-indicator
+    fiplr
+    flx-ido
+    hide-lines
+    ido
+    ido-completing-read+
+    ido-vertical-mode
+    rainbow-delimiters
+    smex
+    visual-fill-column
+    zenburn-theme))
 
 (setq package-pinned-packages
       '((cider . "melpa-stable")))

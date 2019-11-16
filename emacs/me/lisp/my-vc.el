@@ -7,7 +7,10 @@
 
 (custom-set-variables
  '(magit-delete-by-moving-to-trash nil)
- '(git-commit-fill-column 70))
+ '(git-commit-fill-column 70)
+ ;; added from my-ui
+ '(vc-follow-symlinks t)                ; follow symlinks for files under version control
+ )
 
 ;;; Git grep
 (autoload 'vc-git-grep "vc-git")

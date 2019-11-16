@@ -1,31 +1,15 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; Emacs UI Customizations
-
-(require 'my-package)
-(my-use-packages ace-jump-mode
-                 ace-window
-                 company
-                 fill-column-indicator
-                 fiplr
-                 flx-ido
-                 hide-lines
-                 ido
-                 ido-completing-read+
-                 ido-vertical-mode
-                 rainbow-delimiters
-                 smex
-                 visual-fill-column
-                 zenburn-theme)
+;;;; Emacs UI Customizations
 
 ;;; Load Zen burn them
 (load-theme 'zenburn t)
 
+;;; Use Ubuntu's default font
+(set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
+
 ;;; Activate line highlighting everywhere
 (global-hl-line-mode t)
-
-;;; Automatically show opened/closed parentheses
-(show-paren-mode)
 
 ;;; Show row/column number in model line
 (column-number-mode t)
@@ -43,17 +27,17 @@
   (scroll-bar-mode -1))                 ; disable scroll bar
 
 ;;; Disable startup messages
-(custom-set-variables
- '(inhibit-startup-message t)
- '(inhibit-startup-echo-area-message t)
- '(initial-scratch-message nil))
+(setq
+ inhibit-startup-message t
+ inhibit-startup-echo-area-message t
+ initial-scratch-message nil)
 
 ;;; Start scrolling the window when the cursor reaches its edge.
 ;;; http://stackoverflow.com/questions/3631220/fix-to-get-smooth-scrolling-in-emacs
-(custom-set-variables
- '(scroll-margin 7)
- '(scroll-conservatively 10000)
- '(scroll-preserve-screen-position 1))
+(setq
+ scroll-margin 7
+ scroll-conservatively 10000
+ scroll-preserve-screen-position 1)
 
 ;;; Set M-- and M-+ to decrease/increase the font size
 (defun my-text-scale-reset ()
@@ -66,16 +50,17 @@
 (global-set-key (kbd "M-0") 'my-text-scale-reset)
 
 ;;; X clipboard <-> emacs kill ring compatibility
-(custom-set-variables
+(setq
  ;; stops selection with a mouse from being immediately injected to the kill
  ;; ring
- '(mouse-drag-copy-region nil)
+ mouse-drag-copy-region nil
  ;; stops killing/yanking interacting with primary X11 selection
- '(x-select-enable-primary nil)
+ select-enable-primary nil
  ;; makes killing/yanking interact with clipboard X11 selection
- '(x-select-enable-clipboard t))
+ select-enable-clipboard t)
 
 ;;; Ace-jump bindings
+(require 'ace-jump-mode)
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
 ;;; IMenu
@@ -84,158 +69,42 @@
 ;;; Window navigation
 (global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "C-x C-o") 'ace-window) ; Convenience binding for typing C-x o too quickly
-(custom-set-variables '(aw-keys '(?q ?s ?d ?f ?h ?j ?k ?l)))
+(require 'ace-window)
+(setq aw-keys '(?q ?s ?d ?f ?g ?h ?j ?k ?l))
 
-;;; TODO: Remove after I upgrade to emacs26. ace-window expects this function to be defined but it isn't in
-;;; emacs25.
-(defun frame-parent (_) nil)
-
-;;;; Winner mode saves the history of window
+;;; Winner mode saves the history of window
 ;;; Don't bind winner-mode keys as we are going to define our own.
-(custom-set-variables
- '(winner-dont-bind-my-keys t))
+(setq winner-dont-bind-my-keys t)
 (winner-mode t)
 (global-set-key (kbd "<f8>") 'winner-undo)
 (global-set-key (kbd "<f9>") 'winner-redo)
 
-;;; Special characters
-(defun insert-em-dash ()
-  "See https://www.thepunctuationguide.com/em-dash.html for usage."
-  (interactive)
-  (insert "—"))
-
-(defun insert-en-dash ()
-  "See https://www.thepunctuationguide.com/en-dash.html for usage."
-  (interactive)
-  (insert "–"))
-
-(global-set-key (kbd "<f7> _") 'insert-em-dash)
-(global-set-key (kbd "<f7> -") 'insert-en-dash)
-
-;;; Splitting
-(custom-set-variables
- '(split-height-threshold 110)
- '(split-width-threshold 220))
+;;; Window splitting
+(setq
+ split-height-threshold 110
+ split-width-threshold 220)
 
 ;;; Window management
-(defun my-rotate-window-split-horizontal ()
-  "Rotate windows from a 2-window vertical split to a 2-window horizontal split."
-  (interactive)
-  (when (and (= (count-windows) 2)
-             ;; true if current split is horizontal
-             (caar (window-tree)))
-    (let* ((cur-win (selected-window))
-           (other-win (next-window))
-           (cur-buffer (window-buffer))
-           (other-buffer (window-buffer other-win))
-           (cur-edges (window-edges cur-win))
-           (other-edges (window-edges other-win)))
-      (delete-other-windows)
-      (split-window-horizontally)
-      ;; True if current buffer was initially below the other buffer.
-      (when (> (cadr cur-edges) (cadr other-edges))
-        (other-window 1))
-      (set-window-buffer (selected-window) cur-buffer)
-      (set-window-buffer (next-window) other-buffer))))
-
 (global-set-key (kbd "C-x |") 'my-rotate-window-split-horizontal)
-
-(defun my-rotate-window-split-vertical ()
-  "Rotate windows from a 2-window horizontal split to a 2-window vertical split."
-  (interactive)
-  (when (and (= (count-windows) 2)
-             ;; true if current split is horizontal
-             (not (caar (window-tree))))
-    (let* ((cur-win (selected-window))
-           (other-win (next-window))
-           (cur-buffer (window-buffer))
-           (other-buffer (window-buffer other-win))
-           (cur-edges (window-edges cur-win))
-           (other-edges (window-edges other-win)))
-      (delete-other-windows)
-      (split-window-vertically)
-      ;; True if current buffer was initially to the right of the other buffer.
-      (when (> (car cur-edges) (car other-edges))
-        (other-window 1))
-      (set-window-buffer (selected-window) cur-buffer)
-      (set-window-buffer (next-window) other-buffer))))
-
 (global-set-key (kbd "C-x _") 'my-rotate-window-split-vertical)
-
-(defun my-window-switch ()
-  "Switch the buffers displayed in a 2-window split."
-  (interactive)
-  (when (= (count-windows) 2)
-    (let* ((cur-buffer (window-buffer))
-           (other-buffer (window-buffer (next-window))))
-      (set-window-buffer (next-window) cur-buffer)
-      (set-window-buffer (selected-window) other-buffer)
-      (select-window (next-window)))))
-
+(global-set-key (kbd "C-x #") 'my-window-switch)
 (with-eval-after-load 'server
   ;; server.el sets this keybinding, so overrule it after it loads.
   (global-set-key (kbd "C-x #") 'my-window-switch))
-(global-set-key (kbd "C-x #") 'my-window-switch)
 
 ;;; Simplify window management for french keyboards
-(defun my-split-window-below ()
-  "Split the window vertically and move focus to the new window
-below the selected one."
-  (interactive)
-  (split-window-below)
-  (other-window 1))
-
-(defun my-split-window-right ()
-  "Split the window horizontal and move focus to the new window
-to the right of the selected one."
-  (interactive)
-  (split-window-right)
-  (other-window 1))
-
 (global-set-key (kbd "C-x à") 'delete-window) ; C-x 0
 (global-set-key (kbd "C-x &") 'delete-other-windows) ; C-x 1
 (global-set-key (kbd "C-x é") 'my-split-window-below) ; C-x 2
 (global-set-key (kbd "C-x \"") 'my-split-window-right) ; C-x 3
-
-;;; Lock buffers to windows
-(defun my-set-buffer-name-face (face)
-  (let ((cur (car mode-line-buffer-identification)))
-    (setq-local mode-line-buffer-identification
-                (list (propertize cur 'face face)))))
-
-(defun my-toggle-dedicated-window ()
-  "Toggle whether or not the window is dedicated to its buffer."
-  (interactive)
-  (set-window-dedicated-p (selected-window) (not (window-dedicated-p)))
-  (my-set-buffer-name-face (if (window-dedicated-p)
-                               'warning
-                             'mode-line-buffer-id)))
-
 (global-set-key (kbd "C-x ²") 'my-toggle-dedicated-window)
-
-;;; Use Ubuntu's default font
-(set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
-
-;;; Turn on syntax highlighting for all modes that support it.
-(global-font-lock-mode t)
-
-;;; Parentheses
-(custom-set-variables
- '(show-paren-delay 0)                              ; immediately show matching parentheses
- '(show-paren-style 'expression))                   ; highlight full expression contained between parentheses
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in prog mode
-
-;;; Fill column indicator
-(custom-set-variables
- '(fill-column 80))                    ; line wrap at 80 characters
-(add-hook 'prog-mode-hook 'fci-mode)   ; show a bar beyond the fill-column
 
 ;;; Auto-completion
 (global-company-mode)
 (global-set-key (kbd "TAB") 'company-indent-or-complete-common)
 
-;; workaround for fill-column indicator
-;; See https://github.com/company-mode/company-mode/issues/180
+;;; Workaround for fill-column indicator
+;;; See https://github.com/company-mode/company-mode/issues/180
 (defvar-local company-fci-mode-on-p nil)
 
 (defun company-turn-off-fci (&rest _)
@@ -252,8 +121,7 @@ to the right of the selected one."
 
 ;;; Remember recently visited files
 (recentf-mode t)
-(custom-set-variables
- '(recentf-max-saved-items 1000))
+(setq recentf-max-saved-items 1000)
 
 ;;; Save your minibuffer history across Emacs sessions.
 (savehist-mode t)
@@ -263,67 +131,26 @@ to the right of the selected one."
 (ido-ubiquitous-mode t)
 (ido-vertical-mode t)
 (ido-everywhere t)
-(custom-set-variables
- '(ido-enable-flex-matching t)
- '(flx-ido-mode t)                      ; Use FLX matching engine
- '(ido-use-faces nil)                   ; disable ido faces to see flx highlights.
- '(ido-use-virtual-buffers t)
- '(ido-max-directory-size 100000))
+(setq
+ ido-enable-flex-matching t
+ flx-ido-mode t                       ; Use FLX matching engine.
+ ido-use-faces nil                    ; Disable ido faces to see flx highlights.
+ ido-use-virtual-buffers t
+ ido-max-directory-size 100000)
 
 ;;; IDO for M-x
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;;;; FIPLR: Fuzzy project file finding
-(global-set-key (kbd "C-x p") 'fiplr-find-file)
-
-(eval-when-compile
-  (require 'fiplr))
-
-(defun my-fiplr-list-files (type path ignored-globs)
-  "Like fiplr-list-files, but uses `git ls-files` instead of
-`find` for git repositories."
-  (if (not (and (eq 'files type)
-                (file-exists-p (expand-file-name ".git" path))))
-      (fiplr-list-files type path ignored-globs)
-    (let ((cmd (format "cd '%s' && git ls-files --exclude-standard --other --cached" path)))
-      (split-string (shell-command-to-string cmd)))))
-
-(custom-set-variables
- '(fiplr-ignored-globs '((directories (".git"
-                                       ".svn"
-                                       ".hg"
-                                       ".bzr"
-                                       ".deps"
-                                       ".build"
-                                       "target"
-                                       "node_modules"))
-                         (files (".#*"
-                                 "*~"
-                                 "*.so"
-                                 "*.jpg"
-                                 "*.png"
-                                 "*.gif"
-                                 "*.pdf"
-                                 "*.gz"
-                                 "*.zip"
-                                 ".DS_Store"
-                                 "*.class"
-                                 "*.pyc"
-                                 "*.den"
-                                 ".elc"))))
- '(fiplr-list-files-function 'my-fiplr-list-files))
-
-;; Drop an empty .fiplr_root file in a dir for fiplr to consider it a
-;; top-level dir
+;;; FIPLR: Fuzzy project file finding
 (with-eval-after-load 'fiplr
-  (add-to-list 'fiplr-root-markers ".fiplr_root" t))
+  (require 'my-fiplr))
+(global-set-key (kbd "C-x p") 'fiplr-find-file)
 
 ;;; Buffer lists
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;;; Include path information in duplicate buffer names (e.g. a/foo.txt b/foo.txt)
-(custom-set-variables
- '(uniquify-buffer-name-style 'forward))
+(setq uniquify-buffer-name-style 'forward)
 
 ;;; Don't wrap lines in grep-mode
 (defun my-disable-line-wrap ()
@@ -331,10 +158,9 @@ to the right of the selected one."
 (add-hook 'grep-mode-hook 'my-disable-line-wrap)
 
 ;;; Miscellaneous
-(custom-set-variables
- '(transient-mark-mode t)               ; highlight selection
- '(lazy-highlight-initial-delay 0)      ; immediately highlight all matches
- '(vc-follow-symlinks t)                ; follow symlinks for files under version control
- '(ring-bell-function 'ignore))         ; disable bell
+(setq
+ transient-mark-mode t               ; highlight selection
+ lazy-highlight-initial-delay 0      ; immediately highlight all matches
+ ring-bell-function 'ignore)         ; disable bell
 
 (provide 'my-ui)

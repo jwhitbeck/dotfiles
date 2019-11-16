@@ -87,4 +87,18 @@ custom whitespace-mode styles by major mode."
     (setq my-are-snippets-loaded t))
   (yas-minor-mode))
 
+;;; Special characters
+(defun insert-em-dash ()
+  "See https://www.thepunctuationguide.com/em-dash.html for usage."
+  (interactive)
+  (insert "—"))
+
+(defun insert-en-dash ()
+  "See https://www.thepunctuationguide.com/en-dash.html for usage."
+  (interactive)
+  (insert "–"))
+
+(global-set-key (kbd "<f7> _") 'insert-em-dash)
+(global-set-key (kbd "<f7> -") 'insert-en-dash)
+
 (provide 'my-editing)

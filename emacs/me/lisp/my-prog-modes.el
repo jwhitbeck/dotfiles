@@ -82,4 +82,25 @@
   (orgtbl-mode t))
 (add-hook 'markdown-mode-hook 'my-enable-orgtbl-mode)
 
+;;;; Copied from other files
+
+;;; Automatically show opened/closed parentheses
+(show-paren-mode)
+
+;;; Turn on syntax highlighting for all modes that support it.
+(global-font-lock-mode t)
+
+;;; Parentheses
+(custom-set-variables
+ '(show-paren-delay 0)                              ; immediately show matching parentheses
+ '(show-paren-style 'expression))                   ; highlight full expression contained between parentheses
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode) ; activate rainbow delimeters in prog mode
+
+;;; Fill column indicator
+(custom-set-variables
+ '(fill-column 80))                    ; line wrap at 80 characters
+(add-hook 'prog-mode-hook 'fci-mode)   ; show a bar beyond the fill-column
+
+
+
 (provide 'my-prog-modes)
