@@ -34,6 +34,7 @@
 (require 'my-shell)
 (require 'my-tramp)
 (require 'my-org)
+(require 'my-text-mode)
 (require 'my-prog-modes)
 (require 'my-java)
 (require 'my-clojure)

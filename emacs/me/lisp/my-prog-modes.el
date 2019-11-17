@@ -27,7 +27,8 @@
   (define-key ess-mode-map (kbd "_") 'ess-smarter-underscore))
 
 ;;; Makefile
-(my-disable-tab-highlighting 'makefile-gmake-mode)
+;; XXX re-enable
+;; (my-disable-tab-highlighting 'makefile-gmake-mode)
 
 ;;; Scheme
 (custom-set-variables
@@ -40,7 +41,8 @@
 (add-hook 'scheme-mode-hook 'auto-indent-mode)
 
 ;;; Golang
-(my-disable-tab-highlighting 'go-mode)
+;; XXX
+;; (my-disable-tab-highlighting 'go-mode)
 (add-hook 'go-mode-hook 'my-enable-indent-tabs)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
@@ -107,5 +109,72 @@
 
 (with-eval-after-load 'fill-column-indicator
   (require 'my-fill-column-indicator))
+
+;;; XXX move to prog-modes
+;;; Remove the auto-indent hook that disables electric-indent
+(require 'auto-indent-mode)
+(remove-hook 'after-change-major-mode-hook 'auto-indent-disable-electric)
+
+;;; Highlight and auto-correct whitespace problems
+(add-hook 'prog-mode-hook 'my-whitespace-mode)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;;; Activate undo tree for text and program editing
+(add-hook 'prog-mode-hook 'undo-tree-mode)
+
+
+(defcustom my-whitespace-styles nil
+  "List of (major-mode . whitespace-style) pairs. Used to define
+custom whitespace-mode styles by major mode."
+  :type '(alist :key-type symbol :value-type (list symbol))
+  :group 'my-editing)
+
+(defcustom my-default-whitespace-style '(face empty trailing tabs tab-mark)
+  "The default whitespace style to use."
+  :type '(list symbol)
+  :group 'my-editing)
+
+;;; For the ->> macro
+(require 'dash)
+
+(defun my-disable-tab-highlighting (mm)
+  "Disable tab highlighting for major mode."
+  (add-to-list 'my-whitespace-styles
+               (cons mm (->> my-default-whitespace-style
+                             copy-sequence
+                             (delq 'tabs)
+                             (delq 'tab-mark)))))
+
+(defun my-whitespace-mode ()
+  "Configure whitespace-mode differently depending on the major mode."
+  (setq-local whitespace-style (or (cdr (assoc major-mode my-whitespace-styles))
+                                   my-default-whitespace-style))
+  (whitespace-mode))
+
+
+
+;;; No tabs by default. Modes that really need tabs should enable
+;;; indent-tabs-mode explicitly.  Makefile-mode already does that, for example.
+(custom-set-variables
+ '(indent-tabs-mode nil))
+
+(defun my-enable-indent-tabs ()
+  "Enable using tabs for indentation."
+  (setq indent-tabs-mode t))
+
+;;; XXX consider removing
+;;; If indent-tabs-mode is off, untabify before saving.
+(defun my-untabify-buffer ()
+  "Replace all tabs with spaces in buffer."
+  (unless indent-tabs-mode
+    (untabify (point-min) (point-max)))
+  nil)
+
+(add-hook 'write-file-hooks 'my-untabify-buffer)
+
+;;; Turn on auto revert mode
+; automatically revert a buffer when a file is changed on disk
+(add-hook 'prog-mode-hook 'auto-revert-mode)
+
 
 (provide 'my-prog-modes)

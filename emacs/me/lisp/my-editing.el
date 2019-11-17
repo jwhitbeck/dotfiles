@@ -1,104 +1,20 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; General editing customizations
+;;; General editing settings
 
-(require 'my-package)
+(setq
+ auto-save-default nil         ; Disable autosave.
+ make-backup-files nil)        ; Disable auto backups.
 
-(add-to-list 'package-pinned-packages '(auto-indent-mode . "melpa-stable") t)
+;;; Insert special characters using f7
+(defvar my-f7-chars
+  '(;; EM dash. See https://www.thepunctuationguide.com/em-dash.html for usage.
+    ("_" . "—")
+    ;; EN dash. See https://www.thepunctuationguide.com/en-dash.html for usage.
+    ("-" . "–")))
 
-(my-use-packages auto-indent-mode undo-tree yasnippet dash string-inflection)
-
-(custom-set-variables
- '(auto-save-default nil)         ; disable autosave
- '(make-backup-files nil))        ; disable auto backups
-(global-auto-revert-mode t)       ; automatically revert a buffer when a file is
-                                  ; changed on disk
-
-;;; Remove the auto-indent hook that disables electric-indent
-(require 'auto-indent-mode)
-(remove-hook 'after-change-major-mode-hook 'auto-indent-disable-electric)
-
-;;; Highlight and auto-correct whitespace problems
-(add-hook 'prog-mode-hook 'my-whitespace-mode)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;;; Activate undo tree for text and program editing
-(add-hook 'prog-mode-hook 'undo-tree-mode)
-(add-hook 'text-mode-hook 'undo-tree-mode)
-
-(defcustom my-whitespace-styles nil
-  "List of (major-mode . whitespace-style) pairs. Used to define
-custom whitespace-mode styles by major mode."
-  :type '(alist :key-type symbol :value-type (list symbol))
-  :group 'my-editing)
-
-(defcustom my-default-whitespace-style '(face empty trailing tabs tab-mark)
-  "The default whitespace style to use."
-  :type '(list symbol)
-  :group 'my-editing)
-
-;;; For the ->> macro
-(require 'dash)
-
-(defun my-disable-tab-highlighting (mm)
-  "Disable tab highlighting for major mode."
-  (add-to-list 'my-whitespace-styles
-               (cons mm (->> my-default-whitespace-style
-                             copy-sequence
-                             (delq 'tabs)
-                             (delq 'tab-mark)))))
-
-(defun my-whitespace-mode ()
-  "Configure whitespace-mode differently depending on the major mode."
-  (setq-local whitespace-style (or (cdr (assoc major-mode my-whitespace-styles))
-                                   my-default-whitespace-style))
-  (whitespace-mode))
-
-;;; No tabs by default. Modes that really need tabs should enable
-;;; indent-tabs-mode explicitly.  Makefile-mode already does that, for example.
-(custom-set-variables
- '(indent-tabs-mode nil))
-
-(defun my-enable-indent-tabs ()
-  "Enable using tabs for indentation."
-  (setq indent-tabs-mode t))
-
-;;; If indent-tabs-mode is off, untabify before saving.
-(defun my-untabify-buffer ()
-  "Replace all tabs with spaces in buffer."
-  (unless indent-tabs-mode
-    (untabify (point-min) (point-max)))
-  nil)
-
-(add-hook 'write-file-hooks 'my-untabify-buffer)
-
-;;; Yasnippet
-(require 'yasnippet)
-(add-to-list 'yas-snippet-dirs (expand-file-name "snippets" my-dir))
-
-;;; Lazy-load snippets
-(defvar my-are-snippets-loaded nil
-  "t if the snippets have been loaded.")
-
-(defun my-yas-minor-mode ()
-  "Like yas-minor-mode but loads snippets if that hasn't already been done."
-  (unless my-are-snippets-loaded
-    (yas-reload-all)
-    (setq my-are-snippets-loaded t))
-  (yas-minor-mode))
-
-;;; Special characters
-(defun insert-em-dash ()
-  "See https://www.thepunctuationguide.com/em-dash.html for usage."
-  (interactive)
-  (insert "—"))
-
-(defun insert-en-dash ()
-  "See https://www.thepunctuationguide.com/en-dash.html for usage."
-  (interactive)
-  (insert "–"))
-
-(global-set-key (kbd "<f7> _") 'insert-em-dash)
-(global-set-key (kbd "<f7> -") 'insert-en-dash)
+(dolist (e my-f7-chars)
+  (global-set-key (kbd (concat "<f7> " (car e)))
+                  (lambda () (interactive) (insert (cdr e)))))
 
 (provide 'my-editing)

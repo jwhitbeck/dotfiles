@@ -29,11 +29,15 @@
     ido-vertical-mode
     rainbow-delimiters
     smex
+    string-inflection
+    undo-tree
     visual-fill-column
+    yasnippet
     zenburn-theme))
 
 (setq package-pinned-packages
-      '((cider . "melpa-stable")))
+      '((auto-indent-mode . "melpa-stable")
+        (cider . "melpa-stable")))
 
 ;;; Install packages on startup
 (let ((refreshed? nil))

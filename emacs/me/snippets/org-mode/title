@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: Insert title
-# key: <t
-# --
-#+TITLE: $0

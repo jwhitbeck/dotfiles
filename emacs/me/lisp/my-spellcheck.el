@@ -14,8 +14,9 @@
 ;;; Enable files to opt-out of flycheck.
 (put 'flycheck-mode 'safe-local-variable 'booleanp)
 
+;;; XXX moved to my-text-mode
 ;;; Activate flyspell for all text modes
-(add-hook 'text-mode-hook 'flyspell-mode)
+;;; (add-hook 'text-mode-hook 'flyspell-mode)
 
 ;;; Activate flyspell for comments
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
