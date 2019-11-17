@@ -29,7 +29,7 @@
 (with-eval-after-load 'minibuffer (require 'my-minibuffer))
 (require 'my-vc)
 (with-eval-after-load 'dired (require 'my-dired))
-(require 'my-shell)
+(with-eval-after-load 'comint (require 'my-shell))
 (require 'my-tramp)
 (require 'my-org)
 (require 'my-text-mode)

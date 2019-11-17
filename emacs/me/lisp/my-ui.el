@@ -169,6 +169,9 @@
   "Like \\[dired-jump] (dired-jump) but in other window."
   t)
 
+;;; Fast shell access
+(global-set-key (kbd "C-x x") 'shell)
+
 ;;; Miscellaneous
 (setq
  transient-mark-mode t               ; Highlight selection.
