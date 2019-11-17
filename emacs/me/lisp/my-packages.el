@@ -30,6 +30,7 @@
     ido-completing-read+
     ido-vertical-mode
     magit
+    paredit
     rainbow-delimiters
     smex
     string-inflection

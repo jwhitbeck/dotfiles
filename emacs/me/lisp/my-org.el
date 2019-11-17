@@ -4,7 +4,7 @@
 
 ;;; org-plus-contrib is installed in my-package
 (require 'my-package)
-(require 'my-commands)
+;(require 'my-commands)
 
 ;;; Open all *.org files in org-mode
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))

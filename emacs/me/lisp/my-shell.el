@@ -11,7 +11,7 @@
  '(comint-completion-autolist t)          ; show completion list when ambiguous
  '(comint-input-ignoredups t)             ; no duplicates in command history
  '(comint-completion-addsuffix t)         ; insert space/slash after file completion
- '(comint-get-old-input (constantly ""))  ; what gets sent to prompt when pressing enter in the buffer
+ '(comint-get-old-input (lambda (_) ""))  ; what gets sent to prompt when pressing enter in the buffer
  '(comint-buffer-maximum-size 20000)      ; max length of buffer in lines
  '(comint-input-ring-size 5000)           ; max shell history size
  '(explicit-shell-file-name "/bin/bash")) ; Always use bash on remote hosts

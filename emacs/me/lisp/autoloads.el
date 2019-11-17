@@ -3,14 +3,6 @@
 ;;; Code:
 
 
-;;;### (autoloads nil "my-commands" "my-commands.el" (24012 29673
-;;;;;;  38773 716000))
-;;; Generated autoloads from my-commands.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-commands" '("my-")))
-
-;;;***
-
 ;;;### (autoloads nil "my-dired" "my-dired.el" (23992 46380 798097
 ;;;;;;  678000))
 ;;; Generated autoloads from my-dired.el
@@ -19,8 +11,8 @@
 
 ;;;***
 
-;;;### (autoloads nil "my-dired-extras" "my-dired-extras.el" (23834
-;;;;;;  11378 909154 576000))
+;;;### (autoloads nil "my-dired-extras" "my-dired-extras.el" (0 0
+;;;;;;  0 0))
 ;;; Generated autoloads from my-dired-extras.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired-extras" '(#("my-" 0 3 (fontified nil)))))
@@ -30,38 +22,54 @@
 ;;;### (autoloads nil "my-editing" "my-editing.el" (0 0 0 0))
 ;;; Generated autoloads from my-editing.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-editing" '("insert-e" "my-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-editing" '(#("my-f7-chars" 0 11 (face font-lock-variable-name-face fontified t)))))
 
 ;;;***
 
-;;;### (autoloads nil "my-elisp" "my-elisp.el" (23985 23374 468779
-;;;;;;  706000))
+;;;### (autoloads nil "my-elisp" "my-elisp.el" (0 0 0 0))
 ;;; Generated autoloads from my-elisp.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-elisp" '("measure-time" "my-" "constantly")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-elisp" '(#("my-conditionally-enable-paredit-mode" 0 36 (face font-lock-function-name-face fontified t)))))
+
+;;;***
+
+;;;### (autoloads nil "my-fill-column-indicator" "my-fill-column-indicator.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from my-fill-column-indicator.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fill-column-indicator" '("company-")))
 
 ;;;***
 
 ;;;### (autoloads nil "my-fiplr" "my-fiplr.el" (0 0 0 0))
 ;;; Generated autoloads from my-fiplr.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fiplr" '(#("my-fiplr-list-files" 0 19 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fiplr" '("my-fiplr-list-files")))
 
 ;;;***
 
-;;;### (autoloads nil "my-java" "my-java.el" (23453 23371 408096
-;;;;;;  650000))
+;;;### (autoloads nil "my-java" "my-java.el" (0 0 0 0))
 ;;; Generated autoloads from my-java.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-java" '(#("my-e" 0 4 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-java" '("my-e")))
 
 ;;;***
 
-;;;### (autoloads nil "my-java-eclim" "my-java-eclim.el" (23667 5492
-;;;;;;  468073 196000))
+;;;### (autoloads nil "my-java-eclim" "my-java-eclim.el" (0 0 0 0))
 ;;; Generated autoloads from my-java-eclim.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-java-eclim" '("my-enable-eclim-if-appropriate")))
+
+;;;***
+
+;;;### (autoloads nil "my-minibuffer-eval" "my-minibuffer-eval.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from my-minibuffer-eval.el
+
+(autoload 'my-conditionally-enable-paredit-mode "my-minibuffer-eval" "\
+Enable paredit-mode during eval-expression.
+
+\(fn)" nil nil)
 
 ;;;***
 
@@ -73,32 +81,41 @@
 
 ;;;***
 
-;;;### (autoloads nil "my-org-extras" "my-org-extras.el" (23834 11378
-;;;;;;  909154 576000))
-;;; Generated autoloads from my-org-extras.el
+;;;### (autoloads nil "my-notifications" "my-notifications.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from my-notifications.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-extras" '("my-org-table-blank-field-or-jump")))
+(autoload 'my-popup "my-notifications" "\
+Show a popup if we're on X, or echo it otherwise; TITLE is the
+title of the message, MSG is the context. Optionally, you can
+provide an ICON and SOUND.
+
+\(fn TITLE MSG &optional ICON SOUND)" t nil)
 
 ;;;***
 
-;;;### (autoloads nil "my-org-html" "my-org-html.el" (23715 51180
-;;;;;;  361323 188000))
+;;;### (autoloads nil "my-org-extras" "my-org-extras.el" (0 0 0 0))
+;;; Generated autoloads from my-org-extras.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-extras" '("my-org-t")))
+
+;;;***
+
+;;;### (autoloads nil "my-org-html" "my-org-html.el" (0 0 0 0))
 ;;; Generated autoloads from my-org-html.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-html" '("fci-mode-override-advice" "my-")))
 
 ;;;***
 
-;;;### (autoloads nil "my-package" "my-package.el" (23667 5492 468073
-;;;;;;  196000))
+;;;### (autoloads nil "my-package" "my-package.el" (0 0 0 0))
 ;;; Generated autoloads from my-package.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-package" '("my-")))
 
 ;;;***
 
-;;;### (autoloads nil "my-packages" "my-packages.el" (24015 10665
-;;;;;;  260174 582000))
+;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (face font-lock-variable-name-face fontified nil)))))
@@ -108,14 +125,73 @@
 ;;;### (autoloads nil "my-prog-modes" "my-prog-modes.el" (0 0 0 0))
 ;;; Generated autoloads from my-prog-modes.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-prog-modes" '("my-enable-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-prog-modes" '(#("my-" 0 3 (fontified nil)))))
+
+;;;***
+
+;;;### (autoloads nil "my-remote-shell" "my-remote-shell.el" (0 0
+;;;;;;  0 0))
+;;; Generated autoloads from my-remote-shell.el
+
+(autoload 'my-remote-shell-at-point "my-remote-shell" "\
+Open a remote shell on the host-name under point.
+
+\(fn)" t nil)
+
+(autoload 'my-tramp-connection-history "my-remote-shell" "\
+Return the list of all user@hostname pairs present in the
+tramp connection history.
+
+\(fn)" nil nil)
+
+(defvar my-list-remote-hosts-function 'my-tramp-connection-history "\
+A function that returns the list of hosts to consider for
+  `my-remote-shell'.")
+
+(autoload 'my-remote-shell "my-remote-shell" "\
+Open a tramp-enabled shell on HOSTNAME.
+
+\(fn HOSTNAME)" t nil)
+
+;;;***
+
+;;;### (autoloads nil "my-string" "my-string.el" (0 0 0 0))
+;;; Generated autoloads from my-string.el
+
+(autoload 'my-replace-string "my-string" "\
+Replace occurrences of 'old' string within string 's' with
+  'new' string.
+
+\(fn S OLD NEW)" nil nil)
+
+(autoload 'my-replace-string-re "my-string" "\
+Replace matches of regexp within string 's' with 'new'
+  string.
+
+\(fn S RE NEW)" nil nil)
+
+;;;***
+
+;;;### (autoloads nil "my-time" "my-time.el" (0 0 0 0))
+;;; Generated autoloads from my-time.el
+
+(autoload 'my-time "my-time" "\
+Measure the time it takes to evaluate BODY.
+
+\(fn &rest BODY)" nil t)
+
+(autoload 'my-current-utc-time "my-time" "\
+Returns an ISO 8061 UTC timestamp. Prints it to the echo area
+if called interactively.
+
+\(fn)" t nil)
 
 ;;;***
 
 ;;;### (autoloads nil "my-ui" "my-ui.el" (0 0 0 0))
 ;;; Generated autoloads from my-ui.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '("my-" "company-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '(#("my-" 0 3 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -124,6 +200,23 @@
 ;;; Generated autoloads from my-vars.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-vars" '(#("my-pdf-reader" 0 13 (face font-lock-variable-name-face fontified t)))))
+
+;;;***
+
+;;;### (autoloads nil "my-whitespace" "my-whitespace.el" (0 0 0 0))
+;;; Generated autoloads from my-whitespace.el
+
+(autoload 'my-whitespace-mode-default "my-whitespace" "\
+
+
+\(fn)" nil nil)
+
+(autoload 'my-whitespace-mode-tabs "my-whitespace" "\
+
+
+\(fn)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-whitespace" '(#("my-whitespace-mode--enable" 0 26 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -169,14 +262,15 @@ Toggle whether or not the window is dedicated to its buffer.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-windows" '("my-set-buffer-name-face")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-windows" '(#("my-set-buffer-name-face" 0 23 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
-;;;### (autoloads nil nil ("my-clojure.el" "my-email.el" "my-locale.el"
-;;;;;;  "my-org.el" "my-performance.el" "my-publish.el" "my-rest.el"
-;;;;;;  "my-security.el" "my-shell.el" "my-spellcheck.el" "my-tramp.el"
-;;;;;;  "my-vc.el") (0 0 0 0))
+;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure.el" "my-email.el"
+;;;;;;  "my-locale.el" "my-magit.el" "my-minibuffer.el" "my-org.el"
+;;;;;;  "my-performance.el" "my-publish.el" "my-rest.el" "my-security.el"
+;;;;;;  "my-shell.el" "my-text-mode.el" "my-tramp.el" "my-vc.el"
+;;;;;;  "my-yasnippet.el") (0 0 0 0))
 
 ;;;***
 

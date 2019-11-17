@@ -2,7 +2,7 @@
 
 ;;; Extra dired configuration loaded on-demand after dired itself is loaded
 
-(require 'my-commands)
+;(require 'my-commands)
 (require 'my-vars)
 (require 'dired-x)
 (require 'dired-aux)
@@ -45,6 +45,22 @@ called '*Tail FILENAME*'."
   (with-current-buffer output-buffer
     (setq truncate-lines t)))
 (define-key dired-mode-map (kbd "C-c t") 'my-tail-filename)
+
+(defun my-detached-shell-command (command)
+  "Like shell-command but runs the shell command in a process
+detached from emacs."
+  (interactive
+   (list (let* ((filename (cond
+                           (buffer-file-name)
+                           ((eq major-mode 'dired-mode)
+                            (require 'dired)
+                            (dired-get-filename nil t))))
+                (args (and filename (file-relative-name filename))))
+           (read-shell-command "Detached shell command: " nil nil args))))
+  (let ((handler (find-file-name-handler (directory-file-name default-directory)
+                                         'shell-command)))
+    (if handler (funcall handler 'my-detached-shell-command command)
+      (call-process shell-file-name nil 0 nil shell-command-switch command))))
 
 ;;; Detached command-on-file execution
 (defun my-dired-run-detached-shell-command (command)

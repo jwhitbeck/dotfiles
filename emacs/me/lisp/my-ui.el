@@ -151,6 +151,12 @@
   (setq truncate-lines t))
 (add-hook 'grep-mode-hook 'my-disable-line-wrap)
 
+;;; Print current UTC time in echo area
+(global-set-key (kbd "C-c u") 'my-current-utc-time)
+
+;;; Quickly connect to remote hosts
+(global-set-key (kbd "C-c s") 'my-remote-shell)
+
 ;;; Miscellaneous
 (setq
  transient-mark-mode t               ; Highlight selection.
