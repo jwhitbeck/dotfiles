@@ -31,13 +31,13 @@
 (with-eval-after-load 'org (require 'my-org))
 (require 'my-text-mode)
 (require 'my-prog-modes)
-(require 'my-elisp)
 (require 'my-java)
 (require 'my-clojure)
 
 ;;; Start emacs server
 (server-start)
 
+;;; Load local init.
 (when (file-symlink-p my-local-lisp-dir)
   (add-to-list 'load-path my-local-lisp-dir)
   (load (expand-file-name "init.el" my-local-lisp-dir)))

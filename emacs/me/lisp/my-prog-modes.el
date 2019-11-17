@@ -57,5 +57,6 @@
 (with-eval-after-load 'go-mode (require 'my-go-mode))
 (with-eval-after-load 'css-mode (require 'my-css-mode))
 (with-eval-after-load 'sql (require 'my-sql))
+(with-eval-after-load 'elisp-mode (require 'my-elisp-mode))
 
 (provide 'my-prog-modes)
