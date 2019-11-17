@@ -1,10 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;; Add my custom lisp dir to load-path
-(defconst my-dir (expand-file-name "me" user-emacs-directory))
-(defconst my-lisp-dir (expand-file-name "lisp" my-dir))
-(defconst my-local-lisp-dir (expand-file-name "local" my-lisp-dir))
-
+(require 'my-dirs (expand-file-name "me/lisp/my-dirs.el" user-emacs-directory))
 (add-to-list 'load-path my-lisp-dir)
 
 ;;; Harden security settings.
@@ -31,7 +28,7 @@
 (with-eval-after-load 'dired (require 'my-dired))
 (with-eval-after-load 'comint (require 'my-shell))
 (with-eval-after-load 'tramp (require 'my-tramp))
-(require 'my-org)
+(with-eval-after-load 'org (require 'my-org))
 (require 'my-text-mode)
 (require 'my-prog-modes)
 (require 'my-elisp)
