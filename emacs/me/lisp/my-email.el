@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
+;;; XXX out of global config
 ;;; Mu4e customizations
 
 (autoload 'my-start-mu4e "my-mu4e"
