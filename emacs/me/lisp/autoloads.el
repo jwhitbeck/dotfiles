@@ -92,13 +92,6 @@ default destination for dired operation on the left buffer.
 
 ;;;***
 
-;;;### (autoloads nil "my-mu4e" "my-mu4e.el" (0 0 0 0))
-;;; Generated autoloads from my-mu4e.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mu4e" '("my-")))
-
-;;;***
-
 ;;;### (autoloads nil "my-notifications" "my-notifications.el" (0
 ;;;;;;  0 0 0))
 ;;; Generated autoloads from my-notifications.el
@@ -115,7 +108,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-org" "my-org.el" (0 0 0 0))
 ;;; Generated autoloads from my-org.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '(#("my-org-t" 0 8 (fontified nil face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '("my-org-")))
 
 ;;;***
 
@@ -123,13 +116,6 @@ provide an ICON and SOUND.
 ;;; Generated autoloads from my-org-html.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-html" '(#("fci-mode-override-advice" 0 1 (face font-lock-function-name-face fontified nil) 1 24 (face font-lock-function-name-face fontified nil)) #("my-" 0 3 (fontified nil face font-lock-variable-name-face)))))
-
-;;;***
-
-;;;### (autoloads nil "my-package" "my-package.el" (0 0 0 0))
-;;; Generated autoloads from my-package.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-package" '("my-")))
 
 ;;;***
 
@@ -297,11 +283,11 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure.el" "my-css-mode.el"
-;;;;;;  "my-email.el" "my-ess-mode.el" "my-go-mode.el" "my-locale.el"
-;;;;;;  "my-magit.el" "my-make-mode.el" "my-performance.el" "my-prog-modes.el"
-;;;;;;  "my-scheme.el" "my-security.el" "my-shell.el" "my-sql.el"
-;;;;;;  "my-text-mode.el" "my-tramp.el" "my-vc.el" "my-yaml-mode.el"
+;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure-mode.el"
+;;;;;;  "my-css-mode.el" "my-ess-mode.el" "my-go-mode.el" "my-locale.el"
+;;;;;;  "my-magit.el" "my-make-mode.el" "my-ob-clojure.el" "my-performance.el"
+;;;;;;  "my-prog-modes.el" "my-scheme.el" "my-security.el" "my-shell.el"
+;;;;;;  "my-sql.el" "my-text-mode.el" "my-tramp.el" "my-vc.el" "my-yaml-mode.el"
 ;;;;;;  "my-yasnippet.el") (0 0 0 0))
 
 ;;;***
