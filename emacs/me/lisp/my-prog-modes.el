@@ -58,5 +58,6 @@
 (with-eval-after-load 'css-mode (require 'my-css-mode))
 (with-eval-after-load 'sql (require 'my-sql))
 (with-eval-after-load 'elisp-mode (require 'my-elisp-mode))
+(with-eval-after-load 'java-mode (require 'my-java-mode))
 
 (provide 'my-prog-modes)

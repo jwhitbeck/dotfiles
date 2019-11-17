@@ -31,10 +31,10 @@ default destination for dired operation on the left buffer.
 
 ;;;***
 
-;;;### (autoloads nil "my-elisp" "my-elisp.el" (0 0 0 0))
-;;; Generated autoloads from my-elisp.el
+;;;### (autoloads nil "my-elisp-mode" "my-elisp-mode.el" (0 0 0 0))
+;;; Generated autoloads from my-elisp-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-elisp" '(#("my-conditionally-enable-paredit-mode" 0 36 (face font-lock-function-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-elisp-mode" '("my-disable-emacs-lisp-checkdoc")))
 
 ;;;***
 
@@ -60,17 +60,28 @@ default destination for dired operation on the left buffer.
 
 ;;;***
 
-;;;### (autoloads nil "my-java" "my-java.el" (0 0 0 0))
-;;; Generated autoloads from my-java.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-java" '("my-e")))
-
-;;;***
-
 ;;;### (autoloads nil "my-java-eclim" "my-java-eclim.el" (0 0 0 0))
 ;;; Generated autoloads from my-java-eclim.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-java-eclim" '("my-enable-eclim-if-appropriate")))
+(autoload 'my-enable-eclim-if-appropriate "my-java-eclim" "\
+
+
+\(fn)" nil nil)
+
+;;;***
+
+;;;### (autoloads nil "my-java-mode" "my-java-mode.el" (0 0 0 0))
+;;; Generated autoloads from my-java-mode.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-java-mode" '("my-enable-java-google-style")))
+
+;;;***
+
+;;;### (autoloads nil "my-markdown-mode" "my-markdown-mode.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from my-markdown-mode.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-markdown-mode" '("my-enable-orgtbl-mode")))
 
 ;;;***
 
@@ -129,13 +140,6 @@ provide an ICON and SOUND.
 
 ;;;***
 
-;;;### (autoloads nil "my-prog-modes" "my-prog-modes.el" (0 0 0 0))
-;;; Generated autoloads from my-prog-modes.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-prog-modes" '(#("my-" 0 3 (fontified nil)))))
-
-;;;***
-
 ;;;### (autoloads nil "my-remote-shell" "my-remote-shell.el" (0 0
 ;;;;;;  0 0))
 ;;; Generated autoloads from my-remote-shell.el
@@ -176,6 +180,21 @@ Replace matches of regexp within string 's' with 'new'
   string.
 
 \(fn S RE NEW)" nil nil)
+
+;;;***
+
+;;;### (autoloads nil "my-tabs" "my-tabs.el" (0 0 0 0))
+;;; Generated autoloads from my-tabs.el
+
+(autoload 'my-untabify-buffer "my-tabs" "\
+Replace all tabs with spaces in buffer.
+
+\(fn)" nil nil)
+
+(autoload 'my-enable-indent-tabs "my-tabs" "\
+Enable using tabs for indentation. Intended for use in hooks.
+
+\(fn)" nil nil)
 
 ;;;***
 
@@ -278,10 +297,12 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure.el" "my-email.el"
-;;;;;;  "my-locale.el" "my-magit.el" "my-performance.el" "my-publish.el"
-;;;;;;  "my-rest.el" "my-security.el" "my-shell.el" "my-text-mode.el"
-;;;;;;  "my-tramp.el" "my-vc.el" "my-yasnippet.el") (0 0 0 0))
+;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure.el" "my-css-mode.el"
+;;;;;;  "my-email.el" "my-ess-mode.el" "my-go-mode.el" "my-locale.el"
+;;;;;;  "my-magit.el" "my-make-mode.el" "my-performance.el" "my-prog-modes.el"
+;;;;;;  "my-scheme.el" "my-security.el" "my-shell.el" "my-sql.el"
+;;;;;;  "my-text-mode.el" "my-tramp.el" "my-vc.el" "my-yaml-mode.el"
+;;;;;;  "my-yasnippet.el") (0 0 0 0))
 
 ;;;***
 

@@ -1,17 +1,16 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; Eclipse integration for java
+;;;; Eclipse integration for java
 
 (require 'eclim)
 (require 'eclimd)
 
 ;;; Company mode eclim integration
-(require 'cl) ; company-emacs-eclim requires 'cl to be required for the
-              ; remove-if function
 (require 'company-emacs-eclim)
 (company-emacs-eclim-setup)
 
 ;;; Copied from `global-eclim-mode'
+;;;###autoload
 (defun my-enable-eclim-if-appropriate ()
   (if (and buffer-file-name
            (eclim--accepted-p buffer-file-name)

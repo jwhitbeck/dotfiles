@@ -22,7 +22,9 @@
     cider
     clojure-mode
     company
+    company-emacs-eclim
     company-restclient
+    eclim
     ess
     ess-smart-underscore
     fill-column-indicator

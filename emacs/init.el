@@ -31,7 +31,6 @@
 (with-eval-after-load 'org (require 'my-org))
 (require 'my-text-mode)
 (require 'my-prog-modes)
-(require 'my-java)
 (require 'my-clojure)
 
 ;;; Start emacs server
