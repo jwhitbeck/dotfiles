@@ -172,6 +172,12 @@
 ;;; Fast shell access
 (global-set-key (kbd "C-x x") 'shell)
 
+;;; Org-mode keybindings
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c b") 'org-switchb)
+(global-set-key (kbd "C-c c") 'org-capture)
+
 ;;; Miscellaneous
 (setq
  transient-mark-mode t               ; Highlight selection.

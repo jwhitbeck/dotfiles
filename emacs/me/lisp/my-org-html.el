@@ -1,16 +1,16 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;; TODO: Make this opt-in on a per file basis, rather than a global
-;;; default. For example, this interferes with other HTML exports such as
-;;; org-reveal.
+;;; default. For example, this interferes with other HTML exports such
+;;; as org-reveal.
+;;;
+;;; Look into org-export-define-derived-backend as a way of not
+;;; override the default org-html settings
 
 ;;; Org HTML export customizations
 
-(eval-when-compile
-  (require 'ox-html))
-
-(require 'my-package)
-(my-use-packages htmlize)
+(require 'ox-html)
+(require 'my-dirs)
 
 ;;; Online resources
 ;;; - https://emacs.stackexchange.com/questions/7629/the-syntax-highlight-and-indentation-of-source-code-block-in-exported-html-file
@@ -49,23 +49,22 @@
           "  <dt>Updated</dt><dd>%C</dd>\n"
           "</dl>\n"))
 
-(custom-set-variables
- '(org-export-babel-evaluate 'inline-only)
- '(org-html-doctype "html5")
- '(org-html-html5-fancy t)
- '(org-html-head-include-default-style nil)
- '(org-html-postamble t)
- '(org-html-postamble-format `(("en" ,my-org-html-postamble)))
- `(org-html-scripts ,(my-build-html-scripts))
- `(org-html-head ,(my-build-html-head))
- '(org-html-htmlize-output-type 'css)
- '(org-html-htmlize-font-prefix "org-")
- '(org-export-with-toc nil))
+(setq
+ org-html-doctype "html5"
+ org-html-html5-fancy t
+ org-html-head-include-default-style nil
+ org-html-postamble t
+ org-html-postamble-format `(("en" ,my-org-html-postamble))
+ org-html-scripts (my-build-html-scripts)
+ org-html-head (my-build-html-head)
+ org-html-htmlize-output-type 'css
+ org-html-htmlize-font-prefix "org-"
+ org-export-with-toc nil)
 
 ;;; Fix issue where fill-column-indicator outputs unprintable characters at the
 ;;; end of code blocks
 ;;; https://github.com/alpaker/Fill-Column-Indicator/issues/45
-(defun fci-mode-override-advice (&rest args))
+(defun fci-mode-override-advice (&rest _))
 (advice-add 'org-html-fontify-code :around
             (lambda (fun &rest args)
               (advice-add 'fci-mode :override 'fci-mode-override-advice)

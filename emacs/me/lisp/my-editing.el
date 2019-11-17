@@ -2,9 +2,13 @@
 
 ;;; General editing settings
 
+;;; Don't use auto-backups.
 (setq
  auto-save-default nil         ; Disable autosave.
  make-backup-files nil)        ; Disable auto backups.
+
+;;; File associations.
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 ;;; Insert special characters using f7
 (defvar my-f7-chars
