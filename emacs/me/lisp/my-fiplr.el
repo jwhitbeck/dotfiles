@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;;; FIPLR Customizations
+;;;; FIPLR settings
 
 (require 'fiplr)
 

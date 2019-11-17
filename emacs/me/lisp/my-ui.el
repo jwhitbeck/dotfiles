@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;;; Emacs UI Customizations
+;;;; Emacs UI settings
 
 ;;; Load Zen burn them
 (load-theme 'zenburn t)
@@ -50,17 +50,19 @@
 (global-set-key (kbd "M-0") 'my-text-scale-reset)
 
 ;;; X clipboard <-> emacs kill ring compatibility
+(require 'mouse)
+;; stops selection with a mouse from being immediately injected to the kill
+;; ring
+(setq mouse-drag-copy-region nil)
+
+(require 'select)
 (setq
- ;; stops selection with a mouse from being immediately injected to the kill
- ;; ring
- mouse-drag-copy-region nil
  ;; stops killing/yanking interacting with primary X11 selection
  select-enable-primary nil
  ;; makes killing/yanking interact with clipboard X11 selection
  select-enable-clipboard t)
 
 ;;; Ace-jump bindings
-(require 'ace-jump-mode)
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
 ;;; IMenu
@@ -69,11 +71,12 @@
 ;;; Window navigation
 (global-set-key (kbd "C-x o") 'ace-window)
 (global-set-key (kbd "C-x C-o") 'ace-window) ; Convenience binding for typing C-x o too quickly
-(require 'ace-window)
-(setq aw-keys '(?q ?s ?d ?f ?g ?h ?j ?k ?l))
+(with-eval-after-load 'ace-window
+  (require 'my-ace-window))
 
 ;;; Winner mode saves the history of window
 ;;; Don't bind winner-mode keys as we are going to define our own.
+(require 'winner)
 (setq winner-dont-bind-my-keys t)
 (winner-mode t)
 (global-set-key (kbd "<f8>") 'winner-undo)
@@ -100,33 +103,23 @@
 (global-set-key (kbd "C-x ²") 'my-toggle-dedicated-window)
 
 ;;; Auto-completion
+(require 'company)
 (global-company-mode)
 (global-set-key (kbd "TAB") 'company-indent-or-complete-common)
 
-;;; Workaround for fill-column indicator
-;;; See https://github.com/company-mode/company-mode/issues/180
-(defvar-local company-fci-mode-on-p nil)
-
-(defun company-turn-off-fci (&rest _)
-  (when (boundp 'fci-mode)
-    (setq company-fci-mode-on-p fci-mode)
-    (when fci-mode (fci-mode -1))))
-
-(defun company-maybe-turn-on-fci (&rest _)
-  (when company-fci-mode-on-p (fci-mode 1)))
-
-(add-hook 'company-completion-started-hook 'company-turn-off-fci)
-(add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
-(add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
-
 ;;; Remember recently visited files
 (recentf-mode t)
+(require 'recentf)
 (setq recentf-max-saved-items 1000)
 
 ;;; Save your minibuffer history across Emacs sessions.
 (savehist-mode t)
 
 ;;; IDO
+(require 'ido)
+(require 'flx-ido)
+(require 'ido-completing-read+)
+(require 'ido-vertical-mode)
 (ido-mode t)
 (ido-ubiquitous-mode t)
 (ido-vertical-mode t)
@@ -150,6 +143,7 @@
 ;;; Buffer lists
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;;; Include path information in duplicate buffer names (e.g. a/foo.txt b/foo.txt)
+(require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
 ;;; Don't wrap lines in grep-mode

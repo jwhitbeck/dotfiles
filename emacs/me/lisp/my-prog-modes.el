@@ -101,6 +101,11 @@
  '(fill-column 80))                    ; line wrap at 80 characters
 (add-hook 'prog-mode-hook 'fci-mode)   ; show a bar beyond the fill-column
 
+;;; Ensure that flycheck uses the customized load-path
+;; https://stackoverflow.com/questions/20498554/how-do-i-make-flycheck-find-required-file-in-emacs-lisp
+(setq-default flycheck-emacs-lisp-load-path 'inherit)
 
+(with-eval-after-load 'fill-column-indicator
+  (require 'my-fill-column-indicator))
 
 (provide 'my-prog-modes)
