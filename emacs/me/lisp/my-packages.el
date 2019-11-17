@@ -17,6 +17,7 @@
     ace-jump-mode
     ace-window
     auto-indent-mode
+    browse-at-remote
     cider
     clojure-mode
     company
@@ -28,6 +29,7 @@
     ido
     ido-completing-read+
     ido-vertical-mode
+    magit
     rainbow-delimiters
     smex
     string-inflection

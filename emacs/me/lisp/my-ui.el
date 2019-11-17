@@ -153,8 +153,10 @@
 
 ;;; Miscellaneous
 (setq
- transient-mark-mode t               ; highlight selection
- lazy-highlight-initial-delay 0      ; immediately highlight all matches
- ring-bell-function 'ignore)         ; disable bell
+ transient-mark-mode t               ; Highlight selection.
+ lazy-highlight-initial-delay 0      ; Immediately highlight all matches.
+ ring-bell-function 'ignore          ; Disable bell.
+ vc-follow-symlinks t)        ; Follow symlinks for files under version control.
+
 
 (provide 'my-ui)
