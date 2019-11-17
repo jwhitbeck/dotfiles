@@ -23,26 +23,37 @@
     clojure-mode
     company
     company-restclient
+    ess
+    ess-smart-underscore
     fill-column-indicator
     fiplr
     flx-ido
     flycheck
+    geiser
+    go-eldoc
+    go-mode
     hide-lines
     htmlize
     ido
     ido-completing-read+
     ido-vertical-mode
+    ini-mode
     magit
+    markdown-mode
     ob-restclient
     paredit
     peep-dired
+    protobuf-mode
     rainbow-delimiters
     restclient
+    scratch
     smex
     string-inflection
     synosaurus
+    toml-mode
     undo-tree
     visual-fill-column
+    yaml-mode
     yasnippet
     zenburn-theme))
 

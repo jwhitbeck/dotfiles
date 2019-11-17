@@ -7,6 +7,9 @@
  auto-save-default nil         ; Disable autosave.
  make-backup-files nil)        ; Disable auto backups.
 
+;;; Always delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;;; File associations.
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 

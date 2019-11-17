@@ -8,6 +8,9 @@
 ;;; Use Ubuntu's default font
 (set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
 
+;;; Turn on syntax highlighting for all modes that support it.
+(global-font-lock-mode t)
+
 ;;; Activate line highlighting everywhere
 (global-hl-line-mode t)
 
