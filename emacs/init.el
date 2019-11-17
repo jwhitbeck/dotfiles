@@ -7,8 +7,10 @@
 ;;; Harden security settings.
 (require 'my-security)
 
-;;; Trick emacs into not saving the customization file.
-(setq custom-file "/dev/null" )
+;;; Keep the Emacs customization system out of init.el.
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;;; Configure autoloads
 ;;; Regenerate using M-x update-directory-autoloads
