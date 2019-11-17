@@ -28,6 +28,7 @@
     flx-ido
     flycheck
     hide-lines
+    htmlize
     ido
     ido-completing-read+
     ido-vertical-mode

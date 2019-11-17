@@ -34,7 +34,6 @@
 (require 'my-elisp)
 (require 'my-java)
 (require 'my-clojure)
-(require 'my-publish)
 
 ;;; Start emacs server
 (server-start)
