@@ -59,5 +59,9 @@
 (with-eval-after-load 'sql (require 'my-sql))
 (with-eval-after-load 'elisp-mode (require 'my-elisp-mode))
 (with-eval-after-load 'java-mode (require 'my-java-mode))
+(with-eval-after-load 'clojure-mode (require 'my-clojure-mode))
+
+;;; Per-language org babel settings
+(with-eval-after-load 'ob-clojure (require 'my-ob-clojure))
 
 (provide 'my-prog-modes)
