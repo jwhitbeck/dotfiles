@@ -17,6 +17,7 @@
     ace-jump-mode
     ace-window
     auto-indent-mode
+    async
     browse-at-remote
     cider
     clojure-mode
@@ -31,6 +32,7 @@
     ido-vertical-mode
     magit
     paredit
+    peep-dired
     rainbow-delimiters
     smex
     string-inflection

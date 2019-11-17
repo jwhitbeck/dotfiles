@@ -346,4 +346,28 @@ If needed, set the Fcc header, and register the handler function."
 (advice-add 'mu4e~compose-setup-fcc-maybe
             :override 'my-mu4e~compose-setup-fcc-maybe)
 
+;;; Copied from my-dired-extras
+
+;;; Mu4e integration
+(autoload 'my-ensure-mu4e-is-running "my-mu4e")
+
+(defun my-gnus-dired-attach ()
+  "Like gnus-dired-attach but starts mu4e in background if it
+isn't already running."
+  (interactive)
+  (my-ensure-mu4e-is-running)
+  (turn-on-gnus-dired-mode)
+  (call-interactively 'gnus-dired-attach))
+
+(define-key dired-mode-map (kbd "a") 'my-gnus-dired-attach)
+
+(defun my-gnus-dired-mail-buffers ()
+  "Return a list of active mail composition buffers. Drop-in
+replacement for gnus-dired-mail-buffers."
+  (require 'message)
+  (message-buffers))
+
+(advice-add 'gnus-dired-mail-buffers :override 'my-gnus-dired-mail-buffers)
+
+
 (provide 'my-mu4e)

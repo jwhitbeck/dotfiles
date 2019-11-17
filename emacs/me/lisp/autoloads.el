@@ -3,19 +3,17 @@
 ;;; Code:
 
 
-;;;### (autoloads nil "my-dired" "my-dired.el" (23992 46380 798097
-;;;;;;  678000))
+;;;### (autoloads nil "my-dired" "my-dired.el" (0 0 0 0))
 ;;; Generated autoloads from my-dired.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired" '(#("my-load-dired-extras" 0 20 (face font-lock-function-name-face fontified nil)))))
+(autoload 'my-midnight-commander "my-dired" "\
+Creates two side-by-side dired buffers, in a
+midnight-commander style, where the one on the right is the
+default destination for dired operation on the left buffer.
 
-;;;***
-
-;;;### (autoloads nil "my-dired-extras" "my-dired-extras.el" (0 0
-;;;;;;  0 0))
-;;; Generated autoloads from my-dired-extras.el
+\(fn SRC DEST)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired-extras" '(#("my-" 0 3 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired" '("my-")))
 
 ;;;***
 
@@ -62,19 +60,14 @@
 
 ;;;***
 
-;;;### (autoloads nil "my-minibuffer-eval" "my-minibuffer-eval.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from my-minibuffer-eval.el
+;;;### (autoloads nil "my-minibuffer" "my-minibuffer.el" (0 0 0 0))
+;;; Generated autoloads from my-minibuffer.el
 
-(autoload 'my-conditionally-enable-paredit-mode "my-minibuffer-eval" "\
-Enable paredit-mode during eval-expression.
-
-\(fn)" nil nil)
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-minibuffer" '(#("my-conditionally-enable-paredit-mode" 0 36 (face font-lock-function-name-face fontified t)))))
 
 ;;;***
 
-;;;### (autoloads nil "my-mu4e" "my-mu4e.el" (23834 11378 909154
-;;;;;;  576000))
+;;;### (autoloads nil "my-mu4e" "my-mu4e.el" (0 0 0 0))
 ;;; Generated autoloads from my-mu4e.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mu4e" '("my-")))
@@ -118,7 +111,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '("my-packages")))
 
 ;;;***
 
@@ -195,11 +188,10 @@ if called interactively.
 
 ;;;***
 
-;;;### (autoloads nil "my-vars" "my-vars.el" (23834 11378 909154
-;;;;;;  576000))
+;;;### (autoloads nil "my-vars" "my-vars.el" (0 0 0 0))
 ;;; Generated autoloads from my-vars.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-vars" '(#("my-pdf-reader" 0 13 (face font-lock-variable-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-vars" '("my-pdf-reader")))
 
 ;;;***
 
@@ -267,10 +259,10 @@ Toggle whether or not the window is dedicated to its buffer.
 ;;;***
 
 ;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure.el" "my-email.el"
-;;;;;;  "my-locale.el" "my-magit.el" "my-minibuffer.el" "my-org.el"
-;;;;;;  "my-performance.el" "my-publish.el" "my-rest.el" "my-security.el"
-;;;;;;  "my-shell.el" "my-text-mode.el" "my-tramp.el" "my-vc.el"
-;;;;;;  "my-yasnippet.el") (0 0 0 0))
+;;;;;;  "my-locale.el" "my-magit.el" "my-org.el" "my-performance.el"
+;;;;;;  "my-publish.el" "my-rest.el" "my-security.el" "my-shell.el"
+;;;;;;  "my-text-mode.el" "my-tramp.el" "my-vc.el" "my-yasnippet.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

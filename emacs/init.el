@@ -28,7 +28,7 @@
 (require 'my-editing)
 (with-eval-after-load 'minibuffer (require 'my-minibuffer))
 (require 'my-vc)
-(require 'my-dired)
+(with-eval-after-load 'dired (require 'my-dired))
 (require 'my-shell)
 (require 'my-tramp)
 (require 'my-org)

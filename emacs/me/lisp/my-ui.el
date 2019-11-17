@@ -157,12 +157,23 @@
 ;;; Quickly connect to remote hosts
 (global-set-key (kbd "C-c s") 'my-remote-shell)
 
+;;; Dired fast access
+(global-set-key (kbd "C-x C-j") 'dired-jump)
+(global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
+
+;;; These autoloads are not provided by default.
+(autoload 'dired-jump "dired-x"
+  "Jump to Dired buffer corresponding to current buffer."
+  t)
+(autoload 'dired-jump-other-window "dired-x"
+  "Like \\[dired-jump] (dired-jump) but in other window."
+  t)
+
 ;;; Miscellaneous
 (setq
  transient-mark-mode t               ; Highlight selection.
  lazy-highlight-initial-delay 0      ; Immediately highlight all matches.
  ring-bell-function 'ignore          ; Disable bell.
  vc-follow-symlinks t)        ; Follow symlinks for files under version control.
-
 
 (provide 'my-ui)
