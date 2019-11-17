@@ -5,7 +5,6 @@
 
 (require 'my-package)
 (require 'my-editing)
-(require 'my-spellcheck)
 (my-use-packages
  auto-indent-mode
  ess
@@ -175,6 +174,20 @@ custom whitespace-mode styles by major mode."
 ;;; Turn on auto revert mode
 ; automatically revert a buffer when a file is changed on disk
 (add-hook 'prog-mode-hook 'auto-revert-mode)
+
+;;; Enable Flycheck in all buffers
+(global-flycheck-mode t)
+
+;;; Enable files to opt-out of flycheck.
+(put 'flycheck-mode 'safe-local-variable 'booleanp)
+
+;;; XXX moved to my-text-mode
+;;; Activate flyspell for all text modes
+;;; (add-hook 'text-mode-hook 'flyspell-mode)
+
+;;; Activate flyspell for comments
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
 
 
 (provide 'my-prog-modes)

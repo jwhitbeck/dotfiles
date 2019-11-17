@@ -23,6 +23,7 @@
     fill-column-indicator
     fiplr
     flx-ido
+    flycheck
     hide-lines
     ido
     ido-completing-read+
@@ -30,6 +31,7 @@
     rainbow-delimiters
     smex
     string-inflection
+    synosaurus
     undo-tree
     visual-fill-column
     yasnippet

@@ -66,4 +66,13 @@
                        "Insert PostgresSQL properties for querying a table."
                        'org-tempo-tags)
 
+;;; Prevent C-c $ from overriding org-mode's archive-subtree binding
+(with-eval-after-load 'flyspell
+  (define-key flyspell-mode-map (kbd "C-c $") nil))
+
+;;; Prevent C-c ! from overriding org-mode's org-time-stamp-inactive
+(with-eval-after-load 'flycheck
+  (define-key flycheck-mode-map (kbd "C-c !") nil))
+
+
 (provide 'my-org-extras)

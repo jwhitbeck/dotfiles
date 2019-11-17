@@ -79,4 +79,10 @@ files on the load path."
       (replace-match new))
     (buffer-string)))
 
+;;; Disable emacs-lisp-checkdoc flycheck because it creates at lot of noise in
+;;; my personal emacs config files
+(require 'flycheck)
+(custom-set-variables
+ `(flycheck-checkers ,(delq 'emacs-lisp-checkdoc flycheck-checkers)))
+
 (provide 'my-elisp)
