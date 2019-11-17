@@ -13,14 +13,21 @@ default destination for dired operation on the left buffer.
 
 \(fn SRC DEST)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired" '("my-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired" '(#("my-" 0 3 (face font-lock-function-name-face fontified nil)))))
+
+;;;***
+
+;;;### (autoloads nil "my-dirs" "my-dirs.el" (0 0 0 0))
+;;; Generated autoloads from my-dirs.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dirs" '(#("my-" 0 3 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 
 ;;;### (autoloads nil "my-editing" "my-editing.el" (0 0 0 0))
 ;;; Generated autoloads from my-editing.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-editing" '(#("my-f7-chars" 0 11 (face font-lock-variable-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-editing" '("my-f7-chars")))
 
 ;;;***
 
@@ -28,6 +35,13 @@ default destination for dired operation on the left buffer.
 ;;; Generated autoloads from my-elisp.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-elisp" '(#("my-conditionally-enable-paredit-mode" 0 36 (face font-lock-function-name-face fontified t)))))
+
+;;;***
+
+;;;### (autoloads nil "my-external" "my-external.el" (0 0 0 0))
+;;; Generated autoloads from my-external.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-external" '(#("my-" 0 3 (fontified nil face font-lock-variable-name-face)))))
 
 ;;;***
 
@@ -87,17 +101,17 @@ provide an ICON and SOUND.
 
 ;;;***
 
-;;;### (autoloads nil "my-org-extras" "my-org-extras.el" (0 0 0 0))
-;;; Generated autoloads from my-org-extras.el
+;;;### (autoloads nil "my-org" "my-org.el" (0 0 0 0))
+;;; Generated autoloads from my-org.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-extras" '("my-org-t")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '(#("my-org-t" 0 8 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 
 ;;;### (autoloads nil "my-org-html" "my-org-html.el" (0 0 0 0))
 ;;; Generated autoloads from my-org-html.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-html" '("fci-mode-override-advice" "my-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-html" '(#("fci-mode-override-advice" 0 1 (face font-lock-function-name-face fontified nil) 1 24 (face font-lock-function-name-face fontified nil)) #("my-" 0 3 (fontified nil face font-lock-variable-name-face)))))
 
 ;;;***
 
@@ -184,14 +198,7 @@ if called interactively.
 ;;;### (autoloads nil "my-ui" "my-ui.el" (0 0 0 0))
 ;;; Generated autoloads from my-ui.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '(#("my-" 0 3 (fontified nil face font-lock-function-name-face)))))
-
-;;;***
-
-;;;### (autoloads nil "my-vars" "my-vars.el" (0 0 0 0))
-;;; Generated autoloads from my-vars.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-vars" '("my-pdf-reader")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '("my-")))
 
 ;;;***
 
@@ -215,7 +222,20 @@ if called interactively.
 ;;;### (autoloads nil "my-wiki" "my-wiki.el" (0 0 0 0))
 ;;; Generated autoloads from my-wiki.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-wiki" '("my-")))
+(autoload 'my-browse-wikimedia "my-wiki" "\
+
+
+\(fn SITE WORD PROMPT-LANGUAGE\\=\\?)" nil nil)
+
+(autoload 'my-loopkup-wikipedia "my-wiki" "\
+
+
+\(fn WORD &optional PROMPT-LANGUAGE\\=\\?)" t nil)
+
+(autoload 'my-loopkup-wiktionary "my-wiki" "\
+
+
+\(fn WORD &optional PROMPT-LANGUAGE\\=\\?)" t nil)
 
 ;;;***
 
@@ -259,10 +279,9 @@ Toggle whether or not the window is dedicated to its buffer.
 ;;;***
 
 ;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure.el" "my-email.el"
-;;;;;;  "my-locale.el" "my-magit.el" "my-org.el" "my-performance.el"
-;;;;;;  "my-publish.el" "my-rest.el" "my-security.el" "my-shell.el"
-;;;;;;  "my-text-mode.el" "my-tramp.el" "my-vc.el" "my-yasnippet.el")
-;;;;;;  (0 0 0 0))
+;;;;;;  "my-locale.el" "my-magit.el" "my-performance.el" "my-publish.el"
+;;;;;;  "my-rest.el" "my-security.el" "my-shell.el" "my-text-mode.el"
+;;;;;;  "my-tramp.el" "my-vc.el" "my-yasnippet.el") (0 0 0 0))
 
 ;;;***
 
