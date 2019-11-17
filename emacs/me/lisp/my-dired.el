@@ -7,7 +7,7 @@
 (require 'dired-x)
 (require 'dired-aux)
 (require 'dired-async)
-(require 'my-vars)
+(require 'my-external)
 
 ;;; Hide files that start with . and have a three least chars.
 (setq dired-omit-files "^\\...+$")
@@ -108,11 +108,6 @@ detached from emacs."
                (my-dired-run-detached-shell-command
                 (dired-shell-stuff-it command file-list nil arg))))))))
 
-(defconst my-dired-xdg-open-overrides
-  `(("zhtml" . "zhtml-open")
-    ("epub" . ,my-pdf-reader)
-    ("mobi" . ,my-pdf-reader)))
-
 (defun my-dired-do-xdg-open (&optional _ file-list)
   "Wrapper around my-dired-do-detached-shell-command that always
 uses the xdg-open command."
@@ -121,7 +116,7 @@ uses the xdg-open command."
          (dired-get-marked-files t current-prefix-arg)))
   (dolist (file file-list)
     (let ((bin (or (cdr (assoc (file-name-extension file)
-                               my-dired-xdg-open-overrides))
+                               my-external-programs))
                    "xdg-open")))
       (my-dired-do-detached-shell-command bin current-prefix-arg (list file)))))
 
