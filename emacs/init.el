@@ -30,7 +30,7 @@
 (require 'my-vc)
 (with-eval-after-load 'dired (require 'my-dired))
 (with-eval-after-load 'comint (require 'my-shell))
-(require 'my-tramp)
+(with-eval-after-load 'tramp (require 'my-tramp))
 (require 'my-org)
 (require 'my-text-mode)
 (require 'my-prog-modes)
