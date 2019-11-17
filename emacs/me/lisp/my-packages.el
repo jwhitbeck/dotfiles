@@ -16,12 +16,13 @@
     org-plus-contrib
     ace-jump-mode
     ace-window
-    auto-indent-mode
     async
+    auto-indent-mode
     browse-at-remote
     cider
     clojure-mode
     company
+    company-restclient
     fill-column-indicator
     fiplr
     flx-ido
@@ -31,9 +32,11 @@
     ido-completing-read+
     ido-vertical-mode
     magit
+    ob-restclient
     paredit
     peep-dired
     rainbow-delimiters
+    restclient
     smex
     string-inflection
     synosaurus
