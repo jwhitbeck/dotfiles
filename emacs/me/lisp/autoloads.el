@@ -108,7 +108,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-org" "my-org.el" (0 0 0 0))
 ;;; Generated autoloads from my-org.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '("my-org-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '(#("my-org-" 0 7 (fontified nil)))))
 
 ;;;***
 
@@ -141,8 +141,8 @@ tramp connection history.
 
 \(fn)" nil nil)
 
-(defvar my-list-remote-hosts-function 'my-tramp-connection-history "\
-A function that returns the list of hosts to consider for
+(defvar my-remote-shell-list-hosts-functions '(my-tramp-connection-history) "\
+A list of functions that return lists of hosts to consider for
   `my-remote-shell'.")
 
 (autoload 'my-remote-shell "my-remote-shell" "\
@@ -150,22 +150,7 @@ Open a tramp-enabled shell on HOSTNAME.
 
 \(fn HOSTNAME)" t nil)
 
-;;;***
-
-;;;### (autoloads nil "my-string" "my-string.el" (0 0 0 0))
-;;; Generated autoloads from my-string.el
-
-(autoload 'my-replace-string "my-string" "\
-Replace occurrences of 'old' string within string 's' with
-  'new' string.
-
-\(fn S OLD NEW)" nil nil)
-
-(autoload 'my-replace-string-re "my-string" "\
-Replace matches of regexp within string 's' with 'new'
-  string.
-
-\(fn S RE NEW)" nil nil)
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-remote-shell" '(#("my-remote-shell-list-hosts" 0 26 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
