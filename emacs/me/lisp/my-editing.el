@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; General editing settings
+;;;; General editing settings
 
 ;;; Don't use auto-backups.
 (setq
@@ -9,9 +9,6 @@
 
 ;;; Always delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;;; File associations.
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 ;;; Insert special characters using f7
 (defvar my-f7-chars

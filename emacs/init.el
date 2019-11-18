@@ -23,6 +23,7 @@
 (require 'my-packages)
 (require 'my-performance)
 (require 'my-locale)
+(require 'my-file-associations)
 (require 'my-ui)
 (require 'my-editing)
 (with-eval-after-load 'minibuffer (require 'my-minibuffer))
@@ -31,6 +32,7 @@
 (with-eval-after-load 'comint (require 'my-shell))
 (with-eval-after-load 'tramp (require 'my-tramp))
 (with-eval-after-load 'org (require 'my-org))
+(with-eval-after-load 'nov (require 'my-nov))
 (require 'my-text-mode)
 (require 'my-prog-modes)
 

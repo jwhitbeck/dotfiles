@@ -27,7 +27,7 @@ default destination for dired operation on the left buffer.
 ;;;### (autoloads nil "my-editing" "my-editing.el" (0 0 0 0))
 ;;; Generated autoloads from my-editing.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-editing" '(#("my-f7-chars" 0 11 (face font-lock-variable-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-editing" '(#("my-f7-chars" 0 11 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 
@@ -279,10 +279,11 @@ Toggle whether or not the window is dedicated to its buffer.
 ;;;***
 
 ;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure-mode.el"
-;;;;;;  "my-css-mode.el" "my-ess-mode.el" "my-go-mode.el" "my-locale.el"
-;;;;;;  "my-magit.el" "my-make-mode.el" "my-ob-clojure.el" "my-performance.el"
-;;;;;;  "my-prog-modes.el" "my-scheme.el" "my-security.el" "my-shell.el"
-;;;;;;  "my-sql.el" "my-text-mode.el" "my-tramp.el" "my-vc.el" "my-yaml-mode.el"
+;;;;;;  "my-css-mode.el" "my-ess-mode.el" "my-file-associations.el"
+;;;;;;  "my-go-mode.el" "my-locale.el" "my-magit.el" "my-make-mode.el"
+;;;;;;  "my-ob-clojure.el" "my-performance.el" "my-prog-modes.el"
+;;;;;;  "my-scheme.el" "my-security.el" "my-shell.el" "my-sql.el"
+;;;;;;  "my-text-mode.el" "my-tramp.el" "my-vc.el" "my-yaml-mode.el"
 ;;;;;;  "my-yasnippet.el") (0 0 0 0))
 
 ;;;***

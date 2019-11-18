@@ -8,7 +8,6 @@
 
 (defvar my-external-programs
   `(("pdf" . ,my-pdf-reader)
-    ("epub" . ,my-pdf-reader)
     ("mobi" . ,my-pdf-reader)
     ("zhtml" . "zhtml-open")))
 

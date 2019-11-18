@@ -43,6 +43,7 @@
     ini-mode
     magit
     markdown-mode
+    nov
     ob-restclient
     paredit
     peep-dired
