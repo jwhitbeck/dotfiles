@@ -21,4 +21,18 @@
 (add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
 (add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
 
+;;; unfill-paragraph, unfill-region
+;;; http://ergoemacs.org/emacs/emacs_unfill-paragraph.html
+;;;###autoload
+(defun my-unfill-paragraph ()
+  (interactive)
+  (let ((fill-column most-positive-fixnum))
+    (fill-paragraph)))
+
+;;;###autoload
+(defun my-unfill-region (start end)
+  (interactive "r")
+  (let ((fill-column most-positive-fixnum))
+    (fill-region start end)))
+
 (provide 'my-fill-column-indicator)

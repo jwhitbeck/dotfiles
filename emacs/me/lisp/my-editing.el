@@ -24,4 +24,7 @@
   (global-set-key (kbd (concat "<f7> " (car e)))
                   (lambda () (interactive) (insert (cdr e)))))
 
+;;; Unfill paragraph
+(global-set-key (kbd "M-Q") 'my-unfill-paragraph)
+
 (provide 'my-editing)

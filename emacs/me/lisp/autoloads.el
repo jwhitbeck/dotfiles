@@ -27,7 +27,7 @@ default destination for dired operation on the left buffer.
 ;;;### (autoloads nil "my-editing" "my-editing.el" (0 0 0 0))
 ;;; Generated autoloads from my-editing.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-editing" '("my-f7-chars")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-editing" '(#("my-f7-chars" 0 11 (face font-lock-variable-name-face fontified t)))))
 
 ;;;***
 
@@ -49,7 +49,17 @@ default destination for dired operation on the left buffer.
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from my-fill-column-indicator.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fill-column-indicator" '("company-")))
+(autoload 'my-unfill-paragraph "my-fill-column-indicator" "\
+
+
+\(fn)" t nil)
+
+(autoload 'my-unfill-region "my-fill-column-indicator" "\
+
+
+\(fn START END)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fill-column-indicator" '(#("company-" 0 8 (fontified t face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -81,7 +91,7 @@ default destination for dired operation on the left buffer.
 ;;;;;;  0 0 0))
 ;;; Generated autoloads from my-markdown-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-markdown-mode" '("my-enable-orgtbl-mode")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-markdown-mode" '(#("my-enable-orgtbl-mode" 0 21 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -122,7 +132,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '("my-packages")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
