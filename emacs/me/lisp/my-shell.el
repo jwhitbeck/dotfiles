@@ -12,7 +12,7 @@
  comint-completion-autolist t         ; Show completion list when ambiguous.
  comint-input-ignoredups t            ; No duplicates in command history.
  comint-completion-addsuffix t        ; Insert space/slash after file completion.
- comint-get-old-input (lambda (_) "") ; What gets sent to prompt when pressing enter in the buffer.
+ comint-get-old-input (lambda () "")  ; What gets sent to prompt when pressing enter in the buffer.
  comint-buffer-maximum-size 20000     ; Max length of buffer in lines.
  comint-input-ring-size 5000          ; Max shell history size.
  explicit-shell-file-name "/bin/bash") ; Always use bash on remote hosts.
