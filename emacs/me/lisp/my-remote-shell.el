@@ -41,7 +41,8 @@ tramp connection history."
   (let (hosts)
     (dolist (fun my-remote-shell-list-hosts-functions)
       (dolist (host (funcall fun))
-	(cl-pushnew host hosts)))
+	(unless (member host hosts)
+	  (push host hosts))))
     hosts))
 
 ;;;###autoload
