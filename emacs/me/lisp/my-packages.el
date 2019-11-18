@@ -25,6 +25,7 @@
     company-emacs-eclim
     company-restclient
     eclim
+    edit-indirect
     ess
     ess-smart-underscore
     fill-column-indicator
