@@ -129,6 +129,7 @@
   "Like `org-md-export-as-markdown', but without the table of
 contents."
   (interactive)
+  (require 'ox-md)
   (org-export-to-buffer 'md "*Org MD Export*"
     async
     subtreep
