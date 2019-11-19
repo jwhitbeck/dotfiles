@@ -17,8 +17,8 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;; Fill column indicator
-(setq fill-column 80)                   ; Line wrap at 80 characters.
-(add-hook 'prog-mode-hook 'fci-mode)    ; Show a bar beyond the fill-column.
+(setq-default fill-column 80)		; Line wrap at 80 characters.
+(add-hook 'prog-mode-hook 'fci-mode)	; Show a bar beyond the fill-column.
 (with-eval-after-load 'fill-column-indicator
   (require 'my-fill-column-indicator))
 
