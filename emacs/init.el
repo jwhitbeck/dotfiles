@@ -16,6 +16,9 @@
 ;;; Regenerate using M-x update-directory-autoloads
 (load (expand-file-name "autoloads.el" my-lisp-dir))
 
+;;; Read autoloads for advanced dired functions.
+(load "dired-loaddefs.el")
+
 ;;; This must come before configurations of installed packages. Emacs will
 ;;; insert this line if not present.
 (package-initialize)
@@ -23,6 +26,7 @@
 (require 'my-packages)
 (require 'my-performance)
 (require 'my-locale)
+(require 'my-global-keybindings)
 (require 'my-file-associations)
 (require 'my-ui)
 (require 'my-editing)
@@ -33,6 +37,8 @@
 (with-eval-after-load 'tramp (require 'my-tramp))
 (with-eval-after-load 'org (require 'my-org))
 (with-eval-after-load 'nov (require 'my-nov))
+(with-eval-after-load 'ace-window (require 'my-ace-window))
+(with-eval-after-load 'fiplr (require 'my-fiplr))
 (require 'my-text-mode)
 (require 'my-prog-modes)
 

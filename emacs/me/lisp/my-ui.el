@@ -42,16 +42,6 @@
  scroll-conservatively 10000
  scroll-preserve-screen-position 1)
 
-;;; Set M-- and M-+ to decrease/increase the font size
-(defun my-text-scale-reset ()
-  "Reset the height of the default face in the current buffer."
-  (interactive)
-  (text-scale-set 0))
-
-(global-set-key (kbd "M--") 'text-scale-decrease)
-(global-set-key (kbd "M-+") 'text-scale-increase)
-(global-set-key (kbd "M-0") 'my-text-scale-reset)
-
 ;;; X clipboard <-> emacs kill ring compatibility
 (require 'mouse)
 ;; stops selection with a mouse from being immediately injected to the kill
@@ -65,50 +55,20 @@
  ;; makes killing/yanking interact with clipboard X11 selection
  select-enable-clipboard t)
 
-;;; Ace-jump bindings
-(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
-
-;;; IMenu
-(global-set-key (kbd "C-²") 'imenu)
-
-;;; Window navigation
-(global-set-key (kbd "C-x o") 'ace-window)
-(global-set-key (kbd "C-x C-o") 'ace-window) ; Convenience binding for typing C-x o too quickly
-(with-eval-after-load 'ace-window
-  (require 'my-ace-window))
-
 ;;; Winner mode saves the history of window
 ;;; Don't bind winner-mode keys as we are going to define our own.
 (require 'winner)
 (setq winner-dont-bind-my-keys t)
 (winner-mode t)
-(global-set-key (kbd "<f8>") 'winner-undo)
-(global-set-key (kbd "<f9>") 'winner-redo)
 
 ;;; Window splitting
 (setq
  split-height-threshold 110
  split-width-threshold 220)
 
-;;; Window management
-(global-set-key (kbd "C-x |") 'my-rotate-window-split-horizontal)
-(global-set-key (kbd "C-x _") 'my-rotate-window-split-vertical)
-(global-set-key (kbd "C-x #") 'my-window-switch)
-(with-eval-after-load 'server
-  ;; server.el sets this keybinding, so overrule it after it loads.
-  (global-set-key (kbd "C-x #") 'my-window-switch))
-
-;;; Simplify window management for french keyboards
-(global-set-key (kbd "C-x à") 'delete-window) ; C-x 0
-(global-set-key (kbd "C-x &") 'delete-other-windows) ; C-x 1
-(global-set-key (kbd "C-x é") 'my-split-window-below) ; C-x 2
-(global-set-key (kbd "C-x \"") 'my-split-window-right) ; C-x 3
-(global-set-key (kbd "C-x ²") 'my-toggle-dedicated-window)
-
 ;;; Auto-completion
 (require 'company)
 (global-company-mode)
-(global-set-key (kbd "TAB") 'company-indent-or-complete-common)
 
 ;;; Remember recently visited files
 (recentf-mode t)
@@ -134,17 +94,6 @@
  ido-use-virtual-buffers t
  ido-max-directory-size 100000)
 
-;;; IDO for M-x
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-;;; FIPLR: Fuzzy project file finding
-(with-eval-after-load 'fiplr
-  (require 'my-fiplr))
-(global-set-key (kbd "C-x p") 'fiplr-find-file)
-
-;;; Buffer lists
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 ;;; Include path information in duplicate buffer names (e.g. a/foo.txt b/foo.txt)
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
@@ -153,36 +102,6 @@
 (defun my-disable-line-wrap ()
   (setq truncate-lines t))
 (add-hook 'grep-mode-hook 'my-disable-line-wrap)
-
-;;; git-grep keybinding
-(global-set-key (kbd "C-x g") 'vc-git-grep)
-
-;;; Print current UTC time in echo area
-(global-set-key (kbd "C-c u") 'my-current-utc-time)
-
-;;; Quickly connect to remote hosts
-(global-set-key (kbd "C-c s") 'my-remote-shell)
-
-;;; Dired fast access
-(global-set-key (kbd "C-x C-j") 'dired-jump)
-(global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
-
-;;; These autoloads are not provided by default.
-(autoload 'dired-jump "dired-x"
-  "Jump to Dired buffer corresponding to current buffer."
-  t)
-(autoload 'dired-jump-other-window "dired-x"
-  "Like \\[dired-jump] (dired-jump) but in other window."
-  t)
-
-;;; Fast shell access
-(global-set-key (kbd "C-x x") 'shell)
-
-;;; Org-mode keybindings
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c b") 'org-switchb)
-(global-set-key (kbd "C-c c") 'org-capture)
 
 ;;; Miscellaneous
 (setq
