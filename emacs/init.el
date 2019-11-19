@@ -27,7 +27,7 @@
 (require 'my-ui)
 (require 'my-editing)
 (with-eval-after-load 'minibuffer (require 'my-minibuffer))
-(require 'my-vc)
+(with-eval-after-load 'magit (require 'my-magit))
 (with-eval-after-load 'dired (require 'my-dired))
 (with-eval-after-load 'comint (require 'my-shell))
 (with-eval-after-load 'tramp (require 'my-tramp))

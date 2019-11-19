@@ -154,6 +154,9 @@
   (setq truncate-lines t))
 (add-hook 'grep-mode-hook 'my-disable-line-wrap)
 
+;;; git-grep keybinding
+(global-set-key (kbd "C-x g") 'vc-git-grep)
+
 ;;; Print current UTC time in echo area
 (global-set-key (kbd "C-c u") 'my-current-utc-time)
 
