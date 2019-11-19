@@ -24,13 +24,6 @@ default destination for dired operation on the left buffer.
 
 ;;;***
 
-;;;### (autoloads nil "my-editing" "my-editing.el" (0 0 0 0))
-;;; Generated autoloads from my-editing.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-editing" '(#("my-f7-chars" 0 11 (face font-lock-variable-name-face fontified nil)))))
-
-;;;***
-
 ;;;### (autoloads nil "my-elisp-mode" "my-elisp-mode.el" (0 0 0 0))
 ;;; Generated autoloads from my-elisp-mode.el
 
@@ -67,6 +60,14 @@ default destination for dired operation on the left buffer.
 ;;; Generated autoloads from my-fiplr.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fiplr" '("my-fiplr-list-files")))
+
+;;;***
+
+;;;### (autoloads nil "my-global-keybindings" "my-global-keybindings.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from my-global-keybindings.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-global-keybindings" '(#("my-" 0 3 (fontified t face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -118,7 +119,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-org" "my-org.el" (0 0 0 0))
 ;;; Generated autoloads from my-org.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '(#("my-org-" 0 7 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '("my-org-")))
 
 ;;;***
 
@@ -198,7 +199,7 @@ if called interactively.
 ;;;### (autoloads nil "my-ui" "my-ui.el" (0 0 0 0))
 ;;; Generated autoloads from my-ui.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '("my-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '(#("my-disable-line-wrap" 0 20 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -278,13 +279,23 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;***
 
+;;;### (autoloads nil "my-word-wrap" "my-word-wrap.el" (0 0 0 0))
+;;; Generated autoloads from my-word-wrap.el
+
+(autoload 'my-word-wrap "my-word-wrap" "\
+
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
 ;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure-mode.el"
-;;;;;;  "my-css-mode.el" "my-ess-mode.el" "my-file-associations.el"
+;;;;;;  "my-css-mode.el" "my-editing.el" "my-ess-mode.el" "my-file-associations.el"
 ;;;;;;  "my-go-mode.el" "my-locale.el" "my-magit.el" "my-make-mode.el"
-;;;;;;  "my-ob-clojure.el" "my-performance.el" "my-prog-modes.el"
+;;;;;;  "my-nov.el" "my-ob-clojure.el" "my-performance.el" "my-prog-modes.el"
 ;;;;;;  "my-scheme.el" "my-security.el" "my-shell.el" "my-sql.el"
-;;;;;;  "my-text-mode.el" "my-tramp.el" "my-vc.el" "my-yaml-mode.el"
-;;;;;;  "my-yasnippet.el") (0 0 0 0))
+;;;;;;  "my-text-mode.el" "my-tramp.el" "my-yaml-mode.el" "my-yasnippet.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

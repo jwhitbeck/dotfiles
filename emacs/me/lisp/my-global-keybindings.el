@@ -26,6 +26,9 @@
 (global-set-key (kbd "M-+") 'text-scale-increase)
 (global-set-key (kbd "M-0") 'my-text-scale-reset)
 
+;;; Word wrapping
+(global-set-key (kbd "M-à") 'my-word-wrap)
+
 ;;; Ace-jump bindings
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 
