@@ -40,7 +40,7 @@
 
 ;;; No tabs by default. Modes that really need tabs should enable
 ;;; indent-tabs-mode explicitly. Makefile-mode already does that, for example.
-(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; Automatically revert a buffer when a file is changed on disk.
 (add-hook 'prog-mode-hook 'auto-revert-mode)
