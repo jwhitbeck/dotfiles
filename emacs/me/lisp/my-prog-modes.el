@@ -50,7 +50,6 @@
   (remove-hook 'after-change-major-mode-hook 'auto-indent-disable-electric))
 
 ;;; Per-language settings
-
 (with-eval-after-load 'ess-mode (require 'my-ess-mode))
 (with-eval-after-load 'make-mode (require 'my-make-mode))
 (with-eval-after-load 'scheme (require 'my-scheme))
@@ -60,6 +59,7 @@
 (with-eval-after-load 'elisp-mode (require 'my-elisp-mode))
 (with-eval-after-load 'java-mode (require 'my-java-mode))
 (with-eval-after-load 'clojure-mode (require 'my-clojure-mode))
+(with-eval-after-load 'sh-mode (require 'my-sh-mode))
 
 ;;; Per-language org babel settings
 (with-eval-after-load 'ob-clojure (require 'my-ob-clojure))
