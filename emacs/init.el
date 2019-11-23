@@ -32,6 +32,7 @@
 (require 'my-editing)
 (with-eval-after-load 'minibuffer (require 'my-minibuffer))
 (with-eval-after-load 'git-commit (require 'my-git-commit))
+(with-eval-after-load 'flyspell (require 'my-flyspell))
 (with-eval-after-load 'magit (require 'my-magit))
 (with-eval-after-load 'dired (require 'my-dired))
 (with-eval-after-load 'comint (require 'my-shell))
