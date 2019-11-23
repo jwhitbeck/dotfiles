@@ -38,6 +38,7 @@
 (with-eval-after-load 'comint (require 'my-shell))
 (with-eval-after-load 'tramp (require 'my-tramp))
 (with-eval-after-load 'org (require 'my-org))
+(with-eval-after-load 'ox (require 'my-ox))
 (with-eval-after-load 'nov (require 'my-nov))
 (with-eval-after-load 'ace-window (require 'my-ace-window))
 (with-eval-after-load 'fiplr (require 'my-fiplr))

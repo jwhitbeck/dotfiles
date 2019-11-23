@@ -123,19 +123,4 @@
                        "Insert PostgresSQL properties for querying a table."
                        'org-tempo-tags)
 
-;;; Markdown export variant.
-(defun my-org-md-export-as-markdown
-    (&optional async subtreep visible-only)
-  "Like `org-md-export-as-markdown', but without the table of
-contents."
-  (interactive)
-  (require 'ox-md)
-  (org-export-to-buffer 'md "*Org MD Export*"
-    async
-    subtreep
-    visible-only
-    nil
-    '(:with-toc nil)
-    (lambda () (text-mode))))
-
 (provide 'my-org)

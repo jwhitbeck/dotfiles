@@ -45,6 +45,7 @@
     markdown-mode
     nov
     ob-restclient
+    ox-gfm
     paredit
     peep-dired
     protobuf-mode
