@@ -16,4 +16,7 @@
 
 (add-hook 'emacs-lisp-mode-hook 'my-disable-emacs-lisp-checkdoc)
 
+;;; Fast REPL pretty-printing
+(define-key emacs-lisp-mode-map (kbd "C-c C-p") 'pp-eval-last-sexp)
+
 (provide 'my-elisp-mode)
