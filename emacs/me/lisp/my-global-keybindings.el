@@ -69,6 +69,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;;; git-grep keybinding
+(autoload 'vc-git-grep "vc-git")        ; Add missing autoload
 (global-set-key (kbd "C-x g") 'vc-git-grep)
 
 ;;; Print current UTC time in echo area
