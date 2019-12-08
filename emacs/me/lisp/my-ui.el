@@ -35,6 +35,11 @@
  inhibit-startup-echo-area-message t
  initial-scratch-message nil)
 
+;;; Suppress warnings
+(require 'warnings)
+;;; Don't warn if undo info exceeds `undo-outer-limit'.
+(add-to-list 'warning-suppress-types '(undo discard-info))
+
 ;;; Start scrolling the window when the cursor reaches its edge.
 ;;; http://stackoverflow.com/questions/3631220/fix-to-get-smooth-scrolling-in-emacs
 (setq
