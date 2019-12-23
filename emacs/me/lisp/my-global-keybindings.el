@@ -2,6 +2,9 @@
 
 ;;;; Global keybindings
 
+;;; References:
+;;; - https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html
+
 ;;; Insert special characters using f7
 (defvar my-f7-chars
   '(;; EM dash. See https://www.thepunctuationguide.com/em-dash.html for usage.
@@ -14,7 +17,7 @@
                   (lambda () (interactive) (insert (cdr e)))))
 
 ;;; Unfill paragraph
-(global-set-key (kbd "M-Q") 'my-unfill-paragraph)
+(global-set-key (kbd "C-c q") 'my-unfill-paragraph)
 
 ;;; Set M-- and M-+ to decrease/increase the font size
 (defun my-text-scale-reset ()
@@ -63,14 +66,14 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;;; Fuzzy project file finding
-(global-set-key (kbd "C-x p") 'fiplr-find-file)
+(global-set-key (kbd "C-c p") 'fiplr-find-file)
 
 ;;; Better buffer-menu
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;;; git-grep keybinding
 (autoload 'vc-git-grep "vc-git")        ; Add missing autoload
-(global-set-key (kbd "C-x g") 'vc-git-grep)
+(global-set-key (kbd "C-c g") 'vc-git-grep)
 
 ;;; Print current UTC time in echo area
 (global-set-key (kbd "C-c u") 'my-current-utc-time)
@@ -83,7 +86,7 @@
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 
 ;;; Fast shell access
-(global-set-key (kbd "C-x x") 'shell)
+(global-set-key (kbd "C-c x") 'shell)
 
 ;;; Org-mode keybindings
 (global-set-key (kbd "C-c l") 'org-store-link)
