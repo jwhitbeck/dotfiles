@@ -8,7 +8,7 @@
   (interactive)
   (let ((hostname (thing-at-point 'filename)))
     (let ((buffer-name (format "*%s*" hostname))
-          (default-directory (format "/%s:" hostname))
+          (default-directory (format "/scp:%s:" hostname))
           (current-prefix-arg '-))      ; C-u
       (shell buffer-name))))
 
