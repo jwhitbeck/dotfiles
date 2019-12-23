@@ -59,26 +59,21 @@
     undo-tree
     visual-fill-column
     yaml-mode
-    yasnippet
-    zenburn-theme))
+    yasnippet))
 
 (setq package-pinned-packages
       '((auto-indent-mode . "melpa-stable")
         (cider . "melpa-stable")))
 
-;;; Install packages on startup
 (defvar my-packages-refreshed? nil)
 
-(defun my-packages-install (packages)
+(defun my-packages-install (pkg)
   "Ensures the packages are installed. Refreshes package list if
   necessary."
-  (dolist (pkg packages)
-    (unless (package-installed-p pkg)
-      (unless my-packages-refreshed?
-        (package-refresh-contents)
-        (setq my-packages-refreshed? t))
-      (package-install pkg))))
-
-(my-packages-install my-packages)
+  (unless (package-installed-p pkg)
+    (unless my-packages-refreshed?
+      (package-refresh-contents)
+      (setq my-packages-refreshed? t))
+    (package-install pkg)))
 
 (provide 'my-packages)

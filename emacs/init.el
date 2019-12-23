@@ -12,6 +12,19 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;;; This must come before configurations of installed packages. Emacs will
+;;; insert this line if not present.
+(package-initialize)
+
+;;; Load theme. Must come first because it re-loads custom.el.
+(require 'my-packages)
+(my-packages-install 'zenburn-theme)
+(load-theme 'zenburn t)
+
+;;; Install packages on startup
+(dolist (pkg my-packages)
+  (my-packages-install pkg))
+
 ;;; Configure autoloads
 ;;; Regenerate using M-x update-directory-autoloads
 (load (expand-file-name "autoloads.el" my-lisp-dir))
@@ -19,11 +32,6 @@
 ;;; Read autoloads for advanced dired functions.
 (load "dired-loaddefs.el")
 
-;;; This must come before configurations of installed packages. Emacs will
-;;; insert this line if not present.
-(package-initialize)
-
-(require 'my-packages)
 (require 'my-performance)
 (require 'my-locale)
 (require 'my-global-keybindings)

@@ -2,9 +2,6 @@
 
 ;;;; Emacs UI settings
 
-;;; Load Zen burn them
-(load-theme 'zenburn t)
-
 ;;; Use Ubuntu's default font
 (set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
 
