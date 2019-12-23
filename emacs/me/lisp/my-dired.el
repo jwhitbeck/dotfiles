@@ -13,9 +13,6 @@
 (setq dired-omit-files "^\\...+$")
 (add-hook 'dired-mode-hook 'dired-omit-mode)
 
-;;; Use asynchronous file operations
-(add-hook 'dired-mode-hook 'dired-async-mode)
-
 ;;; Tail files in custom buffer
 (defun my-tail-filename (filename &optional output-buffer)
   "Run tail -f on FILENAME and send output to OUTPUT-BUFFER. If
@@ -122,6 +119,56 @@ uses the xdg-open command."
 
 (define-key dired-mode-map (kbd "§") 'my-dired-do-detached-shell-command)
 (define-key dired-mode-map (kbd "²") 'my-dired-do-xdg-open)
+
+;;; Jump to last target directory
+
+(defvar my-dired-last-target-dir nil
+  "Contains the directory to last copy or move target.")
+
+(defun my-dired-find-last-target-dir (target
+                                      name-constructor
+                                      fn-list)
+  (if (null fn-list)
+      target
+    (let ((to (file-name-directory (name-constructor (car fn-list)))))
+      (if (string= target to)
+          (my-dired-find-last-target-dir target name-constructor (cdr fn-list))
+        nil))))
+
+(defun my-dired-set-last-target-dir (_file-creator
+                                     _operation
+                                     fn-list
+                                     name-constructor
+                                     &optional _marker-char)
+  "Advice function for dired-create-files that sets
+  `my-dired-set-last-target-dir'."
+  (setq my-dired-last-target-dir
+        (my-dired-find-last-target-dir
+         (file-name-directory (funcall name-constructor (car fn-list)))
+         name-constructor
+         (cdr fn-list))))
+
+(advice-add 'dired-async-create-files
+            :before
+            'my-dired-set-last-target-dir)
+
+(advice-add 'dired-create-files
+            :before
+            'my-dired-set-last-target-dir)
+
+(defun my-dired-jump-to-last-target-dir ()
+  (interactive)
+  (if (null my-dired-last-target-dir)
+      (message "Last target dir not set")
+    (dired my-dired-last-target-dir)))
+
+(define-key dired-mode-map (kbd "J") 'my-dired-jump-to-last-target-dir)
+
+;;; Easy async mode toggle
+(define-key dired-mode-map (kbd ",") 'dired-async-mode)
+
+;;; Easy wdired mode toggle
+(define-key dired-mode-map (kbd ";") 'wdired-change-to-wdired-mode)
 
 ;;; Miscellaneous settings
 (setq
