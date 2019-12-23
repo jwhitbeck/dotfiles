@@ -18,7 +18,8 @@
 
 ;;; Load theme. Must come first because it re-loads custom.el.
 (require 'my-packages)
-(my-packages-install 'zenburn-theme)
+(unless (package-installed-p 'zenburn-theme)
+  (my-packages-install 'zenburn-theme))
 (load-theme 'zenburn t)
 
 ;;; Install packages on startup
