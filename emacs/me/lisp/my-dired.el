@@ -123,26 +123,13 @@ uses the xdg-open command."
 (define-key dired-mode-map (kbd "§") 'my-dired-do-detached-shell-command)
 (define-key dired-mode-map (kbd "²") 'my-dired-do-xdg-open)
 
-;;;###autoload
-(defun my-midnight-commander (src dest)
-  "Creates two side-by-side dired buffers, in a
-midnight-commander style, where the one on the right is the
-default destination for dired operation on the left buffer."
-  (interactive
-   (list default-directory
-         (ido-read-file-name "Destination dir: ")))
-  (delete-other-windows)
-  (dired src)
-  (split-window-horizontally)
-  (windmove-right)
-  (dired dest)
-  (setq dired-dwim-target t)
-  (windmove-left))
-
 ;;; Miscellaneous settings
 (setq
  ;; Auto-revert
  dired-auto-revert-buffer t
+ ;; If two dired windows are open, use the other one as the target for move and
+ ;; copy commands.
+ dired-dwim-target t
  ;; Human-readable file sizes and literal quoting style
  ;; https://unix.stackexchange.com/questions/258679/why-is-ls-suddenly-wrapping-items-with-spaces-in-single-quotes
  dired-listing-switches "-alhN")

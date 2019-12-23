@@ -6,14 +6,7 @@
 ;;;### (autoloads nil "my-dired" "my-dired.el" (0 0 0 0))
 ;;; Generated autoloads from my-dired.el
 
-(autoload 'my-midnight-commander "my-dired" "\
-Creates two side-by-side dired buffers, in a
-midnight-commander style, where the one on the right is the
-default destination for dired operation on the left buffer.
-
-\(fn SRC DEST)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired" '(#("my-" 0 3 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired" '(#("my-" 0 3 (face font-lock-function-name-face fontified t)))))
 
 ;;;***
 
@@ -63,11 +56,18 @@ default destination for dired operation on the left buffer.
 
 ;;;***
 
+;;;### (autoloads nil "my-git-commit" "my-git-commit.el" (0 0 0 0))
+;;; Generated autoloads from my-git-commit.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-git-commit" '("my-git-commit-mode-fill-column")))
+
+;;;***
+
 ;;;### (autoloads nil "my-global-keybindings" "my-global-keybindings.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from my-global-keybindings.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-global-keybindings" '(#("my-" 0 3 (fontified t face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-global-keybindings" '("my-")))
 
 ;;;***
 
@@ -119,7 +119,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-org" "my-org.el" (0 0 0 0))
 ;;; Generated autoloads from my-org.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '("my-org-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '("my-org-t")))
 
 ;;;***
 
@@ -133,7 +133,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (fontified nil)))))
 
 ;;;***
 
@@ -199,7 +199,7 @@ if called interactively.
 ;;;### (autoloads nil "my-ui" "my-ui.el" (0 0 0 0))
 ;;; Generated autoloads from my-ui.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '(#("my-disable-line-wrap" 0 20 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '(#("my-disable-line-wrap" 0 20 (fontified nil)))))
 
 ;;;***
 
@@ -291,11 +291,12 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure-mode.el"
 ;;;;;;  "my-css-mode.el" "my-editing.el" "my-ess-mode.el" "my-file-associations.el"
-;;;;;;  "my-go-mode.el" "my-locale.el" "my-magit.el" "my-make-mode.el"
-;;;;;;  "my-nov.el" "my-ob-clojure.el" "my-performance.el" "my-prog-modes.el"
-;;;;;;  "my-scheme.el" "my-security.el" "my-shell.el" "my-sql.el"
-;;;;;;  "my-text-mode.el" "my-tramp.el" "my-yaml-mode.el" "my-yasnippet.el")
-;;;;;;  (0 0 0 0))
+;;;;;;  "my-flyspell.el" "my-go-mode.el" "my-locale.el" "my-magit.el"
+;;;;;;  "my-make-mode.el" "my-nov.el" "my-ob-clojure.el" "my-ox.el"
+;;;;;;  "my-performance.el" "my-prog-modes.el" "my-scheme.el" "my-security.el"
+;;;;;;  "my-sh-mode.el" "my-shell.el" "my-sql.el" "my-text-mode.el"
+;;;;;;  "my-tramp.el" "my-yaml-mode.el" "my-yasnippet.el") (0 0 0
+;;;;;;  0))
 
 ;;;***
 
