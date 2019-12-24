@@ -39,6 +39,7 @@
 (require 'my-file-associations)
 (require 'my-ui)
 (require 'my-editing)
+(require 'my-projectile)
 (with-eval-after-load 'minibuffer (require 'my-minibuffer))
 (with-eval-after-load 'git-commit (require 'my-git-commit))
 (with-eval-after-load 'flyspell (require 'my-flyspell))
@@ -50,7 +51,6 @@
 (with-eval-after-load 'ox (require 'my-ox))
 (with-eval-after-load 'nov (require 'my-nov))
 (with-eval-after-load 'ace-window (require 'my-ace-window))
-(with-eval-after-load 'fiplr (require 'my-fiplr))
 (require 'my-text-mode)
 (require 'my-prog-modes)
 

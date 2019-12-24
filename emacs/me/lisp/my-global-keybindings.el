@@ -66,7 +66,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;;; Fuzzy project file finding
-(global-set-key (kbd "C-c p") 'fiplr-find-file)
+(global-set-key (kbd "C-c p") 'projectile-command-map)
 
 ;;; Better buffer-menu
 (global-set-key (kbd "C-x C-b") 'ibuffer)

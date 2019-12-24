@@ -29,7 +29,6 @@
     ess
     ess-smart-underscore
     fill-column-indicator
-    fiplr
     flx-ido
     flycheck
     geiser
@@ -48,6 +47,7 @@
     ox-gfm
     paredit
     powerline
+    projectile
     peep-dired
     protobuf-mode
     rainbow-delimiters

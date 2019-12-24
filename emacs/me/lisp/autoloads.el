@@ -6,7 +6,7 @@
 ;;;### (autoloads nil "my-dired" "my-dired.el" (0 0 0 0))
 ;;; Generated autoloads from my-dired.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired" '(#("my-" 0 3 (face font-lock-function-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired" '("my-")))
 
 ;;;***
 
@@ -49,13 +49,6 @@
 
 ;;;***
 
-;;;### (autoloads nil "my-fiplr" "my-fiplr.el" (0 0 0 0))
-;;; Generated autoloads from my-fiplr.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fiplr" '("my-fiplr-list-files")))
-
-;;;***
-
 ;;;### (autoloads nil "my-git-commit" "my-git-commit.el" (0 0 0 0))
 ;;; Generated autoloads from my-git-commit.el
 
@@ -67,7 +60,7 @@
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from my-global-keybindings.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-global-keybindings" '("my-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-global-keybindings" '(#("my-" 0 3 (fontified t face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -133,7 +126,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -161,7 +154,7 @@ Open a tramp-enabled shell on HOSTNAME.
 
 \(fn HOSTNAME)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-remote-shell" '(#("my-remote-shell-list-hosts" 0 26 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-remote-shell" '("my-remote-shell-list-hosts")))
 
 ;;;***
 
@@ -199,7 +192,7 @@ if called interactively.
 ;;;### (autoloads nil "my-ui" "my-ui.el" (0 0 0 0))
 ;;; Generated autoloads from my-ui.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '(#("my-disable-line-wrap" 0 20 (fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '(#("my-disable-line-wrap" 0 20 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -293,10 +286,10 @@ Toggle whether or not the window is dedicated to its buffer.
 ;;;;;;  "my-css-mode.el" "my-editing.el" "my-ess-mode.el" "my-file-associations.el"
 ;;;;;;  "my-flyspell.el" "my-go-mode.el" "my-locale.el" "my-magit.el"
 ;;;;;;  "my-make-mode.el" "my-nov.el" "my-ob-clojure.el" "my-ox.el"
-;;;;;;  "my-performance.el" "my-prog-modes.el" "my-scheme.el" "my-security.el"
-;;;;;;  "my-sh-mode.el" "my-shell.el" "my-sql.el" "my-text-mode.el"
-;;;;;;  "my-tramp.el" "my-yaml-mode.el" "my-yasnippet.el") (0 0 0
-;;;;;;  0))
+;;;;;;  "my-performance.el" "my-prog-modes.el" "my-projectile.el"
+;;;;;;  "my-scheme.el" "my-security.el" "my-sh-mode.el" "my-shell.el"
+;;;;;;  "my-sql.el" "my-text-mode.el" "my-tramp.el" "my-yaml-mode.el"
+;;;;;;  "my-yasnippet.el") (0 0 0 0))
 
 ;;;***
 
