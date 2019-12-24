@@ -2,6 +2,9 @@
 
 ;;;; Emacs UI settings
 
+;;; Enable powerline
+(powerline-default-theme)
+
 ;;; Use Ubuntu's default font
 (set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
 

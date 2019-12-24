@@ -47,6 +47,7 @@
     ob-restclient
     ox-gfm
     paredit
+    powerline
     peep-dired
     protobuf-mode
     rainbow-delimiters
