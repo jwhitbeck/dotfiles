@@ -22,13 +22,14 @@
 ;;; Babel settings
 (setq
  org-src-fontify-natively t
- org-confirm-babel-evaluate nil
- org-babel-load-languages '((clojure . t)
-                            (emacs-lisp . t)
-                            (R . t)
-                            (sql . t)
-                            (shell . t)
-                            (ledger . t)))
+ org-confirm-babel-evaluate nil)
+
+;;; Load shell and emacs-lisp babel languages by default. The others should be
+;;; enabled on a per org-file basis by executing a (require 'ob-X) code block.
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (shell . t)))
 
 ;;; Agenda settings
 (setq
