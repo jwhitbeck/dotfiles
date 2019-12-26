@@ -5,7 +5,9 @@
 (require 'projectile)
 (setq
  ;; Use git-grep rather than grep for git projects
- projectile-use-git-grep t)
+ projectile-use-git-grep t
+ ;; Use ivy for completions.
+ projectile-completion-system 'ivy)
 
 ;;; Drop an empty .projectile_root file in a dir for projectile to consider it a
 ;;; project root

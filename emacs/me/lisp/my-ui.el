@@ -84,22 +84,6 @@
 ;;; Save your minibuffer history across Emacs sessions.
 (savehist-mode 1)
 
-;;; IDO
-(require 'ido)
-(require 'flx-ido)
-(require 'ido-completing-read+)
-(require 'ido-vertical-mode)
-(ido-mode t)
-(ido-ubiquitous-mode t)
-(ido-vertical-mode t)
-(ido-everywhere t)
-(setq
- ido-enable-flex-matching t
- flx-ido-mode t                       ; Use FLX matching engine.
- ido-use-faces nil                    ; Disable ido faces to see flx highlights.
- ido-use-virtual-buffers t
- ido-max-directory-size 100000)
-
 ;;; Include path information in duplicate buffer names (e.g. a/foo.txt b/foo.txt)
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)

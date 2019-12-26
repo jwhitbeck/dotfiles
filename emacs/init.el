@@ -39,6 +39,7 @@
 (require 'my-file-associations)
 (require 'my-ui)
 (require 'my-editing)
+(require 'my-ivy)
 (require 'my-projectile)
 (with-eval-after-load 'minibuffer (require 'my-minibuffer))
 (with-eval-after-load 'git-commit (require 'my-git-commit))

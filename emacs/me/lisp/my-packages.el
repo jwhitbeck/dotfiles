@@ -29,17 +29,16 @@
     ess
     ess-smart-underscore
     fill-column-indicator
-    flx-ido
+    flx
     flycheck
     geiser
     go-eldoc
     go-mode
     hide-lines
     htmlize
-    ido
-    ido-completing-read+
-    ido-vertical-mode
     ini-mode
+    ivy
+    ivy-hydra
     magit
     markdown-mode
     nov

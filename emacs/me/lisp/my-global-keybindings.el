@@ -61,9 +61,8 @@
 ;;; TAB autocompletes
 (global-set-key (kbd "TAB") 'company-indent-or-complete-common)
 
-;;; IDO for M-x
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;;; Use swiper for C-s
+(global-set-key (kbd "C-s") 'swiper)
 
 ;;; Fuzzy project file finding
 (global-set-key (kbd "C-c p") 'projectile-command-map)
