@@ -37,6 +37,7 @@
 (require 'my-locale)
 (require 'my-global-keybindings)
 (require 'my-file-associations)
+(require 'my-mode-line)
 (require 'my-ui)
 (require 'my-editing)
 (require 'my-ivy)

@@ -1,10 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;;; Emacs UI settings
-
-;;; Enable powerline
-(require 'powerline)
-(powerline-default-theme)
+(require 'my-mode-line)
 
 ;;; Use Ubuntu's default font
 (set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
@@ -75,6 +72,7 @@
 ;;; Auto-completion
 (require 'company)
 (global-company-mode)
+(my-hide-minor-mode 'company-mode)
 
 ;;; Remember recently visited files
 (recentf-mode 1)

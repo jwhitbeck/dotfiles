@@ -6,10 +6,14 @@
 
 (require 'ivy)
 (require 'counsel)
+(require 'my-mode-line)
 
 ;;; Enable ivy globally
 (ivy-mode 1)
 (counsel-mode 1)
+
+(my-hide-minor-mode 'ivy-mode)
+(my-hide-minor-mode 'counsel-mode)
 
 ;;; Default to fuzzy matching (via flx), but use other matching function for
 ;;; certain callers, i.e., the value in `this-command'.
