@@ -6,7 +6,7 @@
 (require 'org-table)
 
 (defun my-enable-orgtbl-mode ()
-  (orgtbl-mode t))
+  (orgtbl-mode 1))
 
 (add-hook 'markdown-mode-hook 'my-enable-orgtbl-mode)
 (add-hook 'markdown-mode-hook 'fci-mode)

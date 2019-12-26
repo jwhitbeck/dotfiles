@@ -15,7 +15,7 @@
   (if (and buffer-file-name
            (eclim--accepted-p buffer-file-name)
            (eclim--project-dir))
-      (eclim-mode t)))
+      (eclim-mode 1)))
 
 ;;; Re-bind the find-tags command to eclipse's jump to declaration
 (define-key eclim-mode-map (kbd "M-.") 'eclim-java-find-declaration)

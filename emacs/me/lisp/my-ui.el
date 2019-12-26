@@ -9,14 +9,14 @@
 (set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
 
 ;;; Turn on syntax highlighting for all modes that support it.
-(global-font-lock-mode t)
+(global-font-lock-mode 1)
 
 ;;; Activate line highlighting everywhere
-(global-hl-line-mode t)
+(global-hl-line-mode 1)
 
 ;;; Show row/column number in model line
-(column-number-mode t)
-(line-number-mode t)
+(column-number-mode 1)
+(line-number-mode 1)
 
 ;;; Always answer yes/no prompts with y/n
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -64,7 +64,7 @@
 ;;; Don't bind winner-mode keys as we are going to define our own.
 (require 'winner)
 (setq winner-dont-bind-my-keys t)
-(winner-mode t)
+(winner-mode 1)
 
 ;;; Window splitting
 (setq
@@ -76,12 +76,12 @@
 (global-company-mode)
 
 ;;; Remember recently visited files
-(recentf-mode t)
+(recentf-mode 1)
 (require 'recentf)
 (setq recentf-max-saved-items 1000)
 
 ;;; Save your minibuffer history across Emacs sessions.
-(savehist-mode t)
+(savehist-mode 1)
 
 ;;; IDO
 (require 'ido)
