@@ -3,6 +3,7 @@
 ;;;; Emacs UI settings
 
 ;;; Enable powerline
+(require 'powerline)
 (powerline-default-theme)
 
 ;;; Use Ubuntu's default font
