@@ -24,6 +24,7 @@
     company
     company-emacs-eclim
     company-restclient
+    counsel
     eclim
     edit-indirect
     ess
