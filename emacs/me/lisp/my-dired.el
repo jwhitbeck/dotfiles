@@ -130,7 +130,7 @@ uses the xdg-open command."
                                       fn-list)
   (if (null fn-list)
       target
-    (let ((to (file-name-directory (name-constructor (car fn-list)))))
+    (let ((to (file-name-directory (funcall name-constructor (car fn-list)))))
       (if (string= target to)
           (my-dired-find-last-target-dir target name-constructor (cdr fn-list))
         nil))))
