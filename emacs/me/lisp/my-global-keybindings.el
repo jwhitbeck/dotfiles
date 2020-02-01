@@ -81,7 +81,7 @@
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 
 ;;; Fast shell access
-(global-set-key (kbd "C-c x") 'shell)
+(global-set-key (kbd "<f5>") 'shell)
 
 ;;; Org-mode keybindings
 (global-set-key (kbd "C-c l") 'org-store-link)
