@@ -18,9 +18,7 @@
 ;;; Default to `ivy' matching, but use `fuzzy' matching (via flx) for some
 ;;; callers (i.e., the value in `this-command').
 (setq ivy-re-builders-alist
-      '((projectile-find-file . ivy--regex-fuzzy)
-        (projectile-find-dir . ivy--regex-fuzzy)
-        (counsel-M-x . ivy--regex-fuzzy)
+      '((counsel-M-x . ivy--regex-fuzzy)
         (counsel-describe-function . ivy--regex-fuzzy)
         (counsel-describe-variable . ivy--regex-fuzzy)
         (t . ivy--regex-plus)))
