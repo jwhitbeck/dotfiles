@@ -33,6 +33,7 @@
     fill-column-indicator
     flx
     flycheck
+    flymake-shellcheck
     geiser
     go-eldoc
     go-mode
