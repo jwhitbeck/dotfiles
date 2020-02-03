@@ -17,6 +17,7 @@
     ace-jump-mode
     ace-window
     async
+    auto-dictionary
     auto-indent-mode
     browse-at-remote
     cider
