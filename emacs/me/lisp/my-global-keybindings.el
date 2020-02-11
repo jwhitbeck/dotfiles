@@ -73,15 +73,16 @@
 ;;; Print current UTC time in echo area
 (global-set-key (kbd "C-c u") 'my-current-utc-time)
 
+;;; Fast shell access
+(global-set-key (kbd "<f5>") 'my-shell)
+(global-set-key (kbd "C-c s") 'my-shell-switchb)
+
 ;;; Quickly connect to remote hosts
-(global-set-key (kbd "C-c s") 'my-remote-shell)
+(global-set-key (kbd "C-c r") 'my-remote-shell)
 
 ;;; Dired fast access
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
-
-;;; Fast shell access
-(global-set-key (kbd "<f5>") 'shell)
 
 ;;; Org-mode keybindings
 (global-set-key (kbd "C-c l") 'org-store-link)

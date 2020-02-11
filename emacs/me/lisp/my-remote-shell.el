@@ -3,16 +3,6 @@
 ;;;; Helper functions for connecting to remote hosts
 
 ;;;###autoload
-(defun my-remote-shell-at-point ()
-  "Open a remote shell on the host-name under point."
-  (interactive)
-  (let ((hostname (thing-at-point 'filename)))
-    (let ((buffer-name (format "*%s*" hostname))
-          (default-directory (format "/scp:%s:" hostname))
-          (current-prefix-arg '-))      ; C-u
-      (shell buffer-name))))
-
-;;;###autoload
 (defun my-tramp-connection-history ()
   "Return the list of all user@hostname pairs present in the
 tramp connection history."
@@ -50,10 +40,16 @@ tramp connection history."
   "Open a tramp-enabled shell on HOSTNAME."
   (interactive
    (list (completing-read "user@host: "
-                          (my-remote-shell-list-hosts))))
-  (let ((buffer-name (format "*%s*" hostname))
-        (default-directory (format "/scp:%s:" hostname))
-        (current-prefix-arg '-))        ; C-u
-    (shell buffer-name)))
+                          (my-remote-shell-list-hosts)
+                          nil nil nil nil
+                          (thing-at-point 'filename))))
+  (let* ((buffer-name (format "*%s*" hostname))
+         (buf (get-buffer buffer-name)))
+    (unless buf
+      (setq buf (get-buffer-create buffer-name))
+      (with-current-buffer buf
+        (setq-local default-directory (format "/scp:%s:" hostname))))
+    (pop-to-buffer-same-window buf)
+    (shell buf)))
 
 (provide 'my-remote-shell)

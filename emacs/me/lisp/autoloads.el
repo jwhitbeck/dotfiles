@@ -60,7 +60,7 @@
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from my-global-keybindings.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-global-keybindings" '(#("my-" 0 3 (fontified t face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-global-keybindings" '(#("my-" 0 3 (fontified nil face font-lock-function-name-face)))))
 
 ;;;***
 
@@ -96,6 +96,13 @@
 
 ;;;***
 
+;;;### (autoloads nil "my-mode-line" "my-mode-line.el" (0 0 0 0))
+;;; Generated autoloads from my-mode-line.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mode-line" '("my-hide-minor-mode")))
+
+;;;***
+
 ;;;### (autoloads nil "my-notifications" "my-notifications.el" (0
 ;;;;;;  0 0 0))
 ;;; Generated autoloads from my-notifications.el
@@ -126,18 +133,20 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '("my-packages")))
+
+;;;***
+
+;;;### (autoloads nil "my-projectile" "my-projectile.el" (0 0 0 0))
+;;; Generated autoloads from my-projectile.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-projectile" '(#("?x" 0 2 (fontified t)))))
 
 ;;;***
 
 ;;;### (autoloads nil "my-remote-shell" "my-remote-shell.el" (0 0
 ;;;;;;  0 0))
 ;;; Generated autoloads from my-remote-shell.el
-
-(autoload 'my-remote-shell-at-point "my-remote-shell" "\
-Open a remote shell on the host-name under point.
-
-\(fn)" t nil)
 
 (autoload 'my-tramp-connection-history "my-remote-shell" "\
 Return the list of all user@hostname pairs present in the
@@ -154,7 +163,26 @@ Open a tramp-enabled shell on HOSTNAME.
 
 \(fn HOSTNAME)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-remote-shell" '("my-remote-shell-list-hosts")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-remote-shell" '(#("my-remote-shell-list-hosts" 0 26 (face font-lock-function-name-face fontified t)))))
+
+;;;***
+
+;;;### (autoloads nil "my-shell" "my-shell.el" (0 0 0 0))
+;;; Generated autoloads from my-shell.el
+
+(autoload 'my-shell-switchb "my-shell" "\
+
+
+\(fn)" t nil)
+
+(autoload 'my-shell "my-shell" "\
+Like `shell' but always opens the *shell* buffer in the
+current window. With a C-u prefix, opens a new shell. With C-u
+C-u prefix prompts for the new buffer's name. If the buffer
+doesn't exist and no prefix arg is given, create it in the home
+directory.
+
+\(fn &optional ARG)" t nil)
 
 ;;;***
 
@@ -278,18 +306,20 @@ Toggle whether or not the window is dedicated to its buffer.
 (autoload 'my-word-wrap "my-word-wrap" "\
 
 
-\(fn &optional ARG)" t nil)
+\(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-word-wrap" '("my-word-wrap-state")))
 
 ;;;***
 
 ;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure-mode.el"
 ;;;;;;  "my-css-mode.el" "my-editing.el" "my-ess-mode.el" "my-file-associations.el"
-;;;;;;  "my-flyspell.el" "my-go-mode.el" "my-locale.el" "my-magit.el"
-;;;;;;  "my-make-mode.el" "my-nov.el" "my-ob-clojure.el" "my-ox.el"
-;;;;;;  "my-performance.el" "my-prog-modes.el" "my-projectile.el"
-;;;;;;  "my-scheme.el" "my-security.el" "my-sh-mode.el" "my-shell.el"
-;;;;;;  "my-sql.el" "my-text-mode.el" "my-tramp.el" "my-yaml-mode.el"
-;;;;;;  "my-yasnippet.el") (0 0 0 0))
+;;;;;;  "my-flyspell.el" "my-go-mode.el" "my-ivy.el" "my-locale.el"
+;;;;;;  "my-magit.el" "my-make-mode.el" "my-nov.el" "my-ob-clojure.el"
+;;;;;;  "my-ox.el" "my-performance.el" "my-prog-modes.el" "my-scheme.el"
+;;;;;;  "my-security.el" "my-sh-mode.el" "my-sql.el" "my-text-mode.el"
+;;;;;;  "my-tramp.el" "my-yaml-mode.el" "my-yasnippet.el") (0 0 0
+;;;;;;  0))
 
 ;;;***
 
