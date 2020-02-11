@@ -16,6 +16,11 @@
 ;;; project root
 (add-to-list 'projectile-project-root-files ".projectile_root")
 
+;;; Add a easy shortcut for switching to another project's shell.
+(def-projectile-commander-method ?x
+  "Run shell in project."
+  (projectile-run-shell))
+
 (projectile-mode)
 
 (provide 'my-projectile)
