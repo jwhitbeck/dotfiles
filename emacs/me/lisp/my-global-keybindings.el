@@ -6,28 +6,21 @@
 ;;; - https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html
 
 ;;; Insert special characters using f7
-(defvar my-f7-chars
-  '(;; EM dash. See https://www.thepunctuationguide.com/em-dash.html for usage.
-    ("_" . "—")
-    ;; EN dash. See https://www.thepunctuationguide.com/en-dash.html for usage.
-    ("-" . "–")))
-
-(dolist (e my-f7-chars)
-  (global-set-key (kbd (concat "<f7> " (car e)))
-                  (lambda () (interactive) (insert (cdr e)))))
+(global-set-key
+ (kbd "<f7>")
+ '(keymap
+   ;; EM dash. See https://www.thepunctuationguide.com/em-dash.html for usage.
+   (?_ . "—")
+   ;; EN dash. See https://www.thepunctuationguide.com/en-dash.html for usage.
+   (?- . "–")))
 
 ;;; Unfill paragraph
 (global-set-key (kbd "C-c q") 'my-unfill-paragraph)
 
 ;;; Set M-- and M-+ to decrease/increase the font size
-(defun my-text-scale-reset ()
-  "Reset the height of the default face in the current buffer."
-  (interactive)
-  (text-scale-set 0))
-
 (global-set-key (kbd "M--") 'text-scale-decrease)
 (global-set-key (kbd "M-+") 'text-scale-increase)
-(global-set-key (kbd "M-0") 'my-text-scale-reset)
+(global-set-key (kbd "M-0") 'text-scale-mode)
 
 ;;; Word wrapping
 (global-set-key (kbd "M-à") 'my-word-wrap)
