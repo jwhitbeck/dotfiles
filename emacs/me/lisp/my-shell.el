@@ -35,7 +35,10 @@
   (let ((bufs '()))
     (dolist (buf (buffer-list))
       (when (and (eq 'shell-mode (buffer-local-value 'major-mode buf))
-                 (comint-check-proc buf))
+                 (comint-check-proc buf)
+                 ;; Only list interactive shell buffers
+                 (member "-i" (with-current-buffer buf
+                                (process-command (get-buffer-process buf)))))
         (push buf bufs)))
     (if (null bufs)
         (message "No active shell buffers")
