@@ -83,4 +83,7 @@
 (global-set-key (kbd "C-c b") 'org-switchb)
 (global-set-key (kbd "C-c c") 'org-capture)
 
+;;; Fast dictionary switching
+(global-set-key (kbd "C-c d") 'my-ispell-toggle-dictionary)
+
 (provide 'my-global-keybindings)

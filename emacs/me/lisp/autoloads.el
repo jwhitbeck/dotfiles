@@ -56,11 +56,15 @@
 
 ;;;***
 
-;;;### (autoloads nil "my-global-keybindings" "my-global-keybindings.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from my-global-keybindings.el
+;;;### (autoloads nil "my-ispell" "my-ispell.el" (0 0 0 0))
+;;; Generated autoloads from my-ispell.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-global-keybindings" '(#("my-" 0 3 (fontified nil face font-lock-function-name-face)))))
+(autoload 'my-ispell-toggle-dictionary "my-ispell" "\
+
+
+\(fn)" t nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ispell" '(#("my-ispell-dictionaries" 0 22 (face font-lock-variable-name-face fontified t)))))
 
 ;;;***
 
@@ -163,7 +167,7 @@ Open a tramp-enabled shell on HOSTNAME.
 
 \(fn HOSTNAME)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-remote-shell" '(#("my-remote-shell-list-hosts" 0 26 (face font-lock-function-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-remote-shell" '(#("thing-at-point-bounds-of-hostname-at-point" 0 42 (face font-lock-function-name-face fontified nil)) #("my-remote-shell-list-hosts" 0 26 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -314,12 +318,12 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure-mode.el"
 ;;;;;;  "my-css-mode.el" "my-editing.el" "my-ess-mode.el" "my-file-associations.el"
-;;;;;;  "my-flyspell.el" "my-go-mode.el" "my-ivy.el" "my-locale.el"
-;;;;;;  "my-magit.el" "my-make-mode.el" "my-nov.el" "my-ob-clojure.el"
-;;;;;;  "my-ox.el" "my-performance.el" "my-prog-modes.el" "my-scheme.el"
-;;;;;;  "my-security.el" "my-sh-mode.el" "my-sql.el" "my-text-mode.el"
-;;;;;;  "my-tramp.el" "my-yaml-mode.el" "my-yasnippet.el") (0 0 0
-;;;;;;  0))
+;;;;;;  "my-flyspell.el" "my-global-keybindings.el" "my-go-mode.el"
+;;;;;;  "my-ivy.el" "my-locale.el" "my-magit.el" "my-make-mode.el"
+;;;;;;  "my-nov.el" "my-ob-clojure.el" "my-ox.el" "my-performance.el"
+;;;;;;  "my-prog-modes.el" "my-scheme.el" "my-security.el" "my-sh-mode.el"
+;;;;;;  "my-sql.el" "my-text-mode.el" "my-tramp.el" "my-yaml-mode.el"
+;;;;;;  "my-yasnippet.el") (0 0 0 0))
 
 ;;;***
 
