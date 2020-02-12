@@ -35,6 +35,26 @@ tramp connection history."
 	  (push host hosts))))
     hosts))
 
+(require 'thingatpt)
+
+(defun thing-at-point-bounds-of-hostname-at-point ()
+  "Returns a cons cell containing the start and end of hostname
+  at point. Matches [user@]hostname patterns."
+  (let* ((allowed-chars "@\.\\-[:alnum:]")
+         (lim 500)
+         (beg (save-excursion
+                (skip-chars-backward allowed-chars (- (point) lim))
+                (point)))
+         (end (save-excursion
+                (skip-chars-forward allowed-chars (+ (point) lim))
+                (point))))
+    (if (and beg end)
+        (cons beg end))))
+
+(put 'hostname
+     'bounds-of-thing-at-point
+     'thing-at-point-bounds-of-hostname-at-point)
+
 ;;;###autoload
 (defun my-remote-shell (hostname)
   "Open a tramp-enabled shell on HOSTNAME."
@@ -42,7 +62,7 @@ tramp connection history."
    (list (completing-read "user@host: "
                           (my-remote-shell-list-hosts)
                           nil nil nil nil
-                          (thing-at-point 'filename))))
+                          (thing-at-point 'hostname))))
   (let* ((buffer-name (format "*%s*" hostname))
          (buf (get-buffer buffer-name)))
     (unless buf
