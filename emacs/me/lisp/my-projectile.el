@@ -21,6 +21,25 @@
   "Run shell in project."
   (projectile-run-shell))
 
+;;; Load project shells in predictable windows.
+(defun my-projectile-run-shell ()
+  "Invoke `shell' in the project's root.
+
+Switch to the project specific shell buffer if it already
+exists. Ensures the shell buffer appears in the current window."
+  (interactive)
+  (projectile-with-default-dir
+      (projectile-ensure-project (projectile-project-root))
+    (let* ((bufname (concat "*shell " (projectile-project-name) "*"))
+           (buf (get-buffer-create bufname)))
+      (pop-to-buffer-same-window buf)
+      (shell buf))))
+
+(advice-add 'projectile-run-shell
+            :override
+            'my-projectile-run-shell)
+
+;;; Enable projectile globally
 (projectile-mode)
 
 (provide 'my-projectile)
