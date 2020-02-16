@@ -45,6 +45,7 @@
     markdown-mode
     nov
     ob-restclient
+    org-cliplink
     ox-gfm
     paredit
     powerline
