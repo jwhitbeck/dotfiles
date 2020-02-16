@@ -3,7 +3,7 @@
 ;;;; Window management functions
 
 ;;;###autoload
-(defun my-rotate-window-split-horizontal ()
+(defun my-windows-rotate-split-horizontal ()
   "Rotate windows from a 2-window vertical split to a 2-window horizontal split."
   (interactive)
   (when (and (= (count-windows) 2)
@@ -24,7 +24,7 @@
       (set-window-buffer (next-window) other-buffer))))
 
 ;;;###autoload
-(defun my-rotate-window-split-vertical ()
+(defun my-windows-rotate-split-vertical ()
   "Rotate windows from a 2-window horizontal split to a 2-window vertical split."
   (interactive)
   (when (and (= (count-windows) 2)
@@ -45,7 +45,7 @@
       (set-window-buffer (next-window) other-buffer))))
 
 ;;;###autoload
-(defun my-window-switch ()
+(defun my-windows-switch ()
   "Switch the buffers displayed in a 2-window split."
   (interactive)
   (when (= (count-windows) 2)
@@ -56,7 +56,7 @@
       (select-window (next-window)))))
 
 ;;;###autoload
-(defun my-split-window-below ()
+(defun my-windows-split-below ()
   "Split the window vertically and move focus to the new window
 below the selected one."
   (interactive)
@@ -64,7 +64,7 @@ below the selected one."
   (other-window 1))
 
 ;;;###autoload
-(defun my-split-window-right ()
+(defun my-windows-split-right ()
   "Split the window horizontal and move focus to the new window
 to the right of the selected one."
   (interactive)
@@ -72,18 +72,18 @@ to the right of the selected one."
   (other-window 1))
 
 ;;; Lock buffers to windows
-(defun my-set-buffer-name-face (face)
+(defun my-windows--set-buffer-name-face (face)
   (let ((cur (car mode-line-buffer-identification)))
     (setq-local mode-line-buffer-identification
                 (list (propertize cur 'face face)))))
 
 ;;;###autoload
-(defun my-toggle-dedicated-window ()
+(defun my-windows-toggle-dedicated ()
   "Toggle whether or not the window is dedicated to its buffer."
   (interactive)
   (set-window-dedicated-p (selected-window) (not (window-dedicated-p)))
-  (my-set-buffer-name-face (if (window-dedicated-p)
-                               'warning
-                             'mode-line-buffer-id)))
+  (my-windows--set-buffer-name-face (if (window-dedicated-p)
+                                        'warning
+                                      'mode-line-buffer-id)))
 
 (provide 'my-windows)

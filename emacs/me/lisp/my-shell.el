@@ -44,7 +44,7 @@
         (message "No active shell buffers")
       (pop-to-buffer-same-window
        (completing-read "Shell buffer: "
-                        (mapcar 'buffer-name bufs)
+                        (mapcar #'buffer-name bufs)
                         nil t)))))
 
 ;;;###autoload

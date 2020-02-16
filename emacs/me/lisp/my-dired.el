@@ -51,7 +51,7 @@ detached from emacs."
       (call-process shell-file-name nil 0 nil shell-command-switch command))))
 
 ;;; Detached command-on-file execution
-(defun my-dired-run-detached-shell-command (command)
+(defun my-dired--run-detached-shell-command (command)
   (let ((handler
          (find-file-name-handler (directory-file-name default-directory)
                                  'shell-command)))
@@ -98,11 +98,11 @@ detached from emacs."
              (if on-each
                  (dired-bunch-files (- 10000 (length command))
                                     (lambda (&rest files)
-                                      (my-dired-run-detached-shell-command
+                                      (my-dired--run-detached-shell-command
                                        (dired-shell-stuff-it command files t arg)))
                                     nil file-list)
                ;; execute the shell command
-               (my-dired-run-detached-shell-command
+               (my-dired--run-detached-shell-command
                 (dired-shell-stuff-it command file-list nil arg))))))))
 
 (defun my-dired-do-xdg-open (&optional _ file-list)
@@ -122,45 +122,45 @@ uses the xdg-open command."
 
 ;;; Jump to last target directory
 
-(defvar my-dired-last-target-dir nil
+(defvar my-dired--last-target-dir nil
   "Contains the directory to last copy or move target.")
 
-(defun my-dired-find-last-target-dir (target
-                                      name-constructor
-                                      fn-list)
+(defun my-dired--find-last-target-dir (target
+                                       name-constructor
+                                       fn-list)
   (if (null fn-list)
       target
     (let ((to (file-name-directory (funcall name-constructor (car fn-list)))))
       (if (string= target to)
-          (my-dired-find-last-target-dir target name-constructor (cdr fn-list))
+          (my-dired--find-last-target-dir target name-constructor (cdr fn-list))
         nil))))
 
-(defun my-dired-set-last-target-dir (_file-creator
-                                     _operation
-                                     fn-list
-                                     name-constructor
-                                     &optional _marker-char)
+(defun my-dired--set-last-target-dir (_file-creator
+                                      _operation
+                                      fn-list
+                                      name-constructor
+                                      &optional _marker-char)
   "Advice function for dired-create-files that sets
   `my-dired-set-last-target-dir'."
-  (setq my-dired-last-target-dir
-        (my-dired-find-last-target-dir
+  (setq my-dired--last-target-dir
+        (my-dired--find-last-target-dir
          (file-name-directory (funcall name-constructor (car fn-list)))
          name-constructor
          (cdr fn-list))))
 
 (advice-add 'dired-async-create-files
             :before
-            'my-dired-set-last-target-dir)
+            'my-dired--set-last-target-dir)
 
 (advice-add 'dired-create-files
             :before
-            'my-dired-set-last-target-dir)
+            'my-dired--set-last-target-dir)
 
 (defun my-dired-jump-to-last-target-dir ()
   (interactive)
-  (if (null my-dired-last-target-dir)
+  (if (null my-dired--last-target-dir)
       (message "Last target dir not set")
-    (dired my-dired-last-target-dir)))
+    (dired my-dired--last-target-dir)))
 
 (define-key dired-mode-map (kbd "J") 'my-dired-jump-to-last-target-dir)
 

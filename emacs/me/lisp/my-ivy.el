@@ -12,8 +12,8 @@
 (ivy-mode 1)
 (counsel-mode 1)
 
-(my-hide-minor-mode 'ivy-mode)
-(my-hide-minor-mode 'counsel-mode)
+(my-mode-line-hide-minor-mode 'ivy-mode)
+(my-mode-line-hide-minor-mode 'counsel-mode)
 
 ;;; Default to `ivy' matching, but use `fuzzy' matching (via flx) for some
 ;;; callers (i.e., the value in `this-command').

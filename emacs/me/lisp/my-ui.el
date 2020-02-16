@@ -72,7 +72,7 @@
 ;;; Auto-completion
 (require 'company)
 (global-company-mode)
-(my-hide-minor-mode 'company-mode)
+(my-mode-line-hide-minor-mode 'company-mode)
 
 ;;; Remember recently visited files
 (recentf-mode 1)
@@ -87,9 +87,9 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;;; Don't wrap lines in grep-mode
-(defun my-disable-line-wrap ()
+(defun my-ui--disable-line-wrap ()
   (setq truncate-lines t))
-(add-hook 'grep-mode-hook 'my-disable-line-wrap)
+(add-hook 'grep-mode-hook 'my-ui--disable-line-wrap)
 
 ;;; Miscellaneous
 (setq

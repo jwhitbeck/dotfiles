@@ -19,7 +19,7 @@
 ;;; Add a easy shortcut for switching to another project's shell.
 (def-projectile-commander-method ?x
   "Run shell in project."
-  (projectile-run-shell))
+  (my-projectile-run-shell))
 
 ;;; Load project shells in predictable windows.
 (defun my-projectile-run-shell ()

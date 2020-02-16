@@ -11,10 +11,10 @@
 
 ;;; Disable emacs-lisp-checkdoc flycheck because it creates at lot of noise in
 ;;; my personal emacs config files
-(defun my-disable-emacs-lisp-checkdoc ()
+(defun my-emacs-lisp--disable-checkdoc ()
   (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc))
 
-(add-hook 'emacs-lisp-mode-hook 'my-disable-emacs-lisp-checkdoc)
+(add-hook 'emacs-lisp-mode-hook 'my-emacs-lisp--disable-checkdoc)
 
 ;;; Fast REPL pretty-printing
 (define-key emacs-lisp-mode-map (kbd "C-c C-p") 'pp-eval-last-sexp)

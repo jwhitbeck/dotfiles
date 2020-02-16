@@ -20,7 +20,7 @@
 ;;;### (autoloads nil "my-elisp-mode" "my-elisp-mode.el" (0 0 0 0))
 ;;; Generated autoloads from my-elisp-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-elisp-mode" '("my-disable-emacs-lisp-checkdoc")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-elisp-mode" '("my-emacs-lisp--disable-checkdoc")))
 
 ;;;***
 
@@ -45,14 +45,14 @@
 
 \(fn START END)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fill-column-indicator" '(#("company-" 0 8 (fontified t face font-lock-function-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fill-column-indicator" '("my-company--")))
 
 ;;;***
 
 ;;;### (autoloads nil "my-git-commit" "my-git-commit.el" (0 0 0 0))
 ;;; Generated autoloads from my-git-commit.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-git-commit" '("my-git-commit-mode-fill-column")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-git-commit" '("my-git-commit--set-fill-column")))
 
 ;;;***
 
@@ -71,7 +71,7 @@
 ;;;### (autoloads nil "my-java-eclim" "my-java-eclim.el" (0 0 0 0))
 ;;; Generated autoloads from my-java-eclim.el
 
-(autoload 'my-enable-eclim-if-appropriate "my-java-eclim" "\
+(autoload 'my-java-eclim--enable-if-appropriate "my-java-eclim" "\
 
 
 \(fn)" nil nil)
@@ -81,7 +81,7 @@
 ;;;### (autoloads nil "my-java-mode" "my-java-mode.el" (0 0 0 0))
 ;;; Generated autoloads from my-java-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-java-mode" '("my-enable-java-google-style")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-java-mode" '("my-java--enable-google-style")))
 
 ;;;***
 
@@ -89,21 +89,21 @@
 ;;;;;;  0 0 0))
 ;;; Generated autoloads from my-markdown-mode.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-markdown-mode" '(#("my-enable-orgtbl-mode" 0 21 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-markdown-mode" '("my-markdown--enable-orgtbl-mode")))
 
 ;;;***
 
 ;;;### (autoloads nil "my-minibuffer" "my-minibuffer.el" (0 0 0 0))
 ;;; Generated autoloads from my-minibuffer.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-minibuffer" '(#("my-conditionally-enable-paredit-mode" 0 36 (face font-lock-function-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-minibuffer" '("my-minibuffer--conditionally-enable-paredit-mode")))
 
 ;;;***
 
 ;;;### (autoloads nil "my-mode-line" "my-mode-line.el" (0 0 0 0))
 ;;; Generated autoloads from my-mode-line.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mode-line" '("my-hide-minor-mode")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mode-line" '("my-mode-line-hide-minor-mode")))
 
 ;;;***
 
@@ -130,7 +130,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-org-html" "my-org-html.el" (0 0 0 0))
 ;;; Generated autoloads from my-org-html.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-html" '(#("fci-mode-override-advice" 0 1 (face font-lock-function-name-face fontified nil) 1 24 (face font-lock-function-name-face fontified nil)) #("my-" 0 3 (fontified nil face font-lock-variable-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-html" '("my-")))
 
 ;;;***
 
@@ -144,19 +144,13 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-projectile" "my-projectile.el" (0 0 0 0))
 ;;; Generated autoloads from my-projectile.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-projectile" '(#("?x" 0 2 (fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-projectile" '("my-projectile-run-shell" "?x")))
 
 ;;;***
 
 ;;;### (autoloads nil "my-remote-shell" "my-remote-shell.el" (0 0
 ;;;;;;  0 0))
 ;;; Generated autoloads from my-remote-shell.el
-
-(autoload 'my-tramp-connection-history "my-remote-shell" "\
-Return the list of all user@hostname pairs present in the
-tramp connection history.
-
-\(fn)" nil nil)
 
 (defvar my-remote-shell-list-hosts-functions '(my-tramp-connection-history) "\
 A list of functions that return lists of hosts to consider for
@@ -167,7 +161,7 @@ Open a tramp-enabled shell on HOSTNAME.
 
 \(fn HOSTNAME)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-remote-shell" '(#("thing-at-point-bounds-of-hostname-at-point" 0 42 (face font-lock-function-name-face fontified nil)) #("my-remote-shell-list-hosts" 0 26 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-remote-shell" '("my-")))
 
 ;;;***
 
@@ -224,7 +218,7 @@ if called interactively.
 ;;;### (autoloads nil "my-ui" "my-ui.el" (0 0 0 0))
 ;;; Generated autoloads from my-ui.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '(#("my-disable-line-wrap" 0 20 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '("my-ui--disable-line-wrap")))
 
 ;;;***
 
@@ -268,39 +262,39 @@ if called interactively.
 ;;;### (autoloads nil "my-windows" "my-windows.el" (0 0 0 0))
 ;;; Generated autoloads from my-windows.el
 
-(autoload 'my-rotate-window-split-horizontal "my-windows" "\
+(autoload 'my-windows-rotate-split-horizontal "my-windows" "\
 Rotate windows from a 2-window vertical split to a 2-window horizontal split.
 
 \(fn)" t nil)
 
-(autoload 'my-rotate-window-split-vertical "my-windows" "\
+(autoload 'my-windows-rotate-split-vertical "my-windows" "\
 Rotate windows from a 2-window horizontal split to a 2-window vertical split.
 
 \(fn)" t nil)
 
-(autoload 'my-window-switch "my-windows" "\
+(autoload 'my-windows-switch "my-windows" "\
 Switch the buffers displayed in a 2-window split.
 
 \(fn)" t nil)
 
-(autoload 'my-split-window-below "my-windows" "\
+(autoload 'my-windows-split-below "my-windows" "\
 Split the window vertically and move focus to the new window
 below the selected one.
 
 \(fn)" t nil)
 
-(autoload 'my-split-window-right "my-windows" "\
+(autoload 'my-windows-split-right "my-windows" "\
 Split the window horizontal and move focus to the new window
 to the right of the selected one.
 
 \(fn)" t nil)
 
-(autoload 'my-toggle-dedicated-window "my-windows" "\
+(autoload 'my-windows-toggle-dedicated "my-windows" "\
 Toggle whether or not the window is dedicated to its buffer.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-windows" '(#("my-set-buffer-name-face" 0 23 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-windows" '(#("my-windows--set-buffer-name-face" 0 21 (face font-lock-function-name-face fontified t) 21 32 (face font-lock-function-name-face fontified t)))))
 
 ;;;***
 
@@ -312,7 +306,7 @@ Toggle whether or not the window is dedicated to its buffer.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-word-wrap" '("my-word-wrap-state")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-word-wrap" '("my-word-wrap--state")))
 
 ;;;***
 

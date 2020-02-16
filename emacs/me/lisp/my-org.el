@@ -67,14 +67,14 @@
 (put 'org-archive-save-context-info 'safe-local-variable 'listp)
 
 ;;; Ace-jump-mode integration
-(defun my-org-table-blank-field-or-jump ()
+(defun my-org-table--blank-field-or-jump ()
   "Like ace-jump but preserves C-c SPC behavior inside org-mode tables."
   (interactive)
   (if (org-at-table-p)
       (call-interactively 'org-table-blank-field)
     (call-interactively 'ace-jump-mode)))
 
-(define-key org-mode-map (kbd "C-c SPC") 'my-org-table-blank-field-or-jump)
+(define-key org-mode-map (kbd "C-c SPC") 'my-org-table--blank-field-or-jump)
 
 ;;; Improve org-open-file types
 (require 'my-external)

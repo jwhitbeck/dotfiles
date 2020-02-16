@@ -7,19 +7,19 @@
 ;;; See https://github.com/company-mode/company-mode/issues/180
 (require 'company)
 
-(defvar-local company-fci-mode-on-p nil)
+(defvar-local my-company--fci-mode-on-p nil)
 
-(defun company-turn-off-fci (&rest _)
+(defun my-company--turn-off-fci (&rest _)
   (when (boundp 'fci-mode)
-    (setq company-fci-mode-on-p fci-mode)
+    (setq my-company--fci-mode-on-p fci-mode)
     (when fci-mode (fci-mode -1))))
 
-(defun company-maybe-turn-on-fci (&rest _)
-  (when company-fci-mode-on-p (fci-mode 1)))
+(defun my-company--maybe-turn-on-fci (&rest _)
+  (when my-company--fci-mode-on-p (fci-mode 1)))
 
-(add-hook 'company-completion-started-hook 'company-turn-off-fci)
-(add-hook 'company-completion-finished-hook 'company-maybe-turn-on-fci)
-(add-hook 'company-completion-cancelled-hook 'company-maybe-turn-on-fci)
+(add-hook 'company-completion-started-hook 'my-company--turn-off-fci)
+(add-hook 'company-completion-finished-hook 'my-company--maybe-turn-on-fci)
+(add-hook 'company-completion-cancelled-hook 'my-company--maybe-turn-on-fci)
 
 ;;; unfill-paragraph, unfill-region
 ;;; http://ergoemacs.org/emacs/emacs_unfill-paragraph.html

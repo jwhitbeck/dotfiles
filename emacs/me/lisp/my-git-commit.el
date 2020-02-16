@@ -8,9 +8,9 @@
 
 (setq git-commit-summary-max-length 50)
 
-(defun my-git-commit-mode-fill-column ()
+(defun my-git-commit--set-fill-column ()
   (setq fill-column 72))
 
-(add-hook 'git-commit-mode-hook 'my-git-commit-mode-fill-column)
+(add-hook 'git-commit-mode-hook 'my-git-commit--set-fill-column)
 
 (provide 'my-git-commit)

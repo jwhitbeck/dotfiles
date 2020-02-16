@@ -13,3 +13,5 @@
 (defun my-enable-indent-tabs ()
   "Enable using tabs for indentation. Intended for use in hooks."
   (setq indent-tabs-mode t))
+
+(provide 'my-tabs)

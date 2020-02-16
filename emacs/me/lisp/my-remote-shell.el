@@ -2,7 +2,6 @@
 
 ;;;; Helper functions for connecting to remote hosts
 
-;;;###autoload
 (defun my-tramp-connection-history ()
   "Return the list of all user@hostname pairs present in the
 tramp connection history."
@@ -27,7 +26,7 @@ tramp connection history."
   "A list of functions that return lists of hosts to consider for
   `my-remote-shell'.")
 
-(defun my-remote-shell-list-hosts ()
+(defun my-remote-shell--list-hosts ()
   (let (hosts)
     (dolist (fun my-remote-shell-list-hosts-functions)
       (dolist (host (funcall fun))
@@ -37,7 +36,7 @@ tramp connection history."
 
 (require 'thingatpt)
 
-(defun thing-at-point-bounds-of-hostname-at-point ()
+(defun my-thingatpt--bounds-of-hostname-at-point ()
   "Returns a cons cell containing the start and end of hostname
   at point. Matches [user@]hostname patterns."
   (let* ((allowed-chars "@\.\\-[:alnum:]")
@@ -53,14 +52,14 @@ tramp connection history."
 
 (put 'hostname
      'bounds-of-thing-at-point
-     'thing-at-point-bounds-of-hostname-at-point)
+     'my-thingatpt--bounds-of-hostname-at-point)
 
 ;;;###autoload
 (defun my-remote-shell (hostname)
   "Open a tramp-enabled shell on HOSTNAME."
   (interactive
    (list (completing-read "user@host: "
-                          (my-remote-shell-list-hosts)
+                          (my-remote-shell--list-hosts)
                           nil nil nil nil
                           (thing-at-point 'hostname))))
   (let* ((buffer-name (format "*%s*" hostname))

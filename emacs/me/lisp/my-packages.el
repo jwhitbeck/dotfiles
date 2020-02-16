@@ -68,15 +68,15 @@
       '((auto-indent-mode . "melpa-stable")
         (cider . "melpa-stable")))
 
-(defvar my-packages-refreshed? nil)
+(defvar my-packages--refreshed? nil)
 
 (defun my-packages-install (pkg)
   "Ensures the packages are installed. Refreshes package list if
   necessary."
   (unless (package-installed-p pkg)
-    (unless my-packages-refreshed?
+    (unless my-packages--refreshed?
       (package-refresh-contents)
-      (setq my-packages-refreshed? t))
+      (setq my-packages--refreshed? t))
     (package-install pkg)))
 
 (provide 'my-packages)

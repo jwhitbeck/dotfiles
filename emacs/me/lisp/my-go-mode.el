@@ -3,7 +3,7 @@
 ;;;; Golang settings
 (require 'go-mode)
 
-(add-hook 'go-mode-hook 'my-enable-indent-tabs)
+(add-hook 'go-mode-hook 'my-tabs-enable-indent-tabs)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 (add-hook 'go-mode-hook 'my-whitespace-mode-tabs)
 

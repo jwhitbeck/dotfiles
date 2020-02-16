@@ -11,7 +11,7 @@
 
 ;;; Copied from `global-eclim-mode'
 ;;;###autoload
-(defun my-enable-eclim-if-appropriate ()
+(defun my-java-eclim--enable-if-appropriate ()
   (if (and buffer-file-name
            (eclim--accepted-p buffer-file-name)
            (eclim--project-dir))

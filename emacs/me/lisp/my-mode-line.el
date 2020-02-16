@@ -6,7 +6,7 @@
 (require 'powerline)
 (powerline-default-theme)
 
-(defun my-hide-minor-mode (mode)
+(defun my-mode-line-hide-minor-mode (mode)
   "Hide the minor mode from the mode line. Useful to hide
   globally enabled minor modes."
   (let ((kons (assq mode minor-mode-alist)))

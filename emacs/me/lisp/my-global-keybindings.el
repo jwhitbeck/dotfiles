@@ -40,16 +40,16 @@
 (global-set-key (kbd "<f9>") 'winner-redo)
 
 ;;; Window management
-(global-set-key (kbd "C-x |") 'my-rotate-window-split-horizontal)
-(global-set-key (kbd "C-x _") 'my-rotate-window-split-vertical)
-(global-set-key (kbd "C-x ç") 'my-window-switch)
+(global-set-key (kbd "C-x |") 'my-windows-rotate-split-horizontal)
+(global-set-key (kbd "C-x _") 'my-windows-rotate-split-vertical)
+(global-set-key (kbd "C-x ç") 'my-windows-switch)
 
 ;;; Simplify window management for french keyboards
 (global-set-key (kbd "C-x à") 'delete-window) ; C-x 0
 (global-set-key (kbd "C-x &") 'delete-other-windows) ; C-x 1
-(global-set-key (kbd "C-x é") 'my-split-window-below) ; C-x 2
-(global-set-key (kbd "C-x \"") 'my-split-window-right) ; C-x 3
-(global-set-key (kbd "C-x ²") 'my-toggle-dedicated-window)
+(global-set-key (kbd "C-x é") 'my-windows-split-below) ; C-x 2
+(global-set-key (kbd "C-x \"") 'my-windows-split-right) ; C-x 3
+(global-set-key (kbd "C-x ²") 'my-windows-toggle-dedicated)
 
 ;;; TAB autocompletes
 (global-set-key (kbd "TAB") 'company-indent-or-complete-common)
