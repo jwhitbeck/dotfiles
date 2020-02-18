@@ -124,4 +124,14 @@
                        "Insert PostgresSQL properties for querying a table."
                        'org-tempo-tags)
 
+;;; Follow org links for unloaded features.
+
+;;; Nov.el
+(autoload 'nov-org-link-follow "nov")
+(autoload 'nov-org-link-store "nov")
+(org-link-set-parameters
+ "nov"
+ :follow 'nov-org-link-follow
+ :store 'nov-org-link-store)
+
 (provide 'my-org)
