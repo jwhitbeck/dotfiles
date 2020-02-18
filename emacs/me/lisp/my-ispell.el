@@ -5,6 +5,9 @@
 (require 'ispell)
 (defvar my-ispell-dictionaries '("american" "french"))
 
+;;; Default to american dictionary
+(ispell-change-dictionary "american")
+
 ;;;###autoload
 (defun my-ispell-toggle-dictionary ()
   (interactive)
