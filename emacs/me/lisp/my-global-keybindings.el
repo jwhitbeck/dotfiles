@@ -10,9 +10,11 @@
  (kbd "<f7>")
  '(keymap
    ;; EM dash. See https://www.thepunctuationguide.com/em-dash.html for usage.
-   (?_ . "—")
+   (?_ . [?—])
    ;; EN dash. See https://www.thepunctuationguide.com/en-dash.html for usage.
-   (?- . "–")))
+   (?- . [?–])
+   ;; Capital C cedilla
+   (?ç . [?Ç])))
 
 ;;; Unfill paragraph
 (global-set-key (kbd "C-c q") 'my-unfill-paragraph)
