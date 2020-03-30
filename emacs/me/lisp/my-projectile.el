@@ -8,9 +8,9 @@
  projectile-use-git-grep t
  ;; Use ivy for completions.
  projectile-completion-system 'ivy
- ;; When running C-p p to switch projects, prompt for the next projectile
+ ;; When running C-c p p to switch projects, prompt for the next projectile
  ;; command instead of running projectile-find-file.
- projectile-switch-project-action 'projectile-commander)
+ projectile-switch-project-action 'my-projectile-switch-project-action)
 
 ;;; Drop an empty .projectile_root file in a dir for projectile to consider it a
 ;;; project root
@@ -38,6 +38,16 @@ exists. Ensures the shell buffer appears in the current window."
 (advice-add 'projectile-run-shell
             :override
             'my-projectile-run-shell)
+
+(defun my-projectile-switch-project-action ()
+  "Call the projectile commands after using using C-c p p to
+change projects, as if using C-c p in the current project."
+  (interactive)
+  (let ((cmd (let ((overriding-local-map projectile-command-map))
+               (lookup-key projectile-command-map
+                           (read-key-sequence (format "[%s]" (projectile-project-name))
+                                              t)))))
+    (funcall cmd)))
 
 ;;; Enable projectile globally
 (projectile-mode)
