@@ -64,7 +64,7 @@
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ispell" '(#("my-ispell-dictionaries" 0 22 (face font-lock-variable-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ispell" '("my-ispell-dictionaries")))
 
 ;;;***
 
@@ -103,7 +103,7 @@
 ;;;### (autoloads nil "my-mode-line" "my-mode-line.el" (0 0 0 0))
 ;;; Generated autoloads from my-mode-line.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mode-line" '("my-mode-line-hide-minor-mode")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mode-line" '(#("my-mode-line-hide-minor-mode" 0 28 (face font-lock-function-name-face fontified nil)))))
 
 ;;;***
 
@@ -144,7 +144,7 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-projectile" "my-projectile.el" (0 0 0 0))
 ;;; Generated autoloads from my-projectile.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-projectile" '("my-projectile-run-shell" "?x")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-projectile" '("my-projectile-" "?x")))
 
 ;;;***
 
@@ -310,14 +310,14 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("my-ace-window.el" "my-clojure-mode.el"
-;;;;;;  "my-css-mode.el" "my-editing.el" "my-ess-mode.el" "my-file-associations.el"
-;;;;;;  "my-flyspell.el" "my-global-keybindings.el" "my-go-mode.el"
-;;;;;;  "my-ivy.el" "my-locale.el" "my-magit.el" "my-make-mode.el"
-;;;;;;  "my-nov.el" "my-ob-clojure.el" "my-ox.el" "my-performance.el"
-;;;;;;  "my-prog-modes.el" "my-scheme.el" "my-security.el" "my-sh-mode.el"
-;;;;;;  "my-sql.el" "my-text-mode.el" "my-tramp.el" "my-yaml-mode.el"
-;;;;;;  "my-yasnippet.el") (0 0 0 0))
+;;;### (autoloads nil nil ("my-ace-window.el" "my-auto-indent-mode.el"
+;;;;;;  "my-clojure-mode.el" "my-css-mode.el" "my-editing.el" "my-ess-mode.el"
+;;;;;;  "my-file-associations.el" "my-flyspell.el" "my-global-keybindings.el"
+;;;;;;  "my-go-mode.el" "my-ivy.el" "my-locale.el" "my-magit.el"
+;;;;;;  "my-make-mode.el" "my-nov.el" "my-ob-clojure.el" "my-ox.el"
+;;;;;;  "my-performance.el" "my-prog-modes.el" "my-scheme.el" "my-security.el"
+;;;;;;  "my-sh-mode.el" "my-sql.el" "my-text-mode.el" "my-tramp.el"
+;;;;;;  "my-yaml-mode.el" "my-yasnippet.el") (0 0 0 0))
 
 ;;;***
 
