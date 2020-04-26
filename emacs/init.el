@@ -53,6 +53,7 @@
 (with-eval-after-load 'ox (require 'my-ox))
 (with-eval-after-load 'nov (require 'my-nov))
 (with-eval-after-load 'ace-window (require 'my-ace-window))
+(with-eval-after-load 'auto-indent-mode (require 'my-auto-indent-mode))
 (require 'my-text-mode)
 (require 'my-prog-modes)
 

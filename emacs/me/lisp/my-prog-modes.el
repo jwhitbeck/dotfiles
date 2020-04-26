@@ -45,10 +45,6 @@
 ;; Automatically revert a buffer when a file is changed on disk.
 (add-hook 'prog-mode-hook 'auto-revert-mode)
 
-;;; Remove the auto-indent hook that disables electric-indent
-(with-eval-after-load 'auto-indent-mode
-  (remove-hook 'after-change-major-mode-hook 'auto-indent-disable-electric))
-
 ;;; Per-language settings
 (with-eval-after-load 'ess-mode (require 'my-ess-mode))
 (with-eval-after-load 'make-mode (require 'my-make-mode))
