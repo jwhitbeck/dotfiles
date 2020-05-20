@@ -7,7 +7,7 @@
 (require 'dired-x)
 (require 'dired-aux)
 (require 'dired-async)
-(require 'my-external)
+(require 'my-external-programs)
 
 ;;; Hide files that start with . and have a three least chars.
 (setq dired-omit-files "^\\...+$")

@@ -77,7 +77,7 @@
 (define-key org-mode-map (kbd "C-c SPC") 'my-org-table--blank-field-or-jump)
 
 ;;; Improve org-open-file types
-(require 'my-external)
+(require 'my-external-programs)
 (dolist (kons my-external-programs)
   (let ((re (concat "\\." (car kons) "\\'"))
         (cmd (concat (cdr kons) " %s")))

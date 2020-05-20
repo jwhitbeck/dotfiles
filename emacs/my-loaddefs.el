@@ -10,10 +10,11 @@
 
 ;;;***
 
-;;;### (autoloads nil "my-external" "my-external.el" (0 0 0 0))
-;;; Generated autoloads from my-external.el
+;;;### (autoloads nil "my-external-programs" "my-external-programs.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from my-external-programs.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-external" '("my-external-programs")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-external-programs" '(#("my-external-programs" 0 20 (face font-lock-variable-name-face fontified nil)))))
 
 ;;;***
 
