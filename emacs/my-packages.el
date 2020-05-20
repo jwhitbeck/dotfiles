@@ -22,10 +22,8 @@
     cider
     clojure-mode
     company
-    company-emacs-eclim
     company-restclient
     counsel
-    eclim
     edit-indirect
     ess
     ess-smart-underscore
