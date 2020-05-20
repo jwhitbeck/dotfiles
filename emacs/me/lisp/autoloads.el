@@ -127,13 +127,6 @@ provide an ICON and SOUND.
 
 ;;;***
 
-;;;### (autoloads nil "my-org-html" "my-org-html.el" (0 0 0 0))
-;;; Generated autoloads from my-org-html.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org-html" '("my-")))
-
-;;;***
-
 ;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
