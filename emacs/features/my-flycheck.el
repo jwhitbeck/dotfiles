@@ -11,4 +11,7 @@
 ;;; https://stackoverflow.com/questions/20498554/how-do-i-make-flycheck-find-required-file-in-emacs-lisp
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 
+;;; Disable minor mode indicator
+(setq flycheck-mode-line nil)
+
 (provide 'my-flycheck)

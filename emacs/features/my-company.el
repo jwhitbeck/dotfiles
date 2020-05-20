@@ -2,9 +2,10 @@
 
 ;;;; Auto-completion using company
 (require 'company)
-(require 'my-mode-line)
 
 (global-company-mode)
-(my-mode-line-hide-minor-mode 'company-mode)
+
+;;; Hide minor mode indicator
+(setq company-lighter nil)
 
 (provide 'my-company)

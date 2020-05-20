@@ -2,6 +2,7 @@
 
 ;;;; Whitespace helper functions
 (require 'whitespace)
+(require 'my-mode-line)
 
 ;;;###autoload
 (defun my-whitespace-mode ()
@@ -12,5 +13,8 @@ to highlight tabs."
                   '(face empty trailing)
                 '(face empty trailing tabs tab-mark)))
   (whitespace-mode 1))
+
+;;; Disable minor mode indicator
+(my-mode-line-hide-minor-mode 'whitespace-mode)
 
 (provide 'my-whitespace)
