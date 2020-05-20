@@ -201,9 +201,3 @@
     (dolist (init-file (directory-files init.d-dir))
       (when (equal "el" (file-name-extension init-file))
         (load (expand-file-name init-file init.d-dir))))))
-
-;;; XXX
-(with-eval-after-load 'org (require 'my-org))
-
-
-(message "%s" features)
