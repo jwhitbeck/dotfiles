@@ -1,7 +1,11 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;;; Add custom lisp dirs to load-path
-(require 'my-dirs (expand-file-name "me/my-dirs.el" user-emacs-directory))
+;;;; Custom Emacs config dir
+
+(defconst my-dir (file-name-directory (file-truename load-file-name))
+  "Directory containing custom Emacs Lisp code.")
+
+(add-to-list 'load-path my-dir)
 
 ;;;; Security settings for emacs.
 ;;;
@@ -78,7 +82,21 @@
   (my-packages-install pkg))
 
 
+;;;; Autoloads
+
+;;; Regenerate using M-x update-directory-autoloads
+(load (expand-file-name "loaddefs.el" my-dir))
+
+;;; Read autoloads for advanced dired functions.
+(load "dired-loaddefs.el")
+
+
 ;;;; Features
+
+(defconst my-features-dir (expand-file-name "features" my-dir)
+  "Directory containing lazy-loaded settings for features.")
+
+(add-to-list 'load-path my-features-dir)
 
 ;;; To improve startup times, defer configuring features until after the feature
 ;;; has been loaded.
@@ -101,30 +119,26 @@
 (require 'ivy)
 (require 'projectile)
 (require 'auto-indent-mode)
-
-;;; Read autoloads for advanced dired functions.
-(load "dired-loaddefs.el")
-
 (require 'my-global-keybindings)
 
 ;;;; Emacs server
 
 (server-start)
 
-;;;; Local init
+;;;; Init.d
 
-(when (file-symlink-p my-local-dir)
-  (load (expand-file-name "init.el" my-local-dir)))
+(let ((init.d-dir (expand-file-name "init.d" user-emacs-directory)))
+  (when (file-directory-p init.d-dir)
+    (dolist (init-file (directory-files init.d-dir))
+      (when (equal "el" (file-name-extension init-file))
+        (load (expand-file-name init-file init.d-dir))))))
 
 ;;; XXX
 (require 'my-mode-line)
 (require 'my-ui)
-(require 'my-ivy)
-(require 'my-projectile)
-(with-eval-after-load 'minibuffer (require 'my-minibuffer))
 (with-eval-after-load 'comint (require 'my-shell))
 (with-eval-after-load 'org (require 'my-org))
-(with-eval-after-load 'auto-indent-mode (require 'my-auto-indent-mode))
 (require 'my-text-mode)
 (require 'my-prog-modes)
 
+(message "%s" features)

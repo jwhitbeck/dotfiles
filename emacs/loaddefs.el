@@ -6,7 +6,7 @@
 ;;;### (autoloads nil "my-dirs" "my-dirs.el" (0 0 0 0))
 ;;; Generated autoloads from my-dirs.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dirs" '("my-")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dirs" '(#("my-" 0 3 (fontified nil face font-lock-variable-name-face)))))
 
 ;;;***
 
@@ -79,13 +79,6 @@
 
 ;;;***
 
-;;;### (autoloads nil "my-minibuffer" "my-minibuffer.el" (0 0 0 0))
-;;; Generated autoloads from my-minibuffer.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-minibuffer" '("my-minibuffer--conditionally-enable-paredit-mode")))
-
-;;;***
-
 ;;;### (autoloads nil "my-mode-line" "my-mode-line.el" (0 0 0 0))
 ;;; Generated autoloads from my-mode-line.el
 
@@ -123,13 +116,6 @@ Ensures the packages are installed. Refreshes package list if
 \(fn PKG)" nil nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (fontified t face font-lock-variable-name-face)))))
-
-;;;***
-
-;;;### (autoloads nil "my-projectile" "my-projectile.el" (0 0 0 0))
-;;; Generated autoloads from my-projectile.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-projectile" '("my-projectile-" "?x")))
 
 ;;;***
 
@@ -295,9 +281,8 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("my-auto-indent-mode.el" "my-clojure-mode.el"
-;;;;;;  "my-css-mode.el" "my-editing.el" "my-ess-mode.el" "my-file-associations.el"
-;;;;;;  "my-global-keybindings.el" "my-go-mode.el" "my-ivy.el" "my-locale.el"
+;;;### (autoloads nil nil ("my-clojure-mode.el" "my-css-mode.el"
+;;;;;;  "my-ess-mode.el" "my-global-keybindings.el" "my-go-mode.el"
 ;;;;;;  "my-make-mode.el" "my-ob-clojure.el" "my-prog-modes.el" "my-scheme.el"
 ;;;;;;  "my-sh-mode.el" "my-sql.el" "my-text-mode.el" "my-yaml-mode.el"
 ;;;;;;  "my-yasnippet.el") (0 0 0 0))
