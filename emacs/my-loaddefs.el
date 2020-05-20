@@ -17,18 +17,6 @@
 
 ;;;***
 
-;;;### (autoloads nil "my-ispell" "my-ispell.el" (0 0 0 0))
-;;; Generated autoloads from my-ispell.el
-
-(autoload 'my-ispell-toggle-dictionary "my-ispell" "\
-
-
-\(fn)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ispell" '("my-ispell-dictionaries")))
-
-;;;***
-
 ;;;### (autoloads nil "my-mode-line" "my-mode-line.el" (0 0 0 0))
 ;;; Generated autoloads from my-mode-line.el
 
@@ -99,21 +87,6 @@ doesn't exist and no prefix arg is given, create it in the home
 directory.
 
 \(fn &optional ARG)" t nil)
-
-;;;***
-
-;;;### (autoloads nil "my-tabs" "my-tabs.el" (0 0 0 0))
-;;; Generated autoloads from my-tabs.el
-
-(autoload 'my-untabify-buffer "my-tabs" "\
-Replace all tabs with spaces in buffer.
-
-\(fn)" nil nil)
-
-(autoload 'my-enable-indent-tabs "my-tabs" "\
-Enable using tabs for indentation. Intended for use in hooks.
-
-\(fn)" nil nil)
 
 ;;;***
 

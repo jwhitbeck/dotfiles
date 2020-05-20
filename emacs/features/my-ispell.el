@@ -3,18 +3,18 @@
 ;;; ispell helpers
 
 (require 'ispell)
-(defvar my-ispell-dictionaries '("american" "french"))
 
 ;;; Default to american dictionary
-(ispell-change-dictionary "american")
+(setq ispell-dictionary "american")
 
-;;;###autoload
 (defun my-ispell-toggle-dictionary ()
   (interactive)
   (ispell-change-dictionary
-   (pcase ispell-local-dictionary
+   (pcase (or ispell-local-dictionary ispell-dictionary)
      ("american" "french")
      ("french" "american")
      (_ "american"))))
+
+(define-key ispell-minor-keymap (kbd "C-c d") 'my-ispell-toggle-dictionary)
 
 (provide 'my-ispell)

@@ -86,7 +86,4 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c y") 'org-cliplink)
 
-;;; Fast dictionary switching
-(global-set-key (kbd "C-c d") 'my-ispell-toggle-dictionary)
-
 (provide 'my-global-keybindings)
