@@ -70,6 +70,7 @@
 
 (defvar my-packages--refreshed? nil)
 
+;;;###autoload
 (defun my-packages-install (pkg)
   "Ensures the packages are installed. Refreshes package list if
   necessary."

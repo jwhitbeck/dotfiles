@@ -1,19 +1,12 @@
-;;; autoloads.el --- automatically extracted autoloads
+;;; my-loaddefs.el --- automatically extracted autoloads
 ;;
 ;;; Code:
 
 
-;;;### (autoloads nil "my-dired" "my-dired.el" (0 0 0 0))
-;;; Generated autoloads from my-dired.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dired" '("my-")))
-
-;;;***
-
 ;;;### (autoloads nil "my-dirs" "my-dirs.el" (0 0 0 0))
 ;;; Generated autoloads from my-dirs.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dirs" '(#("my-" 0 3 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dirs" '("my-")))
 
 ;;;***
 
@@ -27,7 +20,7 @@
 ;;;### (autoloads nil "my-external" "my-external.el" (0 0 0 0))
 ;;; Generated autoloads from my-external.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-external" '(#("my-" 0 3 (fontified nil face font-lock-variable-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-external" '("my-")))
 
 ;;;***
 
@@ -46,13 +39,6 @@
 \(fn START END)" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fill-column-indicator" '("my-company--")))
-
-;;;***
-
-;;;### (autoloads nil "my-git-commit" "my-git-commit.el" (0 0 0 0))
-;;; Generated autoloads from my-git-commit.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-git-commit" '("my-git-commit--set-fill-column")))
 
 ;;;***
 
@@ -103,7 +89,7 @@
 ;;;### (autoloads nil "my-mode-line" "my-mode-line.el" (0 0 0 0))
 ;;; Generated autoloads from my-mode-line.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mode-line" '(#("my-mode-line-hide-minor-mode" 0 28 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mode-line" '("my-mode-line-hide-minor-mode")))
 
 ;;;***
 
@@ -130,7 +116,13 @@ provide an ICON and SOUND.
 ;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '("my-packages")))
+(autoload 'my-packages-install "my-packages" "\
+Ensures the packages are installed. Refreshes package list if
+  necessary.
+
+\(fn PKG)" nil nil)
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (fontified t face font-lock-variable-name-face)))))
 
 ;;;***
 
@@ -228,7 +220,7 @@ if called interactively.
 
 \(fn)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-whitespace" '(#("my-whitespace-mode--enable" 0 26 (face font-lock-function-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-whitespace" '("my-whitespace-mode--enable")))
 
 ;;;***
 
@@ -287,7 +279,7 @@ Toggle whether or not the window is dedicated to its buffer.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-windows" '(#("my-windows--set-buffer-name-face" 0 21 (face font-lock-function-name-face fontified t) 21 32 (face font-lock-function-name-face fontified t)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-windows" '("my-windows--set-buffer-name-face")))
 
 ;;;***
 
@@ -303,22 +295,20 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("my-ace-window.el" "my-auto-indent-mode.el"
-;;;;;;  "my-clojure-mode.el" "my-css-mode.el" "my-editing.el" "my-ess-mode.el"
-;;;;;;  "my-file-associations.el" "my-flyspell.el" "my-global-keybindings.el"
-;;;;;;  "my-go-mode.el" "my-ivy.el" "my-locale.el" "my-magit.el"
-;;;;;;  "my-make-mode.el" "my-nov.el" "my-ob-clojure.el" "my-ox.el"
-;;;;;;  "my-performance.el" "my-prog-modes.el" "my-scheme.el" "my-security.el"
-;;;;;;  "my-sh-mode.el" "my-sql.el" "my-text-mode.el" "my-tramp.el"
-;;;;;;  "my-yaml-mode.el" "my-yasnippet.el") (0 0 0 0))
+;;;### (autoloads nil nil ("my-auto-indent-mode.el" "my-clojure-mode.el"
+;;;;;;  "my-css-mode.el" "my-editing.el" "my-ess-mode.el" "my-file-associations.el"
+;;;;;;  "my-global-keybindings.el" "my-go-mode.el" "my-ivy.el" "my-locale.el"
+;;;;;;  "my-make-mode.el" "my-ob-clojure.el" "my-prog-modes.el" "my-scheme.el"
+;;;;;;  "my-sh-mode.el" "my-sql.el" "my-text-mode.el" "my-yaml-mode.el"
+;;;;;;  "my-yasnippet.el") (0 0 0 0))
 
 ;;;***
 
-(provide 'autoloads)
+(provide 'my-loaddefs)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
 ;; coding: utf-8
 ;; End:
-;;; autoloads.el ends here
+;;; my-loaddefs.el ends here
