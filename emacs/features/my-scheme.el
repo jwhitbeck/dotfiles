@@ -9,6 +9,6 @@
 (add-hook 'geiser-repl-mode-hook 'paredit-mode)
 (add-hook 'geiser-repl-mode-hook 'subword-mode)
 (add-hook 'scheme-mode-hook 'auto-indent-mode)
-(add-hook 'scheme-mode-hook 'my-whitespace-mode-default)
+(add-hook 'scheme-mode-hook 'my-whitespace-mode)
 
 (provide 'my-scheme)

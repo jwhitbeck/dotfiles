@@ -7,7 +7,7 @@
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'auto-indent-mode)
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
-(add-hook 'emacs-lisp-mode 'my-whitespace-mode-default)
+(add-hook 'emacs-lisp-mode 'my-whitespace-mode)
 
 ;;; Disable emacs-lisp-checkdoc flycheck because it creates at lot of noise in
 ;;; my personal emacs config files

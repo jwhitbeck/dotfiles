@@ -7,7 +7,7 @@
 (add-hook 'clojure-mode-hook 'paredit-mode)
 (add-hook 'clojure-mode-hook 'subword-mode)
 (add-hook 'clojure-mode-hook 'auto-indent-mode)
-(add-hook 'clojure-mode-hook 'my-whitespace-mode-default)
+(add-hook 'clojure-mode-hook 'my-whitespace-mode)
 (add-hook 'clojure-mode-hook 'auto-indent-mode)
 
 (setq

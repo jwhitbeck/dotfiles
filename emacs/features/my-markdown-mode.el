@@ -10,6 +10,6 @@
 
 (add-hook 'markdown-mode-hook 'my-markdown--enable-orgtbl-mode)
 (add-hook 'markdown-mode-hook 'fci-mode)
-(add-hook 'markdown-mode-hook 'my-whitespace-mode-default)
+(add-hook 'markdown-mode-hook 'my-whitespace-mode)
 
 (provide 'my-markdown-mode)

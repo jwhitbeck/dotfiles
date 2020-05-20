@@ -18,7 +18,7 @@
   (c-set-style "java-google"))
 
 (add-hook 'java-mode-hook 'my-java--enable-google-style)
-(add-hook 'java-mode-hook 'my-whitespace-mode-default)
+(add-hook 'java-mode-hook 'my-whitespace-mode)
 
 (add-hook 'java-mode-hook 'my-java-eclim--enable-if-appropriate)
 

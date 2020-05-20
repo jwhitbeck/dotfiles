@@ -11,6 +11,6 @@
         (server :default "localhost")
         (port :default 5432)))
 
-(add-hook 'sql-mode-hook 'my-whitespace-mode-default)
+(add-hook 'sql-mode-hook 'my-whitespace-mode)
 
 (provide 'my-sql)

@@ -6,46 +6,14 @@
 ;;;### (autoloads nil "init" "init.el" (0 0 0 0))
 ;;; Generated autoloads from init.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '(#("my-" 0 3 (fontified nil face font-lock-variable-name-face)))))
-
-;;;***
-
-;;;### (autoloads nil "my-dirs" "my-dirs.el" (0 0 0 0))
-;;; Generated autoloads from my-dirs.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dirs" '("my-")))
-
-;;;***
-
-;;;### (autoloads nil "my-elisp-mode" "my-elisp-mode.el" (0 0 0 0))
-;;; Generated autoloads from my-elisp-mode.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-elisp-mode" '("my-emacs-lisp--disable-checkdoc")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '("my-")))
 
 ;;;***
 
 ;;;### (autoloads nil "my-external" "my-external.el" (0 0 0 0))
 ;;; Generated autoloads from my-external.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-external" '("my-")))
-
-;;;***
-
-;;;### (autoloads nil "my-fill-column-indicator" "my-fill-column-indicator.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from my-fill-column-indicator.el
-
-(autoload 'my-unfill-paragraph "my-fill-column-indicator" "\
-
-
-\(fn)" t nil)
-
-(autoload 'my-unfill-region "my-fill-column-indicator" "\
-
-
-\(fn START END)" t nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-fill-column-indicator" '("my-company--")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-external" '("my-external-programs")))
 
 ;;;***
 
@@ -58,31 +26,6 @@
 \(fn)" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ispell" '("my-ispell-dictionaries")))
-
-;;;***
-
-;;;### (autoloads nil "my-java-eclim" "my-java-eclim.el" (0 0 0 0))
-;;; Generated autoloads from my-java-eclim.el
-
-(autoload 'my-java-eclim--enable-if-appropriate "my-java-eclim" "\
-
-
-\(fn)" nil nil)
-
-;;;***
-
-;;;### (autoloads nil "my-java-mode" "my-java-mode.el" (0 0 0 0))
-;;; Generated autoloads from my-java-mode.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-java-mode" '("my-java--enable-google-style")))
-
-;;;***
-
-;;;### (autoloads nil "my-markdown-mode" "my-markdown-mode.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from my-markdown-mode.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-markdown-mode" '("my-markdown--enable-orgtbl-mode")))
 
 ;;;***
 
@@ -110,13 +53,6 @@ provide an ICON and SOUND.
 
 ;;;***
 
-;;;### (autoloads nil "my-org" "my-org.el" (0 0 0 0))
-;;; Generated autoloads from my-org.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-org" '("my-org-t")))
-
-;;;***
-
 ;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
@@ -126,7 +62,7 @@ Ensures the packages are installed. Refreshes package list if
 
 \(fn PKG)" nil nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '(#("my-packages" 0 11 (fontified t face font-lock-variable-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-packages" '("my-packages")))
 
 ;;;***
 
@@ -197,27 +133,14 @@ if called interactively.
 
 ;;;***
 
-;;;### (autoloads nil "my-ui" "my-ui.el" (0 0 0 0))
-;;; Generated autoloads from my-ui.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ui" '("my-ui--disable-line-wrap")))
-
-;;;***
-
 ;;;### (autoloads nil "my-whitespace" "my-whitespace.el" (0 0 0 0))
 ;;; Generated autoloads from my-whitespace.el
 
-(autoload 'my-whitespace-mode-default "my-whitespace" "\
-
-
-\(fn)" nil nil)
-
-(autoload 'my-whitespace-mode-tabs "my-whitespace" "\
-
+(autoload 'my-whitespace-mode "my-whitespace" "\
+Like whitespace-mode, but intelligently decides whether or not
+to highlight tabs.
 
 \(fn)" nil nil)
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-whitespace" '("my-whitespace-mode--enable")))
 
 ;;;***
 
@@ -292,10 +215,8 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("my-clojure-mode.el" "my-ess-mode.el"
-;;;;;;  "my-global-keybindings.el" "my-go-mode.el" "my-make-mode.el"
-;;;;;;  "my-ob-clojure.el" "my-prog-modes.el" "my-scheme.el" "my-sh-mode.el"
-;;;;;;  "my-sql.el" "my-yasnippet.el") (0 0 0 0))
+;;;### (autoloads nil nil ("my-global-keybindings.el" "my-yasnippet.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 
