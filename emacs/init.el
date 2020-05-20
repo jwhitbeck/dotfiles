@@ -60,24 +60,6 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-;;;; Autoloads
-
-;;; Regenerate using M-x update-directory-autoloads
-(load (expand-file-name "my-loaddefs.el" my-dir))
-
-;;; Read autoloads for advanced dired functions.
-(load "dired-loaddefs.el")
-
-
-;;;; Lazy-load feature settings
-(dolist (filename (directory-files my-features-dir))
-  (when (string-suffix-p ".el" filename)
-    (let* ((feature-str (substring filename 3 (- (length filename) 3)))
-           (feature (intern feature-str))
-           (my-feature (intern (concat "my-" feature-str))))
-      (message "Delaying loading %s" feature-str)
-      (with-eval-after-load feature (require my-feature)))))
-
 
 ;;;; Packages
 
@@ -95,11 +77,48 @@
 (dolist (pkg my-packages)
   (my-packages-install pkg))
 
+
+;;;; Features
+
+;;; To improve startup times, defer configuring features until after the feature
+;;; has been loaded.
+(dolist (filename (directory-files my-features-dir))
+  (when (equal "el" (file-name-extension filename))
+    (let* ((feature-str (substring filename 3 (- (length filename) 3)))
+           (feature (intern feature-str))
+           (my-feature (intern (concat "my-" feature-str))))
+      (with-eval-after-load feature (require my-feature)))))
+
+
+;;;; File associations
+
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+;;;; Startup
+
+(require 'powerline)
+(require 'ivy)
+(require 'projectile)
+(require 'auto-indent-mode)
+
+;;; Read autoloads for advanced dired functions.
+(load "dired-loaddefs.el")
+
 (require 'my-global-keybindings)
-(require 'my-file-associations)
+
+;;;; Emacs server
+
+(server-start)
+
+;;;; Local init
+
+(when (file-symlink-p my-local-dir)
+  (load (expand-file-name "init.el" my-local-dir)))
+
+;;; XXX
 (require 'my-mode-line)
 (require 'my-ui)
-(require 'my-editing)
 (require 'my-ivy)
 (require 'my-projectile)
 (with-eval-after-load 'minibuffer (require 'my-minibuffer))
@@ -109,9 +128,3 @@
 (require 'my-text-mode)
 (require 'my-prog-modes)
 
-;;; Start emacs server
-(server-start)
-
-;;; Load local init.
-(when (file-symlink-p my-local-dir)
-  (load (expand-file-name "init.el" my-local-dir)))

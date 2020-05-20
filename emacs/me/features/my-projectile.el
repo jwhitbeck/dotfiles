@@ -3,6 +3,7 @@
 ;;;; Projectile settings
 
 (require 'projectile)
+
 (setq
  ;; Use git-grep rather than grep for git projects
  projectile-use-git-grep t

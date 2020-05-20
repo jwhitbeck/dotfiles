@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;;; General editing settings
+(require 'files)
 
 ;;; Don't use auto-backups.
 (setq
@@ -10,4 +10,4 @@
 ;;; Always delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(provide 'my-editing)
+(provide 'my-files)

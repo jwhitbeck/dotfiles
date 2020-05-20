@@ -9,6 +9,8 @@
   "Directory containing custom Emacs Lisp code.")
 
 (add-to-list 'load-path my-dir)
+;;; Regenerate using M-x update-directory-autoloads
+(load (expand-file-name "my-loaddefs.el" my-dir))
 
 (defconst my-features-dir (expand-file-name "features" my-dir)
   "Directory containing lazy-loaded settings for features.")
