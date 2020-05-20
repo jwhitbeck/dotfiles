@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;; Add my custom lisp dir to load-path
+;;; Add custom lisp dirs to load-path
 (require 'my-dirs (expand-file-name "me/my-dirs.el" user-emacs-directory))
 
 ;;; Harden security settings.
@@ -32,6 +32,15 @@
 ;;; Read autoloads for advanced dired functions.
 (load "dired-loaddefs.el")
 
+;;; Lazy-load feature settings
+(dolist (filename (directory-files my-features-dir))
+  (when (string-suffix-p ".el" filename)
+    (let* ((feature-str (substring filename 3 (- (length filename) 3)))
+           (feature (intern feature-str))
+           (my-feature (intern (concat "my-" feature-str))))
+      (message "Delaying loading %s" feature-str)
+      (with-eval-after-load feature (require my-feature)))))
+
 (require 'my-performance)
 (require 'my-locale)
 (require 'my-global-keybindings)
@@ -42,16 +51,8 @@
 (require 'my-ivy)
 (require 'my-projectile)
 (with-eval-after-load 'minibuffer (require 'my-minibuffer))
-(with-eval-after-load 'git-commit (require 'my-git-commit))
-(with-eval-after-load 'flyspell (require 'my-flyspell))
-(with-eval-after-load 'magit (require 'my-magit))
-(with-eval-after-load 'dired (require 'my-dired))
 (with-eval-after-load 'comint (require 'my-shell))
-(with-eval-after-load 'tramp (require 'my-tramp))
 (with-eval-after-load 'org (require 'my-org))
-(with-eval-after-load 'ox (require 'my-ox))
-(with-eval-after-load 'nov (require 'my-nov))
-(with-eval-after-load 'ace-window (require 'my-ace-window))
 (with-eval-after-load 'auto-indent-mode (require 'my-auto-indent-mode))
 (require 'my-text-mode)
 (require 'my-prog-modes)
