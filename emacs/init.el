@@ -1,8 +1,7 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;; Add my custom lisp dir to load-path
-(require 'my-dirs (expand-file-name "me/lisp/my-dirs.el" user-emacs-directory))
-(add-to-list 'load-path my-lisp-dir)
+(require 'my-dirs (expand-file-name "me/my-dirs.el" user-emacs-directory))
 
 ;;; Harden security settings.
 (require 'my-security)
@@ -28,7 +27,7 @@
 
 ;;; Configure autoloads
 ;;; Regenerate using M-x update-directory-autoloads
-(load (expand-file-name "autoloads.el" my-lisp-dir))
+(load (expand-file-name "autoloads.el" my-dir))
 
 ;;; Read autoloads for advanced dired functions.
 (load "dired-loaddefs.el")
@@ -61,6 +60,5 @@
 (server-start)
 
 ;;; Load local init.
-(when (file-symlink-p my-local-lisp-dir)
-  (add-to-list 'load-path my-local-lisp-dir)
-  (load (expand-file-name "init.el" my-local-lisp-dir)))
+(when (file-symlink-p my-local-dir)
+  (load (expand-file-name "init.el" my-local-dir)))
