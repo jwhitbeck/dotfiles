@@ -135,7 +135,7 @@
 ;;; insert this line if not present.
 (package-initialize)
 
-;;; Load theme. Must come first because it re-loads custom.el.
+;;; Load theme. Must come before packages because it reloads custom.el.
 (unless (package-installed-p 'zenburn-theme)
   (my-packages-install 'zenburn-theme))
 (load-theme 'zenburn t)

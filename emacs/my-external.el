@@ -2,13 +2,7 @@
 
 ;;;; Preferred external programs
 
-(defconst my-pdf-reader
-  (or (executable-find "evince")
-      (executable-find "atril")))
-
-(defvar my-external-programs
-  `(("pdf" . ,my-pdf-reader)
-    ("mobi" . ,my-pdf-reader)
-    ("zhtml" . "zhtml-open")))
+(defvar my-external-programs nil
+  "Alist mapping an extension to the external program that should open it.")
 
 (provide 'my-external)
