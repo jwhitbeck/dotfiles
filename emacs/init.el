@@ -65,6 +65,70 @@
   (load custom-file))
 
 
+;;;; Emacs UI settings
+
+;;; Use Ubuntu's default font
+(set-face-attribute 'default nil :family "Ubuntu Mono" :height 120)
+
+;;; Turn on syntax highlighting for all modes that support it.
+(global-font-lock-mode 1)
+
+;;; Activate line highlighting everywhere
+(global-hl-line-mode 1)
+
+;;; Show row/column number in mode line
+(column-number-mode 1)
+(line-number-mode 1)
+
+;;; Always answer yes/no prompts with y/n
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;;; Disable useless UI elements
+(when (and (fboundp 'menu-bar-mode) menu-bar-mode)
+  (menu-bar-mode -1))                   ; disable menu bar
+(when (and (fboundp 'tool-bar-mode) tool-bar-mode)
+  (tool-bar-mode -1))                   ; disable tool bar
+(when (and (fboundp 'scroll-bar-mode) scroll-bar-mode)
+  (scroll-bar-mode -1))                 ; disable scroll bar
+
+;;; Save your minibuffer history across Emacs sessions.
+(savehist-mode 1)
+
+(setq-default
+ ;; No tabs by default. Modes that really need tabs should enable
+ ;; indent-tabs-mode explicitly. Makefile-mode already does that, for example.
+ indent-tabs-mode nil
+ ;; Wrap lines at 80 characters by default.
+ fill-column 80)
+
+(setq
+ ;; Disable startup messages
+ inhibit-startup-screen t
+ inhibit-startup-echo-area-message t
+ initial-scratch-message nil
+
+ ;; Start scrolling the window when the cursor reaches its edge.
+ ;; http://stackoverflow.com/questions/3631220/fix-to-get-smooth-scrolling-in-emacs
+ scroll-margin 7
+ scroll-conservatively 10000
+ scroll-preserve-screen-position 1
+
+ ;; Window splitting
+ split-height-threshold 110
+ split-width-threshold 220
+
+ ;; Clipboard and emacs kill ring compatibility
+ mouse-drag-copy-region nil
+ select-enable-primary nil
+ select-enable-clipboard t
+
+ transient-mark-mode t                  ; Highlight selection.
+ lazy-highlight-initial-delay 0         ; Immediately highlight all matches.
+ ring-bell-function 'ignore             ; Disable bell.
+ vc-follow-symlinks t         ; Follow symlinks for files under version control.
+ )
+
+
 ;;;; Packages
 
 ;;; This must come before configurations of installed packages. Emacs will
@@ -91,7 +155,13 @@
 (load "dired-loaddefs.el")
 
 
-;;;; Features
+;;;; File associations
+
+(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+
+;;;; Lazy-loaded features
 
 (defconst my-features-dir (expand-file-name "features" my-dir)
   "Directory containing lazy-loaded settings for features.")
@@ -108,25 +178,23 @@
       (with-eval-after-load feature (require my-feature)))))
 
 
-;;;; File associations
+;;;; Startup features
 
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
-
-
-;;;; Startup
-
-(require 'powerline)
+(require 'company)
 (require 'ivy)
-(require 'projectile)
-(require 'paren)
 (require 'my-global-keybindings)
+(require 'paren)
+(require 'powerline)
+(require 'projectile)
+(require 'winner)
+(require 'recentf)
+(require 'uniquify)
 
 ;;;; Emacs server
 
 (server-start)
 
-;;;; Init.d
+;;;; Load files in init.d/
 
 (let ((init.d-dir (expand-file-name "init.d" user-emacs-directory)))
   (when (file-directory-p init.d-dir)
@@ -135,13 +203,7 @@
         (load (expand-file-name init-file init.d-dir))))))
 
 ;;; XXX
-(require 'my-ui)
 (with-eval-after-load 'org (require 'my-org))
 
-;;; No tabs by default. Modes that really need tabs should enable
-;;; indent-tabs-mode explicitly. Makefile-mode already does that, for example.
-(setq-default indent-tabs-mode nil)
-
-(setq-default fill-column 80)           ; Line wrap at 80 characters.
 
 (message "%s" features)
