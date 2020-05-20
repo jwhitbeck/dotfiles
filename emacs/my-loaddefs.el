@@ -29,19 +29,6 @@ Hide the minor mode from the mode line. Useful to hide
 
 ;;;***
 
-;;;### (autoloads nil "my-notifications" "my-notifications.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from my-notifications.el
-
-(autoload 'my-popup "my-notifications" "\
-Show a popup if we're on X, or echo it otherwise; TITLE is the
-title of the message, MSG is the context. Optionally, you can
-provide an ICON and SOUND.
-
-\(fn TITLE MSG &optional ICON SOUND)" t nil)
-
-;;;***
-
 ;;;### (autoloads nil "my-packages" "my-packages.el" (0 0 0 0))
 ;;; Generated autoloads from my-packages.el
 
