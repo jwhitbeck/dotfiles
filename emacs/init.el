@@ -85,7 +85,7 @@
 ;;;; Autoloads
 
 ;;; Regenerate using M-x update-directory-autoloads
-(load (expand-file-name "loaddefs.el" my-dir))
+(load (expand-file-name "my-loaddefs.el" my-dir))
 
 ;;; Read autoloads for advanced dired functions.
 (load "dired-loaddefs.el")
@@ -119,6 +119,7 @@
 (require 'powerline)
 (require 'ivy)
 (require 'projectile)
+(require 'paren)
 (require 'my-global-keybindings)
 
 ;;;; Emacs server
@@ -136,6 +137,11 @@
 ;;; XXX
 (require 'my-ui)
 (with-eval-after-load 'org (require 'my-org))
-(require 'my-prog-modes)
+
+;;; No tabs by default. Modes that really need tabs should enable
+;;; indent-tabs-mode explicitly. Makefile-mode already does that, for example.
+(setq-default indent-tabs-mode nil)
+
+(setq-default fill-column 80)           ; Line wrap at 80 characters.
 
 (message "%s" features)

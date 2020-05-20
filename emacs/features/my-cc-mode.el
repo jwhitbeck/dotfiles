@@ -1,6 +1,9 @@
 ;;; -*- lexical-binding: t; -*-
 
-;;;; Java mode settings
+;;;; Java/C++ mode settings
+(require 'cc-mode)
+
+;;; Java mode settings
 
 ;;; Fix indentation to be compatible with Google style guide
 (c-add-style "java-google" '("user"
@@ -19,7 +22,4 @@
 
 (add-hook 'java-mode-hook 'my-java-eclim--enable-if-appropriate)
 
-;;; Provide the start-eclimd command at startup
-;(autoload 'start-eclimd "eclimd" "Start the eclim daemon." t)
-
-(provide 'my-java-mode)
+(provide 'my-cc-mode)

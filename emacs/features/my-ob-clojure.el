@@ -2,7 +2,6 @@
 
 ;;;; Custom Org Babel Clojure settings
 
-(require 'cider)
 (require 'ob-clojure)
 
 ;;; Use cider for org-babel Org-babel

@@ -1,9 +1,8 @@
 ;;; -*- lexical-binding: t; -*-
 
 ;;;; Scheme mode settings
-(require 'geiser-impl)
+(require 'scheme)
 
-(setq geiser-active-implementations '(chicken))
 (add-hook 'scheme-mode-hook 'paredit-mode)
 (add-hook 'scheme-mode-hook 'auto-indent-mode)
 (add-hook 'scheme-mode-hook 'subword-mode)
