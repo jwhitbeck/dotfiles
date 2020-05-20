@@ -28,7 +28,6 @@
     ess
     ess-smart-underscore
     fill-column-indicator
-    flx
     flycheck
     flymake-shellcheck
     geiser
@@ -53,14 +52,12 @@
     rainbow-delimiters
     restclient
     scratch
-    smex
     string-inflection
     synosaurus
     toml-mode
     undo-tree
     visual-fill-column
-    yaml-mode
-    yasnippet))
+    yaml-mode))
 
 (setq package-pinned-packages
       '((auto-indent-mode . "melpa-stable")
