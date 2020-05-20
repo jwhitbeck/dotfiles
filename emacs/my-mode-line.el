@@ -2,6 +2,7 @@
 
 ;;;; Mode line configuration
 
+;;;###autoload
 (defun my-mode-line-hide-minor-mode (mode)
   "Hide the minor mode from the mode line. Useful to hide
   globally enabled minor modes."

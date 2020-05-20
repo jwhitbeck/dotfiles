@@ -113,12 +113,12 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
+
 ;;;; Startup
 
 (require 'powerline)
 (require 'ivy)
 (require 'projectile)
-(require 'auto-indent-mode)
 (require 'my-global-keybindings)
 
 ;;;; Emacs server
@@ -134,11 +134,8 @@
         (load (expand-file-name init-file init.d-dir))))))
 
 ;;; XXX
-(require 'my-mode-line)
 (require 'my-ui)
-(with-eval-after-load 'comint (require 'my-shell))
 (with-eval-after-load 'org (require 'my-org))
-(require 'my-text-mode)
 (require 'my-prog-modes)
 
 (message "%s" features)

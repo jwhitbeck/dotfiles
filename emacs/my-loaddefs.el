@@ -3,10 +3,17 @@
 ;;; Code:
 
 
+;;;### (autoloads nil "init" "init.el" (0 0 0 0))
+;;; Generated autoloads from init.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "init" '(#("my-" 0 3 (fontified nil face font-lock-variable-name-face)))))
+
+;;;***
+
 ;;;### (autoloads nil "my-dirs" "my-dirs.el" (0 0 0 0))
 ;;; Generated autoloads from my-dirs.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dirs" '(#("my-" 0 3 (fontified nil face font-lock-variable-name-face)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-dirs" '("my-")))
 
 ;;;***
 
@@ -82,7 +89,11 @@
 ;;;### (autoloads nil "my-mode-line" "my-mode-line.el" (0 0 0 0))
 ;;; Generated autoloads from my-mode-line.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-mode-line" '("my-mode-line-hide-minor-mode")))
+(autoload 'my-mode-line-hide-minor-mode "my-mode-line" "\
+Hide the minor mode from the mode line. Useful to hide
+  globally enabled minor modes.
+
+\(fn MODE)" nil nil)
 
 ;;;***
 
@@ -281,11 +292,10 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("my-clojure-mode.el" "my-css-mode.el"
-;;;;;;  "my-ess-mode.el" "my-global-keybindings.el" "my-go-mode.el"
-;;;;;;  "my-make-mode.el" "my-ob-clojure.el" "my-prog-modes.el" "my-scheme.el"
-;;;;;;  "my-sh-mode.el" "my-sql.el" "my-text-mode.el" "my-yaml-mode.el"
-;;;;;;  "my-yasnippet.el") (0 0 0 0))
+;;;### (autoloads nil nil ("my-clojure-mode.el" "my-ess-mode.el"
+;;;;;;  "my-global-keybindings.el" "my-go-mode.el" "my-make-mode.el"
+;;;;;;  "my-ob-clojure.el" "my-prog-modes.el" "my-scheme.el" "my-sh-mode.el"
+;;;;;;  "my-sql.el" "my-yasnippet.el") (0 0 0 0))
 
 ;;;***
 
