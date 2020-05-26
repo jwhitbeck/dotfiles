@@ -128,6 +128,14 @@
  vc-follow-symlinks t         ; Follow symlinks for files under version control.
  )
 
+;;;; Autoloads
+
+;;; Regenerate using M-x update-directory-autoloads
+(load (expand-file-name "my-loaddefs.el" my-dir))
+
+;;; Read autoloads for advanced dired functions.
+(load "dired-loaddefs.el")
+
 
 ;;;; Packages
 
@@ -144,15 +152,6 @@
 (require 'my-packages)
 (dolist (pkg my-packages)
   (my-packages-install pkg))
-
-
-;;;; Autoloads
-
-;;; Regenerate using M-x update-directory-autoloads
-(load (expand-file-name "my-loaddefs.el" my-dir))
-
-;;; Read autoloads for advanced dired functions.
-(load "dired-loaddefs.el")
 
 
 ;;;; File associations
