@@ -78,10 +78,13 @@
 
 ;;; Improve org-open-file types
 (require 'my-external-programs)
-(dolist (kons my-external-programs)
-  (let ((re (concat "\\." (car kons) "\\'"))
-        (cmd (concat (cdr kons) " %s")))
-    (add-to-list 'org-file-apps (cons re cmd))))
+(defun my-org--set-external-programs (alist)
+  (dolist (kons alist)
+    (let ((re (concat "\\." (car kons) "\\'"))
+          (cmd (concat (cdr kons) " %s")))
+      (add-to-list 'org-file-apps (cons re cmd)))))
+
+(add-to-list 'my-external-programs-hooks 'my-org--set-external-programs)
 
 ;;; Use org-tempo for the easy templates
 ;;; https://orgmode.org/manual/Easy-templates.html

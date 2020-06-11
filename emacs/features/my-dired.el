@@ -112,8 +112,7 @@ uses the xdg-open command."
    (list current-prefix-arg
          (dired-get-marked-files t current-prefix-arg)))
   (dolist (file file-list)
-    (let ((bin (or (cdr (assoc (file-name-extension file)
-                               my-external-programs))
+    (let ((bin (or (my-external-programs-get (file-name-extension file))
                    "xdg-open")))
       (my-dired-do-detached-shell-command bin current-prefix-arg (list file)))))
 
