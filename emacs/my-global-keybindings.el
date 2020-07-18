@@ -13,8 +13,10 @@
    (?_ . [?—])
    ;; EN dash. See https://www.thepunctuationguide.com/en-dash.html for usage.
    (?- . [?–])
-   ;; Capital C cedilla
-   (?ç . [?Ç])))
+   ;; Capital letters
+   (?ç . [?Ç])
+   (?é . [?É])
+   (?à . [?À])))
 
 ;;; Unfill paragraph
 (global-set-key (kbd "C-c q") 'my-unfill-paragraph)
