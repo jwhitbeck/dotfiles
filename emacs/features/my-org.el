@@ -127,6 +127,11 @@
                        "Insert PostgresSQL properties for querying a table."
                        'org-tempo-tags)
 
+;;; Powerline theme compatibility
+
+(set-face-background 'org-mode-line-clock 'unspecified)
+(set-face-foreground 'org-mode-line-clock 'unspecified)
+
 ;;; Follow org links for unloaded features.
 
 ;;; Nov.el
