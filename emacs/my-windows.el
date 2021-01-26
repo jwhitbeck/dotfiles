@@ -72,18 +72,18 @@ to the right of the selected one."
   (other-window 1))
 
 ;;; Lock buffers to windows
-(defun my-windows--set-buffer-name-face (face)
-  (let ((cur (car mode-line-buffer-identification)))
-    (setq-local mode-line-buffer-identification
-                (list (propertize cur 'face face)))))
+(require 'face-remap)
+
+(defvar-local my-windows--face-remap-cookie nil)
 
 ;;;###autoload
 (defun my-windows-toggle-dedicated ()
   "Toggle whether or not the window is dedicated to its buffer."
   (interactive)
   (set-window-dedicated-p (selected-window) (not (window-dedicated-p)))
-  (my-windows--set-buffer-name-face (if (window-dedicated-p)
-                                        'warning
-                                      'mode-line-buffer-id)))
+  (if (window-dedicated-p)
+      (setq my-windows--face-remap-cookie
+            (face-remap-add-relative 'mode-line-buffer-id 'warning))
+    (face-remap-remove-relative my-windows--face-remap-cookie)))
 
 (provide 'my-windows)
