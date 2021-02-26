@@ -42,4 +42,4 @@ directory."
     (pop-to-buffer-same-window buf)
     (shell buf)))
 
-(provide 'my-shell)
+(provide 'my-shell-buffers)

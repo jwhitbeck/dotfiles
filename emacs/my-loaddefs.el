@@ -10,11 +10,19 @@
 
 ;;;***
 
+;;;### (autoloads nil "my-ansi-cursor" "my-ansi-cursor.el" (0 0 0
+;;;;;;  0))
+;;; Generated autoloads from my-ansi-cursor.el
+
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-ansi-cursor" '("my-ansi-cursor--")))
+
+;;;***
+
 ;;;### (autoloads nil "my-external-programs" "my-external-programs.el"
 ;;;;;;  (0 0 0 0))
 ;;; Generated autoloads from my-external-programs.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-external-programs" '(#("my-external-programs" 0 20 (face font-lock-variable-name-face fontified nil)))))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-external-programs" '("my-external-programs-")))
 
 ;;;***
 
@@ -59,15 +67,16 @@ Open a tramp-enabled shell on HOSTNAME.
 
 ;;;***
 
-;;;### (autoloads nil "my-shell" "my-shell.el" (0 0 0 0))
-;;; Generated autoloads from my-shell.el
+;;;### (autoloads nil "my-shell-buffers" "my-shell-buffers.el" (0
+;;;;;;  0 0 0))
+;;; Generated autoloads from my-shell-buffers.el
 
-(autoload 'my-shell-switchb "my-shell" "\
+(autoload 'my-shell-switchb "my-shell-buffers" "\
 
 
 \(fn)" t nil)
 
-(autoload 'my-shell "my-shell" "\
+(autoload 'my-shell "my-shell-buffers" "\
 Like `shell' but always opens the *shell* buffer in the
 current window. With a C-u prefix, opens a new shell. With C-u
 C-u prefix prompts for the new buffer's name. If the buffer
@@ -160,7 +169,7 @@ Toggle whether or not the window is dedicated to its buffer.
 
 \(fn)" t nil)
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-windows" '("my-windows--set-buffer-name-face")))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "my-windows" '("my-windows--face-remap-cookie")))
 
 ;;;***
 
@@ -176,8 +185,7 @@ Toggle whether or not the window is dedicated to its buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("my-global-keybindings.el" "my-yasnippet.el")
-;;;;;;  (0 0 0 0))
+;;;### (autoloads nil nil ("my-global-keybindings.el") (0 0 0 0))
 
 ;;;***
 
