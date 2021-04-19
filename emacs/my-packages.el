@@ -52,6 +52,7 @@
     rainbow-delimiters
     restclient
     scratch
+    smooth-scrolling
     string-inflection
     synosaurus
     toml-mode

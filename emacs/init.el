@@ -107,12 +107,6 @@
  inhibit-startup-echo-area-message t
  initial-scratch-message nil
 
- ;; Start scrolling the window when the cursor reaches its edge.
- ;; http://stackoverflow.com/questions/3631220/fix-to-get-smooth-scrolling-in-emacs
- scroll-margin 7
- scroll-conservatively 10000
- scroll-preserve-screen-position 1
-
  ;; Window splitting
  split-height-threshold 110
  split-width-threshold 220
