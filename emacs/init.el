@@ -182,6 +182,7 @@
 (require 'winner)
 (require 'recentf)
 (require 'uniquify)
+(require 'smooth-scrolling)
 
 ;;;; Emacs server
 
