@@ -31,6 +31,7 @@
     flycheck
     flymake-shellcheck
     geiser
+    geiser-chicken
     go-eldoc
     go-mode
     hide-lines
