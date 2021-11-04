@@ -5,15 +5,14 @@
 (require 'package)
 
 (setq package-archives
-      '(("org" . "http://orgmode.org/elpa/")
-        ("gnu" . "https://elpa.gnu.org/packages/")
+      '(("gnu" . "https://elpa.gnu.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
         ("melpa-stable" . "https://stable.melpa.org/packages/")))
 
 (defvar my-packages
-  '(;; Ensure that we use the latest org-mode with contribs. This needs to be
-    ;; installed before all other packages.
-    org-plus-contrib
+  '(;; Ensure that we use the latest org-mode. This needs to be installed before
+    ;; all other packages.
+    org
     ace-jump-mode
     ace-window
     async
@@ -63,7 +62,12 @@
 
 (setq package-pinned-packages
       '((auto-indent-mode . "melpa-stable")
-        (cider . "melpa-stable")))
+        (cider . "melpa-stable")
+        (org . "gnu")))
+
+(defvar my-packages-min-versions
+  ;; Override the built-in version of org.
+  '((org . "9.5")))
 
 (defvar my-packages--refreshed? nil)
 
@@ -71,10 +75,13 @@
 (defun my-packages-install (pkg)
   "Ensures the packages are installed. Refreshes package list if
   necessary."
-  (unless (package-installed-p pkg)
-    (unless my-packages--refreshed?
-      (package-refresh-contents)
-      (setq my-packages--refreshed? t))
-    (package-install pkg)))
+  (let* ((min-version-str (cdr (assq pkg my-packages-min-versions)))
+         (min-version (and min-version-str (version-to-list min-version-str))))
+    (unless (package-installed-p pkg min-version)
+      (unless my-packages--refreshed?
+        (package-refresh-contents)
+        (setq my-packages--refreshed? t))
+      (let ((pkg-desc (cadr (assq pkg package-archive-contents))))
+        (package-install pkg-desc)))))
 
 (provide 'my-packages)
