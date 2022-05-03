@@ -163,12 +163,6 @@ uses the xdg-open command."
 
 (define-key dired-mode-map (kbd "J") 'my-dired-jump-to-last-target-dir)
 
-;;; Easy async mode toggle
-(define-key dired-mode-map (kbd ",") 'dired-async-mode)
-
-;;; Easy wdired mode toggle
-(define-key dired-mode-map (kbd ";") 'wdired-change-to-wdired-mode)
-
 ;;; Miscellaneous settings
 (setq
  ;; Auto-revert
