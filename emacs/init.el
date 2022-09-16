@@ -195,3 +195,8 @@
     (dolist (init-file (directory-files init.d-dir))
       (when (equal "el" (file-name-extension init-file))
         (load (expand-file-name init-file init.d-dir))))))
+
+;;; Disable cider xref integration. This needs to done *before* loading cider.
+;;; TODO remove this after upgrading to emacs 27.2+
+;;; https://github.com/clojure-emacs/cider/issues/2831
+(setq cider-use-xref nil)
