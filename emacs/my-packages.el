@@ -17,6 +17,7 @@
     ace-window
     async
     auto-indent-mode
+    bash-completion
     browse-at-remote
     cider
     clojure-mode
