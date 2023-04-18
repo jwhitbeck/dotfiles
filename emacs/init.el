@@ -185,8 +185,8 @@
 (require 'smooth-scrolling)
 
 ;;;; Emacs server
-
-(server-start)
+(unless (server-running-p)
+  (server-start))
 
 ;;;; Load files in init.d/
 
