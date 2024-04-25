@@ -12,7 +12,8 @@
  org-catch-invisible-edits 'error
  org-read-date-force-compatible-dates nil
  org-startup-indented t
- org-startup-folded t)
+ org-startup-folded t
+ org-hide-emphasis-markers t)
 
 ;;; Capture settings
 (setq
