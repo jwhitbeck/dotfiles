@@ -186,6 +186,7 @@
 
 ;;;; Emacs server
 (require 'server)
+(setenv "EDITOR" "emacsclient")
 (unless (server-running-p)
   (server-start))
 
